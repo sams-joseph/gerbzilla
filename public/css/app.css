@@ -6200,6 +6200,10 @@ body {
   overflow-y: scroll;
 }
 
+.transition-all {
+  transition: all .25s;
+}
+
 .bg-red-gradient {
   background-image: linear-gradient(to bottom right, #ff5858, #f09819);
 }

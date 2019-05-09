@@ -1,5 +1,5 @@
 <template>
-  <div class="w-full h-24 flex justify-center items-end">
+  <div class="w-full h-48 flex justify-center items-end">
     <nav>
       <ul class="list-reset">
         <li class="inline-block mx-8 pb-4 border-b-4 border-transparent">
