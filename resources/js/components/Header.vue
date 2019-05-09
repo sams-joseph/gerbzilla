@@ -1,7 +1,7 @@
 <template>
   <header class="w-full py-6 px-6 flex justify-between items-center">
     <transition name="fade">
-      <login v-if="showLogin"></login>
+      <login v-scroll-lock="showLogin" v-if="showLogin"></login>
     </transition>
     <transition name="fade">
       <div
@@ -40,9 +40,37 @@
           >Login</li>
         </ul>
       </nav>
-      <div class="w-8 h-8 rounded-full">
+      <div @click="openDrawer" class="w-8 h-8 rounded-full cursor-pointer">
         <img src="/images/profile-icon.svg" alt="Profile">
       </div>
+      <transition name="fade">
+        <div
+          v-if="showDrawer"
+          @click="openDrawer"
+          class="w-full bg-grey-translucent absolute pin-t pin-l pin-b"
+        ></div>
+      </transition>
+      <transition name="slide">
+        <div v-if="showDrawer" class="absolute w-64 bg-grey-lighter shadow-lg pin-t pin-r pin-b">
+          <div
+            @click="openDrawer"
+            class="absolute pin-r pin-t mr-4 mt-4 h-8 w-8 cursor-pointer"
+            v-scroll-lock="showDrawer"
+          >
+            <svg
+              class="fill-current text-grey-darkest"
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M19.293 3.293L12 10.586 4.707 3.293 3.293 4.707 10.586 12 3.293 19.293 4.707 20.707 12 13.414 19.293 20.707 20.707 19.293 13.414 12 20.707 4.707z"
+              ></path>
+            </svg>
+          </div>
+        </div>
+      </transition>
     </div>
   </header>
 </template>
@@ -51,12 +79,16 @@
 export default {
   data() {
     return {
-      showLogin: false
+      showLogin: false,
+      showDrawer: false
     };
   },
   methods: {
     login() {
       this.showLogin = !this.showLogin;
+    },
+    openDrawer() {
+      this.showDrawer = !this.showDrawer;
     }
   }
 };

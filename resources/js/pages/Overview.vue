@@ -1,16 +1,8 @@
 <template>
   <div>
-    <div class="w-full h-24 flex justify-center items-end">
-      <nav>
-        <ul class="list-reset">
-          <li class="inline-block mx-8 pb-4 text-red border-b-4 border-red">Overview</li>
-          <li class="inline-block mx-8 text-grey-darkest">Workouts</li>
-          <li class="inline-block mx-8 text-grey-darkest">Goals</li>
-        </ul>
-      </nav>
-    </div>
+    <navigation></navigation>
     <section class="w-full bg-grey-lighter border-b border-grey-light py-8 mb-20">
-      <div class="container mx-auto px-8 flex justify-between">
+      <div class="container mx-auto px-8 flex justify-between flex-wrap">
         <div class="flex items-center">
           <div class="rounded-full mr-6">
             <img class="w-32 h-32" src="/images/profile-icon.svg" alt="Profile">
@@ -46,10 +38,12 @@
     </section>
     <div class="container mx-auto">
       <main>
-        <section class="px-8">
-          <h2 class="text-grey-dark font-medium text-lg uppercase mb-12">Week at a glance</h2>
-          <div class="flex justify-between w-full mb-20">
-            <div class="flex-1 p-6 bg-red-gradient rounded-lg shadow-lg mr-4">
+        <h2 class="px-8 text-grey-dark font-medium text-lg uppercase mb-12">Week at a glance</h2>
+        <section class="px-6">
+          <div class="flex flex-wrap justify-between w-full mb-20">
+            <div
+              class="w-full p-6 bg-red-gradient rounded-lg shadow-lg mx-2 mb-2 md:mb-0 md:flex-1"
+            >
               <div class="flex items-center">
                 <div class="mr-4">
                   <div class="w-18 h-18 bg-white rounded-full mb-2"></div>
@@ -66,7 +60,9 @@
               </div>
             </div>
 
-            <div class="flex-1 p-6 bg-blue-gradient rounded-lg shadow-lg mr-4">
+            <div
+              class="w-full p-6 bg-blue-gradient rounded-lg shadow-lg mx-2 mb-2 md:mb-0 md:flex-1"
+            >
               <div class="flex items-center">
                 <div class="mr-4">
                   <div class="w-18 h-18 bg-white rounded-full mb-2"></div>
@@ -83,7 +79,9 @@
               </div>
             </div>
 
-            <div class="flex-1 p-6 bg-green-gradient rounded-lg shadow-lg">
+            <div
+              class="w-full p-6 bg-green-gradient rounded-lg shadow-lg mx-2 mb-2 md:mb-0 md:flex-1"
+            >
               <div class="flex items-center">
                 <div class="mr-4">
                   <div class="w-18 h-18 bg-white rounded-full mb-2"></div>

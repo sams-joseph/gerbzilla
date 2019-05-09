@@ -6192,6 +6192,14 @@ table {
   * @import "utilities/skew-transforms";
   */
 
+* {
+  box-sizing: border-box;
+}
+
+body {
+  overflow-y: scroll;
+}
+
 .bg-red-gradient {
   background-image: linear-gradient(to bottom right, #ff5858, #f09819);
 }
@@ -6202,6 +6210,10 @@ table {
 
 .bg-green-gradient {
   background-image: linear-gradient(to bottom right, #0fd850, #f9f047);
+}
+
+.bg-grey-translucent {
+  background-color: rgba(0, 0, 0, .5);
 }
 
 .h-18 {
@@ -6226,6 +6238,17 @@ a {
   opacity: 0;
 }
 
+.slide-enter-active,
+.slide-leave-active {
+  transition: all .25s;
+}
+
+.slide-enter,
+.slide-leave-to {
+  right: -300px;
+  opacity: 0;
+}
+
 .hero {
   background: #ff0f00;
   height: 54vw;
@@ -6235,6 +6258,13 @@ a {
 .description-pill {
   background: rgba(0, 0, 0, .15);
   border: 1px solid rgba(0, 0, 0, .2);
+}
+
+.router-link-exact-active {
+  color: #ff0f00;
+  font-weight: light;
+  padding-bottom: 1rem;
+  border-bottom: 4px solid #ff0f00;
 }
 
 @media (min-width: 576px) {
