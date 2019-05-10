@@ -4,7 +4,7 @@
     v-bind:class="{ 'py-6': !fixed, 'shadow-lg': fixed }"
   >
     <transition name="fade">
-      <login v-scroll-lock="showLogin" v-if="showLogin"></login>
+      <login v-scroll-lock="showLogin" v-bind:is-toggled="showLogin" @logged-in="successfulLogin"></login>
     </transition>
     <transition name="fade">
       <div
@@ -69,12 +69,13 @@
       <nav>
         <ul class="list-reset mr-6">
           <li
+            v-if="!authorized"
             @click="login"
             class="cursor-pointer text-xs font-semibold rounded-full px-4 py-1 leading-normal bg-white border border-red text-red hover:bg-red hover:text-white uppercase"
           >Login</li>
         </ul>
       </nav>
-      <div @click="openDrawer" class="w-8 h-8 rounded-full cursor-pointer">
+      <div v-if="authorized" @click="openDrawer" class="w-8 h-8 rounded-full cursor-pointer">
         <img src="/images/profile-icon.svg" alt="Profile">
       </div>
     </div>
@@ -82,12 +83,15 @@
 </template>
 
 <script>
+import axios from "axios";
+
 export default {
   data() {
     return {
       showLogin: false,
       showDrawer: false,
-      fixed: false
+      fixed: false,
+      authorized: false
     };
   },
   methods: {
@@ -97,12 +101,22 @@ export default {
     openDrawer() {
       this.showDrawer = !this.showDrawer;
     },
-    handleScroll: function(e) {
+    handleScroll(e) {
       if (window.scrollY > 50) {
         this.fixed = true;
       } else {
         this.fixed = false;
       }
+    },
+    successfulLogin() {
+      this.showLogin = !this.showLogin;
+      this.$router.push("/u/overview");
+    }
+  },
+
+  created() {
+    if ($cookies.isKey("laravel_token")) {
+      this.authorized = true;
     }
   },
 

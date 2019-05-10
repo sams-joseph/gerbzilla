@@ -8,8 +8,13 @@
             <img class="w-32 h-32" src="/images/profile-icon.svg" alt="Profile">
           </div>
           <div class="flex flex-col">
-            <h1 class="text-grey-darkest text-xl mb-2 ml-1">Joseph Sams</h1>
-            <h3 class="text-grey-darker text-base font-light uppercase mb-4 ml-1">Admin</h3>
+            <h1
+              class="text-grey-darkest text-xl mb-2 ml-1"
+            >{{ `${this.firstName} ${this.lastName}` }}</h1>
+            <h3
+              v-bind:class="{'text-green': status, 'text-red': !status}"
+              class="text-base font-light uppercase mb-4 ml-1"
+            >{{ this.status ? 'Active' : 'Inactive' }}</h3>
             <div>
               <button
                 class="cursor-pointer text-xs font-semibold rounded-full px-4 py-1 leading-normal bg-grey-lighter border border-red text-red hover:bg-red hover:text-white uppercase focus:outline-none"
@@ -163,5 +168,28 @@
 </template>
 
 <script>
-export default {};
+import axios from "axios";
+
+export default {
+  data() {
+    return {
+      firstName: "",
+      lastName: "",
+      status: 2
+    };
+  },
+  created() {
+    axios
+      .get("http://gerbzilla.test/api/user")
+      .then(res => {
+        console.log(res);
+        this.firstName = res.data.first_name;
+        this.lastName = res.data.last_name;
+        this.status = res.data.is_active === 1 ? true : false;
+      })
+      .catch(err => {
+        this.$router.push("/");
+      });
+  }
+};
 </script>

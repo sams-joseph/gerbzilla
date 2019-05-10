@@ -15,7 +15,7 @@ use Illuminate\Http\Request;
 
 Route::get('/user', function (Request $request) {
     return $request->user();
-})->middleware('auth:api', 'roles:admin|trainer');
+})->middleware('auth:api', 'roles:admin|trainer|member');
 
 Route::post('/login', 'AuthController@login');
 
