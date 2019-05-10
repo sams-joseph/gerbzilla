@@ -168,27 +168,24 @@
 </template>
 
 <script>
-import axios from "axios";
-
 export default {
   data() {
     return {
       firstName: "",
       lastName: "",
-      status: 2
+      status: false
     };
   },
   created() {
-    axios
-      .get("http://gerbzilla.test/api/user")
+    this.$http
+      .get("http://localhost:8000/api/user")
       .then(res => {
-        console.log(res);
-        this.firstName = res.data.first_name;
-        this.lastName = res.data.last_name;
-        this.status = res.data.is_active === 1 ? true : false;
+        this.firstName = res.data.user.first_name;
+        this.lastName = res.data.user.last_name;
+        this.status = res.data.user.is_active === 1 ? true : false;
       })
       .catch(err => {
-        this.$router.push("/");
+        console.log("Error fetching data");
       });
   }
 };

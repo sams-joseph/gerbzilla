@@ -6220,6 +6220,10 @@ body {
   background-color: rgba(0, 0, 0, .5);
 }
 
+.bg-white-translucent {
+  background-color: rgba(250, 250, 250, .5);
+}
+
 .h-18 {
   height: 4.5rem;
 }
@@ -6269,6 +6273,21 @@ a {
   font-weight: light;
   padding-bottom: 1rem;
   border-bottom: 4px solid #ff0f00;
+}
+
+.router-link-active {
+  color: #ff0f00;
+  font-weight: light;
+  padding-bottom: 1rem;
+  border-bottom: 4px solid #ff0f00;
+}
+
+.router-link-active-alt {
+  color: #4a4a4a;
+  font-weight: light;
+  border-bottom: none;
+  padding-bottom: .75rem;
+  background-color: #dae1e7;
 }
 
 @media (min-width: 576px) {

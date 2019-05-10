@@ -4,7 +4,11 @@
     v-bind:class="{ 'py-6': !fixed, 'shadow-lg': fixed }"
   >
     <transition name="fade">
-      <login v-scroll-lock="showLogin" v-bind:is-toggled="showLogin" @logged-in="successfulLogin"></login>
+      <login-form
+        v-scroll-lock="showLogin"
+        v-bind:is-toggled="showLogin"
+        @logged-in="successfulLogin"
+      ></login-form>
     </transition>
     <transition name="fade">
       <div
@@ -83,8 +87,6 @@
 </template>
 
 <script>
-import axios from "axios";
-
 export default {
   data() {
     return {

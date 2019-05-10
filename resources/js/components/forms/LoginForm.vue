@@ -34,8 +34,6 @@
 </template>
 
 <script>
-import axios from "axios";
-
 export default {
   data() {
     return {
@@ -46,8 +44,8 @@ export default {
   methods: {
     login(e) {
       e.preventDefault();
-      axios
-        .post("http://gerbzilla.test/api/login", {
+      this.$http
+        .post("http://localhost:8000/api/login", {
           username: this.username,
           password: this.password
         })
@@ -56,13 +54,23 @@ export default {
 
           const token = `Bearer ${res.data.access_token}`;
           if (token) {
-            axios.defaults.headers.common["Authorization"] = token;
+            this.$http.defaults.headers.common["Authorization"] = token;
           } else {
-            axios.defaults.headers.common["Authorization"] = null;
+            this.$http.defaults.headers.common["Authorization"] = null;
           }
 
+          this.$http
+            .get("http://localhost:8000/api/user")
+            .then(res => {
+              localStorage.setItem("user", JSON.stringify(res.data.user));
+              localStorage.setItem("role", JSON.stringify(res.data.role));
+              this.$router.push("/u/overview");
+            })
+            .catch(err => {
+              this.$cookies.remove("laravel_token");
+            });
+
           this.$emit("logged-in");
-          console.log(res.data.access_token);
         })
         .catch(err => {
           console.log(err);
