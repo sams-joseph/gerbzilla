@@ -1,9 +1,10 @@
-import Login from './pages/Login';
+import Home from "./pages/Home";
+import Login from "./pages/Login";
 import Overview from "./pages/Overview";
 import Workouts from "./pages/Workouts";
 import Goals from "./pages/Goals";
-import Users from './pages/trainer/Users';
-import Exercises from './pages/trainer/Exercises';
+import Users from "./pages/trainer/Users";
+import Exercises from "./pages/trainer/Exercises";
 
 import NotFound from "./components/NotFound";
 
@@ -13,12 +14,17 @@ export default {
     routes: [
         {
             path: "*",
-            name: 'NotFound',
+            name: "NotFound",
             component: NotFound
         },
         {
+            path: "/",
+            name: "Home",
+            component: Home
+        },
+        {
             path: "/login",
-            name: 'login',
+            name: "login",
             component: Login,
             meta: {
                 guest: true
@@ -26,7 +32,7 @@ export default {
         },
         {
             path: "/u/overview",
-            name: 'overview',
+            name: "overview",
             component: Overview,
             meta: {
                 requiresAuth: true
@@ -34,18 +40,18 @@ export default {
         },
         {
             path: "/u/workouts",
-            name: 'workouts',
+            name: "workouts",
             component: Workouts,
             meta: {
-                requiresAuth: true,
+                requiresAuth: true
             }
         },
         {
             path: "/u/goals",
-            name: 'goals',
+            name: "goals",
             component: Goals,
             meta: {
-                requiresAuth: true,
+                requiresAuth: true
             }
         },
         {
@@ -56,20 +62,20 @@ export default {
         },
         {
             path: "/t/users",
-            name: 'users',
+            name: "users",
             component: Users,
             meta: {
                 requiresAuth: true,
-                is_trainer: true,
+                is_trainer: true
             }
         },
         {
             path: "/t/exercises",
-            name: 'exercises',
+            name: "exercises",
             component: Exercises,
             meta: {
                 requiresAuth: true,
-                is_trainer: true,
+                is_trainer: true
             }
         }
     ]

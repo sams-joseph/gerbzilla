@@ -1,7 +1,7 @@
 <template>
   <div class="w-full h-48 flex justify-center items-end">
     <nav>
-      <ul class="list-reset">
+      <ul class="list-reset mb-px">
         <li class="inline-block mx-8 pb-4 border-b-4 border-transparent">
           <router-link class="text-grey-darkest font-base" to="/u/overview" exact>Overview</router-link>
         </li>

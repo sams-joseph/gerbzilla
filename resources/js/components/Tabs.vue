@@ -1,15 +1,17 @@
 <template>
-  <div class="flex flex-1">
+  <div class="flex flex-1 min-h-500">
     <aside class="w-48 py-20 border-r border-grey-lighter">
-      <h2 class="text-grey-darkest text-lg font-normal px-8 mb-6">{{ heading }}</h2>
+      <div class="px-8 mb-8">
+        <img class="w-full" :src="icon" alt="Actions">
+      </div>
       <ul class="list-reset">
         <li
           v-for="tab in tabs"
           v-bind:key="tab.name"
           :href="tab.href"
           @click="selectTab(tab)"
-          :class="{ 'bg-grey-lighter': tab.isActive }"
-          class="py-3 px-8 hover:bg-grey-lighter text-grey-darkest font-bold text-sm uppercase cursor-pointer"
+          :class="{ 'bg-grey-lightest': tab.isActive }"
+          class="py-3 px-8 hover:bg-grey-lightest text-grey-darkest font-semibold text-xs uppercase cursor-pointer"
         >{{ tab.name }}</li>
       </ul>
     </aside>
@@ -37,7 +39,7 @@ export default {
     }
   },
   props: {
-    heading: String
+    icon: String
   }
 };
 </script>

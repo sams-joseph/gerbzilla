@@ -43,7 +43,7 @@
     </section>
     <div class="container mx-auto">
       <main>
-        <h2 class="px-8 text-grey-dark font-medium text-lg uppercase mb-12">Week at a glance</h2>
+        <h2 class="text-grey-darkest font-normal text-2xl mb-12 px-8">Week at a Glance</h2>
         <section class="px-6">
           <div class="flex flex-wrap justify-between w-full mb-20">
             <div
@@ -105,7 +105,7 @@
           </div>
         </section>
 
-        <h2 class="text-grey-dark font-medium text-lg uppercase mb-12 px-8">Friday May 5</h2>
+        <h2 class="text-grey-darkest font-normal text-2xl mb-12 px-8">Friday May 5</h2>
         <section class="px-4">
           <div class="w-full hover:bg-grey-lighter rounded-lg p-4 flex justify-between">
             <div class="flex items-start">
@@ -178,7 +178,7 @@ export default {
   },
   created() {
     this.$http
-      .get("http://localhost:8000/api/user")
+      .get(`${process.env.MIX_BASE_URL}/user`)
       .then(res => {
         this.firstName = res.data.user.first_name;
         this.lastName = res.data.user.last_name;

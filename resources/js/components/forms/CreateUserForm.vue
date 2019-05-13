@@ -49,7 +49,7 @@
           v-model="password"
         >
       </div>
-      <div class="mb-6">
+      <div class="mb-12">
         <label
           class="block text-grey-darker text-sm font-normal mb-4"
           for="confirmpassword"
@@ -85,13 +85,15 @@ export default {
     createUser(e) {
       e.preventDefault();
       this.loading = true;
+      const user = JSON.parse(localStorage.getItem("user"));
 
       this.$http
-        .post("http://localhost:8000/api/trainer/users", {
+        .post(`${process.env.MIX_BASE_URL}/trainer/users`, {
           first_name: this.firstName,
           last_name: this.lastName,
           email: this.email,
-          password: this.password
+          password: this.password,
+          trainer_id: user.id
         })
         .then(res => {
           this.firstName = "";

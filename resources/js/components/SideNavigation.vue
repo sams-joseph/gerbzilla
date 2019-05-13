@@ -5,7 +5,7 @@
         <router-link
           exact-active-class="router-link-active-alt"
           to="/t/users"
-          class="py-3 px-8 hover:bg-grey-light block w-full text-grey-darkest font-bold text-sm uppercase"
+          class="py-3 px-8 hover:bg-grey-light block w-full text-grey-darkest border-r-3 border-transparent hover:border-red font-semibold text-xs uppercase"
           exact
         >Users</router-link>
       </li>
@@ -13,7 +13,7 @@
         <router-link
           exact-active-class="router-link-active-alt"
           to="/t/exercises"
-          class="py-3 px-8 hover:bg-grey-light block w-full text-grey-darkest font-bold text-sm uppercase"
+          class="py-3 px-8 hover:bg-grey-light block w-full text-grey-darkest border-r-3 border-transparent hover:border-red font-semibold text-xs uppercase"
           exact
         >Exercises</router-link>
       </li>

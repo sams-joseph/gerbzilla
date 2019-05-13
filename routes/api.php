@@ -12,6 +12,7 @@ use Illuminate\Http\Request;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
+
 Route::get('/user', 'UserController@index')->middleware('auth:api');
 
 Route::post('/login', 'AuthController@login');
@@ -28,10 +29,19 @@ Route::middleware('auth:api', 'roles:admin')
         Route::post('/users', 'UserController@store');
     });
 
+/*
+TRAINER
+*/
+
 Route::middleware('auth:api', 'roles:admin|trainer')
     ->namespace('Trainer')
     ->prefix('trainer')
     ->group(function () {
         Route::get('/users', 'UserController@index');
         Route::post('/users', 'UserController@store');
+
+        Route::get('/exercises', 'ExerciseController@index');
+        Route::post('/exercises', 'ExerciseController@store');
+
+        Route::get('/categories', 'CategoryController@index');
     });

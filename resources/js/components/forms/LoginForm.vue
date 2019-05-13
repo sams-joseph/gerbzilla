@@ -45,7 +45,7 @@ export default {
     login(e) {
       e.preventDefault();
       this.$http
-        .post("http://localhost:8000/api/login", {
+        .post(`${process.env.MIX_BASE_URL}/login`, {
           username: this.username,
           password: this.password
         })
@@ -60,7 +60,7 @@ export default {
           }
 
           this.$http
-            .get("http://localhost:8000/api/user")
+            .get(`${process.env.MIX_BASE_URL}/user`)
             .then(res => {
               localStorage.setItem("user", JSON.stringify(res.data.user));
               localStorage.setItem("role", JSON.stringify(res.data.role));

@@ -1,15 +1,15 @@
 <template>
   <div>
     <navigation></navigation>
-    <div class="w-full flex items-center h-px bg-grey-light"></div>
+    <div class="w-full h-px bg-grey-light"></div>
     <div class="flex">
       <side-navigation></side-navigation>
-      <tabs heading="Users">
-        <tab name="Create" :selected="true">
-          <create-user-form @create-user-success="refreshData"></create-user-form>
+      <tabs icon="/images/user-illustration.svg">
+        <tab name="View" :selected="true">
+          <user-list heading="Users" v-bind:data="users"></user-list>
         </tab>
-        <tab name="View">
-          <users v-bind:users="users"></users>
+        <tab name="Create">
+          <create-user-form @create-user-success="refreshData"></create-user-form>
         </tab>
       </tabs>
     </div>
@@ -20,14 +20,14 @@
 export default {
   data() {
     return {
-      users: []
+      users: {}
     };
   },
 
   methods: {
     refreshData() {
       this.$http
-        .get("http://localhost:8000/api/trainer/users")
+        .get(`${process.env.MIX_BASE_URL}/trainer/users`)
         .then(res => {
           this.users = res.data;
         })
@@ -39,7 +39,7 @@ export default {
 
   mounted() {
     this.$http
-      .get("http://localhost:8000/api/trainer/users")
+      .get(`${process.env.MIX_BASE_URL}/trainer/users`)
       .then(res => {
         this.users = res.data;
       })

@@ -1,11 +1,11 @@
 <template>
-  <div class="px-4">
-    <h1 class="text-grey-darkest font-normal text-2xl mb-10 px-4">Users</h1>
+  <div class="px-4 max-w-lg">
+    <h1 class="text-grey-darkest font-normal text-2xl mb-10 px-4">{{ heading }}</h1>
     <ul class="list-reset">
       <li
         class="w-full py-4 hover:bg-grey-lighter rounded-lg px-4 flex items-center"
-        v-for="user in users"
-        v-bind:key="user.id"
+        v-for="object in data"
+        v-bind:key="object.id"
       >
         <span class="rounded-full mr-6">
           <svg
@@ -21,7 +21,7 @@
             ></path>
           </svg>
         </span>
-        <span class="text-grey-darkest mr-6">{{ `${user.first_name} ${user.last_name}` }}</span>
+        <span class="text-grey-darkest mr-6">{{ `${object.name}` }}</span>
         <span class="flex-1"></span>
         <span class="h-10 w-10 rounded-full bg-grey-light flex items-center justify-center">
           <svg
@@ -47,7 +47,8 @@
 <script>
 export default {
   props: {
-    users: Array
+    data: Array,
+    heading: String
   }
 };
 </script>

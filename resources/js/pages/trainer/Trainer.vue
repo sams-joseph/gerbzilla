@@ -40,7 +40,7 @@ export default {
   methods: {
     refreshData() {
       this.$http
-        .get("http://localhost:8000/api/trainer/users")
+        .get(`${process.env.MIX_BASE_URL}/trainer/users`)
         .then(res => {
           this.users = res.data;
         })
@@ -52,7 +52,7 @@ export default {
 
   mounted() {
     this.$http
-      .get("http://localhost:8000/api/trainer/users")
+      .get(`${process.env.MIX_BASE_URL}/trainer/users`)
       .then(res => {
         this.users = res.data;
       })

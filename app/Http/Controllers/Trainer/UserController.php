@@ -13,7 +13,7 @@ class UserController extends Controller
 {
     public function index(Request $request)
     {
-        $users = User::all();
+        $users = User::all()->where('trainer_id', $request->user()->id);
 
         return response()->json($users);
     }
@@ -26,6 +26,7 @@ class UserController extends Controller
                 'last_name' => $request->input('last_name'),
                 'email' => $request->input('email'),
                 'password' => Hash::make($request->input('password')),
+                'trainer_id' => $request->input('trainer_id'),
             ]);
 
             $user

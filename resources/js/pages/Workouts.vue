@@ -4,7 +4,7 @@
     <sub-navigation></sub-navigation>
     <div class="container mx-auto flex">
       <aside class="w-64 hidden md:block">
-        <h2 class="px-8 text-grey-dark font-medium text-lg uppercase mb-12">Week 1</h2>
+        <h2 class="text-grey-darkest font-normal text-2xl mb-12 px-8">Week 1</h2>
         <ul class="list-reset px-6">
           <li class="py-3 px-2 hover:bg-grey-lighter rounded">
             <router-link class="text-grey-darkest font-normal" to="/" exact>Monday</router-link>
@@ -30,7 +30,7 @@
         </ul>
       </aside>
       <main class="flex-1">
-        <h2 class="px-8 text-grey-dark font-medium text-lg uppercase mb-12">Monday</h2>
+        <h2 class="text-grey-darkest font-normal text-2xl mb-12 px-8">Monday</h2>
 
         <div class="px-4">
           <div class="w-full hover:bg-grey-lighter rounded-lg p-4 flex justify-between">
