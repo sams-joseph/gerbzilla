@@ -97,7 +97,7 @@ body {
 }
 
 .bg-red-translucent {
-    background-image: linear-gradient(to bottom right, rgba(255, 15, 0, 0.85), rgba(255, 15, 0, 0.25)), url("/images/hero-img.jpg");
+    background-image: linear-gradient(to bottom right, rgba(255, 15, 0, 1), rgba(255, 15, 0, 0.25)), url("/images/hero-img.jpg");
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -123,8 +123,16 @@ body {
     min-height: 700px;
 }
 
+.max-h-700 {
+    min-height: 700px;
+}
+
 .h-54vw {
     height: 54vw;
+}
+
+.text-12xl {
+    font-size: 5rem;
 }
 
 a {
@@ -178,6 +186,14 @@ a {
     color: #4a4a4a;
     font-weight: bold;
     border-bottom: none;
+}
+
+.router-link-active-drawer {
+    color: #4a4a4a;
+    font-weight: normal;
+    border-bottom: none;
+    margin-bottom: none;
+    padding-bottom: 0.5rem;
 }
 
 // LOADER

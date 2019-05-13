@@ -1851,6 +1851,37 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2247,7 +2278,7 @@ __webpack_require__.r(__webpack_exports__);
   mounted: function mounted() {
     var _this = this;
 
-    this.$http.get("".concat("http://gerbzilla.test/api", "/trainer/categories")).then(function (res) {
+    this.$http.get("".concat("http://localhost:8000/api", "/trainer/categories")).then(function (res) {
       _this.loading = false;
       _this.categories = res.data;
     })["catch"](function (err) {
@@ -2264,7 +2295,7 @@ __webpack_require__.r(__webpack_exports__);
       e.preventDefault();
       this.loading = true;
       var user = JSON.parse(localStorage.getItem("user"));
-      this.$http.post("".concat("http://gerbzilla.test/api", "/trainer/exercises"), {
+      this.$http.post("".concat("http://localhost:8000/api", "/trainer/exercises"), {
         name: this.name,
         category_id: this.category
       }).then(function (res) {
@@ -2404,7 +2435,7 @@ __webpack_require__.r(__webpack_exports__);
       e.preventDefault();
       this.loading = true;
       var user = JSON.parse(localStorage.getItem("user"));
-      this.$http.post("".concat("http://gerbzilla.test/api", "/trainer/users"), {
+      this.$http.post("".concat("http://localhost:8000/api", "/trainer/users"), {
         first_name: this.firstName,
         last_name: this.lastName,
         email: this.email,
@@ -2486,7 +2517,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       e.preventDefault();
-      this.$http.post("".concat("http://gerbzilla.test/api", "/login"), {
+      this.$http.post("".concat("http://localhost:8000/api", "/login"), {
         username: this.username,
         password: this.password
       }).then(function (res) {
@@ -2499,7 +2530,7 @@ __webpack_require__.r(__webpack_exports__);
           _this.$http.defaults.headers.common["Authorization"] = null;
         }
 
-        _this.$http.get("".concat("http://gerbzilla.test/api", "/user")).then(function (res) {
+        _this.$http.get("".concat("http://localhost:8000/api", "/user")).then(function (res) {
           localStorage.setItem("user", JSON.stringify(res.data.user));
           localStorage.setItem("role", JSON.stringify(res.data.role));
 
@@ -2697,6 +2728,132 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({});
 
 /***/ }),
@@ -2754,7 +2911,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       e.preventDefault();
-      this.$http.post("".concat("http://gerbzilla.test/api", "/login"), {
+      this.$http.post("".concat("http://localhost:8000/api", "/login"), {
         username: this.username,
         password: this.password
       }).then(function (res) {
@@ -2767,7 +2924,7 @@ __webpack_require__.r(__webpack_exports__);
           _this.$http.defaults.headers.common["Authorization"] = null;
         }
 
-        _this.$http.get("".concat("http://gerbzilla.test/api", "/user")).then(function (res) {
+        _this.$http.get("".concat("http://localhost:8000/api", "/user")).then(function (res) {
           localStorage.setItem("user", JSON.stringify(res.data.user));
           localStorage.setItem("role", JSON.stringify(res.data.role));
 
@@ -2973,7 +3130,7 @@ __webpack_require__.r(__webpack_exports__);
   created: function created() {
     var _this = this;
 
-    this.$http.get("".concat("http://gerbzilla.test/api", "/user")).then(function (res) {
+    this.$http.get("".concat("http://localhost:8000/api", "/user")).then(function (res) {
       _this.firstName = res.data.user.first_name;
       _this.lastName = res.data.user.last_name;
       _this.status = res.data.user.is_active === 1 ? true : false;
@@ -3173,7 +3330,7 @@ __webpack_require__.r(__webpack_exports__);
     refreshData: function refreshData() {
       var _this = this;
 
-      this.$http.get("".concat("http://gerbzilla.test/api", "/trainer/exercises")).then(function (res) {
+      this.$http.get("".concat("http://localhost:8000/api", "/trainer/exercises")).then(function (res) {
         _this.exercises = res.data;
       })["catch"](function (err) {
         console.log(err);
@@ -3186,7 +3343,7 @@ __webpack_require__.r(__webpack_exports__);
   mounted: function mounted() {
     var _this2 = this;
 
-    this.$http.all([this.$http.get("".concat("http://gerbzilla.test/api", "/trainer/exercises")), this.$http.get("".concat("http://gerbzilla.test/api", "/trainer/categories"))]).then(this.$http.spread(function (exercises, categories) {
+    this.$http.all([this.$http.get("".concat("http://localhost:8000/api", "/trainer/exercises")), this.$http.get("".concat("http://localhost:8000/api", "/trainer/categories"))]).then(this.$http.spread(function (exercises, categories) {
       _this2.exercises = exercises.data;
       _this2.categories = categories.data;
     }))["catch"](function (err) {
@@ -3246,7 +3403,7 @@ __webpack_require__.r(__webpack_exports__);
     refreshData: function refreshData() {
       var _this = this;
 
-      this.$http.get("".concat("http://gerbzilla.test/api", "/trainer/users")).then(function (res) {
+      this.$http.get("".concat("http://localhost:8000/api", "/trainer/users")).then(function (res) {
         _this.users = res.data;
       })["catch"](function (err) {
         console.log(err);
@@ -3259,7 +3416,7 @@ __webpack_require__.r(__webpack_exports__);
   mounted: function mounted() {
     var _this2 = this;
 
-    this.$http.get("".concat("http://gerbzilla.test/api", "/trainer/users")).then(function (res) {
+    this.$http.get("".concat("http://localhost:8000/api", "/trainer/users")).then(function (res) {
       _this2.users = res.data;
     })["catch"](function (err) {
       console.log(err);
@@ -4130,7 +4287,7 @@ var render = function() {
               "div",
               {
                 staticClass:
-                  "absolute w-64 h-screen bg-grey-lighter shadow-lg pin-t pin-r pin-b"
+                  "absolute bg-white w-64 h-screen shadow-lg pin-t pin-r pin-b"
               },
               [
                 _c(
@@ -4170,7 +4327,101 @@ var render = function() {
                       ]
                     )
                   ]
-                )
+                ),
+                _vm._v(" "),
+                _c("ul", { staticClass: "list-reset mt-24" }, [
+                  _c(
+                    "li",
+                    {
+                      staticClass: "block px-8 py-2 hover:bg-grey-lighter",
+                      on: { click: _vm.openDrawer }
+                    },
+                    [
+                      _c(
+                        "router-link",
+                        {
+                          staticClass: "text-grey-darkest block",
+                          attrs: {
+                            "exact-active-class": "router-link-active-drawer",
+                            to: "/",
+                            exact: ""
+                          }
+                        },
+                        [_vm._v("Home")]
+                      )
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "li",
+                    {
+                      staticClass: "block px-8 py-2 hover:bg-grey-lighter",
+                      on: { click: _vm.openDrawer }
+                    },
+                    [
+                      _c(
+                        "router-link",
+                        {
+                          staticClass: "text-grey-darkest block",
+                          attrs: {
+                            "exact-active-class": "router-link-active-drawer",
+                            to: "/u/overview",
+                            exact: ""
+                          }
+                        },
+                        [_vm._v("Overview")]
+                      )
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "li",
+                    {
+                      staticClass: "block px-8 py-2 hover:bg-grey-lighter",
+                      on: { click: _vm.openDrawer }
+                    },
+                    [
+                      _c(
+                        "router-link",
+                        {
+                          staticClass: "text-grey-darkest block",
+                          attrs: {
+                            "exact-active-class": "router-link-active-drawer",
+                            to: "/u/workouts",
+                            exact: ""
+                          }
+                        },
+                        [_vm._v("Workouts")]
+                      )
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "li",
+                    {
+                      staticClass: "block px-8 py-2 hover:bg-grey-lighter",
+                      on: { click: _vm.openDrawer }
+                    },
+                    [
+                      _c(
+                        "router-link",
+                        {
+                          staticClass: "text-grey-darkest block",
+                          attrs: {
+                            "exact-active-class": "router-link-active-drawer",
+                            to: "/u/goals",
+                            exact: ""
+                          }
+                        },
+                        [_vm._v("Goals")]
+                      )
+                    ],
+                    1
+                  )
+                ])
               ]
             )
           : _vm._e()
@@ -5619,11 +5870,267 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "h-54vw bg-red-translucent w-full" }, [
-    _vm._v("Home")
+  return _c("div", [
+    _c(
+      "div",
+      {
+        staticClass:
+          "h-screen max-h-700 bg-red-translucent w-full relative flex items-center"
+      },
+      [
+        _vm._m(0),
+        _vm._v(" "),
+        _c(
+          "svg",
+          {
+            staticClass: "fill-current text-white absolute pin-b pin-l w-full",
+            attrs: {
+              xmlns: "http://www.w3.org/2000/svg",
+              viewBox: "0 0 1400 159.36"
+            }
+          },
+          [
+            _c("path", {
+              staticClass: "cls-1",
+              attrs: {
+                d:
+                  "M1137.84,1068.33c-5-3.24-10.75-8.46-9.77-4.08l1.84,4.18A12,12,0,0,1,1137.84,1068.33Z",
+                transform: "translate(0 -1040.64)"
+              }
+            }),
+            _vm._v(" "),
+            _c("path", {
+              staticClass: "cls-1",
+              attrs: {
+                d:
+                  "M1340.64,1050.48a31.6,31.6,0,0,0-10.28-1.66C1335.44,1050.84,1339.7,1054.2,1340.64,1050.48Z",
+                transform: "translate(0 -1040.64)"
+              }
+            }),
+            _vm._v(" "),
+            _c("path", {
+              staticClass: "cls-1",
+              attrs: {
+                d:
+                  "M696,1112.37c-1.89,1-2.64,1.93-2.5,2.89C695.48,1114.33,696.54,1113.39,696,1112.37Z",
+                transform: "translate(0 -1040.64)"
+              }
+            }),
+            _vm._v(" "),
+            _c("path", {
+              staticClass: "cls-1",
+              attrs: {
+                d:
+                  "M1318.74,1049.92c.75.37,1.47.52,2.22.82a28.85,28.85,0,0,1,9.4-1.92C1326.61,1047.31,1322.4,1046.55,1318.74,1049.92Z",
+                transform: "translate(0 -1040.64)"
+              }
+            }),
+            _vm._v(" "),
+            _c("path", {
+              staticClass: "cls-1",
+              attrs: {
+                d: "M1424.19,1039.38",
+                transform: "translate(0 -1040.64)"
+              }
+            }),
+            _vm._v(" "),
+            _c("path", {
+              staticClass: "cls-1",
+              attrs: {
+                d:
+                  "M196,1159.93c.19.23.39.44.59.64A4.73,4.73,0,0,0,196,1159.93Z",
+                transform: "translate(0 -1040.64)"
+              }
+            }),
+            _vm._v(" "),
+            _c("path", {
+              staticClass: "cls-1",
+              attrs: {
+                d:
+                  "M1385.43,1042.24c-4.26-.58-10.07,5.94-6.76,2.09l-13.61,4.07-.23-1.1c-13.74.72-27.47,10-43.87,3.44-4.5,1.56-9.13,3.38-17,2.84l-1.87-3.73c-5.78,1.9-18.12-2.21-20.28,2.06-7.36-9.81-28.91.42-39.49-.45l.08,5.09c-7.18.38-13.91,2.46-22.61,5.32l1,4.41c-7.32,4.38-20-1.33-32.07.27.66-1.79,3.78-1.63,6-.8-15.42-8.73-29.86,10.2-43.68,4.08a8.12,8.12,0,0,1-7.94.69,1.63,1.63,0,0,0,.79-.31,9.89,9.89,0,0,0-1.35.07c-1.51-.63-3.09-1.38-4.77-2a15.34,15.34,0,0,0,4.05,2,43.72,43.72,0,0,0-9.93,2.71l-2-4.65c-.3.1-.55.11-.86.22-3.84-1.42-2.74,2.55-.44,6a18.71,18.71,0,0,0-4.69,3.36c-3.72-7.46-9.6,3.53-14.45-4.34-2,3.94-16.22,4.7-19.27,11.66-4.23-.57-8.46-1.1-12,1.61l-2.35-5.93-8.36,9c-5.9-3.19-8.4-5.13-3.33-10.34-12.63,8.46-10.54,3.73-21.18,11.94l.18-4c-4,.53-10,6.42-12.74,3.39-9.75-6.64-44.85,3.16-68.72-1.63,5.59,11.19-11.28-4.19-11.36,4.9-1.61-2.62-5-3.87-1.45-6.61-11.6,3.81-18.21-2.68-25.68,5.67-1.62-2.63,2.15-4.26.79-5.78-.89.69-3.54,2.74-4.92,1.22s1.52-2.47,3.28-3.84c-12.06,1.6-12.49,10.17-12.63,18.19-6.48-3.18-9.5-2.36-13.44,3.26-2.38-2.4-6.19-4.78,1.24-6.42-4.27,0-26.2-1.38-26,5-1.47-1.49-6,.08-7,.92-9.53.51-10.42,0-19.69,1.49l2.69.8c-3,8-7.59,2.44-15,4.07l.14-.81c-17.75-3.92-7.19,3.35-24.79-1.38l1.38,4.69c-.63,10.42-15.64-4.64-25.13.21l3.81,2.39c-5.06,4-16.37-12.55-21.9-13.33-1.27-.78,1.73-1.61,3.31-2.42-14.74-4.73-1.25,6.43-11.67,8.87-2.26-3.19,1.7-8.82-5.46-8.78-3.8-2.4-19.59,12.89-29.89,7.33,2.38,2.4,4.75,4.79,0,7.21-7.43,1.63-21.24-7.93-27.26.91a2.84,2.84,0,0,1-1.55-1.91c-5.54,2.65-18.34,5.26-21.39,10-6.85-16-35,11.37-36.27-3.86l-17.59,2.48.31-1.6c-11.39,0-15,4.07-18.67,8.1-2.71-.8-.94-2.39-.8-3.21-16.79-1.52-18.37-.72-31.5,8.15l-1.9-4.79c-3.49,3.22-24.6-5.51-40.25,1.77a3.42,3.42,0,0,1,1.58-2.38c-17.68,7.5-44.9-9.6-49.89,9l-11.6,5.56c15.68-.06-1.59,8,5.09,10.4-6,1.63-16.32-3.94-8.89-5.57l1.26.79c1.88-9.62-19.64-1.51-19.82-7.92-30.56,3.33-60.87.94-89.57,3.22l4,7-10,.52c-2.78-1.46-4.05-5.37,3.11-5.74-4.14-3.78-11.64,4.58-11.7,6.18-14.24-1.64,4.66-9,.36-8.78l-5.76,1.09,1.39.73c-4.44,3.42-4.56,6.61-13.17,7.06-5.56-1-3.2-4.23-5.36-4.32,0-.51-.78-.69-3.3.1l-12.65.56,5.57,5.28c-5.32,3.36-11.87.81-5.45,6.78-9.47-9.25-47.33.8-52.86-1.83-7.43,4.92-15.15,5.57-24.76,6,2.49,1,4.51,7.3-3.81,7.28,1.72-13.28-14.78-4.83-22.62-12.71,3.73,5-23.5,3.45-13.7,11.29-7-.43-.88-4.95-6.4-7.6-15.89,6.7-36.41,0-56.49,3.67-.16,1.78,3.49,4.14-.61,7.15l-11.51-7.75c-3.92,1.23-2.74,10.45-10.61,5.06,1.17,1.37,2.92,3.45.29,4.26C65.09,1172.79,33,1184.48,0,1183v17H1400V1041.55C1395,1040.23,1389.08,1040.26,1385.43,1042.24ZM315.47,1151l2.1,1.07C313.24,1153.89,314.37,1152.53,315.47,1151Zm774.21-63.93c-.22-1.07-1.32-1.49.5-1.75A7,7,0,0,0,1089.68,1087.09Z",
+                transform: "translate(0 -1040.64)"
+              }
+            })
+          ]
+        )
+      ]
+    ),
+    _vm._v(" "),
+    _vm._m(1),
+    _vm._v(" "),
+    _vm._m(2),
+    _vm._v(" "),
+    _c("section", { staticClass: "w-full min-h-500 bg-white relative" }, [
+      _c(
+        "svg",
+        {
+          staticClass:
+            "fill-current text-grey-lighter absolute pin-b pin-l w-full",
+          attrs: {
+            xmlns: "http://www.w3.org/2000/svg",
+            viewBox: "0 0 1400 159.36"
+          }
+        },
+        [
+          _c("path", {
+            staticClass: "cls-1",
+            attrs: {
+              d:
+                "M1137.84,1068.33c-5-3.24-10.75-8.46-9.77-4.08l1.84,4.18A12,12,0,0,1,1137.84,1068.33Z",
+              transform: "translate(0 -1040.64)"
+            }
+          }),
+          _vm._v(" "),
+          _c("path", {
+            staticClass: "cls-1",
+            attrs: {
+              d:
+                "M1340.64,1050.48a31.6,31.6,0,0,0-10.28-1.66C1335.44,1050.84,1339.7,1054.2,1340.64,1050.48Z",
+              transform: "translate(0 -1040.64)"
+            }
+          }),
+          _vm._v(" "),
+          _c("path", {
+            staticClass: "cls-1",
+            attrs: {
+              d:
+                "M696,1112.37c-1.89,1-2.64,1.93-2.5,2.89C695.48,1114.33,696.54,1113.39,696,1112.37Z",
+              transform: "translate(0 -1040.64)"
+            }
+          }),
+          _vm._v(" "),
+          _c("path", {
+            staticClass: "cls-1",
+            attrs: {
+              d:
+                "M1318.74,1049.92c.75.37,1.47.52,2.22.82a28.85,28.85,0,0,1,9.4-1.92C1326.61,1047.31,1322.4,1046.55,1318.74,1049.92Z",
+              transform: "translate(0 -1040.64)"
+            }
+          }),
+          _vm._v(" "),
+          _c("path", {
+            staticClass: "cls-1",
+            attrs: { d: "M1424.19,1039.38", transform: "translate(0 -1040.64)" }
+          }),
+          _vm._v(" "),
+          _c("path", {
+            staticClass: "cls-1",
+            attrs: {
+              d: "M196,1159.93c.19.23.39.44.59.64A4.73,4.73,0,0,0,196,1159.93Z",
+              transform: "translate(0 -1040.64)"
+            }
+          }),
+          _vm._v(" "),
+          _c("path", {
+            staticClass: "cls-1",
+            attrs: {
+              d:
+                "M1385.43,1042.24c-4.26-.58-10.07,5.94-6.76,2.09l-13.61,4.07-.23-1.1c-13.74.72-27.47,10-43.87,3.44-4.5,1.56-9.13,3.38-17,2.84l-1.87-3.73c-5.78,1.9-18.12-2.21-20.28,2.06-7.36-9.81-28.91.42-39.49-.45l.08,5.09c-7.18.38-13.91,2.46-22.61,5.32l1,4.41c-7.32,4.38-20-1.33-32.07.27.66-1.79,3.78-1.63,6-.8-15.42-8.73-29.86,10.2-43.68,4.08a8.12,8.12,0,0,1-7.94.69,1.63,1.63,0,0,0,.79-.31,9.89,9.89,0,0,0-1.35.07c-1.51-.63-3.09-1.38-4.77-2a15.34,15.34,0,0,0,4.05,2,43.72,43.72,0,0,0-9.93,2.71l-2-4.65c-.3.1-.55.11-.86.22-3.84-1.42-2.74,2.55-.44,6a18.71,18.71,0,0,0-4.69,3.36c-3.72-7.46-9.6,3.53-14.45-4.34-2,3.94-16.22,4.7-19.27,11.66-4.23-.57-8.46-1.1-12,1.61l-2.35-5.93-8.36,9c-5.9-3.19-8.4-5.13-3.33-10.34-12.63,8.46-10.54,3.73-21.18,11.94l.18-4c-4,.53-10,6.42-12.74,3.39-9.75-6.64-44.85,3.16-68.72-1.63,5.59,11.19-11.28-4.19-11.36,4.9-1.61-2.62-5-3.87-1.45-6.61-11.6,3.81-18.21-2.68-25.68,5.67-1.62-2.63,2.15-4.26.79-5.78-.89.69-3.54,2.74-4.92,1.22s1.52-2.47,3.28-3.84c-12.06,1.6-12.49,10.17-12.63,18.19-6.48-3.18-9.5-2.36-13.44,3.26-2.38-2.4-6.19-4.78,1.24-6.42-4.27,0-26.2-1.38-26,5-1.47-1.49-6,.08-7,.92-9.53.51-10.42,0-19.69,1.49l2.69.8c-3,8-7.59,2.44-15,4.07l.14-.81c-17.75-3.92-7.19,3.35-24.79-1.38l1.38,4.69c-.63,10.42-15.64-4.64-25.13.21l3.81,2.39c-5.06,4-16.37-12.55-21.9-13.33-1.27-.78,1.73-1.61,3.31-2.42-14.74-4.73-1.25,6.43-11.67,8.87-2.26-3.19,1.7-8.82-5.46-8.78-3.8-2.4-19.59,12.89-29.89,7.33,2.38,2.4,4.75,4.79,0,7.21-7.43,1.63-21.24-7.93-27.26.91a2.84,2.84,0,0,1-1.55-1.91c-5.54,2.65-18.34,5.26-21.39,10-6.85-16-35,11.37-36.27-3.86l-17.59,2.48.31-1.6c-11.39,0-15,4.07-18.67,8.1-2.71-.8-.94-2.39-.8-3.21-16.79-1.52-18.37-.72-31.5,8.15l-1.9-4.79c-3.49,3.22-24.6-5.51-40.25,1.77a3.42,3.42,0,0,1,1.58-2.38c-17.68,7.5-44.9-9.6-49.89,9l-11.6,5.56c15.68-.06-1.59,8,5.09,10.4-6,1.63-16.32-3.94-8.89-5.57l1.26.79c1.88-9.62-19.64-1.51-19.82-7.92-30.56,3.33-60.87.94-89.57,3.22l4,7-10,.52c-2.78-1.46-4.05-5.37,3.11-5.74-4.14-3.78-11.64,4.58-11.7,6.18-14.24-1.64,4.66-9,.36-8.78l-5.76,1.09,1.39.73c-4.44,3.42-4.56,6.61-13.17,7.06-5.56-1-3.2-4.23-5.36-4.32,0-.51-.78-.69-3.3.1l-12.65.56,5.57,5.28c-5.32,3.36-11.87.81-5.45,6.78-9.47-9.25-47.33.8-52.86-1.83-7.43,4.92-15.15,5.57-24.76,6,2.49,1,4.51,7.3-3.81,7.28,1.72-13.28-14.78-4.83-22.62-12.71,3.73,5-23.5,3.45-13.7,11.29-7-.43-.88-4.95-6.4-7.6-15.89,6.7-36.41,0-56.49,3.67-.16,1.78,3.49,4.14-.61,7.15l-11.51-7.75c-3.92,1.23-2.74,10.45-10.61,5.06,1.17,1.37,2.92,3.45.29,4.26C65.09,1172.79,33,1184.48,0,1183v17H1400V1041.55C1395,1040.23,1389.08,1040.26,1385.43,1042.24ZM315.47,1151l2.1,1.07C313.24,1153.89,314.37,1152.53,315.47,1151Zm774.21-63.93c-.22-1.07-1.32-1.49.5-1.75A7,7,0,0,0,1089.68,1087.09Z",
+              transform: "translate(0 -1040.64)"
+            }
+          })
+        ]
+      )
+    ]),
+    _vm._v(" "),
+    _c("section", { staticClass: "w-full min-h-500 bg-grey-lighter relative" })
   ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "container mx-auto px-8" }, [
+      _c("div", { staticClass: "w-full max-w-md" }, [
+        _c("h1", { staticClass: "text-12xl text-white font-black mb-8" }, [
+          _vm._v("Unleash Your Full Potential")
+        ]),
+        _vm._v(" "),
+        _c(
+          "div",
+          {
+            staticClass:
+              "cursor-pointer inline-block text-sm font-semibold px-8 py-3 leading-normal bg-white text-red hover:bg-white uppercase"
+          },
+          [_vm._v("Get Coaching")]
+        )
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("section", { staticClass: "w-full py-12" }, [
+      _c("h2", { staticClass: "text-3xl text-red font-thin text-center" }, [
+        _vm._v("Everything you need to succeed.")
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("section", { staticClass: "w-full pb-20 pt-6" }, [
+      _c("div", { staticClass: "container flex mx-auto px-8" }, [
+        _c("div", { staticClass: "flex-1 flex items-center" }, [
+          _c("ul", { staticClass: "list-reset" }, [
+            _c("li", { staticClass: "text-lg mb-6 flex items-start" }, [
+              _c("span", { staticClass: "w-16 h-16 block mr-4" }, [
+                _c("img", {
+                  attrs: { src: "/images/dumbbell.svg", alt: "Dumbbell Icon" }
+                })
+              ]),
+              _vm._v(
+                "\n            Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum natus molestias eligendi asperiores porro laborum,\n          "
+              )
+            ]),
+            _vm._v(" "),
+            _c("li", { staticClass: "text-lg mb-6 flex items-start" }, [
+              _c("span", { staticClass: "w-16 h-16 block mr-4" }, [
+                _c("img", {
+                  attrs: { src: "/images/dumbbell.svg", alt: "Dumbbell Icon" }
+                })
+              ]),
+              _vm._v(
+                "\n            Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum natus molestias eligendi asperiores porro laborum,\n          "
+              )
+            ]),
+            _vm._v(" "),
+            _c("li", { staticClass: "text-lg mb-6 flex items-start" }, [
+              _c("span", { staticClass: "w-16 h-16 block mr-4" }, [
+                _c("img", {
+                  attrs: { src: "/images/dumbbell.svg", alt: "Dumbbell Icon" }
+                })
+              ]),
+              _vm._v(
+                "\n            Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum natus molestias eligendi asperiores porro laborum,\n          "
+              )
+            ]),
+            _vm._v(" "),
+            _c("li", { staticClass: "text-lg mb-6 flex items-start" }, [
+              _c("span", { staticClass: "w-16 h-16 block mr-4" }, [
+                _c("img", {
+                  attrs: { src: "/images/dumbbell.svg", alt: "Dumbbell Icon" }
+                })
+              ]),
+              _vm._v(
+                "\n            Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum natus molestias eligendi asperiores porro laborum,\n          "
+              )
+            ])
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "flex-1 flex justify-end" }, [
+          _c("img", {
+            attrs: { src: "/images/phone-img.jpg", alt: "Phone App" }
+          })
+        ])
+      ])
+    ])
+  }
+]
 render._withStripped = true
 
 
@@ -21642,7 +22149,7 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
       var laravelToken = $cookies.get("laravel_token");
       var token = "Bearer ".concat(laravelToken);
       this.$http.defaults.headers.common["Authorization"] = token;
-      this.$http.get("".concat("http://gerbzilla.test/api", "/user")).then(function (res) {
+      this.$http.get("".concat("http://localhost:8000/api", "/user")).then(function (res) {
         localStorage.setItem("user", JSON.stringify(res.data.user));
         localStorage.setItem("role", JSON.stringify(res.data.role));
       })["catch"](function (err) {
@@ -23141,8 +23648,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /Users/joe.mac/projects/gerbzilla/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /Users/joe.mac/projects/gerbzilla/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /Users/jsams/projects/gerbzilla/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /Users/jsams/projects/gerbzilla/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

@@ -37,10 +37,7 @@
       ></div>
     </transition>
     <transition name="slide">
-      <div
-        v-if="showDrawer"
-        class="absolute w-64 h-screen bg-grey-lighter shadow-lg pin-t pin-r pin-b"
-      >
+      <div v-if="showDrawer" class="absolute bg-white w-64 h-screen shadow-lg pin-t pin-r pin-b">
         <div
           @click="openDrawer"
           class="absolute pin-r pin-t mr-4 mt-4 h-8 w-8 cursor-pointer"
@@ -58,6 +55,40 @@
             ></path>
           </svg>
         </div>
+        <ul class="list-reset mt-24">
+          <li @click="openDrawer" class="block px-8 py-2 hover:bg-grey-lighter">
+            <router-link
+              exact-active-class="router-link-active-drawer"
+              class="text-grey-darkest block"
+              to="/"
+              exact
+            >Home</router-link>
+          </li>
+          <li @click="openDrawer" class="block px-8 py-2 hover:bg-grey-lighter">
+            <router-link
+              exact-active-class="router-link-active-drawer"
+              class="text-grey-darkest block"
+              to="/u/overview"
+              exact
+            >Overview</router-link>
+          </li>
+          <li @click="openDrawer" class="block px-8 py-2 hover:bg-grey-lighter">
+            <router-link
+              exact-active-class="router-link-active-drawer"
+              class="text-grey-darkest block"
+              to="/u/workouts"
+              exact
+            >Workouts</router-link>
+          </li>
+          <li @click="openDrawer" class="block px-8 py-2 hover:bg-grey-lighter">
+            <router-link
+              exact-active-class="router-link-active-drawer"
+              class="text-grey-darkest block"
+              to="/u/goals"
+              exact
+            >Goals</router-link>
+          </li>
+        </ul>
       </div>
     </transition>
     <div class="flex items-center">
