@@ -6253,7 +6253,7 @@ body {
 }
 
 .max-h-700 {
-  min-height: 700px;
+  max-height: 700px;
 }
 
 .h-54vw {

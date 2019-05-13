@@ -2278,7 +2278,7 @@ __webpack_require__.r(__webpack_exports__);
   mounted: function mounted() {
     var _this = this;
 
-    this.$http.get("".concat("http://localhost:8000/api", "/trainer/categories")).then(function (res) {
+    this.$http.get("".concat("http://gerbzilla.test/api", "/trainer/categories")).then(function (res) {
       _this.loading = false;
       _this.categories = res.data;
     })["catch"](function (err) {
@@ -2295,7 +2295,7 @@ __webpack_require__.r(__webpack_exports__);
       e.preventDefault();
       this.loading = true;
       var user = JSON.parse(localStorage.getItem("user"));
-      this.$http.post("".concat("http://localhost:8000/api", "/trainer/exercises"), {
+      this.$http.post("".concat("http://gerbzilla.test/api", "/trainer/exercises"), {
         name: this.name,
         category_id: this.category
       }).then(function (res) {
@@ -2435,7 +2435,7 @@ __webpack_require__.r(__webpack_exports__);
       e.preventDefault();
       this.loading = true;
       var user = JSON.parse(localStorage.getItem("user"));
-      this.$http.post("".concat("http://localhost:8000/api", "/trainer/users"), {
+      this.$http.post("".concat("http://gerbzilla.test/api", "/trainer/users"), {
         first_name: this.firstName,
         last_name: this.lastName,
         email: this.email,
@@ -2517,7 +2517,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       e.preventDefault();
-      this.$http.post("".concat("http://localhost:8000/api", "/login"), {
+      this.$http.post("".concat("http://gerbzilla.test/api", "/login"), {
         username: this.username,
         password: this.password
       }).then(function (res) {
@@ -2530,7 +2530,7 @@ __webpack_require__.r(__webpack_exports__);
           _this.$http.defaults.headers.common["Authorization"] = null;
         }
 
-        _this.$http.get("".concat("http://localhost:8000/api", "/user")).then(function (res) {
+        _this.$http.get("".concat("http://gerbzilla.test/api", "/user")).then(function (res) {
           localStorage.setItem("user", JSON.stringify(res.data.user));
           localStorage.setItem("role", JSON.stringify(res.data.role));
 
@@ -2911,7 +2911,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       e.preventDefault();
-      this.$http.post("".concat("http://localhost:8000/api", "/login"), {
+      this.$http.post("".concat("http://gerbzilla.test/api", "/login"), {
         username: this.username,
         password: this.password
       }).then(function (res) {
@@ -2924,7 +2924,7 @@ __webpack_require__.r(__webpack_exports__);
           _this.$http.defaults.headers.common["Authorization"] = null;
         }
 
-        _this.$http.get("".concat("http://localhost:8000/api", "/user")).then(function (res) {
+        _this.$http.get("".concat("http://gerbzilla.test/api", "/user")).then(function (res) {
           localStorage.setItem("user", JSON.stringify(res.data.user));
           localStorage.setItem("role", JSON.stringify(res.data.role));
 
@@ -3130,7 +3130,7 @@ __webpack_require__.r(__webpack_exports__);
   created: function created() {
     var _this = this;
 
-    this.$http.get("".concat("http://localhost:8000/api", "/user")).then(function (res) {
+    this.$http.get("".concat("http://gerbzilla.test/api", "/user")).then(function (res) {
       _this.firstName = res.data.user.first_name;
       _this.lastName = res.data.user.last_name;
       _this.status = res.data.user.is_active === 1 ? true : false;
@@ -3330,7 +3330,7 @@ __webpack_require__.r(__webpack_exports__);
     refreshData: function refreshData() {
       var _this = this;
 
-      this.$http.get("".concat("http://localhost:8000/api", "/trainer/exercises")).then(function (res) {
+      this.$http.get("".concat("http://gerbzilla.test/api", "/trainer/exercises")).then(function (res) {
         _this.exercises = res.data;
       })["catch"](function (err) {
         console.log(err);
@@ -3343,7 +3343,7 @@ __webpack_require__.r(__webpack_exports__);
   mounted: function mounted() {
     var _this2 = this;
 
-    this.$http.all([this.$http.get("".concat("http://localhost:8000/api", "/trainer/exercises")), this.$http.get("".concat("http://localhost:8000/api", "/trainer/categories"))]).then(this.$http.spread(function (exercises, categories) {
+    this.$http.all([this.$http.get("".concat("http://gerbzilla.test/api", "/trainer/exercises")), this.$http.get("".concat("http://gerbzilla.test/api", "/trainer/categories"))]).then(this.$http.spread(function (exercises, categories) {
       _this2.exercises = exercises.data;
       _this2.categories = categories.data;
     }))["catch"](function (err) {
@@ -3403,7 +3403,7 @@ __webpack_require__.r(__webpack_exports__);
     refreshData: function refreshData() {
       var _this = this;
 
-      this.$http.get("".concat("http://localhost:8000/api", "/trainer/users")).then(function (res) {
+      this.$http.get("".concat("http://gerbzilla.test/api", "/trainer/users")).then(function (res) {
         _this.users = res.data;
       })["catch"](function (err) {
         console.log(err);
@@ -3416,7 +3416,7 @@ __webpack_require__.r(__webpack_exports__);
   mounted: function mounted() {
     var _this2 = this;
 
-    this.$http.get("".concat("http://localhost:8000/api", "/trainer/users")).then(function (res) {
+    this.$http.get("".concat("http://gerbzilla.test/api", "/trainer/users")).then(function (res) {
       _this2.users = res.data;
     })["catch"](function (err) {
       console.log(err);
@@ -4473,7 +4473,7 @@ var staticRenderFns = [
     return _c("div", { staticClass: "flex items-center" }, [
       _c("div", { staticClass: "mr-2" }, [
         _c("img", {
-          attrs: { src: "/images/logo.png", alt: "Gerbzilla Powerlifting" }
+          attrs: { src: "/images/Logo.png", alt: "Gerbzilla Powerlifting" }
         })
       ]),
       _vm._v(" "),
@@ -22149,7 +22149,7 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
       var laravelToken = $cookies.get("laravel_token");
       var token = "Bearer ".concat(laravelToken);
       this.$http.defaults.headers.common["Authorization"] = token;
-      this.$http.get("".concat("http://localhost:8000/api", "/user")).then(function (res) {
+      this.$http.get("".concat("http://gerbzilla.test/api", "/user")).then(function (res) {
         localStorage.setItem("user", JSON.stringify(res.data.user));
         localStorage.setItem("role", JSON.stringify(res.data.role));
       })["catch"](function (err) {
@@ -23648,8 +23648,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /Users/jsams/projects/gerbzilla/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /Users/jsams/projects/gerbzilla/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /Users/joe.mac/projects/gerbzilla/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /Users/joe.mac/projects/gerbzilla/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

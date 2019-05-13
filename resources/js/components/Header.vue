@@ -93,7 +93,7 @@
     </transition>
     <div class="flex items-center">
       <div class="mr-2">
-        <img src="/images/logo.png" alt="Gerbzilla Powerlifting">
+        <img src="/images/Logo.png" alt="Gerbzilla Powerlifting">
       </div>
       <div class="flex flex-col">
         <span class="text-lg text-red font-bold uppercase">Gerbzilla</span>
