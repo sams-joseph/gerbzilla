@@ -143,6 +143,7 @@ export default {
           }, 3000);
 
           this.$emit("create-exercise-success");
+          this.$emit("cancel-user-create");
         })
         .catch(err => {
           console.log(err);

@@ -125,6 +125,7 @@ export default {
           this.loading = false;
 
           this.$emit("create-user-success");
+          this.$emit("cancel-user-create");
         })
         .catch(err => {
           console.log(err);
