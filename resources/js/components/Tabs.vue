@@ -10,8 +10,8 @@
           v-bind:key="tab.name"
           :href="tab.href"
           @click="selectTab(tab)"
-          :class="{ 'bg-grey-lightest': tab.isActive }"
-          class="py-3 px-8 hover:bg-grey-lightest text-grey-darkest font-semibold text-xs uppercase cursor-pointer"
+          :class="{ 'bg-grey-lightest border-grey-lighter': tab.isActive }"
+          class="py-3 px-8 hover:bg-grey-lightest border-b border-t border-transparent text-grey-darkest font-semibold text-xs uppercase cursor-pointer"
         >{{ tab.name }}</li>
       </ul>
     </aside>

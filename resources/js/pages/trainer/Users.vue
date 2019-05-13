@@ -1,17 +1,28 @@
 <template>
   <div>
     <navigation></navigation>
-    <div class="w-full h-px bg-grey-light"></div>
-    <div class="flex">
-      <side-navigation></side-navigation>
-      <tabs icon="/images/user-illustration.svg">
-        <tab name="View" :selected="true">
-          <user-list heading="Users" v-bind:data="users"></user-list>
-        </tab>
-        <tab name="Create">
-          <create-user-form @create-user-success="refreshData"></create-user-form>
-        </tab>
-      </tabs>
+    <side-navigation></side-navigation>
+    <user-list heading="Users" v-bind:data="users"></user-list>
+    <transition name="fade">
+      <create-user-form
+        @cancel-user-create="toggleModal"
+        @create-user-success="refreshData"
+        v-bind:show="showModal"
+      ></create-user-form>
+    </transition>
+    <div
+      @click="toggleModal"
+      class="cursor-pointer fixed pin-b pin-r w-12 h-12 bg-red hover:bg-red-dark shadow-lg rounded-full mr-8 mb-8 flex items-center justify-center"
+    >
+      <svg
+        class="fill-current text-white"
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+      >
+        <path d="M11 3L11 11 3 11 3 13 11 13 11 21 13 21 13 13 21 13 21 11 13 11 13 3z"></path>
+      </svg>
     </div>
   </div>
 </template>
@@ -20,7 +31,8 @@
 export default {
   data() {
     return {
-      users: {}
+      users: {},
+      showModal: false
     };
   },
 
@@ -34,6 +46,10 @@ export default {
         .catch(err => {
           console.log(err);
         });
+    },
+
+    toggleModal() {
+      this.showModal = !this.showModal;
     }
   },
 

@@ -2009,6 +2009,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({});
 
 /***/ }),
@@ -2216,6 +2218,19 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2226,10 +2241,13 @@ __webpack_require__.r(__webpack_exports__);
       success: false
     };
   },
+  props: {
+    show: Boolean
+  },
   mounted: function mounted() {
     var _this = this;
 
-    this.$http.get("http://gerbzilla.test/api/trainer/categories").then(function (res) {
+    this.$http.get("".concat("http://localhost:8000/api", "/trainer/categories")).then(function (res) {
       _this.loading = false;
       _this.categories = res.data;
     })["catch"](function (err) {
@@ -2237,13 +2255,16 @@ __webpack_require__.r(__webpack_exports__);
     });
   },
   methods: {
+    closeWindow: function closeWindow() {
+      this.$emit("cancel-user-create");
+    },
     createExercise: function createExercise(e) {
       var _this2 = this;
 
       e.preventDefault();
       this.loading = true;
       var user = JSON.parse(localStorage.getItem("user"));
-      this.$http.post("".concat("http://gerbzilla.test/api", "/trainer/exercises"), {
+      this.$http.post("".concat("http://localhost:8000/api", "/trainer/exercises"), {
         name: this.name,
         category_id: this.category
       }).then(function (res) {
@@ -2346,6 +2367,17 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2357,14 +2389,20 @@ __webpack_require__.r(__webpack_exports__);
       loading: false
     };
   },
+  props: {
+    show: Boolean
+  },
   methods: {
+    closeWindow: function closeWindow() {
+      this.$emit("cancel-user-create");
+    },
     createUser: function createUser(e) {
       var _this = this;
 
       e.preventDefault();
       this.loading = true;
       var user = JSON.parse(localStorage.getItem("user"));
-      this.$http.post("".concat("http://gerbzilla.test/api", "/trainer/users"), {
+      this.$http.post("".concat("http://localhost:8000/api", "/trainer/users"), {
         first_name: this.firstName,
         last_name: this.lastName,
         email: this.email,
@@ -2444,7 +2482,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       e.preventDefault();
-      this.$http.post("".concat("http://gerbzilla.test/api", "/login"), {
+      this.$http.post("".concat("http://localhost:8000/api", "/login"), {
         username: this.username,
         password: this.password
       }).then(function (res) {
@@ -2457,7 +2495,7 @@ __webpack_require__.r(__webpack_exports__);
           _this.$http.defaults.headers.common["Authorization"] = null;
         }
 
-        _this.$http.get("".concat("http://gerbzilla.test/api", "/user")).then(function (res) {
+        _this.$http.get("".concat("http://localhost:8000/api", "/user")).then(function (res) {
           localStorage.setItem("user", JSON.stringify(res.data.user));
           localStorage.setItem("role", JSON.stringify(res.data.role));
 
@@ -2534,10 +2572,24 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     data: Array,
-    heading: String
+    heading: String,
+    categories: Array
   }
 });
 
@@ -2552,6 +2604,8 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
 //
 //
 //
@@ -2696,7 +2750,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       e.preventDefault();
-      this.$http.post("".concat("http://gerbzilla.test/api", "/login"), {
+      this.$http.post("".concat("http://localhost:8000/api", "/login"), {
         username: this.username,
         password: this.password
       }).then(function (res) {
@@ -2709,7 +2763,7 @@ __webpack_require__.r(__webpack_exports__);
           _this.$http.defaults.headers.common["Authorization"] = null;
         }
 
-        _this.$http.get("".concat("http://gerbzilla.test/api", "/user")).then(function (res) {
+        _this.$http.get("".concat("http://localhost:8000/api", "/user")).then(function (res) {
           localStorage.setItem("user", JSON.stringify(res.data.user));
           localStorage.setItem("role", JSON.stringify(res.data.role));
 
@@ -2915,7 +2969,7 @@ __webpack_require__.r(__webpack_exports__);
   created: function created() {
     var _this = this;
 
-    this.$http.get("".concat("http://gerbzilla.test/api", "/user")).then(function (res) {
+    this.$http.get("".concat("http://localhost:8000/api", "/user")).then(function (res) {
       _this.firstName = res.data.user.first_name;
       _this.lastName = res.data.user.last_name;
       _this.status = res.data.user.is_active === 1 ? true : false;
@@ -3092,29 +3146,46 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      exercises: []
+      exercises: [],
+      categories: [],
+      showModal: false
     };
   },
   methods: {
     refreshData: function refreshData() {
       var _this = this;
 
-      this.$http.get("".concat("http://gerbzilla.test/api", "/trainer/exercises")).then(function (res) {
+      this.$http.get("".concat("http://localhost:8000/api", "/trainer/exercises")).then(function (res) {
         _this.exercises = res.data;
       })["catch"](function (err) {
         console.log(err);
       });
+    },
+    toggleModal: function toggleModal() {
+      this.showModal = !this.showModal;
     }
   },
   mounted: function mounted() {
     var _this2 = this;
 
-    this.$http.get("".concat("http://gerbzilla.test/api", "/trainer/exercises")).then(function (res) {
-      _this2.exercises = res.data;
-    })["catch"](function (err) {
+    this.$http.all([this.$http.get("".concat("http://localhost:8000/api", "/trainer/exercises")), this.$http.get("".concat("http://localhost:8000/api", "/trainer/categories"))]).then(this.$http.spread(function (exercises, categories) {
+      _this2.exercises = exercises.data;
+      _this2.categories = categories.data;
+    }))["catch"](function (err) {
       console.log(err);
     });
   }
@@ -3149,27 +3220,42 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      users: {}
+      users: {},
+      showModal: false
     };
   },
   methods: {
     refreshData: function refreshData() {
       var _this = this;
 
-      this.$http.get("".concat("http://gerbzilla.test/api", "/trainer/users")).then(function (res) {
+      this.$http.get("".concat("http://localhost:8000/api", "/trainer/users")).then(function (res) {
         _this.users = res.data;
       })["catch"](function (err) {
         console.log(err);
       });
+    },
+    toggleModal: function toggleModal() {
+      this.showModal = !this.showModal;
     }
   },
   mounted: function mounted() {
     var _this2 = this;
 
-    this.$http.get("".concat("http://gerbzilla.test/api", "/trainer/users")).then(function (res) {
+    this.$http.get("".concat("http://localhost:8000/api", "/trainer/users")).then(function (res) {
       _this2.users = res.data;
     })["catch"](function (err) {
       console.log(err);
@@ -4345,49 +4431,58 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("aside", { staticClass: "w-48 bg-grey-lighter py-20" }, [
-    _c("ul", { staticClass: "list-reset" }, [
-      _c(
-        "li",
-        [
+  return _c(
+    "nav",
+    {
+      staticClass:
+        "w-full py-4 bg-grey-lighter border-b border-grey-light mb-20"
+    },
+    [
+      _c("div", { staticClass: "container mx-auto px-8" }, [
+        _c("ul", { staticClass: "list-reset" }, [
           _c(
-            "router-link",
-            {
-              staticClass:
-                "py-3 px-8 hover:bg-grey-light block w-full text-grey-darkest border-r-3 border-transparent hover:border-red font-semibold text-xs uppercase",
-              attrs: {
-                "exact-active-class": "router-link-active-alt",
-                to: "/t/users",
-                exact: ""
-              }
-            },
-            [_vm._v("Users")]
-          )
-        ],
-        1
-      ),
-      _vm._v(" "),
-      _c(
-        "li",
-        [
+            "li",
+            { staticClass: "inline-block" },
+            [
+              _c(
+                "router-link",
+                {
+                  staticClass: "text-grey-darker mr-4",
+                  attrs: {
+                    "exact-active-class": "router-link-active-alt",
+                    to: "/t/users",
+                    exact: ""
+                  }
+                },
+                [_vm._v("Users")]
+              )
+            ],
+            1
+          ),
+          _vm._v(" "),
           _c(
-            "router-link",
-            {
-              staticClass:
-                "py-3 px-8 hover:bg-grey-light block w-full text-grey-darkest border-r-3 border-transparent hover:border-red font-semibold text-xs uppercase",
-              attrs: {
-                "exact-active-class": "router-link-active-alt",
-                to: "/t/exercises",
-                exact: ""
-              }
-            },
-            [_vm._v("Exercises")]
+            "li",
+            { staticClass: "inline-block" },
+            [
+              _c(
+                "router-link",
+                {
+                  staticClass: "text-grey-darker mr-4",
+                  attrs: {
+                    "exact-active-class": "router-link-active-alt",
+                    to: "/t/exercises",
+                    exact: ""
+                  }
+                },
+                [_vm._v("Exercises")]
+              )
+            ],
+            1
           )
-        ],
-        1
-      )
-    ])
-  ])
+        ])
+      ])
+    ]
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -4514,8 +4609,8 @@ var render = function() {
             {
               key: tab.name,
               staticClass:
-                "py-3 px-8 hover:bg-grey-lightest text-grey-darkest font-semibold text-xs uppercase cursor-pointer",
-              class: { "bg-grey-lightest": tab.isActive },
+                "py-3 px-8 hover:bg-grey-lightest border-b border-t border-transparent text-grey-darkest font-semibold text-xs uppercase cursor-pointer",
+              class: { "bg-grey-lightest border-grey-lighter": tab.isActive },
               attrs: { href: tab.href },
               on: {
                 click: function($event) {
@@ -4555,202 +4650,257 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    { staticClass: "mx-8 relative max-w-sm" },
-    [
-      _c(
-        "h1",
-        { staticClass: "text-grey-darkest font-normal text-2xl mb-10" },
-        [_vm._v("Create Exercise")]
-      ),
-      _vm._v(" "),
-      _c("transition", { attrs: { name: "fade" } }, [
-        _vm.loading
-          ? _c(
-              "div",
-              {
-                staticClass:
-                  "absolute pin-t pin-l pin-b w-full bg-white-translucent flex justify-center pt-12"
-              },
-              [
-                _c("div", { staticClass: "pl-6 flex flex-col items-center" }, [
-                  _c("div", { staticClass: "mb-4" }, [
-                    _c("img", {
-                      attrs: { src: "/images/puff.svg", alt: "Loading" }
-                    })
-                  ]),
-                  _vm._v(" "),
-                  _c(
-                    "h6",
-                    { staticClass: "text-grey-darkest font-bold text-lg" },
-                    [_vm._v("Loading")]
-                  )
-                ])
-              ]
-            )
-          : _vm._e()
-      ]),
-      _vm._v(" "),
-      _c("transition", { attrs: { name: "fade" } }, [
-        _vm.success
-          ? _c(
-              "div",
-              {
-                staticClass:
-                  "absolute pin-t pin-l pin-b w-full bg-white-translucent flex justify-center pt-12 z-50"
-              },
-              [
-                _c("div", { staticClass: "flex flex-col items-center" }, [
-                  _c("div", { staticClass: "mb-4 w-24 h-24" }, [
-                    _c("img", {
-                      attrs: {
-                        src: "/images/success-illustration.svg",
-                        alt: "Success"
-                      }
-                    })
-                  ]),
-                  _vm._v(" "),
-                  _c(
-                    "h6",
-                    { staticClass: "text-grey-darkest font-bold text-lg" },
-                    [_vm._v("Exercise Added")]
-                  )
-                ])
-              ]
-            )
-          : _vm._e()
-      ]),
-      _vm._v(" "),
-      _c("form", { on: { submit: _vm.createExercise } }, [
-        _c("div", { staticClass: "mb-6" }, [
-          _c(
-            "label",
+  return _vm.show
+    ? _c(
+        "div",
+        {
+          directives: [
             {
-              staticClass: "block text-grey-darker text-sm font-normal mb-4",
-              attrs: { for: "name" }
-            },
-            [_vm._v("Name")]
-          ),
-          _vm._v(" "),
-          _c("input", {
-            directives: [
-              {
-                name: "model",
-                rawName: "v-model",
-                value: _vm.name,
-                expression: "name"
-              }
-            ],
-            staticClass:
-              "appearance-none border-b w-full py-2 text-grey-darker leading-tight focus:outline-none",
-            attrs: { id: "name", type: "text" },
-            domProps: { value: _vm.name },
-            on: {
-              input: function($event) {
-                if ($event.target.composing) {
-                  return
-                }
-                _vm.name = $event.target.value
-              }
+              name: "scroll-lock",
+              rawName: "v-scroll-lock",
+              value: _vm.show,
+              expression: "show"
             }
-          })
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "mb-12" }, [
+          ],
+          staticClass:
+            "fixed pin-t pin-l pin-r pin-b z-50 flex justify-center items-center px-8 bg-grey-translucent"
+        },
+        [
           _c(
-            "label",
+            "div",
             {
-              staticClass: "block text-grey-darker text-sm font-normal mb-4",
-              attrs: { for: "category" }
+              staticClass:
+                "mx-8 w-full bg-white relative max-w-md p-8 rounded-lg shadow-lg"
             },
-            [_vm._v("Category")]
-          ),
-          _vm._v(" "),
-          _c("div", { staticClass: "relative" }, [
-            _c(
-              "select",
-              {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.category,
-                    expression: "category"
-                  }
-                ],
-                staticClass:
-                  "block appearance-none border-b rounded-none bg-white text-grey-darker w-full py-2 leading-tight focus:outline-none",
-                attrs: { id: "category" },
-                on: {
-                  change: function($event) {
-                    var $$selectedVal = Array.prototype.filter
-                      .call($event.target.options, function(o) {
-                        return o.selected
-                      })
-                      .map(function(o) {
-                        var val = "_value" in o ? o._value : o.value
-                        return val
-                      })
-                    _vm.category = $event.target.multiple
-                      ? $$selectedVal
-                      : $$selectedVal[0]
-                  }
-                }
-              },
-              _vm._l(_vm.categories, function(category) {
-                return _c(
-                  "option",
-                  { key: category.id, domProps: { value: category.id } },
-                  [_vm._v(_vm._s(category.name))]
-                )
-              }),
-              0
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              {
-                staticClass:
-                  "pointer-events-none absolute pin-y pin-r flex items-center px-2 text-grey-darker"
-              },
-              [
-                _c(
-                  "svg",
-                  {
-                    staticClass: "fill-current h-4 w-4",
-                    attrs: {
-                      xmlns: "http://www.w3.org/2000/svg",
-                      viewBox: "0 0 20 20"
-                    }
-                  },
-                  [
-                    _c("path", {
-                      attrs: {
-                        d:
-                          "M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"
+            [
+              _c(
+                "h1",
+                { staticClass: "text-grey-darkest font-normal text-2xl mb-10" },
+                [_vm._v("Create Exercise")]
+              ),
+              _vm._v(" "),
+              _c("transition", { attrs: { name: "fade" } }, [
+                _vm.loading
+                  ? _c(
+                      "div",
+                      {
+                        staticClass:
+                          "absolute pin-t pin-l pin-b w-full bg-white-translucent flex justify-center pt-12"
+                      },
+                      [
+                        _c(
+                          "div",
+                          { staticClass: "pl-6 flex flex-col items-center" },
+                          [
+                            _c("div", { staticClass: "mb-4" }, [
+                              _c("img", {
+                                attrs: {
+                                  src: "/images/puff.svg",
+                                  alt: "Loading"
+                                }
+                              })
+                            ]),
+                            _vm._v(" "),
+                            _c(
+                              "h6",
+                              {
+                                staticClass:
+                                  "text-grey-darkest font-bold text-lg"
+                              },
+                              [_vm._v("Loading")]
+                            )
+                          ]
+                        )
+                      ]
+                    )
+                  : _vm._e()
+              ]),
+              _vm._v(" "),
+              _c("transition", { attrs: { name: "fade" } }, [
+                _vm.success
+                  ? _c(
+                      "div",
+                      {
+                        staticClass:
+                          "absolute pin-t pin-l pin-b w-full bg-white-translucent flex justify-center pt-12 z-50"
+                      },
+                      [
+                        _c(
+                          "div",
+                          { staticClass: "flex flex-col items-center" },
+                          [
+                            _c("div", { staticClass: "mb-4 w-24 h-24" }, [
+                              _c("img", {
+                                attrs: {
+                                  src: "/images/success-illustration.svg",
+                                  alt: "Success"
+                                }
+                              })
+                            ]),
+                            _vm._v(" "),
+                            _c(
+                              "h6",
+                              {
+                                staticClass:
+                                  "text-grey-darkest font-bold text-lg"
+                              },
+                              [_vm._v("Exercise Added")]
+                            )
+                          ]
+                        )
+                      ]
+                    )
+                  : _vm._e()
+              ]),
+              _vm._v(" "),
+              _c("form", { on: { submit: _vm.createExercise } }, [
+                _c("div", { staticClass: "mb-6" }, [
+                  _c(
+                    "label",
+                    {
+                      staticClass:
+                        "block text-grey-darker text-sm font-normal mb-4",
+                      attrs: { for: "name" }
+                    },
+                    [_vm._v("Name")]
+                  ),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.name,
+                        expression: "name"
                       }
-                    })
-                  ]
+                    ],
+                    staticClass:
+                      "appearance-none border-b w-full py-2 text-grey-darker leading-tight focus:outline-none",
+                    attrs: { id: "name", type: "text" },
+                    domProps: { value: _vm.name },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.name = $event.target.value
+                      }
+                    }
+                  })
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "mb-12" }, [
+                  _c(
+                    "label",
+                    {
+                      staticClass:
+                        "block text-grey-darker text-sm font-normal mb-4",
+                      attrs: { for: "category" }
+                    },
+                    [_vm._v("Category")]
+                  ),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "relative" }, [
+                    _c(
+                      "select",
+                      {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.category,
+                            expression: "category"
+                          }
+                        ],
+                        staticClass:
+                          "block appearance-none border-b rounded-none bg-white text-grey-darker w-full py-2 leading-tight focus:outline-none",
+                        attrs: { id: "category" },
+                        on: {
+                          change: function($event) {
+                            var $$selectedVal = Array.prototype.filter
+                              .call($event.target.options, function(o) {
+                                return o.selected
+                              })
+                              .map(function(o) {
+                                var val = "_value" in o ? o._value : o.value
+                                return val
+                              })
+                            _vm.category = $event.target.multiple
+                              ? $$selectedVal
+                              : $$selectedVal[0]
+                          }
+                        }
+                      },
+                      _vm._l(_vm.categories, function(category) {
+                        return _c(
+                          "option",
+                          {
+                            key: category.id,
+                            domProps: { value: category.id }
+                          },
+                          [_vm._v(_vm._s(category.name))]
+                        )
+                      }),
+                      0
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      {
+                        staticClass:
+                          "pointer-events-none absolute pin-y pin-r flex items-center px-2 text-grey-darker"
+                      },
+                      [
+                        _c(
+                          "svg",
+                          {
+                            staticClass: "fill-current h-4 w-4",
+                            attrs: {
+                              xmlns: "http://www.w3.org/2000/svg",
+                              viewBox: "0 0 20 20"
+                            }
+                          },
+                          [
+                            _c("path", {
+                              attrs: {
+                                d:
+                                  "M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"
+                              }
+                            })
+                          ]
+                        )
+                      ]
+                    )
+                  ])
+                ]),
+                _vm._v(" "),
+                _c(
+                  "button",
+                  {
+                    staticClass:
+                      "bg-blue hover:bg-blue-dark text-white font-normal text-sm py-2 px-6 rounded-full focus:outline-none uppercase",
+                    attrs: { type: "submit" }
+                  },
+                  [_vm._v("Create Exercise")]
+                ),
+                _vm._v(" "),
+                _c(
+                  "button",
+                  {
+                    staticClass:
+                      "text-grey-darker font-normal text-sm py-2 px-6 rounded-full focus:outline-none uppercase",
+                    attrs: { type: "button" },
+                    on: { click: _vm.closeWindow }
+                  },
+                  [_vm._v("Cancel")]
                 )
-              ]
-            )
-          ])
-        ]),
-        _vm._v(" "),
-        _c(
-          "button",
-          {
-            staticClass:
-              "bg-blue hover:bg-blue-dark text-white font-normal text-sm py-2 px-6 rounded-full focus:outline-none uppercase",
-            attrs: { type: "submit" }
-          },
-          [_vm._v("Create Exercise")]
-        )
-      ])
-    ],
-    1
-  )
+              ])
+            ],
+            1
+          )
+        ]
+      )
+    : _vm._e()
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -4774,204 +4924,248 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "mx-8 relative max-w-sm" }, [
-    _c("h1", { staticClass: "text-grey-darkest font-normal text-2xl mb-10" }, [
-      _vm._v("Create User")
-    ]),
-    _vm._v(" "),
-    _vm.loading
-      ? _c(
-          "div",
-          {
-            staticClass:
-              "absolute pin-t pin-l pin-b w-full bg-white-translucent flex justify-center pt-12"
-          },
-          [_vm._m(0)]
-        )
-      : _vm._e(),
-    _vm._v(" "),
-    _c("form", { on: { submit: _vm.createUser } }, [
-      _c("div", { staticClass: "mb-6" }, [
-        _c(
-          "label",
-          {
-            staticClass: "block text-grey-darker text-sm font-normal mb-4",
-            attrs: { for: "firstname" }
-          },
-          [_vm._v("First Name")]
-        ),
-        _vm._v(" "),
-        _c("input", {
-          directives: [
-            {
-              name: "model",
-              rawName: "v-model",
-              value: _vm.firstName,
-              expression: "firstName"
-            }
-          ],
-          staticClass:
-            "appearance-none border-b w-full py-2 text-grey-darker leading-tight focus:outline-none",
-          attrs: { id: "firstname", type: "text" },
-          domProps: { value: _vm.firstName },
-          on: {
-            input: function($event) {
-              if ($event.target.composing) {
-                return
-              }
-              _vm.firstName = $event.target.value
-            }
-          }
-        })
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "mb-6" }, [
-        _c(
-          "label",
-          {
-            staticClass: "block text-grey-darker text-sm font-normal mb-4",
-            attrs: { for: "lastname" }
-          },
-          [_vm._v("Last Name")]
-        ),
-        _vm._v(" "),
-        _c("input", {
-          directives: [
-            {
-              name: "model",
-              rawName: "v-model",
-              value: _vm.lastName,
-              expression: "lastName"
-            }
-          ],
-          staticClass:
-            "appearance-none border-b w-full py-2 text-grey-darker leading-tight focus:outline-none",
-          attrs: { id: "lastname", type: "text" },
-          domProps: { value: _vm.lastName },
-          on: {
-            input: function($event) {
-              if ($event.target.composing) {
-                return
-              }
-              _vm.lastName = $event.target.value
-            }
-          }
-        })
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "mb-6" }, [
-        _c(
-          "label",
-          {
-            staticClass: "block text-grey-darker text-sm font-normal mb-4",
-            attrs: { for: "email" }
-          },
-          [_vm._v("Email")]
-        ),
-        _vm._v(" "),
-        _c("input", {
-          directives: [
-            {
-              name: "model",
-              rawName: "v-model",
-              value: _vm.email,
-              expression: "email"
-            }
-          ],
-          staticClass:
-            "appearance-none border-b w-full py-2 text-grey-darker leading-tight focus:outline-none",
-          attrs: { id: "email", type: "email" },
-          domProps: { value: _vm.email },
-          on: {
-            input: function($event) {
-              if ($event.target.composing) {
-                return
-              }
-              _vm.email = $event.target.value
-            }
-          }
-        })
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "mb-6" }, [
-        _c(
-          "label",
-          {
-            staticClass: "block text-grey-darker text-sm font-normal mb-4",
-            attrs: { for: "password" }
-          },
-          [_vm._v("Password")]
-        ),
-        _vm._v(" "),
-        _c("input", {
-          directives: [
-            {
-              name: "model",
-              rawName: "v-model",
-              value: _vm.password,
-              expression: "password"
-            }
-          ],
-          staticClass:
-            "appearance-none border-b w-full py-2 text-grey-darker leading-tight focus:outline-none",
-          attrs: { id: "password", type: "password" },
-          domProps: { value: _vm.password },
-          on: {
-            input: function($event) {
-              if ($event.target.composing) {
-                return
-              }
-              _vm.password = $event.target.value
-            }
-          }
-        })
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "mb-12" }, [
-        _c(
-          "label",
-          {
-            staticClass: "block text-grey-darker text-sm font-normal mb-4",
-            attrs: { for: "confirmpassword" }
-          },
-          [_vm._v("Confirm Password")]
-        ),
-        _vm._v(" "),
-        _c("input", {
-          directives: [
-            {
-              name: "model",
-              rawName: "v-model",
-              value: _vm.confirmPassword,
-              expression: "confirmPassword"
-            }
-          ],
-          staticClass:
-            "appearance-none border-b w-full py-2 text-grey-darker leading-tight focus:outline-none",
-          attrs: { id: "confirmpassword", type: "password" },
-          domProps: { value: _vm.confirmPassword },
-          on: {
-            input: function($event) {
-              if ($event.target.composing) {
-                return
-              }
-              _vm.confirmPassword = $event.target.value
-            }
-          }
-        })
-      ]),
-      _vm._v(" "),
-      _c(
-        "button",
+  return _vm.show
+    ? _c(
+        "div",
         {
+          directives: [
+            {
+              name: "scroll-lock",
+              rawName: "v-scroll-lock",
+              value: _vm.show,
+              expression: "show"
+            }
+          ],
           staticClass:
-            "bg-blue hover:bg-blue-dark text-white font-normal text-sm py-2 px-6 rounded-full focus:outline-none uppercase",
-          attrs: { type: "submit" }
+            "fixed pin-t pin-l pin-r pin-b z-50 flex justify-center items-center px-8 bg-grey-translucent"
         },
-        [_vm._v("Create User")]
+        [
+          _c(
+            "div",
+            {
+              staticClass:
+                "relative max-w-md w-full bg-white p-8 shadow-lg rounded-lg"
+            },
+            [
+              _c(
+                "h1",
+                { staticClass: "text-grey-darkest font-normal text-2xl mb-10" },
+                [_vm._v("Create User")]
+              ),
+              _vm._v(" "),
+              _vm.loading
+                ? _c(
+                    "div",
+                    {
+                      staticClass:
+                        "absolute pin-t pin-l pin-b w-full bg-white-translucent flex justify-center pt-12"
+                    },
+                    [_vm._m(0)]
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              _c("form", { on: { submit: _vm.createUser } }, [
+                _c("div", { staticClass: "mb-6" }, [
+                  _c(
+                    "label",
+                    {
+                      staticClass:
+                        "block text-grey-darker text-sm font-normal mb-4",
+                      attrs: { for: "firstname" }
+                    },
+                    [_vm._v("First Name")]
+                  ),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.firstName,
+                        expression: "firstName"
+                      }
+                    ],
+                    staticClass:
+                      "appearance-none border-b w-full py-2 text-grey-darker leading-tight focus:outline-none",
+                    attrs: { id: "firstname", type: "text" },
+                    domProps: { value: _vm.firstName },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.firstName = $event.target.value
+                      }
+                    }
+                  })
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "mb-6" }, [
+                  _c(
+                    "label",
+                    {
+                      staticClass:
+                        "block text-grey-darker text-sm font-normal mb-4",
+                      attrs: { for: "lastname" }
+                    },
+                    [_vm._v("Last Name")]
+                  ),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.lastName,
+                        expression: "lastName"
+                      }
+                    ],
+                    staticClass:
+                      "appearance-none border-b w-full py-2 text-grey-darker leading-tight focus:outline-none",
+                    attrs: { id: "lastname", type: "text" },
+                    domProps: { value: _vm.lastName },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.lastName = $event.target.value
+                      }
+                    }
+                  })
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "mb-6" }, [
+                  _c(
+                    "label",
+                    {
+                      staticClass:
+                        "block text-grey-darker text-sm font-normal mb-4",
+                      attrs: { for: "email" }
+                    },
+                    [_vm._v("Email")]
+                  ),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.email,
+                        expression: "email"
+                      }
+                    ],
+                    staticClass:
+                      "appearance-none border-b w-full py-2 text-grey-darker leading-tight focus:outline-none",
+                    attrs: { id: "email", type: "email" },
+                    domProps: { value: _vm.email },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.email = $event.target.value
+                      }
+                    }
+                  })
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "mb-6" }, [
+                  _c(
+                    "label",
+                    {
+                      staticClass:
+                        "block text-grey-darker text-sm font-normal mb-4",
+                      attrs: { for: "password" }
+                    },
+                    [_vm._v("Password")]
+                  ),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.password,
+                        expression: "password"
+                      }
+                    ],
+                    staticClass:
+                      "appearance-none border-b w-full py-2 text-grey-darker leading-tight focus:outline-none",
+                    attrs: { id: "password", type: "password" },
+                    domProps: { value: _vm.password },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.password = $event.target.value
+                      }
+                    }
+                  })
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "mb-12" }, [
+                  _c(
+                    "label",
+                    {
+                      staticClass:
+                        "block text-grey-darker text-sm font-normal mb-4",
+                      attrs: { for: "confirmpassword" }
+                    },
+                    [_vm._v("Confirm Password")]
+                  ),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.confirmPassword,
+                        expression: "confirmPassword"
+                      }
+                    ],
+                    staticClass:
+                      "appearance-none border-b w-full py-2 text-grey-darker leading-tight focus:outline-none",
+                    attrs: { id: "confirmpassword", type: "password" },
+                    domProps: { value: _vm.confirmPassword },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.confirmPassword = $event.target.value
+                      }
+                    }
+                  })
+                ]),
+                _vm._v(" "),
+                _c(
+                  "button",
+                  {
+                    staticClass:
+                      "mr-4 bg-blue hover:bg-blue-dark text-white font-normal text-sm py-2 px-6 rounded-full focus:outline-none uppercase",
+                    attrs: { type: "submit" }
+                  },
+                  [_vm._v("Create User")]
+                ),
+                _vm._v(" "),
+                _c(
+                  "button",
+                  {
+                    staticClass:
+                      "text-grey-darker font-normal text-sm py-2 px-6 rounded-full focus:outline-none uppercase",
+                    attrs: { type: "button" },
+                    on: { click: _vm.closeWindow }
+                  },
+                  [_vm._v("Cancel")]
+                )
+              ])
+            ]
+          )
+        ]
       )
-    ])
-  ])
+    : _vm._e()
 }
 var staticRenderFns = [
   function() {
@@ -5135,96 +5329,128 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "px-4 max-w-lg" }, [
-    _c(
-      "h1",
-      { staticClass: "text-grey-darkest font-normal text-2xl mb-10 px-4" },
-      [_vm._v(_vm._s(_vm.heading))]
-    ),
+  return _c("div", { staticClass: "container mx-auto mb-20 flex px-8" }, [
+    _c("aside", { staticClass: "w-48" }, [
+      _c(
+        "h1",
+        { staticClass: "text-grey-darkest font-normal text-2xl mb-10" },
+        [_vm._v("Categories")]
+      ),
+      _vm._v(" "),
+      _c(
+        "ul",
+        { staticClass: "list-reset" },
+        _vm._l(_vm.categories, function(category) {
+          return _c(
+            "li",
+            { key: category.id, staticClass: "text-grey-darkest pb-6" },
+            [
+              _c("input", {
+                staticClass: "mr-2",
+                attrs: { type: "checkbox", name: "vehicle1" },
+                domProps: { value: category.id }
+              }),
+              _vm._v("\n        " + _vm._s(category.name) + "\n      ")
+            ]
+          )
+        }),
+        0
+      )
+    ]),
     _vm._v(" "),
-    _c(
-      "ul",
-      { staticClass: "list-reset" },
-      _vm._l(_vm.data, function(object) {
-        return _c(
-          "li",
-          {
-            key: object.id,
-            staticClass:
-              "w-full py-4 hover:bg-grey-lighter rounded-lg px-4 flex items-center"
-          },
-          [
-            _c("span", { staticClass: "rounded-full mr-6" }, [
-              _c(
-                "svg",
-                {
-                  staticClass: "fill-current text-green",
-                  attrs: {
-                    width: "41",
-                    height: "41",
-                    viewBox: "0 0 41 41",
-                    fill: "none",
-                    xmlns: "http://www.w3.org/2000/svg"
-                  }
-                },
-                [
-                  _c("path", {
-                    attrs: {
-                      d:
-                        "M20.75 0.75C9.908 0.75 0.75 9.908 0.75 20.75C0.75 31.592 9.908 40.75 20.75 40.75C31.592 40.75 40.75 31.592 40.75 20.75C40.75 9.908 31.592 0.75 20.75 0.75ZM20.75 36.75C16.448 36.75 12.48 34.946 9.57 32.07C11.076 28.456 14.6 25.894 18.75 25.894H22.75C26.9 25.894 30.424 28.456 31.93 32.07C29.02 34.946 25.052 36.75 20.75 36.75ZM20.75 10.75C24.204 10.75 26.75 13.294 26.75 16.75C26.75 20.206 24.204 22.75 20.75 22.75C17.298 22.75 14.75 20.206 14.75 16.75C14.75 13.294 17.298 10.75 20.75 10.75Z"
-                    }
-                  })
-                ]
-              )
-            ]),
-            _vm._v(" "),
-            _c("span", { staticClass: "text-grey-darkest mr-6" }, [
-              _vm._v(_vm._s("" + object.name))
-            ]),
-            _vm._v(" "),
-            _c("span", { staticClass: "flex-1" }),
-            _vm._v(" "),
-            _c(
-              "span",
+    _c("div", { staticClass: "flex-1" }, [
+      _c("div", { staticClass: "px-4" }, [
+        _c(
+          "h1",
+          { staticClass: "text-grey-darkest font-normal text-2xl mb-10 px-4" },
+          [_vm._v(_vm._s(_vm.heading))]
+        ),
+        _vm._v(" "),
+        _c(
+          "ul",
+          { staticClass: "list-reset" },
+          _vm._l(_vm.data, function(object) {
+            return _c(
+              "li",
               {
+                key: object.id,
                 staticClass:
-                  "h-10 w-10 rounded-full bg-grey-light flex items-center justify-center"
+                  "w-full py-4 hover:bg-grey-lighter rounded-lg px-4 flex items-center"
               },
               [
+                _c("span", { staticClass: "rounded-full mr-6" }, [
+                  _c(
+                    "svg",
+                    {
+                      staticClass: "fill-current text-green",
+                      attrs: {
+                        width: "41",
+                        height: "41",
+                        viewBox: "0 0 41 41",
+                        fill: "none",
+                        xmlns: "http://www.w3.org/2000/svg"
+                      }
+                    },
+                    [
+                      _c("path", {
+                        attrs: {
+                          d:
+                            "M20.75 0.75C9.908 0.75 0.75 9.908 0.75 20.75C0.75 31.592 9.908 40.75 20.75 40.75C31.592 40.75 40.75 31.592 40.75 20.75C40.75 9.908 31.592 0.75 20.75 0.75ZM20.75 36.75C16.448 36.75 12.48 34.946 9.57 32.07C11.076 28.456 14.6 25.894 18.75 25.894H22.75C26.9 25.894 30.424 28.456 31.93 32.07C29.02 34.946 25.052 36.75 20.75 36.75ZM20.75 10.75C24.204 10.75 26.75 13.294 26.75 16.75C26.75 20.206 24.204 22.75 20.75 22.75C17.298 22.75 14.75 20.206 14.75 16.75C14.75 13.294 17.298 10.75 20.75 10.75Z"
+                        }
+                      })
+                    ]
+                  )
+                ]),
+                _vm._v(" "),
+                _c("span", { staticClass: "text-grey-darkest mr-6" }, [
+                  _vm._v(_vm._s("" + object.name))
+                ]),
+                _vm._v(" "),
+                _c("span", { staticClass: "flex-1" }),
+                _vm._v(" "),
                 _c(
-                  "svg",
+                  "span",
                   {
-                    staticClass: "fill-current text-grey-darkest",
-                    attrs: {
-                      xmlns: "http://www.w3.org/2000/svg",
-                      width: "24",
-                      height: "24",
-                      viewBox: "0 0 24 24"
-                    }
+                    staticClass:
+                      "h-10 w-10 rounded-full bg-grey-light flex items-center justify-center"
                   },
                   [
-                    _c("path", {
-                      attrs: {
-                        d:
-                          "M10,18c1.846,0,3.543-0.635,4.897-1.688l4.396,4.396l1.414-1.414l-4.396-4.396C17.365,13.543,18,11.846,18,10 c0-4.411-3.589-8-8-8s-8,3.589-8,8S5.589,18,10,18z M10,4c3.309,0,6,2.691,6,6s-2.691,6-6,6s-6-2.691-6-6S6.691,4,10,4z"
-                      }
-                    }),
-                    _vm._v(" "),
-                    _c("path", {
-                      attrs: {
-                        d:
-                          "M11.412,8.586C11.791,8.966,12,9.468,12,10h2c0-1.065-0.416-2.069-1.174-2.828c-1.514-1.512-4.139-1.512-5.652,0 l1.412,1.416C9.346,7.83,10.656,7.832,11.412,8.586z"
-                      }
-                    })
+                    _c(
+                      "svg",
+                      {
+                        staticClass: "fill-current text-grey-darkest",
+                        attrs: {
+                          xmlns: "http://www.w3.org/2000/svg",
+                          width: "24",
+                          height: "24",
+                          viewBox: "0 0 24 24"
+                        }
+                      },
+                      [
+                        _c("path", {
+                          attrs: {
+                            d:
+                              "M10,18c1.846,0,3.543-0.635,4.897-1.688l4.396,4.396l1.414-1.414l-4.396-4.396C17.365,13.543,18,11.846,18,10 c0-4.411-3.589-8-8-8s-8,3.589-8,8S5.589,18,10,18z M10,4c3.309,0,6,2.691,6,6s-2.691,6-6,6s-6-2.691-6-6S6.691,4,10,4z"
+                          }
+                        }),
+                        _vm._v(" "),
+                        _c("path", {
+                          attrs: {
+                            d:
+                              "M11.412,8.586C11.791,8.966,12,9.468,12,10h2c0-1.065-0.416-2.069-1.174-2.828c-1.514-1.512-4.139-1.512-5.652,0 l1.412,1.416C9.346,7.83,10.656,7.832,11.412,8.586z"
+                          }
+                        })
+                      ]
+                    )
                   ]
                 )
               ]
             )
-          ]
+          }),
+          0
         )
-      }),
-      0
-    )
+      ])
+    ])
   ])
 }
 var staticRenderFns = []
@@ -5249,96 +5475,98 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "px-4 max-w-lg" }, [
-    _c(
-      "h1",
-      { staticClass: "text-grey-darkest font-normal text-2xl mb-10 px-4" },
-      [_vm._v(_vm._s(_vm.heading))]
-    ),
-    _vm._v(" "),
-    _c(
-      "ul",
-      { staticClass: "list-reset" },
-      _vm._l(_vm.data, function(object) {
-        return _c(
-          "li",
-          {
-            key: object.id,
-            staticClass:
-              "w-full py-4 hover:bg-grey-lighter rounded-lg px-4 flex items-center"
-          },
-          [
-            _c("span", { staticClass: "rounded-full mr-6" }, [
-              _c(
-                "svg",
-                {
-                  staticClass: "fill-current text-green",
-                  attrs: {
-                    width: "41",
-                    height: "41",
-                    viewBox: "0 0 41 41",
-                    fill: "none",
-                    xmlns: "http://www.w3.org/2000/svg"
-                  }
-                },
-                [
-                  _c("path", {
-                    attrs: {
-                      d:
-                        "M20.75 0.75C9.908 0.75 0.75 9.908 0.75 20.75C0.75 31.592 9.908 40.75 20.75 40.75C31.592 40.75 40.75 31.592 40.75 20.75C40.75 9.908 31.592 0.75 20.75 0.75ZM20.75 36.75C16.448 36.75 12.48 34.946 9.57 32.07C11.076 28.456 14.6 25.894 18.75 25.894H22.75C26.9 25.894 30.424 28.456 31.93 32.07C29.02 34.946 25.052 36.75 20.75 36.75ZM20.75 10.75C24.204 10.75 26.75 13.294 26.75 16.75C26.75 20.206 24.204 22.75 20.75 22.75C17.298 22.75 14.75 20.206 14.75 16.75C14.75 13.294 17.298 10.75 20.75 10.75Z"
-                    }
-                  })
-                ]
-              )
-            ]),
-            _vm._v(" "),
-            _c("span", { staticClass: "text-grey-darkest mr-6" }, [
-              _vm._v(_vm._s(object.first_name + " " + object.last_name))
-            ]),
-            _vm._v(" "),
-            _c("span", { staticClass: "flex-1" }),
-            _vm._v(" "),
-            _c(
-              "span",
-              {
-                staticClass:
-                  "h-10 w-10 rounded-full bg-grey-light flex items-center justify-center"
-              },
-              [
+  return _c("div", { staticClass: "container mx-auto" }, [
+    _c("div", { staticClass: "px-4 max-w-lg" }, [
+      _c(
+        "h1",
+        { staticClass: "text-grey-darkest font-normal text-2xl mb-10 px-4" },
+        [_vm._v(_vm._s(_vm.heading))]
+      ),
+      _vm._v(" "),
+      _c(
+        "ul",
+        { staticClass: "list-reset" },
+        _vm._l(_vm.data, function(object) {
+          return _c(
+            "li",
+            {
+              key: object.id,
+              staticClass:
+                "w-full py-4 hover:bg-grey-lighter rounded-lg px-4 flex items-center"
+            },
+            [
+              _c("span", { staticClass: "rounded-full mr-6" }, [
                 _c(
                   "svg",
                   {
-                    staticClass: "fill-current text-grey-darkest",
+                    staticClass: "fill-current text-green",
                     attrs: {
-                      xmlns: "http://www.w3.org/2000/svg",
-                      width: "24",
-                      height: "24",
-                      viewBox: "0 0 24 24"
+                      width: "41",
+                      height: "41",
+                      viewBox: "0 0 41 41",
+                      fill: "none",
+                      xmlns: "http://www.w3.org/2000/svg"
                     }
                   },
                   [
                     _c("path", {
                       attrs: {
                         d:
-                          "M10,18c1.846,0,3.543-0.635,4.897-1.688l4.396,4.396l1.414-1.414l-4.396-4.396C17.365,13.543,18,11.846,18,10 c0-4.411-3.589-8-8-8s-8,3.589-8,8S5.589,18,10,18z M10,4c3.309,0,6,2.691,6,6s-2.691,6-6,6s-6-2.691-6-6S6.691,4,10,4z"
-                      }
-                    }),
-                    _vm._v(" "),
-                    _c("path", {
-                      attrs: {
-                        d:
-                          "M11.412,8.586C11.791,8.966,12,9.468,12,10h2c0-1.065-0.416-2.069-1.174-2.828c-1.514-1.512-4.139-1.512-5.652,0 l1.412,1.416C9.346,7.83,10.656,7.832,11.412,8.586z"
+                          "M20.75 0.75C9.908 0.75 0.75 9.908 0.75 20.75C0.75 31.592 9.908 40.75 20.75 40.75C31.592 40.75 40.75 31.592 40.75 20.75C40.75 9.908 31.592 0.75 20.75 0.75ZM20.75 36.75C16.448 36.75 12.48 34.946 9.57 32.07C11.076 28.456 14.6 25.894 18.75 25.894H22.75C26.9 25.894 30.424 28.456 31.93 32.07C29.02 34.946 25.052 36.75 20.75 36.75ZM20.75 10.75C24.204 10.75 26.75 13.294 26.75 16.75C26.75 20.206 24.204 22.75 20.75 22.75C17.298 22.75 14.75 20.206 14.75 16.75C14.75 13.294 17.298 10.75 20.75 10.75Z"
                       }
                     })
                   ]
                 )
-              ]
-            )
-          ]
-        )
-      }),
-      0
-    )
+              ]),
+              _vm._v(" "),
+              _c("span", { staticClass: "text-grey-darkest mr-6" }, [
+                _vm._v(_vm._s(object.first_name + " " + object.last_name))
+              ]),
+              _vm._v(" "),
+              _c("span", { staticClass: "flex-1" }),
+              _vm._v(" "),
+              _c(
+                "span",
+                {
+                  staticClass:
+                    "h-10 w-10 rounded-full bg-grey-light flex items-center justify-center"
+                },
+                [
+                  _c(
+                    "svg",
+                    {
+                      staticClass: "fill-current text-grey-darkest",
+                      attrs: {
+                        xmlns: "http://www.w3.org/2000/svg",
+                        width: "24",
+                        height: "24",
+                        viewBox: "0 0 24 24"
+                      }
+                    },
+                    [
+                      _c("path", {
+                        attrs: {
+                          d:
+                            "M10,18c1.846,0,3.543-0.635,4.897-1.688l4.396,4.396l1.414-1.414l-4.396-4.396C17.365,13.543,18,11.846,18,10 c0-4.411-3.589-8-8-8s-8,3.589-8,8S5.589,18,10,18z M10,4c3.309,0,6,2.691,6,6s-2.691,6-6,6s-6-2.691-6-6S6.691,4,10,4z"
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c("path", {
+                        attrs: {
+                          d:
+                            "M11.412,8.586C11.791,8.966,12,9.468,12,10h2c0-1.065-0.416-2.069-1.174-2.828c-1.514-1.512-4.139-1.512-5.652,0 l1.412,1.416C9.346,7.83,10.656,7.832,11.412,8.586z"
+                        }
+                      })
+                    ]
+                  )
+                ]
+              )
+            ]
+          )
+        }),
+        0
+      )
+    ])
   ])
 }
 var staticRenderFns = []
@@ -5387,7 +5615,9 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [_vm._v("Home")])
+  return _c("div", { staticClass: "h-54vw bg-red-translucent w-full" }, [
+    _vm._v("Home")
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -6346,44 +6576,60 @@ var render = function() {
     [
       _c("navigation"),
       _vm._v(" "),
-      _c("div", { staticClass: "w-full flex items-center h-px bg-grey-light" }),
+      _c("side-navigation"),
+      _vm._v(" "),
+      _c("exercise-list", {
+        attrs: {
+          heading: "Exercises",
+          data: _vm.exercises,
+          categories: _vm.categories
+        }
+      }),
+      _vm._v(" "),
+      _c(
+        "transition",
+        { attrs: { name: "fade" } },
+        [
+          _c("create-exercise-form", {
+            attrs: { show: _vm.showModal },
+            on: {
+              "cancel-user-create": _vm.toggleModal,
+              "create-exercise-success": _vm.refreshData
+            }
+          })
+        ],
+        1
+      ),
       _vm._v(" "),
       _c(
         "div",
-        { staticClass: "flex" },
+        {
+          staticClass:
+            "cursor-pointer fixed pin-b pin-r w-12 h-12 bg-red hover:bg-red-dark shadow-lg rounded-full mr-8 mb-8 flex items-center justify-center",
+          on: { click: _vm.toggleModal }
+        },
         [
-          _c("side-navigation"),
-          _vm._v(" "),
           _c(
-            "tabs",
-            { attrs: { icon: "/images/workouts-illust.svg" } },
+            "svg",
+            {
+              staticClass: "fill-current text-white",
+              attrs: {
+                xmlns: "http://www.w3.org/2000/svg",
+                width: "24",
+                height: "24",
+                viewBox: "0 0 24 24"
+              }
+            },
             [
-              _c(
-                "tab",
-                { attrs: { name: "View", selected: true } },
-                [
-                  _c("exercise-list", {
-                    attrs: { heading: "Exercises", data: _vm.exercises }
-                  })
-                ],
-                1
-              ),
-              _vm._v(" "),
-              _c(
-                "tab",
-                { attrs: { name: "Create" } },
-                [
-                  _c("create-exercise-form", {
-                    on: { "create-exercise-success": _vm.refreshData }
-                  })
-                ],
-                1
-              )
-            ],
-            1
+              _c("path", {
+                attrs: {
+                  d:
+                    "M11 3L11 11 3 11 3 13 11 13 11 21 13 21 13 13 21 13 21 11 13 11 13 3z"
+                }
+              })
+            ]
           )
-        ],
-        1
+        ]
       )
     ],
     1
@@ -6416,44 +6662,54 @@ var render = function() {
     [
       _c("navigation"),
       _vm._v(" "),
-      _c("div", { staticClass: "w-full h-px bg-grey-light" }),
+      _c("side-navigation"),
+      _vm._v(" "),
+      _c("user-list", { attrs: { heading: "Users", data: _vm.users } }),
+      _vm._v(" "),
+      _c(
+        "transition",
+        { attrs: { name: "fade" } },
+        [
+          _c("create-user-form", {
+            attrs: { show: _vm.showModal },
+            on: {
+              "cancel-user-create": _vm.toggleModal,
+              "create-user-success": _vm.refreshData
+            }
+          })
+        ],
+        1
+      ),
       _vm._v(" "),
       _c(
         "div",
-        { staticClass: "flex" },
+        {
+          staticClass:
+            "cursor-pointer fixed pin-b pin-r w-12 h-12 bg-red hover:bg-red-dark shadow-lg rounded-full mr-8 mb-8 flex items-center justify-center",
+          on: { click: _vm.toggleModal }
+        },
         [
-          _c("side-navigation"),
-          _vm._v(" "),
           _c(
-            "tabs",
-            { attrs: { icon: "/images/user-illustration.svg" } },
+            "svg",
+            {
+              staticClass: "fill-current text-white",
+              attrs: {
+                xmlns: "http://www.w3.org/2000/svg",
+                width: "24",
+                height: "24",
+                viewBox: "0 0 24 24"
+              }
+            },
             [
-              _c(
-                "tab",
-                { attrs: { name: "View", selected: true } },
-                [
-                  _c("user-list", {
-                    attrs: { heading: "Users", data: _vm.users }
-                  })
-                ],
-                1
-              ),
-              _vm._v(" "),
-              _c(
-                "tab",
-                { attrs: { name: "Create" } },
-                [
-                  _c("create-user-form", {
-                    on: { "create-user-success": _vm.refreshData }
-                  })
-                ],
-                1
-              )
-            ],
-            1
+              _c("path", {
+                attrs: {
+                  d:
+                    "M11 3L11 11 3 11 3 13 11 13 11 21 13 21 13 13 21 13 21 11 13 11 13 3z"
+                }
+              })
+            ]
           )
-        ],
-        1
+        ]
       )
     ],
     1
@@ -21382,7 +21638,7 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
       var laravelToken = $cookies.get("laravel_token");
       var token = "Bearer ".concat(laravelToken);
       this.$http.defaults.headers.common["Authorization"] = token;
-      this.$http.get("".concat("http://gerbzilla.test/api", "/user")).then(function (res) {
+      this.$http.get("".concat("http://localhost:8000/api", "/user")).then(function (res) {
         localStorage.setItem("user", JSON.stringify(res.data.user));
         localStorage.setItem("role", JSON.stringify(res.data.role));
       })["catch"](function (err) {
@@ -22881,8 +23137,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /Users/joe.mac/projects/gerbzilla/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /Users/joe.mac/projects/gerbzilla/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /Users/jsams/projects/gerbzilla/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /Users/jsams/projects/gerbzilla/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

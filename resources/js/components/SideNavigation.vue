@@ -1,24 +1,26 @@
 <template>
-  <aside class="w-48 bg-grey-lighter py-20">
-    <ul class="list-reset">
-      <li>
-        <router-link
-          exact-active-class="router-link-active-alt"
-          to="/t/users"
-          class="py-3 px-8 hover:bg-grey-light block w-full text-grey-darkest border-r-3 border-transparent hover:border-red font-semibold text-xs uppercase"
-          exact
-        >Users</router-link>
-      </li>
-      <li>
-        <router-link
-          exact-active-class="router-link-active-alt"
-          to="/t/exercises"
-          class="py-3 px-8 hover:bg-grey-light block w-full text-grey-darkest border-r-3 border-transparent hover:border-red font-semibold text-xs uppercase"
-          exact
-        >Exercises</router-link>
-      </li>
-    </ul>
-  </aside>
+  <nav class="w-full py-4 bg-grey-lighter border-b border-grey-light mb-20">
+    <div class="container mx-auto px-8">
+      <ul class="list-reset">
+        <li class="inline-block">
+          <router-link
+            exact-active-class="router-link-active-alt"
+            to="/t/users"
+            class="text-grey-darker mr-4"
+            exact
+          >Users</router-link>
+        </li>
+        <li class="inline-block">
+          <router-link
+            exact-active-class="router-link-active-alt"
+            to="/t/exercises"
+            class="text-grey-darker mr-4"
+            exact
+          >Exercises</router-link>
+        </li>
+      </ul>
+    </div>
+  </nav>
 </template>
 
 <script>

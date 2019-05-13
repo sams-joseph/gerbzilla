@@ -6225,6 +6225,13 @@ body {
   background-color: rgba(255, 255, 255, .5);
 }
 
+.bg-red-translucent {
+  background-image: linear-gradient(to bottom right, rgba(255, 15, 0, .85), rgba(255, 15, 0, .25)), url("/images/hero-img.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
 .mb-px {
   margin-bottom: 2px;
 }
@@ -6243,6 +6250,10 @@ body {
 
 .min-h-500 {
   min-height: 700px;
+}
+
+.h-54vw {
+  height: 54vw;
 }
 
 a {
@@ -6297,11 +6308,8 @@ a {
 
 .router-link-active-alt {
   color: #4a4a4a;
-  font-weight: light;
+  font-weight: bold;
   border-bottom: none;
-  padding-bottom: .75rem;
-  background-color: #dae1e7;
-  border-right: 3px solid #ff0f00;
 }
 
 @-webkit-keyframes scaleAnimation {
