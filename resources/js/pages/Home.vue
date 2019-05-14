@@ -51,11 +51,8 @@
       <h2 class="text-3xl text-red font-thin text-center">Everything you need to succeed.</h2>
     </section>
     <section class="w-full pb-20 pt-6">
-      <div class="container flex mx-auto flex-wrap-reverse">
+      <div class="container flex mx-auto flex-wrap-reverse items-center">
         <div class="w-full md:w-1/2 py-10 pr-8 pl-8 md:pl-8 lg:pl-24">
-          <h3
-            class="text-3xl text-grey-darkest font-thin mb-20 text-center md:text-left"
-          >Gerbzilla Training App</h3>
           <ul class="list-reset">
             <li class="text-base mb-6 flex items-start leading-normal">
               <span class="w-16 h-16 block mr-4">
@@ -105,11 +102,55 @@
         </div>
       </div>
     </section>
-    <section class="w-full bg-white relative">
+    <section class="w-full bg-white relative pb-20">
       <div class="py-20 mx-auto px-8">
-        <div class="z-10 relative flex">
-          <div class="w-1/3 bg-white rounded shadow-md p-20 mx-2"></div>
-          <div class="w-1/3 bg-white rounded shadow-md p-20 mx-2"></div>
+        <div class="z-10 relative flex justify-center flex-wrap">
+          <div class="bg-white rounded-lg shadow-lg p-8 mx-2 w-full sm:w-auto mb-8">
+            <div class="bg-grey-dark w-12 h-12 rounded-full mb-8"></div>
+            <h3 class="text-xl text-grey-darkest font-light mb-2">Online Programming</h3>
+            <h6 class="text-sm text-grey-darker font-thin mb-8">Individualized programming routine</h6>
+            <ul class="list-reset mb-12">
+              <li
+                class="text-sm text-grey-darker font-thin mb-4"
+              >Lorem ipsum dolor sit amet consectetur</li>
+              <li
+                class="text-sm text-grey-darker font-thin mb-4"
+              >Lorem ipsum dolor sit amet consectetur</li>
+              <li
+                class="text-sm text-grey-darker font-thin mb-4"
+              >Lorem ipsum dolor sit amet consectetur</li>
+              <li
+                class="text-sm text-grey-darker font-thin mb-4"
+              >Lorem ipsum dolor sit amet consectetur</li>
+            </ul>
+            <div class="flex items-start justify-center">
+              <span class="text-3xl text-blue font-medium">$50.00</span>
+              <span class="align-text-top text-blue text-sm leading-normal">/Month</span>
+            </div>
+          </div>
+          <div class="bg-white rounded shadow-lg p-8 mx-2 w-full sm:w-auto mb-8">
+            <div class="bg-grey-dark w-12 h-12 rounded-full mb-8"></div>
+            <h3 class="text-xl text-grey-darkest font-light mb-2">Individual Training</h3>
+            <h6 class="text-sm text-grey-darker font-thin mb-8">One on one training sessions</h6>
+            <ul class="list-reset mb-12">
+              <li
+                class="text-sm text-grey-darker font-thin mb-4"
+              >Lorem ipsum dolor sit amet consectetur</li>
+              <li
+                class="text-sm text-grey-darker font-thin mb-4"
+              >Lorem ipsum dolor sit amet consectetur</li>
+              <li
+                class="text-sm text-grey-darker font-thin mb-4"
+              >Lorem ipsum dolor sit amet consectetur</li>
+              <li
+                class="text-sm text-grey-darker font-thin mb-4"
+              >Lorem ipsum dolor sit amet consectetur</li>
+            </ul>
+            <div class="flex items-start justify-center">
+              <span class="text-3xl text-blue font-medium">$100.00</span>
+              <span class="align-text-top text-blue text-sm leading-normal">/Month</span>
+            </div>
+          </div>
         </div>
       </div>
 

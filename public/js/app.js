@@ -2278,7 +2278,7 @@ __webpack_require__.r(__webpack_exports__);
   mounted: function mounted() {
     var _this = this;
 
-    this.$http.get("".concat("http://gerbzilla.test/api", "/trainer/categories")).then(function (res) {
+    this.$http.get("".concat("http://localhost:8000/api", "/trainer/categories")).then(function (res) {
       _this.loading = false;
       _this.categories = res.data;
     })["catch"](function (err) {
@@ -2295,7 +2295,7 @@ __webpack_require__.r(__webpack_exports__);
       e.preventDefault();
       this.loading = true;
       var user = JSON.parse(localStorage.getItem("user"));
-      this.$http.post("".concat("http://gerbzilla.test/api", "/trainer/exercises"), {
+      this.$http.post("".concat("http://localhost:8000/api", "/trainer/exercises"), {
         name: this.name,
         category_id: this.category
       }).then(function (res) {
@@ -2435,7 +2435,7 @@ __webpack_require__.r(__webpack_exports__);
       e.preventDefault();
       this.loading = true;
       var user = JSON.parse(localStorage.getItem("user"));
-      this.$http.post("".concat("http://gerbzilla.test/api", "/trainer/users"), {
+      this.$http.post("".concat("http://localhost:8000/api", "/trainer/users"), {
         first_name: this.firstName,
         last_name: this.lastName,
         email: this.email,
@@ -2517,7 +2517,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       e.preventDefault();
-      this.$http.post("".concat("http://gerbzilla.test/api", "/login"), {
+      this.$http.post("".concat("http://localhost:8000/api", "/login"), {
         username: this.username,
         password: this.password
       }).then(function (res) {
@@ -2530,7 +2530,7 @@ __webpack_require__.r(__webpack_exports__);
           _this.$http.defaults.headers.common["Authorization"] = null;
         }
 
-        _this.$http.get("".concat("http://gerbzilla.test/api", "/user")).then(function (res) {
+        _this.$http.get("".concat("http://localhost:8000/api", "/user")).then(function (res) {
           localStorage.setItem("user", JSON.stringify(res.data.user));
           localStorage.setItem("role", JSON.stringify(res.data.role));
 
@@ -2881,6 +2881,47 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({});
 
 /***/ }),
@@ -2938,7 +2979,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       e.preventDefault();
-      this.$http.post("".concat("http://gerbzilla.test/api", "/login"), {
+      this.$http.post("".concat("http://localhost:8000/api", "/login"), {
         username: this.username,
         password: this.password
       }).then(function (res) {
@@ -2951,7 +2992,7 @@ __webpack_require__.r(__webpack_exports__);
           _this.$http.defaults.headers.common["Authorization"] = null;
         }
 
-        _this.$http.get("".concat("http://gerbzilla.test/api", "/user")).then(function (res) {
+        _this.$http.get("".concat("http://localhost:8000/api", "/user")).then(function (res) {
           localStorage.setItem("user", JSON.stringify(res.data.user));
           localStorage.setItem("role", JSON.stringify(res.data.role));
 
@@ -3157,7 +3198,7 @@ __webpack_require__.r(__webpack_exports__);
   created: function created() {
     var _this = this;
 
-    this.$http.get("".concat("http://gerbzilla.test/api", "/user")).then(function (res) {
+    this.$http.get("".concat("http://localhost:8000/api", "/user")).then(function (res) {
       _this.firstName = res.data.user.first_name;
       _this.lastName = res.data.user.last_name;
       _this.status = res.data.user.is_active === 1 ? true : false;
@@ -3357,7 +3398,7 @@ __webpack_require__.r(__webpack_exports__);
     refreshData: function refreshData() {
       var _this = this;
 
-      this.$http.get("".concat("http://gerbzilla.test/api", "/trainer/exercises")).then(function (res) {
+      this.$http.get("".concat("http://localhost:8000/api", "/trainer/exercises")).then(function (res) {
         _this.exercises = res.data;
       })["catch"](function (err) {
         console.log(err);
@@ -3370,7 +3411,7 @@ __webpack_require__.r(__webpack_exports__);
   mounted: function mounted() {
     var _this2 = this;
 
-    this.$http.all([this.$http.get("".concat("http://gerbzilla.test/api", "/trainer/exercises")), this.$http.get("".concat("http://gerbzilla.test/api", "/trainer/categories"))]).then(this.$http.spread(function (exercises, categories) {
+    this.$http.all([this.$http.get("".concat("http://localhost:8000/api", "/trainer/exercises")), this.$http.get("".concat("http://localhost:8000/api", "/trainer/categories"))]).then(this.$http.spread(function (exercises, categories) {
       _this2.exercises = exercises.data;
       _this2.categories = categories.data;
     }))["catch"](function (err) {
@@ -3430,7 +3471,7 @@ __webpack_require__.r(__webpack_exports__);
     refreshData: function refreshData() {
       var _this = this;
 
-      this.$http.get("".concat("http://gerbzilla.test/api", "/trainer/users")).then(function (res) {
+      this.$http.get("".concat("http://localhost:8000/api", "/trainer/users")).then(function (res) {
         _this.users = res.data;
       })["catch"](function (err) {
         console.log(err);
@@ -3443,7 +3484,7 @@ __webpack_require__.r(__webpack_exports__);
   mounted: function mounted() {
     var _this2 = this;
 
-    this.$http.get("".concat("http://gerbzilla.test/api", "/trainer/users")).then(function (res) {
+    this.$http.get("".concat("http://localhost:8000/api", "/trainer/users")).then(function (res) {
       _this2.users = res.data;
     })["catch"](function (err) {
       console.log(err);
@@ -5989,7 +6030,7 @@ var render = function() {
     _vm._v(" "),
     _vm._m(3),
     _vm._v(" "),
-    _c("section", { staticClass: "w-full bg-white relative" }, [
+    _c("section", { staticClass: "w-full bg-white relative pb-20" }, [
       _vm._m(4),
       _vm._v(" "),
       _c(
@@ -6106,108 +6147,109 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("section", { staticClass: "w-full pb-20 pt-6" }, [
-      _c("div", { staticClass: "container flex mx-auto flex-wrap-reverse" }, [
-        _c(
-          "div",
-          { staticClass: "w-full md:w-1/2 py-10 pr-8 pl-8 md:pl-8 lg:pl-24" },
-          [
-            _c(
-              "h3",
-              {
-                staticClass:
-                  "text-3xl text-grey-darkest font-thin mb-20 text-center md:text-left"
-              },
-              [_vm._v("Gerbzilla Training App")]
-            ),
-            _vm._v(" "),
-            _c("ul", { staticClass: "list-reset" }, [
-              _c(
-                "li",
-                {
-                  staticClass: "text-base mb-6 flex items-start leading-normal"
-                },
-                [
-                  _c("span", { staticClass: "w-16 h-16 block mr-4" }, [
-                    _c("img", {
-                      attrs: {
-                        src: "/images/dumbbell.svg",
-                        alt: "Dumbbell Icon"
-                      }
-                    })
-                  ]),
-                  _vm._v(
-                    "\n            Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum natus molestias eligendi asperiores porro laborum,\n          "
-                  )
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "li",
-                {
-                  staticClass: "text-base mb-6 flex items-start leading-normal"
-                },
-                [
-                  _c("span", { staticClass: "w-16 h-16 block mr-4" }, [
-                    _c("img", {
-                      attrs: {
-                        src: "/images/dumbbell.svg",
-                        alt: "Dumbbell Icon"
-                      }
-                    })
-                  ]),
-                  _vm._v(
-                    "\n            Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum natus molestias eligendi asperiores porro laborum,\n          "
-                  )
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "li",
-                {
-                  staticClass: "text-base mb-6 flex items-start leading-normal"
-                },
-                [
-                  _c("span", { staticClass: "w-16 h-16 block mr-4" }, [
-                    _c("img", {
-                      attrs: {
-                        src: "/images/dumbbell.svg",
-                        alt: "Dumbbell Icon"
-                      }
-                    })
-                  ]),
-                  _vm._v(
-                    "\n            Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum natus molestias eligendi asperiores porro laborum,\n          "
-                  )
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "li",
-                {
-                  staticClass: "text-base mb-6 flex items-start leading-normal"
-                },
-                [
-                  _c("span", { staticClass: "w-16 h-16 block mr-4" }, [
-                    _c("img", {
-                      attrs: {
-                        src: "/images/dumbbell.svg",
-                        alt: "Dumbbell Icon"
-                      }
-                    })
-                  ]),
-                  _vm._v(
-                    "\n            Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum natus molestias eligendi asperiores porro laborum,\n          "
-                  )
-                ]
-              )
-            ])
-          ]
-        ),
-        _vm._v(" "),
-        _c("div", { staticClass: "w-full md:w-1/2 phone-image-container" }, [
-          _c("div", { staticClass: "w-full phone-image" })
-        ])
-      ])
+      _c(
+        "div",
+        {
+          staticClass: "container flex mx-auto flex-wrap-reverse items-center"
+        },
+        [
+          _c(
+            "div",
+            { staticClass: "w-full md:w-1/2 py-10 pr-8 pl-8 md:pl-8 lg:pl-24" },
+            [
+              _c("ul", { staticClass: "list-reset" }, [
+                _c(
+                  "li",
+                  {
+                    staticClass:
+                      "text-base mb-6 flex items-start leading-normal"
+                  },
+                  [
+                    _c("span", { staticClass: "w-16 h-16 block mr-4" }, [
+                      _c("img", {
+                        attrs: {
+                          src: "/images/dumbbell.svg",
+                          alt: "Dumbbell Icon"
+                        }
+                      })
+                    ]),
+                    _vm._v(
+                      "\n            Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum natus molestias eligendi asperiores porro laborum,\n          "
+                    )
+                  ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "li",
+                  {
+                    staticClass:
+                      "text-base mb-6 flex items-start leading-normal"
+                  },
+                  [
+                    _c("span", { staticClass: "w-16 h-16 block mr-4" }, [
+                      _c("img", {
+                        attrs: {
+                          src: "/images/dumbbell.svg",
+                          alt: "Dumbbell Icon"
+                        }
+                      })
+                    ]),
+                    _vm._v(
+                      "\n            Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum natus molestias eligendi asperiores porro laborum,\n          "
+                    )
+                  ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "li",
+                  {
+                    staticClass:
+                      "text-base mb-6 flex items-start leading-normal"
+                  },
+                  [
+                    _c("span", { staticClass: "w-16 h-16 block mr-4" }, [
+                      _c("img", {
+                        attrs: {
+                          src: "/images/dumbbell.svg",
+                          alt: "Dumbbell Icon"
+                        }
+                      })
+                    ]),
+                    _vm._v(
+                      "\n            Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum natus molestias eligendi asperiores porro laborum,\n          "
+                    )
+                  ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "li",
+                  {
+                    staticClass:
+                      "text-base mb-6 flex items-start leading-normal"
+                  },
+                  [
+                    _c("span", { staticClass: "w-16 h-16 block mr-4" }, [
+                      _c("img", {
+                        attrs: {
+                          src: "/images/dumbbell.svg",
+                          alt: "Dumbbell Icon"
+                        }
+                      })
+                    ]),
+                    _vm._v(
+                      "\n            Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum natus molestias eligendi asperiores porro laborum,\n          "
+                    )
+                  ]
+                )
+              ])
+            ]
+          ),
+          _vm._v(" "),
+          _c("div", { staticClass: "w-full md:w-1/2 phone-image-container" }, [
+            _c("div", { staticClass: "w-full phone-image" })
+          ])
+        ]
+      )
     ])
   },
   function() {
@@ -6249,13 +6291,143 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "py-20 mx-auto px-8" }, [
-      _c("div", { staticClass: "z-10 relative flex" }, [
-        _c("div", {
-          staticClass: "w-1/3 bg-white rounded shadow-md p-20 mx-2"
-        }),
-        _vm._v(" "),
-        _c("div", { staticClass: "w-1/3 bg-white rounded shadow-md p-20 mx-2" })
-      ])
+      _c(
+        "div",
+        { staticClass: "z-10 relative flex justify-center flex-wrap" },
+        [
+          _c(
+            "div",
+            {
+              staticClass:
+                "bg-white rounded-lg shadow-lg p-8 mx-2 w-full sm:w-auto mb-8"
+            },
+            [
+              _c("div", {
+                staticClass: "bg-grey-dark w-12 h-12 rounded-full mb-8"
+              }),
+              _vm._v(" "),
+              _c(
+                "h3",
+                { staticClass: "text-xl text-grey-darkest font-light mb-2" },
+                [_vm._v("Online Programming")]
+              ),
+              _vm._v(" "),
+              _c(
+                "h6",
+                { staticClass: "text-sm text-grey-darker font-thin mb-8" },
+                [_vm._v("Individualized programming routine")]
+              ),
+              _vm._v(" "),
+              _c("ul", { staticClass: "list-reset mb-12" }, [
+                _c(
+                  "li",
+                  { staticClass: "text-sm text-grey-darker font-thin mb-4" },
+                  [_vm._v("Lorem ipsum dolor sit amet consectetur")]
+                ),
+                _vm._v(" "),
+                _c(
+                  "li",
+                  { staticClass: "text-sm text-grey-darker font-thin mb-4" },
+                  [_vm._v("Lorem ipsum dolor sit amet consectetur")]
+                ),
+                _vm._v(" "),
+                _c(
+                  "li",
+                  { staticClass: "text-sm text-grey-darker font-thin mb-4" },
+                  [_vm._v("Lorem ipsum dolor sit amet consectetur")]
+                ),
+                _vm._v(" "),
+                _c(
+                  "li",
+                  { staticClass: "text-sm text-grey-darker font-thin mb-4" },
+                  [_vm._v("Lorem ipsum dolor sit amet consectetur")]
+                )
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "flex items-start justify-center" }, [
+                _c("span", { staticClass: "text-3xl text-blue font-medium" }, [
+                  _vm._v("$50.00")
+                ]),
+                _vm._v(" "),
+                _c(
+                  "span",
+                  {
+                    staticClass:
+                      "align-text-top text-blue text-sm leading-normal"
+                  },
+                  [_vm._v("/Month")]
+                )
+              ])
+            ]
+          ),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass:
+                "bg-white rounded shadow-lg p-8 mx-2 w-full sm:w-auto mb-8"
+            },
+            [
+              _c("div", {
+                staticClass: "bg-grey-dark w-12 h-12 rounded-full mb-8"
+              }),
+              _vm._v(" "),
+              _c(
+                "h3",
+                { staticClass: "text-xl text-grey-darkest font-light mb-2" },
+                [_vm._v("Individual Training")]
+              ),
+              _vm._v(" "),
+              _c(
+                "h6",
+                { staticClass: "text-sm text-grey-darker font-thin mb-8" },
+                [_vm._v("One on one training sessions")]
+              ),
+              _vm._v(" "),
+              _c("ul", { staticClass: "list-reset mb-12" }, [
+                _c(
+                  "li",
+                  { staticClass: "text-sm text-grey-darker font-thin mb-4" },
+                  [_vm._v("Lorem ipsum dolor sit amet consectetur")]
+                ),
+                _vm._v(" "),
+                _c(
+                  "li",
+                  { staticClass: "text-sm text-grey-darker font-thin mb-4" },
+                  [_vm._v("Lorem ipsum dolor sit amet consectetur")]
+                ),
+                _vm._v(" "),
+                _c(
+                  "li",
+                  { staticClass: "text-sm text-grey-darker font-thin mb-4" },
+                  [_vm._v("Lorem ipsum dolor sit amet consectetur")]
+                ),
+                _vm._v(" "),
+                _c(
+                  "li",
+                  { staticClass: "text-sm text-grey-darker font-thin mb-4" },
+                  [_vm._v("Lorem ipsum dolor sit amet consectetur")]
+                )
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "flex items-start justify-center" }, [
+                _c("span", { staticClass: "text-3xl text-blue font-medium" }, [
+                  _vm._v("$100.00")
+                ]),
+                _vm._v(" "),
+                _c(
+                  "span",
+                  {
+                    staticClass:
+                      "align-text-top text-blue text-sm leading-normal"
+                  },
+                  [_vm._v("/Month")]
+                )
+              ])
+            ]
+          )
+        ]
+      )
     ])
   }
 ]
@@ -22277,7 +22449,7 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
       var laravelToken = $cookies.get("laravel_token");
       var token = "Bearer ".concat(laravelToken);
       this.$http.defaults.headers.common["Authorization"] = token;
-      this.$http.get("".concat("http://gerbzilla.test/api", "/user")).then(function (res) {
+      this.$http.get("".concat("http://localhost:8000/api", "/user")).then(function (res) {
         localStorage.setItem("user", JSON.stringify(res.data.user));
         localStorage.setItem("role", JSON.stringify(res.data.role));
       })["catch"](function (err) {
@@ -23776,8 +23948,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /Users/joe.mac/projects/gerbzilla/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /Users/joe.mac/projects/gerbzilla/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /Users/jsams/projects/gerbzilla/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /Users/jsams/projects/gerbzilla/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
