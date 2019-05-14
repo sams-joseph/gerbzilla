@@ -6217,6 +6217,10 @@ body {
   background-image: linear-gradient(to bottom right, #0fd850, #f9f047);
 }
 
+.bg-grey-gradient {
+  background-image: linear-gradient(to bottom right, #868f96, #596164);
+}
+
 .bg-grey-translucent {
   background-color: rgba(0, 0, 0, .5);
 }
@@ -6327,6 +6331,37 @@ a {
   margin-bottom: none;
   padding-bottom: .5rem;
 }
+
+@media (min-width: 768px) {
+  .hero-title {
+    font-size: 5rem;
+  }
+}
+
+.phone-image-container {
+  height: 360px;
+  overflow: hidden;
+}
+
+@media (min-width: 768px) {
+  .phone-image-container {
+    height: auto;
+  }
+}
+
+.phone-image {
+  height: 600px;
+  background-image: url("/images/phone-img.jpg");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  width: 320px;
+  margin: 0 auto;
+}
+
+/*-----------------------------------*/
+
+/*-----------------------------------*/
 
 @-webkit-keyframes scaleAnimation {
   0% {

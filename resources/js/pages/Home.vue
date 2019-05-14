@@ -3,7 +3,7 @@
     <div class="h-screen max-h-700 bg-red-translucent w-full relative flex items-center">
       <div class="container mx-auto px-8">
         <div class="w-full max-w-md">
-          <h1 class="text-12xl text-white font-black mb-8">Unleash Your Full Potential</h1>
+          <h1 class="text-5xl hero-title text-white font-black mb-8">Unleash Your Potential</h1>
           <div
             class="cursor-pointer inline-block text-sm font-semibold px-8 py-3 leading-normal bg-white text-red hover:bg-white uppercase"
           >Get Coaching</div>
@@ -51,28 +51,31 @@
       <h2 class="text-3xl text-red font-thin text-center">Everything you need to succeed.</h2>
     </section>
     <section class="w-full pb-20 pt-6">
-      <div class="container flex mx-auto px-8">
-        <div class="flex-1 flex items-center">
+      <div class="container flex mx-auto flex-wrap-reverse">
+        <div class="w-full md:w-1/2 py-10 pr-8 pl-8 md:pl-8 lg:pl-24">
+          <h3
+            class="text-3xl text-grey-darkest font-thin mb-20 text-center md:text-left"
+          >Gerbzilla Training App</h3>
           <ul class="list-reset">
-            <li class="text-lg mb-6 flex items-start">
+            <li class="text-base mb-6 flex items-start leading-normal">
               <span class="w-16 h-16 block mr-4">
                 <img src="/images/dumbbell.svg" alt="Dumbbell Icon">
               </span>
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum natus molestias eligendi asperiores porro laborum,
             </li>
-            <li class="text-lg mb-6 flex items-start">
+            <li class="text-base mb-6 flex items-start leading-normal">
               <span class="w-16 h-16 block mr-4">
                 <img src="/images/dumbbell.svg" alt="Dumbbell Icon">
               </span>
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum natus molestias eligendi asperiores porro laborum,
             </li>
-            <li class="text-lg mb-6 flex items-start">
+            <li class="text-base mb-6 flex items-start leading-normal">
               <span class="w-16 h-16 block mr-4">
                 <img src="/images/dumbbell.svg" alt="Dumbbell Icon">
               </span>
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum natus molestias eligendi asperiores porro laborum,
             </li>
-            <li class="text-lg mb-6 flex items-start">
+            <li class="text-base mb-6 flex items-start leading-normal">
               <span class="w-16 h-16 block mr-4">
                 <img src="/images/dumbbell.svg" alt="Dumbbell Icon">
               </span>
@@ -80,12 +83,36 @@
             </li>
           </ul>
         </div>
-        <div class="flex-1 flex justify-end">
-          <img src="/images/phone-img.jpg" alt="Phone App">
+        <div class="w-full md:w-1/2 phone-image-container">
+          <div class="w-full phone-image"></div>
         </div>
       </div>
     </section>
-    <section class="w-full min-h-500 bg-white relative">
+    <section class="bg-grey-gradient w-full py-20">
+      <div class="container mx-auto px-8">
+        <h2
+          class="text-3xl text-white font-thin mb-12 max-w-xs mx-auto text-center"
+        >Signup now for a free consultation.</h2>
+        <div class="flex w-full max-w-sm mx-auto">
+          <input
+            class="px-4 flex-1 rounded-l-full focus:outline-none shadow-lg"
+            type="text"
+            placeholder="Enter your email address"
+          >
+          <button
+            class="bg-red py-4 px-8 text-white rounded-r-full uppercase shadow-lg focus:outline-none"
+          >Signup</button>
+        </div>
+      </div>
+    </section>
+    <section class="w-full bg-white relative">
+      <div class="py-20 mx-auto px-8">
+        <div class="z-10 relative flex">
+          <div class="w-1/3 bg-white rounded shadow-md p-20 mx-2"></div>
+          <div class="w-1/3 bg-white rounded shadow-md p-20 mx-2"></div>
+        </div>
+      </div>
+
       <svg
         class="fill-current text-grey-lighter absolute pin-b pin-l w-full"
         xmlns="http://www.w3.org/2000/svg"

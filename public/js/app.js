@@ -2854,6 +2854,33 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({});
 
 /***/ }),
@@ -5960,7 +5987,11 @@ var render = function() {
     _vm._v(" "),
     _vm._m(2),
     _vm._v(" "),
-    _c("section", { staticClass: "w-full min-h-500 bg-white relative" }, [
+    _vm._m(3),
+    _vm._v(" "),
+    _c("section", { staticClass: "w-full bg-white relative" }, [
+      _vm._m(4),
+      _vm._v(" "),
       _c(
         "svg",
         {
@@ -6043,9 +6074,11 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "container mx-auto px-8" }, [
       _c("div", { staticClass: "w-full max-w-md" }, [
-        _c("h1", { staticClass: "text-12xl text-white font-black mb-8" }, [
-          _vm._v("Unleash Your Full Potential")
-        ]),
+        _c(
+          "h1",
+          { staticClass: "text-5xl hero-title text-white font-black mb-8" },
+          [_vm._v("Unleash Your Potential")]
+        ),
         _vm._v(" "),
         _c(
           "div",
@@ -6073,60 +6106,155 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("section", { staticClass: "w-full pb-20 pt-6" }, [
-      _c("div", { staticClass: "container flex mx-auto px-8" }, [
-        _c("div", { staticClass: "flex-1 flex items-center" }, [
-          _c("ul", { staticClass: "list-reset" }, [
-            _c("li", { staticClass: "text-lg mb-6 flex items-start" }, [
-              _c("span", { staticClass: "w-16 h-16 block mr-4" }, [
-                _c("img", {
-                  attrs: { src: "/images/dumbbell.svg", alt: "Dumbbell Icon" }
-                })
-              ]),
-              _vm._v(
-                "\n            Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum natus molestias eligendi asperiores porro laborum,\n          "
-              )
-            ]),
+      _c("div", { staticClass: "container flex mx-auto flex-wrap-reverse" }, [
+        _c(
+          "div",
+          { staticClass: "w-full md:w-1/2 py-10 pr-8 pl-8 md:pl-8 lg:pl-24" },
+          [
+            _c(
+              "h3",
+              {
+                staticClass:
+                  "text-3xl text-grey-darkest font-thin mb-20 text-center md:text-left"
+              },
+              [_vm._v("Gerbzilla Training App")]
+            ),
             _vm._v(" "),
-            _c("li", { staticClass: "text-lg mb-6 flex items-start" }, [
-              _c("span", { staticClass: "w-16 h-16 block mr-4" }, [
-                _c("img", {
-                  attrs: { src: "/images/dumbbell.svg", alt: "Dumbbell Icon" }
-                })
-              ]),
-              _vm._v(
-                "\n            Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum natus molestias eligendi asperiores porro laborum,\n          "
-              )
-            ]),
-            _vm._v(" "),
-            _c("li", { staticClass: "text-lg mb-6 flex items-start" }, [
-              _c("span", { staticClass: "w-16 h-16 block mr-4" }, [
-                _c("img", {
-                  attrs: { src: "/images/dumbbell.svg", alt: "Dumbbell Icon" }
-                })
-              ]),
-              _vm._v(
-                "\n            Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum natus molestias eligendi asperiores porro laborum,\n          "
-              )
-            ]),
-            _vm._v(" "),
-            _c("li", { staticClass: "text-lg mb-6 flex items-start" }, [
-              _c("span", { staticClass: "w-16 h-16 block mr-4" }, [
-                _c("img", {
-                  attrs: { src: "/images/dumbbell.svg", alt: "Dumbbell Icon" }
-                })
-              ]),
-              _vm._v(
-                "\n            Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum natus molestias eligendi asperiores porro laborum,\n          "
+            _c("ul", { staticClass: "list-reset" }, [
+              _c(
+                "li",
+                {
+                  staticClass: "text-base mb-6 flex items-start leading-normal"
+                },
+                [
+                  _c("span", { staticClass: "w-16 h-16 block mr-4" }, [
+                    _c("img", {
+                      attrs: {
+                        src: "/images/dumbbell.svg",
+                        alt: "Dumbbell Icon"
+                      }
+                    })
+                  ]),
+                  _vm._v(
+                    "\n            Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum natus molestias eligendi asperiores porro laborum,\n          "
+                  )
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "li",
+                {
+                  staticClass: "text-base mb-6 flex items-start leading-normal"
+                },
+                [
+                  _c("span", { staticClass: "w-16 h-16 block mr-4" }, [
+                    _c("img", {
+                      attrs: {
+                        src: "/images/dumbbell.svg",
+                        alt: "Dumbbell Icon"
+                      }
+                    })
+                  ]),
+                  _vm._v(
+                    "\n            Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum natus molestias eligendi asperiores porro laborum,\n          "
+                  )
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "li",
+                {
+                  staticClass: "text-base mb-6 flex items-start leading-normal"
+                },
+                [
+                  _c("span", { staticClass: "w-16 h-16 block mr-4" }, [
+                    _c("img", {
+                      attrs: {
+                        src: "/images/dumbbell.svg",
+                        alt: "Dumbbell Icon"
+                      }
+                    })
+                  ]),
+                  _vm._v(
+                    "\n            Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum natus molestias eligendi asperiores porro laborum,\n          "
+                  )
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "li",
+                {
+                  staticClass: "text-base mb-6 flex items-start leading-normal"
+                },
+                [
+                  _c("span", { staticClass: "w-16 h-16 block mr-4" }, [
+                    _c("img", {
+                      attrs: {
+                        src: "/images/dumbbell.svg",
+                        alt: "Dumbbell Icon"
+                      }
+                    })
+                  ]),
+                  _vm._v(
+                    "\n            Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum natus molestias eligendi asperiores porro laborum,\n          "
+                  )
+                ]
               )
             ])
-          ])
-        ]),
+          ]
+        ),
         _vm._v(" "),
-        _c("div", { staticClass: "flex-1 flex justify-end" }, [
-          _c("img", {
-            attrs: { src: "/images/phone-img.jpg", alt: "Phone App" }
-          })
+        _c("div", { staticClass: "w-full md:w-1/2 phone-image-container" }, [
+          _c("div", { staticClass: "w-full phone-image" })
         ])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("section", { staticClass: "bg-grey-gradient w-full py-20" }, [
+      _c("div", { staticClass: "container mx-auto px-8" }, [
+        _c(
+          "h2",
+          {
+            staticClass:
+              "text-3xl text-white font-thin mb-12 max-w-xs mx-auto text-center"
+          },
+          [_vm._v("Signup now for a free consultation.")]
+        ),
+        _vm._v(" "),
+        _c("div", { staticClass: "flex w-full max-w-sm mx-auto" }, [
+          _c("input", {
+            staticClass:
+              "px-4 flex-1 rounded-l-full focus:outline-none shadow-lg",
+            attrs: { type: "text", placeholder: "Enter your email address" }
+          }),
+          _vm._v(" "),
+          _c(
+            "button",
+            {
+              staticClass:
+                "bg-red py-4 px-8 text-white rounded-r-full uppercase shadow-lg focus:outline-none"
+            },
+            [_vm._v("Signup")]
+          )
+        ])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "py-20 mx-auto px-8" }, [
+      _c("div", { staticClass: "z-10 relative flex" }, [
+        _c("div", {
+          staticClass: "w-1/3 bg-white rounded shadow-md p-20 mx-2"
+        }),
+        _vm._v(" "),
+        _c("div", { staticClass: "w-1/3 bg-white rounded shadow-md p-20 mx-2" })
       ])
     ])
   }
