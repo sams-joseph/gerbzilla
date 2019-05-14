@@ -1,5 +1,6 @@
 <template>
   <div>
+    <page-header></page-header>
     <navigation></navigation>
     <sub-navigation></sub-navigation>
     <div class="container mx-auto flex">

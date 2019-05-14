@@ -64,31 +64,66 @@
               exact
             >Home</router-link>
           </li>
-          <li @click="openDrawer" class="block px-8 py-2 hover:bg-grey-lighter">
-            <router-link
-              exact-active-class="router-link-active-drawer"
-              class="text-grey-darkest block"
-              to="/u/overview"
-              exact
-            >Overview</router-link>
-          </li>
-          <li @click="openDrawer" class="block px-8 py-2 hover:bg-grey-lighter">
-            <router-link
-              exact-active-class="router-link-active-drawer"
-              class="text-grey-darkest block"
-              to="/u/workouts"
-              exact
-            >Workouts</router-link>
-          </li>
-          <li @click="openDrawer" class="block px-8 py-2 hover:bg-grey-lighter">
-            <router-link
-              exact-active-class="router-link-active-drawer"
-              class="text-grey-darkest block"
-              to="/u/goals"
-              exact
-            >Goals</router-link>
-          </li>
         </ul>
+      </div>
+    </transition>
+    <transition name="fade">
+      <div
+        v-scroll-lock="showMenu"
+        v-if="showMenu"
+        class="absolute w-full pin-t pin-l h-screen bg-grey-gradient flex flex-col justify-center items-center"
+      >
+        <router-link
+          exact-active-class="popover-active-exact"
+          active-class="blank"
+          class="text-white font-bold text-3xl mb-4"
+          to="/u/overview"
+          exact
+        >Overview</router-link>
+        <router-link
+          exact-active-class="popover-active-exact"
+          active-class="blank"
+          class="text-white font-bold text-3xl mb-4"
+          to="/u/workouts"
+          exact
+        >Workouts</router-link>
+        <router-link
+          exact-active-class="popover-active-exact"
+          active-class="blank"
+          class="text-white font-bold text-3xl mb-4"
+          to="/u/goals"
+          exact
+        >Goals</router-link>
+        <router-link
+          v-if="isTrainer"
+          exact-active-class="popover-active-exact"
+          active-class="blank"
+          class="text-white font-bold text-3xl mb-4"
+          to="/t/"
+          exact
+        >Trainer</router-link>
+        <router-link
+          v-if="isAdmin"
+          exact-active-class="popover-active-exact"
+          active-class="blank"
+          class="text-white font-bold text-3xl mb-4"
+          to="/a/admin"
+          exact
+        >Admin</router-link>
+
+        <div @click="openMenu" class="absolute pin-r pin-t mr-4 mt-4 h-8 w-8 cursor-pointer">
+          <svg
+            class="fill-current text-white"
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M19.293 3.293L12 10.586 4.707 3.293 3.293 4.707 10.586 12 3.293 19.293 4.707 20.707 12 13.414 19.293 20.707 20.707 19.293 13.414 12 20.707 4.707z"
+            ></path>
+          </svg>
+        </div>
       </div>
     </transition>
     <div class="flex items-center">
@@ -101,21 +136,21 @@
       </div>
     </div>
     <div class="flex items-center">
-      <nav>
+      <slot></slot>
+      <nav v-if="!authorized">
         <ul class="list-reset mr-6">
           <li
-            v-if="!authorized"
             @click="login"
             class="cursor-pointer text-xs font-semibold rounded-full px-4 py-1 leading-normal bg-white border border-red text-red hover:bg-red hover:text-white uppercase"
           >Login</li>
         </ul>
       </nav>
-      <div>
+      <div @click="openMenu" v-if="authorized">
         <svg
           class="cursor-pointer fill-current text-grey-darkest mr-4 md:hidden"
           xmlns="http://www.w3.org/2000/svg"
-          width="30"
-          height="30"
+          width="34"
+          height="34"
           viewBox="0 0 24 24"
         >
           <path d="M4 6H20V8H4zM8 11H20V13H8zM13 16H20V18H13z"></path>
@@ -134,8 +169,11 @@ export default {
     return {
       showLogin: false,
       showDrawer: false,
+      showMenu: false,
       fixed: false,
-      authorized: false
+      authorized: false,
+      isAdmin: false,
+      isTrainer: false
     };
   },
   methods: {
@@ -144,6 +182,9 @@ export default {
     },
     openDrawer() {
       this.showDrawer = !this.showDrawer;
+    },
+    openMenu() {
+      this.showMenu = !this.showMenu;
     },
     handleScroll(e) {
       if (window.scrollY > 50) {
@@ -162,6 +203,13 @@ export default {
     if ($cookies.isKey("laravel_token")) {
       this.authorized = true;
     }
+  },
+
+  mounted() {
+    const role = JSON.parse(localStorage.getItem("role"));
+
+    this.isAdmin = role.name === "admin";
+    this.isTrainer = role.name === "admin" || role.name === "trainer";
   },
 
   beforeMount() {

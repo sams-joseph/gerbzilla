@@ -1,5 +1,50 @@
 <template>
   <div>
+    <page-header>
+      <nav v-if="authorized" class="hidden md:block">
+        <ul class="list-reset">
+          <li>
+            <router-link
+              exact-active-class="popover-active-exact"
+              active-class="blank"
+              class="text-grey-dark font-normal text-sm mb-4 uppercase mr-4"
+              to="/u/overview"
+              exact
+            >Overview</router-link>
+            <router-link
+              exact-active-class="popover-active-exact"
+              active-class="blank"
+              class="text-grey-dark font-normal text-sm mb-4 uppercase mr-4"
+              to="/u/workouts"
+              exact
+            >Workouts</router-link>
+            <router-link
+              exact-active-class="popover-active-exact"
+              active-class="blank"
+              class="text-grey-dark font-normal text-sm mb-4 uppercase mr-4"
+              to="/u/goals"
+              exact
+            >Goals</router-link>
+            <router-link
+              v-if="isTrainer"
+              exact-active-class="popover-active-exact"
+              active-class="blank"
+              class="text-grey-dark font-normal text-sm mb-4 uppercase mr-4"
+              to="/t/"
+              exact
+            >Trainer</router-link>
+            <router-link
+              v-if="isAdmin"
+              exact-active-class="popover-active-exact"
+              active-class="blank"
+              class="text-grey-dark font-normal text-sm mb-4 uppercase mr-4"
+              to="/a/admin"
+              exact
+            >Admin</router-link>
+          </li>
+        </ul>
+      </nav>
+    </page-header>
     <div class="h-screen max-h-700 bg-red-translucent w-full relative flex items-center">
       <div class="container mx-auto px-8">
         <div class="w-full max-w-md">
@@ -197,5 +242,24 @@
 </template>
 
 <script>
-export default {};
+export default {
+  data() {
+    return {
+      authorized: false,
+      isAdmin: false,
+      isTrainer: false
+    };
+  },
+
+  mounted() {
+    if ($cookies.isKey("laravel_token")) {
+      this.authorized = true;
+    }
+
+    const role = JSON.parse(localStorage.getItem("role"));
+
+    this.isAdmin = role.name === "admin";
+    this.isTrainer = role.name === "admin" || role.name === "trainer";
+  }
+};
 </script>
