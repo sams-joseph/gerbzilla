@@ -2,7 +2,17 @@
   <div>
     <navigation></navigation>
     <side-navigation></side-navigation>
-    <user-list heading="Users" v-bind:data="users"></user-list>
+    <div v-if="loading" class="w-full">
+      <div class="pl-6 flex flex-col items-center">
+        <div class="mb-4">
+          <img src="/images/puff.svg" alt="Loading">
+        </div>
+        <h6 class="text-grey-darkest font-bold text-lg">Loading</h6>
+      </div>
+    </div>
+    <transition name="fade">
+      <user-list v-if="!loading" heading="Users" v-bind:data="users"></user-list>
+    </transition>
     <transition name="fade">
       <create-user-form
         @cancel-user-create="toggleModal"
@@ -32,16 +42,20 @@ export default {
   data() {
     return {
       users: {},
-      showModal: false
+      showModal: false,
+      loading: true
     };
   },
 
   methods: {
     refreshData() {
+      this.loading = true;
+
       this.$http
         .get(`${process.env.MIX_BASE_URL}/trainer/users`)
         .then(res => {
           this.users = res.data;
+          this.loading = false;
         })
         .catch(err => {
           console.log(err);
@@ -58,6 +72,7 @@ export default {
       .get(`${process.env.MIX_BASE_URL}/trainer/users`)
       .then(res => {
         this.users = res.data;
+        this.loading = false;
       })
       .catch(err => {
         console.log(err);

@@ -3399,20 +3399,38 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       exercises: [],
       categories: [],
-      showModal: false
+      showModal: false,
+      loading: true
     };
   },
   methods: {
     refreshData: function refreshData() {
       var _this = this;
 
+      this.loading = true;
       this.$http.get("".concat("http://localhost:8000/api", "/trainer/exercises")).then(function (res) {
         _this.exercises = res.data;
+        _this.loading = false;
       })["catch"](function (err) {
         console.log(err);
       });
@@ -3424,9 +3442,11 @@ __webpack_require__.r(__webpack_exports__);
   mounted: function mounted() {
     var _this2 = this;
 
+    this.loading = true;
     this.$http.all([this.$http.get("".concat("http://localhost:8000/api", "/trainer/exercises")), this.$http.get("".concat("http://localhost:8000/api", "/trainer/categories"))]).then(this.$http.spread(function (exercises, categories) {
       _this2.exercises = exercises.data;
       _this2.categories = categories.data;
+      _this2.loading = false;
     }))["catch"](function (err) {
       console.log(err);
     });
@@ -3473,19 +3493,32 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       users: {},
-      showModal: false
+      showModal: false,
+      loading: true
     };
   },
   methods: {
     refreshData: function refreshData() {
       var _this = this;
 
+      this.loading = true;
       this.$http.get("".concat("http://localhost:8000/api", "/trainer/users")).then(function (res) {
         _this.users = res.data;
+        _this.loading = false;
       })["catch"](function (err) {
         console.log(err);
       });
@@ -3499,6 +3532,7 @@ __webpack_require__.r(__webpack_exports__);
 
     this.$http.get("".concat("http://localhost:8000/api", "/trainer/users")).then(function (res) {
       _this2.users = res.data;
+      _this2.loading = false;
     })["catch"](function (err) {
       console.log(err);
     });
@@ -7446,13 +7480,26 @@ var render = function() {
       _vm._v(" "),
       _c("side-navigation"),
       _vm._v(" "),
-      _c("exercise-list", {
-        attrs: {
-          heading: "Exercises",
-          data: _vm.exercises,
-          categories: _vm.categories
-        }
-      }),
+      _vm.loading
+        ? _c("div", { staticClass: "w-full" }, [_vm._m(0)])
+        : _vm._e(),
+      _vm._v(" "),
+      _c(
+        "transition",
+        { attrs: { name: "fade" } },
+        [
+          !_vm.loading
+            ? _c("exercise-list", {
+                attrs: {
+                  heading: "Exercises",
+                  data: _vm.exercises,
+                  categories: _vm.categories
+                }
+              })
+            : _vm._e()
+        ],
+        1
+      ),
       _vm._v(" "),
       _c(
         "transition",
@@ -7503,7 +7550,22 @@ var render = function() {
     1
   )
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "pl-6 flex flex-col items-center" }, [
+      _c("div", { staticClass: "mb-4" }, [
+        _c("img", { attrs: { src: "/images/puff.svg", alt: "Loading" } })
+      ]),
+      _vm._v(" "),
+      _c("h6", { staticClass: "text-grey-darkest font-bold text-lg" }, [
+        _vm._v("Loading")
+      ])
+    ])
+  }
+]
 render._withStripped = true
 
 
@@ -7532,7 +7594,20 @@ var render = function() {
       _vm._v(" "),
       _c("side-navigation"),
       _vm._v(" "),
-      _c("user-list", { attrs: { heading: "Users", data: _vm.users } }),
+      _vm.loading
+        ? _c("div", { staticClass: "w-full" }, [_vm._m(0)])
+        : _vm._e(),
+      _vm._v(" "),
+      _c(
+        "transition",
+        { attrs: { name: "fade" } },
+        [
+          !_vm.loading
+            ? _c("user-list", { attrs: { heading: "Users", data: _vm.users } })
+            : _vm._e()
+        ],
+        1
+      ),
       _vm._v(" "),
       _c(
         "transition",
@@ -7583,7 +7658,22 @@ var render = function() {
     1
   )
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "pl-6 flex flex-col items-center" }, [
+      _c("div", { staticClass: "mb-4" }, [
+        _c("img", { attrs: { src: "/images/puff.svg", alt: "Loading" } })
+      ]),
+      _vm._v(" "),
+      _c("h6", { staticClass: "text-grey-darkest font-bold text-lg" }, [
+        _vm._v("Loading")
+      ])
+    ])
+  }
+]
 render._withStripped = true
 
 

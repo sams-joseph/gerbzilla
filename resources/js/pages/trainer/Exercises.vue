@@ -2,7 +2,22 @@
   <div>
     <navigation></navigation>
     <side-navigation></side-navigation>
-    <exercise-list heading="Exercises" v-bind:data="exercises" v-bind:categories="categories"></exercise-list>
+    <div v-if="loading" class="w-full">
+      <div class="pl-6 flex flex-col items-center">
+        <div class="mb-4">
+          <img src="/images/puff.svg" alt="Loading">
+        </div>
+        <h6 class="text-grey-darkest font-bold text-lg">Loading</h6>
+      </div>
+    </div>
+    <transition name="fade">
+      <exercise-list
+        v-if="!loading"
+        heading="Exercises"
+        v-bind:data="exercises"
+        v-bind:categories="categories"
+      ></exercise-list>
+    </transition>
     <transition name="fade">
       <create-exercise-form
         @cancel-user-create="toggleModal"
@@ -33,16 +48,20 @@ export default {
     return {
       exercises: [],
       categories: [],
-      showModal: false
+      showModal: false,
+      loading: true
     };
   },
 
   methods: {
     refreshData() {
+      this.loading = true;
+
       this.$http
         .get(`${process.env.MIX_BASE_URL}/trainer/exercises`)
         .then(res => {
           this.exercises = res.data;
+          this.loading = false;
         })
         .catch(err => {
           console.log(err);
@@ -55,6 +74,8 @@ export default {
   },
 
   mounted() {
+    this.loading = true;
+
     this.$http
       .all([
         this.$http.get(`${process.env.MIX_BASE_URL}/trainer/exercises`),
@@ -64,6 +85,7 @@ export default {
         this.$http.spread((exercises, categories) => {
           this.exercises = exercises.data;
           this.categories = categories.data;
+          this.loading = false;
         })
       )
       .catch(err => {
