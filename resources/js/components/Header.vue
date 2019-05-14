@@ -110,6 +110,17 @@
           >Login</li>
         </ul>
       </nav>
+      <div>
+        <svg
+          class="cursor-pointer fill-current text-grey-darkest mr-4 md:hidden"
+          xmlns="http://www.w3.org/2000/svg"
+          width="30"
+          height="30"
+          viewBox="0 0 24 24"
+        >
+          <path d="M4 6H20V8H4zM8 11H20V13H8zM13 16H20V18H13z"></path>
+        </svg>
+      </div>
       <div v-if="authorized" @click="openDrawer" class="w-8 h-8 rounded-full cursor-pointer">
         <img src="/images/profile-icon.svg" alt="Profile">
       </div>

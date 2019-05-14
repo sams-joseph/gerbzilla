@@ -1882,6 +1882,17 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -3018,6 +3029,8 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
 //
 //
 //
@@ -4514,6 +4527,27 @@ var render = function() {
           ])
         ]),
         _vm._v(" "),
+        _c("div", [
+          _c(
+            "svg",
+            {
+              staticClass:
+                "cursor-pointer fill-current text-grey-darkest mr-4 md:hidden",
+              attrs: {
+                xmlns: "http://www.w3.org/2000/svg",
+                width: "30",
+                height: "30",
+                viewBox: "0 0 24 24"
+              }
+            },
+            [
+              _c("path", {
+                attrs: { d: "M4 6H20V8H4zM8 11H20V13H8zM13 16H20V18H13z" }
+              })
+            ]
+          )
+        ]),
+        _vm._v(" "),
         _vm.authorized
           ? _c(
               "div",
@@ -4580,9 +4614,9 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    { staticClass: "w-full h-48 flex justify-center items-end" },
+    { staticClass: "w-full h-32 md:h-48 flex justify-center items-end" },
     [
-      _c("nav", [
+      _c("nav", { staticClass: "hidden md:block" }, [
         _c("ul", { staticClass: "list-reset mb-px" }, [
           _c(
             "li",
@@ -6583,31 +6617,42 @@ var render = function() {
                 "container mx-auto px-8 flex justify-between flex-wrap"
             },
             [
-              _c("div", { staticClass: "flex items-center" }, [
-                _vm._m(0),
-                _vm._v(" "),
-                _c("div", { staticClass: "flex flex-col" }, [
-                  _c(
-                    "h1",
-                    { staticClass: "text-grey-darkest text-xl mb-2 ml-1" },
-                    [_vm._v(_vm._s(this.firstName + " " + this.lastName))]
-                  ),
+              _c(
+                "div",
+                {
+                  staticClass:
+                    "flex flex-column md:flex-row justify-center md:items-center flex-wrap md:flex-no-wrap w-full md:w-auto"
+                },
+                [
+                  _vm._m(0),
                   _vm._v(" "),
-                  _c(
-                    "h3",
-                    {
-                      staticClass: "text-base font-light uppercase mb-4 ml-1",
-                      class: {
-                        "text-green": _vm.status,
-                        "text-red": !_vm.status
-                      }
-                    },
-                    [_vm._v(_vm._s(this.status ? "Active" : "Inactive"))]
-                  ),
-                  _vm._v(" "),
-                  _vm._m(1)
-                ])
-              ]),
+                  _c("div", { staticClass: "flex flex-col" }, [
+                    _c(
+                      "h1",
+                      {
+                        staticClass:
+                          "text-grey-darkest text-xl mb-2 text-center md:text-left"
+                      },
+                      [_vm._v(_vm._s(this.firstName + " " + this.lastName))]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "h3",
+                      {
+                        staticClass:
+                          "text-base font-light uppercase mb-4 text-center md:text-left",
+                        class: {
+                          "text-green": _vm.status,
+                          "text-red": !_vm.status
+                        }
+                      },
+                      [_vm._v(_vm._s(this.status ? "Active" : "Inactive"))]
+                    ),
+                    _vm._v(" "),
+                    _vm._m(1)
+                  ])
+                ]
+              ),
               _vm._v(" "),
               _vm._m(2)
             ]
@@ -6717,18 +6762,22 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "rounded-full mr-6" }, [
-      _c("img", {
-        staticClass: "w-32 h-32",
-        attrs: { src: "/images/profile-icon.svg", alt: "Profile" }
-      })
-    ])
+    return _c(
+      "div",
+      { staticClass: "rounded-full mb-8 md:mb-0 md:mr-4 w-full md:w-auto" },
+      [
+        _c("img", {
+          staticClass: "w-32 h-32 mx-auto block",
+          attrs: { src: "/images/profile-icon.svg", alt: "Profile" }
+        })
+      ]
+    )
   },
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", [
+    return _c("div", { staticClass: "mx-auto mb-12 md:mb-0 md:mx-0" }, [
       _c(
         "button",
         {
@@ -6743,51 +6792,59 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "flex" }, [
-      _c(
-        "div",
-        { staticClass: "h-48 w-32 bg-grey-light rounded p-4 text-center ml-2" },
-        [
-          _c("div", { staticClass: "w-full h-16 mb-6" }, [
-            _c("img", {
-              attrs: { src: "/images/workouts-illust.svg", alt: "Workouts" }
-            })
-          ]),
-          _vm._v(" "),
-          _c(
-            "h2",
-            { staticClass: "text-grey-darkest text-xl font-bold mb-2" },
-            [_vm._v("100")]
-          ),
-          _vm._v(" "),
-          _c("h3", { staticClass: "text-grey-darkest text-base font-thin" }, [
-            _vm._v("Workouts Completed")
-          ])
-        ]
-      ),
-      _vm._v(" "),
-      _c(
-        "div",
-        { staticClass: "h-48 w-32 bg-grey-light rounded p-4 text-center ml-2" },
-        [
-          _c("div", { staticClass: "w-full h-16 mb-6" }, [
-            _c("img", {
-              attrs: { src: "/images/goals-illust.svg", alt: "Workouts" }
-            })
-          ]),
-          _vm._v(" "),
-          _c(
-            "h2",
-            { staticClass: "text-grey-darkest text-xl font-bold mb-2" },
-            [_vm._v("3")]
-          ),
-          _vm._v(" "),
-          _c("h3", { staticClass: "text-grey-darkest text-base font-thin" }, [
-            _vm._v("Goals In Progress")
-          ])
-        ]
-      )
-    ])
+    return _c(
+      "div",
+      { staticClass: "flex justify-center md:justify-start w-full md:w-auto" },
+      [
+        _c(
+          "div",
+          {
+            staticClass: "h-48 w-32 bg-grey-light rounded p-4 text-center ml-2"
+          },
+          [
+            _c("div", { staticClass: "w-full h-16 mb-6" }, [
+              _c("img", {
+                attrs: { src: "/images/workouts-illust.svg", alt: "Workouts" }
+              })
+            ]),
+            _vm._v(" "),
+            _c(
+              "h2",
+              { staticClass: "text-grey-darkest text-xl font-bold mb-2" },
+              [_vm._v("100")]
+            ),
+            _vm._v(" "),
+            _c("h3", { staticClass: "text-grey-darkest text-base font-thin" }, [
+              _vm._v("Workouts Completed")
+            ])
+          ]
+        ),
+        _vm._v(" "),
+        _c(
+          "div",
+          {
+            staticClass: "h-48 w-32 bg-grey-light rounded p-4 text-center ml-2"
+          },
+          [
+            _c("div", { staticClass: "w-full h-16 mb-6" }, [
+              _c("img", {
+                attrs: { src: "/images/goals-illust.svg", alt: "Workouts" }
+              })
+            ]),
+            _vm._v(" "),
+            _c(
+              "h2",
+              { staticClass: "text-grey-darkest text-xl font-bold mb-2" },
+              [_vm._v("3")]
+            ),
+            _vm._v(" "),
+            _c("h3", { staticClass: "text-grey-darkest text-base font-thin" }, [
+              _vm._v("Goals In Progress")
+            ])
+          ]
+        )
+      ]
+    )
   },
   function() {
     var _vm = this

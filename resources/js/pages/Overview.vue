@@ -3,26 +3,28 @@
     <navigation></navigation>
     <section class="w-full bg-grey-lighter border-b border-grey-light py-8 mb-20">
       <div class="container mx-auto px-8 flex justify-between flex-wrap">
-        <div class="flex items-center">
-          <div class="rounded-full mr-6">
-            <img class="w-32 h-32" src="/images/profile-icon.svg" alt="Profile">
+        <div
+          class="flex flex-column md:flex-row justify-center md:items-center flex-wrap md:flex-no-wrap w-full md:w-auto"
+        >
+          <div class="rounded-full mb-8 md:mb-0 md:mr-4 w-full md:w-auto">
+            <img class="w-32 h-32 mx-auto block" src="/images/profile-icon.svg" alt="Profile">
           </div>
           <div class="flex flex-col">
             <h1
-              class="text-grey-darkest text-xl mb-2 ml-1"
+              class="text-grey-darkest text-xl mb-2 text-center md:text-left"
             >{{ `${this.firstName} ${this.lastName}` }}</h1>
             <h3
               v-bind:class="{'text-green': status, 'text-red': !status}"
-              class="text-base font-light uppercase mb-4 ml-1"
+              class="text-base font-light uppercase mb-4 text-center md:text-left"
             >{{ this.status ? 'Active' : 'Inactive' }}</h3>
-            <div>
+            <div class="mx-auto mb-12 md:mb-0 md:mx-0">
               <button
                 class="cursor-pointer text-xs font-semibold rounded-full px-4 py-1 leading-normal bg-grey-lighter border border-red text-red hover:bg-red hover:text-white uppercase focus:outline-none"
               >Edit Profile</button>
             </div>
           </div>
         </div>
-        <div class="flex">
+        <div class="flex justify-center md:justify-start w-full md:w-auto">
           <div class="h-48 w-32 bg-grey-light rounded p-4 text-center ml-2">
             <div class="w-full h-16 mb-6">
               <img src="/images/workouts-illust.svg" alt="Workouts">

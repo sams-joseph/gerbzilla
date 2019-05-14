@@ -1,6 +1,6 @@
 <template>
-  <div class="w-full h-48 flex justify-center items-end">
-    <nav>
+  <div class="w-full h-32 md:h-48 flex justify-center items-end">
+    <nav class="hidden md:block">
       <ul class="list-reset mb-px">
         <li class="inline-block mx-8 pb-4 border-b-4 border-transparent">
           <router-link class="text-grey-darkest font-base" to="/u/overview" exact>Overview</router-link>
