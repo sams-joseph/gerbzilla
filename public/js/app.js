@@ -2677,9 +2677,118 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      checkedCategories: [],
+      showFilterMenu: false
+    };
+  },
+  methods: {
+    toggleFilterMenu: function toggleFilterMenu() {
+      this.showFilterMenu = !this.showFilterMenu;
+    },
+    getCategoryIcon: function getCategoryIcon(exercise) {
+      if (exercise.category_id === 1) {
+        return "/images/dumbbell-white.svg";
+      }
+    },
+    getNumExercises: function getNumExercises(id) {
+      var exerc = this.exercises.filter(function (exercise) {
+        return exercise.category_id === id;
+      });
+      return exerc.length;
+    }
+  },
+  computed: {
+    filteredExercises: function filteredExercises() {
+      var _this = this;
+
+      if (this.checkedCategories.length) {
+        return this.exercises.filter(function (exercise) {
+          var _iteratorNormalCompletion = true;
+          var _didIteratorError = false;
+          var _iteratorError = undefined;
+
+          try {
+            for (var _iterator = _this.checkedCategories[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+              var category = _step.value;
+
+              if (exercise.category_id === category) {
+                return true;
+              }
+            }
+          } catch (err) {
+            _didIteratorError = true;
+            _iteratorError = err;
+          } finally {
+            try {
+              if (!_iteratorNormalCompletion && _iterator["return"] != null) {
+                _iterator["return"]();
+              }
+            } finally {
+              if (_didIteratorError) {
+                throw _iteratorError;
+              }
+            }
+          }
+
+          return false;
+        });
+      } else {
+        return this.exercises;
+      }
+    }
+  },
   props: {
-    data: Array,
+    exercises: Array,
     heading: String,
     categories: Array
   }
@@ -5900,129 +6009,314 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "container mx-auto mb-20 flex px-8" }, [
-    _c("aside", { staticClass: "w-48" }, [
-      _c(
-        "h1",
-        { staticClass: "text-grey-darkest font-normal text-2xl mb-10" },
-        [_vm._v("Categories")]
-      ),
-      _vm._v(" "),
-      _c(
-        "ul",
-        { staticClass: "list-reset" },
-        _vm._l(_vm.categories, function(category) {
-          return _c(
-            "li",
-            { key: category.id, staticClass: "text-grey-darkest pb-6" },
-            [
-              _c("input", {
-                staticClass: "mr-2",
-                attrs: { type: "checkbox", name: "vehicle1" },
-                domProps: { value: category.id }
-              }),
-              _vm._v("\n        " + _vm._s(category.name) + "\n      ")
-            ]
-          )
-        }),
-        0
-      )
-    ]),
-    _vm._v(" "),
-    _c("div", { staticClass: "flex-1" }, [
-      _c("div", { staticClass: "px-4" }, [
+  return _c(
+    "div",
+    { staticClass: "container mx-auto mb-20 flex px-8" },
+    [
+      _c("aside", { staticClass: "w-48 hidden md:block" }, [
         _c(
           "h1",
-          { staticClass: "text-grey-darkest font-normal text-2xl mb-10 px-4" },
-          [_vm._v(_vm._s(_vm.heading))]
+          { staticClass: "text-grey-darkest font-normal text-2xl mb-10" },
+          [_vm._v("Categories")]
         ),
         _vm._v(" "),
         _c(
           "ul",
           { staticClass: "list-reset" },
-          _vm._l(_vm.data, function(object) {
+          _vm._l(_vm.categories, function(category) {
             return _c(
               "li",
-              {
-                key: object.id,
-                staticClass:
-                  "w-full py-4 hover:bg-grey-lighter rounded-lg px-4 flex items-center"
-              },
+              { key: category.id, staticClass: "text-grey-darkest pb-6" },
               [
-                _c("span", { staticClass: "rounded-full mr-6" }, [
-                  _c(
-                    "svg",
+                _c("input", {
+                  directives: [
                     {
-                      staticClass: "fill-current text-green",
-                      attrs: {
-                        width: "41",
-                        height: "41",
-                        viewBox: "0 0 41 41",
-                        fill: "none",
-                        xmlns: "http://www.w3.org/2000/svg"
-                      }
-                    },
-                    [
-                      _c("path", {
-                        attrs: {
-                          d:
-                            "M20.75 0.75C9.908 0.75 0.75 9.908 0.75 20.75C0.75 31.592 9.908 40.75 20.75 40.75C31.592 40.75 40.75 31.592 40.75 20.75C40.75 9.908 31.592 0.75 20.75 0.75ZM20.75 36.75C16.448 36.75 12.48 34.946 9.57 32.07C11.076 28.456 14.6 25.894 18.75 25.894H22.75C26.9 25.894 30.424 28.456 31.93 32.07C29.02 34.946 25.052 36.75 20.75 36.75ZM20.75 10.75C24.204 10.75 26.75 13.294 26.75 16.75C26.75 20.206 24.204 22.75 20.75 22.75C17.298 22.75 14.75 20.206 14.75 16.75C14.75 13.294 17.298 10.75 20.75 10.75Z"
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.checkedCategories,
+                      expression: "checkedCategories"
+                    }
+                  ],
+                  staticClass: "mr-2",
+                  attrs: {
+                    type: "checkbox",
+                    id: category.name,
+                    name: category.name
+                  },
+                  domProps: {
+                    value: category.id,
+                    checked: Array.isArray(_vm.checkedCategories)
+                      ? _vm._i(_vm.checkedCategories, category.id) > -1
+                      : _vm.checkedCategories
+                  },
+                  on: {
+                    change: function($event) {
+                      var $$a = _vm.checkedCategories,
+                        $$el = $event.target,
+                        $$c = $$el.checked ? true : false
+                      if (Array.isArray($$a)) {
+                        var $$v = category.id,
+                          $$i = _vm._i($$a, $$v)
+                        if ($$el.checked) {
+                          $$i < 0 && (_vm.checkedCategories = $$a.concat([$$v]))
+                        } else {
+                          $$i > -1 &&
+                            (_vm.checkedCategories = $$a
+                              .slice(0, $$i)
+                              .concat($$a.slice($$i + 1)))
                         }
-                      })
-                    ]
-                  )
-                ]),
+                      } else {
+                        _vm.checkedCategories = $$c
+                      }
+                    }
+                  }
+                }),
                 _vm._v(" "),
-                _c("span", { staticClass: "text-grey-darkest mr-6" }, [
-                  _vm._v(_vm._s("" + object.name))
+                _c("label", { attrs: { for: category.name } }, [
+                  _vm._v(_vm._s(category.name))
                 ]),
-                _vm._v(" "),
-                _c("span", { staticClass: "flex-1" }),
                 _vm._v(" "),
                 _c(
                   "span",
                   {
                     staticClass:
-                      "h-10 w-10 rounded-full bg-grey-light flex items-center justify-center"
+                      "bg-grey-lighter rounded-full float-right px-2 py-1"
                   },
-                  [
-                    _c(
-                      "svg",
-                      {
-                        staticClass: "fill-current text-grey-darkest",
-                        attrs: {
-                          xmlns: "http://www.w3.org/2000/svg",
-                          width: "24",
-                          height: "24",
-                          viewBox: "0 0 24 24"
-                        }
-                      },
-                      [
-                        _c("path", {
-                          attrs: {
-                            d:
-                              "M10,18c1.846,0,3.543-0.635,4.897-1.688l4.396,4.396l1.414-1.414l-4.396-4.396C17.365,13.543,18,11.846,18,10 c0-4.411-3.589-8-8-8s-8,3.589-8,8S5.589,18,10,18z M10,4c3.309,0,6,2.691,6,6s-2.691,6-6,6s-6-2.691-6-6S6.691,4,10,4z"
-                          }
-                        }),
-                        _vm._v(" "),
-                        _c("path", {
-                          attrs: {
-                            d:
-                              "M11.412,8.586C11.791,8.966,12,9.468,12,10h2c0-1.065-0.416-2.069-1.174-2.828c-1.514-1.512-4.139-1.512-5.652,0 l1.412,1.416C9.346,7.83,10.656,7.832,11.412,8.586z"
-                          }
-                        })
-                      ]
-                    )
-                  ]
+                  [_vm._v(_vm._s(_vm.getNumExercises(category.id)))]
                 )
               ]
             )
           }),
           0
         )
-      ])
-    ])
-  ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "flex-1" }, [
+        _c("div", { staticClass: "px-4" }, [
+          _c(
+            "h1",
+            {
+              staticClass: "text-grey-darkest font-normal text-2xl mb-10 px-4"
+            },
+            [_vm._v(_vm._s(_vm.heading))]
+          ),
+          _vm._v(" "),
+          _c(
+            "ul",
+            { staticClass: "list-reset px-4 md:px-0" },
+            _vm._l(_vm.filteredExercises, function(exercise) {
+              return _c(
+                "li",
+                {
+                  key: exercise.id,
+                  staticClass:
+                    "w-full py-4 md:hover:bg-grey-lighter rounded-lg px-4 flex items-center shadow-lg md:shadow-none mb-4 md:mb-0"
+                },
+                [
+                  _c(
+                    "span",
+                    {
+                      staticClass:
+                        "rounded-full mr-6 h-12 w-12 bg-red-gradient p-2"
+                    },
+                    [
+                      _c("img", {
+                        attrs: {
+                          src: _vm.getCategoryIcon(exercise),
+                          alt: "Icon"
+                        }
+                      })
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c("span", { staticClass: "text-grey-darkest mr-6" }, [
+                    _vm._v(_vm._s("" + exercise.name))
+                  ]),
+                  _vm._v(" "),
+                  _c("span", { staticClass: "flex-1" }),
+                  _vm._v(" "),
+                  _c(
+                    "span",
+                    {
+                      staticClass:
+                        "h-10 w-10 rounded-full bg-grey-light flex items-center justify-center"
+                    },
+                    [
+                      _c(
+                        "svg",
+                        {
+                          staticClass: "fill-current text-grey-darkest",
+                          attrs: {
+                            xmlns: "http://www.w3.org/2000/svg",
+                            width: "24",
+                            height: "24",
+                            viewBox: "0 0 24 24"
+                          }
+                        },
+                        [
+                          _c("path", {
+                            attrs: {
+                              d:
+                                "M10,18c1.846,0,3.543-0.635,4.897-1.688l4.396,4.396l1.414-1.414l-4.396-4.396C17.365,13.543,18,11.846,18,10 c0-4.411-3.589-8-8-8s-8,3.589-8,8S5.589,18,10,18z M10,4c3.309,0,6,2.691,6,6s-2.691,6-6,6s-6-2.691-6-6S6.691,4,10,4z"
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c("path", {
+                            attrs: {
+                              d:
+                                "M11.412,8.586C11.791,8.966,12,9.468,12,10h2c0-1.065-0.416-2.069-1.174-2.828c-1.514-1.512-4.139-1.512-5.652,0 l1.412,1.416C9.346,7.83,10.656,7.832,11.412,8.586z"
+                            }
+                          })
+                        ]
+                      )
+                    ]
+                  )
+                ]
+              )
+            }),
+            0
+          )
+        ])
+      ]),
+      _vm._v(" "),
+      _c("transition", { attrs: { name: "fade" } }, [
+        _vm.showFilterMenu
+          ? _c(
+              "div",
+              {
+                directives: [
+                  {
+                    name: "closable",
+                    rawName: "v-closable",
+                    value: {
+                      exclude: ["button"],
+                      handler: "toggleFilterMenu"
+                    },
+                    expression:
+                      "{\n        exclude: ['button'],\n        handler: 'toggleFilterMenu'\n      }"
+                  }
+                ],
+                staticClass:
+                  "fixed bg-white shadow-lg p-8 pin-b pin-l pin-r ml-8 mr-8 mb-32 rounded-lg md:hidden"
+              },
+              [
+                _c(
+                  "h1",
+                  {
+                    staticClass: "text-grey-darkest font-normal text-2xl mb-10"
+                  },
+                  [_vm._v("Categories")]
+                ),
+                _vm._v(" "),
+                _c(
+                  "ul",
+                  { staticClass: "list-reset" },
+                  _vm._l(_vm.categories, function(category) {
+                    return _c(
+                      "li",
+                      {
+                        key: category.id,
+                        staticClass: "text-grey-darkest pb-6"
+                      },
+                      [
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.checkedCategories,
+                              expression: "checkedCategories"
+                            }
+                          ],
+                          staticClass: "mr-2",
+                          attrs: {
+                            type: "checkbox",
+                            id: category.name,
+                            name: category.name
+                          },
+                          domProps: {
+                            value: category.id,
+                            checked: Array.isArray(_vm.checkedCategories)
+                              ? _vm._i(_vm.checkedCategories, category.id) > -1
+                              : _vm.checkedCategories
+                          },
+                          on: {
+                            change: function($event) {
+                              var $$a = _vm.checkedCategories,
+                                $$el = $event.target,
+                                $$c = $$el.checked ? true : false
+                              if (Array.isArray($$a)) {
+                                var $$v = category.id,
+                                  $$i = _vm._i($$a, $$v)
+                                if ($$el.checked) {
+                                  $$i < 0 &&
+                                    (_vm.checkedCategories = $$a.concat([$$v]))
+                                } else {
+                                  $$i > -1 &&
+                                    (_vm.checkedCategories = $$a
+                                      .slice(0, $$i)
+                                      .concat($$a.slice($$i + 1)))
+                                }
+                              } else {
+                                _vm.checkedCategories = $$c
+                              }
+                            }
+                          }
+                        }),
+                        _vm._v(
+                          "\n          " +
+                            _vm._s(category.name) +
+                            "\n          "
+                        ),
+                        _c(
+                          "span",
+                          {
+                            staticClass:
+                              "bg-grey-lighter rounded-full float-right px-2 py-1"
+                          },
+                          [_vm._v(_vm._s(_vm.getNumExercises(category.id)))]
+                        )
+                      ]
+                    )
+                  }),
+                  0
+                )
+              ]
+            )
+          : _vm._e()
+      ]),
+      _vm._v(" "),
+      _c(
+        "div",
+        {
+          ref: "button",
+          staticClass:
+            "cursor-pointer fixed pin-b pin-l w-16 h-16 bg-white shadow-lg rounded-full ml-8 mb-8 flex items-center justify-center md:hidden",
+          on: { click: _vm.toggleFilterMenu }
+        },
+        [
+          _c(
+            "svg",
+            {
+              staticClass: "fill-current text-grey-darkest",
+              attrs: {
+                xmlns: "http://www.w3.org/2000/svg",
+                width: "30",
+                height: "30",
+                viewBox: "0 0 24 24"
+              }
+            },
+            [
+              _c("path", {
+                attrs: { d: "M7 11H17V13H7zM4 7H20V9H4zM10 15H14V17H10z" }
+              })
+            ]
+          )
+        ]
+      )
+    ],
+    1
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -7782,7 +8076,7 @@ var render = function() {
             ? _c("exercise-list", {
                 attrs: {
                   heading: "Exercises",
-                  data: _vm.exercises,
+                  exercises: _vm.exercises,
                   categories: _vm.categories
                 }
               })
@@ -22876,6 +23170,50 @@ router.beforeEach(function (to, from, next) {
     }
   } else {
     next();
+  }
+});
+var handleOutsideClick;
+vue__WEBPACK_IMPORTED_MODULE_0___default.a.directive('closable', {
+  bind: function bind(el, binding, vnode) {
+    handleOutsideClick = function handleOutsideClick(e) {
+      e.stopPropagation(); // Get the handler method name and the exclude array
+      // from the object used in v-closable
+
+      var _binding$value = binding.value,
+          handler = _binding$value.handler,
+          exclude = _binding$value.exclude; // This variable indicates if the clicked element is excluded
+
+      var clickedOnExcludedEl = false;
+      exclude.forEach(function (refName) {
+        // We only run this code if we haven't detected
+        // any excluded element yet
+        if (!clickedOnExcludedEl) {
+          // Get the element using the reference name
+          var excludedEl = vnode.context.$refs[refName]; // See if this excluded element
+          // is the same element the user just clicked on
+
+          clickedOnExcludedEl = excludedEl.contains(e.target);
+        }
+      }); // We check to see if the clicked element is not
+      // the dialog element and not excluded
+
+      if (!el.contains(e.target) && !clickedOnExcludedEl) {
+        // If the clicked element is outside the dialog
+        // and not the button, then call the outside-click handler
+        // from the same component this directive is used in
+        vnode.context[handler]();
+      }
+    }; // Register click/touchstart event listeners on the whole page
+
+
+    document.addEventListener('click', handleOutsideClick);
+    document.addEventListener('touchstart', handleOutsideClick);
+  },
+  unbind: function unbind() {
+    // If the element that has v-closable is removed, then
+    // unbind click/touchstart listeners from the whole page
+    document.removeEventListener('click', handleOutsideClick);
+    document.removeEventListener('touchstart', handleOutsideClick);
   }
 });
 var app = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({

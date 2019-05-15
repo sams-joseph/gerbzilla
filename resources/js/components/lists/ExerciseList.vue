@@ -1,38 +1,37 @@
 <template>
   <div class="container mx-auto mb-20 flex px-8">
-    <aside class="w-48">
+    <aside class="w-48 hidden md:block">
       <h1 class="text-grey-darkest font-normal text-2xl mb-10">Categories</h1>
       <ul class="list-reset">
         <li class="text-grey-darkest pb-6" v-for="category in categories" v-bind:key="category.id">
-          <input class="mr-2" type="checkbox" name="vehicle1" :value="category.id">
-          {{ category.name }}
+          <input
+            class="mr-2"
+            type="checkbox"
+            :id="category.name"
+            :name="category.name"
+            :value="category.id"
+            v-model="checkedCategories"
+          >
+          <label :for="category.name">{{ category.name }}</label>
+          <span
+            class="bg-grey-lighter rounded-full float-right px-2 py-1"
+          >{{ getNumExercises(category.id) }}</span>
         </li>
       </ul>
     </aside>
     <div class="flex-1">
       <div class="px-4">
         <h1 class="text-grey-darkest font-normal text-2xl mb-10 px-4">{{ heading }}</h1>
-        <ul class="list-reset">
+        <ul class="list-reset px-4 md:px-0">
           <li
-            class="w-full py-4 hover:bg-grey-lighter rounded-lg px-4 flex items-center"
-            v-for="object in data"
-            v-bind:key="object.id"
+            class="w-full py-4 md:hover:bg-grey-lighter rounded-lg px-4 flex items-center shadow-lg md:shadow-none mb-4 md:mb-0"
+            v-for="exercise in filteredExercises"
+            v-bind:key="exercise.id"
           >
-            <span class="rounded-full mr-6">
-              <svg
-                class="fill-current text-green"
-                width="41"
-                height="41"
-                viewBox="0 0 41 41"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M20.75 0.75C9.908 0.75 0.75 9.908 0.75 20.75C0.75 31.592 9.908 40.75 20.75 40.75C31.592 40.75 40.75 31.592 40.75 20.75C40.75 9.908 31.592 0.75 20.75 0.75ZM20.75 36.75C16.448 36.75 12.48 34.946 9.57 32.07C11.076 28.456 14.6 25.894 18.75 25.894H22.75C26.9 25.894 30.424 28.456 31.93 32.07C29.02 34.946 25.052 36.75 20.75 36.75ZM20.75 10.75C24.204 10.75 26.75 13.294 26.75 16.75C26.75 20.206 24.204 22.75 20.75 22.75C17.298 22.75 14.75 20.206 14.75 16.75C14.75 13.294 17.298 10.75 20.75 10.75Z"
-                ></path>
-              </svg>
+            <span class="rounded-full mr-6 h-12 w-12 bg-red-gradient p-2">
+              <img :src="getCategoryIcon(exercise)" alt="Icon">
             </span>
-            <span class="text-grey-darkest mr-6">{{ `${object.name}` }}</span>
+            <span class="text-grey-darkest mr-6">{{ `${exercise.name}` }}</span>
             <span class="flex-1"></span>
             <span class="h-10 w-10 rounded-full bg-grey-light flex items-center justify-center">
               <svg
@@ -54,13 +53,105 @@
         </ul>
       </div>
     </div>
+
+    <transition name="fade">
+      <div
+        class="fixed bg-white shadow-lg p-8 pin-b pin-l pin-r ml-8 mr-8 mb-32 rounded-lg md:hidden"
+        v-if="showFilterMenu"
+        v-closable="{
+          exclude: ['button'],
+          handler: 'toggleFilterMenu'
+        }"
+      >
+        <h1 class="text-grey-darkest font-normal text-2xl mb-10">Categories</h1>
+        <ul class="list-reset">
+          <li
+            class="text-grey-darkest pb-6"
+            v-for="category in categories"
+            v-bind:key="category.id"
+          >
+            <input
+              class="mr-2"
+              type="checkbox"
+              :id="category.name"
+              :name="category.name"
+              :value="category.id"
+              v-model="checkedCategories"
+            >
+            {{ category.name }}
+            <span
+              class="bg-grey-lighter rounded-full float-right px-2 py-1"
+            >{{ getNumExercises(category.id) }}</span>
+          </li>
+        </ul>
+      </div>
+    </transition>
+    <div
+      ref="button"
+      @click="toggleFilterMenu"
+      class="cursor-pointer fixed pin-b pin-l w-16 h-16 bg-white shadow-lg rounded-full ml-8 mb-8 flex items-center justify-center md:hidden"
+    >
+      <svg
+        class="fill-current text-grey-darkest"
+        xmlns="http://www.w3.org/2000/svg"
+        width="30"
+        height="30"
+        viewBox="0 0 24 24"
+      >
+        <path d="M7 11H17V13H7zM4 7H20V9H4zM10 15H14V17H10z"></path>
+      </svg>
+    </div>
   </div>
 </template>
 
 <script>
 export default {
+  data() {
+    return {
+      checkedCategories: [],
+      showFilterMenu: false
+    };
+  },
+
+  methods: {
+    toggleFilterMenu() {
+      this.showFilterMenu = !this.showFilterMenu;
+    },
+
+    getCategoryIcon(exercise) {
+      if (exercise.category_id === 1) {
+        return "/images/dumbbell-white.svg";
+      }
+    },
+
+    getNumExercises(id) {
+      const exerc = this.exercises.filter(exercise => {
+        return exercise.category_id === id;
+      });
+
+      return exerc.length;
+    }
+  },
+
+  computed: {
+    filteredExercises() {
+      if (this.checkedCategories.length) {
+        return this.exercises.filter(exercise => {
+          for (const category of this.checkedCategories) {
+            if (exercise.category_id === category) {
+              return true;
+            }
+          }
+          return false;
+        });
+      } else {
+        return this.exercises;
+      }
+    }
+  },
+
   props: {
-    data: Array,
+    exercises: Array,
     heading: String,
     categories: Array
   }

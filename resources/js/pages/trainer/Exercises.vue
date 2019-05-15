@@ -15,7 +15,7 @@
       <exercise-list
         v-if="!loading"
         heading="Exercises"
-        v-bind:data="exercises"
+        v-bind:exercises="exercises"
         v-bind:categories="categories"
       ></exercise-list>
     </transition>
