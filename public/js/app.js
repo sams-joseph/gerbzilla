@@ -1946,9 +1946,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -1971,13 +1968,6 @@ __webpack_require__.r(__webpack_exports__);
     openMenu: function openMenu() {
       this.showMenu = !this.showMenu;
     },
-    handleScroll: function handleScroll(e) {
-      if (window.scrollY > 50) {
-        this.fixed = true;
-      } else {
-        this.fixed = false;
-      }
-    },
     successfulLogin: function successfulLogin() {
       this.showLogin = !this.showLogin;
       this.$router.push("/u/overview");
@@ -1992,12 +1982,6 @@ __webpack_require__.r(__webpack_exports__);
     var role = JSON.parse(localStorage.getItem("role"));
     this.isAdmin = role.name === "admin";
     this.isTrainer = role.name === "admin" || role.name === "trainer";
-  },
-  beforeMount: function beforeMount() {
-    window.addEventListener("scroll", this.handleScroll);
-  },
-  beforeDestroy: function beforeDestroy() {
-    window.removeEventListener("scroll", this.handleScroll);
   }
 });
 
@@ -3851,10 +3835,37 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      user: {}
+      user: {},
+      isActive: false,
+      loading: true
     };
   },
   mounted: function mounted() {
@@ -3862,6 +3873,8 @@ __webpack_require__.r(__webpack_exports__);
 
     this.$http.get("".concat("http://localhost:8000/api", "/trainer/users/").concat(this.$route.params.id)).then(function (res) {
       _this.user = res.data;
+      _this.isActive = res.data.is_active === 1 ? true : false;
+      _this.loading = false;
     })["catch"](function (err) {
       console.log(err);
     });
@@ -4783,8 +4796,7 @@ var render = function() {
     "header",
     {
       staticClass:
-        "w-full px-6 py-2 flex justify-between items-center fixed bg-white transition-all z-50",
-      class: { "py-6": !_vm.fixed, "shadow-lg": _vm.fixed }
+        "w-full px-6 py-2 flex justify-between items-center bg-white transition-all z-50"
     },
     [
       _c(
@@ -5179,7 +5191,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    { staticClass: "w-full h-32 md:h-48 flex justify-center items-end" },
+    { staticClass: "w-full h-16 md:h-24 flex justify-center items-end" },
     [
       _c("nav", { staticClass: "hidden md:block" }, [
         _c("ul", { staticClass: "list-reset mb-px" }, [
@@ -8738,37 +8750,129 @@ var render = function() {
       _vm._v(" "),
       _c("side-navigation"),
       _vm._v(" "),
-      _c(
-        "div",
-        { staticClass: "container mx-auto px-8" },
-        [
-          _c(
-            "tabs",
-            [
-              _c(
-                "tab",
-                { attrs: { name: "Profile", selected: true } },
-                [_c("construction")],
-                1
-              ),
-              _vm._v(" "),
-              _c(
-                "tab",
-                { attrs: { name: "Workouts" } },
-                [_c("construction")],
-                1
-              )
-            ],
-            1
-          )
-        ],
-        1
-      )
+      _vm.loading
+        ? _c("div", { staticClass: "w-full" }, [_vm._m(0)])
+        : _vm._e(),
+      _vm._v(" "),
+      _c("transition", { attrs: { name: "fade" } }, [
+        !_vm.loading
+          ? _c(
+              "div",
+              { staticClass: "container mx-auto px-8" },
+              [
+                _c(
+                  "h1",
+                  {
+                    staticClass: "text-grey-darkest font-normal text-2xl mb-4"
+                  },
+                  [
+                    _vm._v(
+                      _vm._s(_vm.user.first_name + " " + _vm.user.last_name)
+                    )
+                  ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "h4",
+                  {
+                    staticClass:
+                      "text-white font-normal text-xs font-bold mb-12 uppercase inline-block py-1 px-4 bg-red border border-red-dark rounded-full",
+                    class: {
+                      "bg-green": _vm.isActive,
+                      "border-green-dark": _vm.isActive
+                    }
+                  },
+                  [
+                    _vm._v(
+                      _vm._s(_vm.user.is_active === 1 ? "Active" : "Inactive")
+                    )
+                  ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "tabs",
+                  { staticClass: "flex-1" },
+                  [
+                    _c("tab", { attrs: { name: "Workouts", selected: true } }),
+                    _vm._v(" "),
+                    _c("tab", { attrs: { name: "Profile" } }, [
+                      _c(
+                        "div",
+                        {
+                          staticClass:
+                            "rounded-full mb-8 md:mr-4 w-full md:w-auto"
+                        },
+                        [
+                          _c("img", {
+                            staticClass: "w-32 h-32 mx-auto block",
+                            attrs: {
+                              src: "/images/profile-icon.svg",
+                              alt: "Profile"
+                            }
+                          })
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "h1",
+                        {
+                          staticClass:
+                            "text-grey-darkest font-normal text-2xl mb-4 text-center"
+                        },
+                        [
+                          _vm._v(
+                            _vm._s(
+                              _vm.user.first_name + " " + _vm.user.last_name
+                            )
+                          )
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "flex justify-center" }, [
+                        _c(
+                          "h4",
+                          {
+                            staticClass:
+                              "text-white font-normal text-xs font-bold mb-12 uppercase inline-block py-1 px-4 bg-red border border-red-dark rounded-full",
+                            class: {
+                              "bg-green": _vm.isActive,
+                              "border-green-dark": _vm.isActive
+                            }
+                          },
+                          [
+                            _vm._v(
+                              _vm._s(
+                                _vm.user.is_active === 1 ? "Active" : "Inactive"
+                              )
+                            )
+                          ]
+                        )
+                      ])
+                    ])
+                  ],
+                  1
+                )
+              ],
+              1
+            )
+          : _vm._e()
+      ])
     ],
     1
   )
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "flex flex-col items-center" }, [
+      _c("div", { staticClass: "mb-4" }, [
+        _c("img", { attrs: { src: "/images/puff.svg", alt: "Loading" } })
+      ])
+    ])
+  }
+]
 render._withStripped = true
 
 

@@ -1,8 +1,5 @@
 <template>
-  <header
-    class="w-full px-6 py-2 flex justify-between items-center fixed bg-white transition-all z-50"
-    v-bind:class="{ 'py-6': !fixed, 'shadow-lg': fixed }"
-  >
+  <header class="w-full px-6 py-2 flex justify-between items-center bg-white transition-all z-50">
     <transition name="fade">
       <login-form
         v-scroll-lock="showLogin"
@@ -188,13 +185,6 @@ export default {
     openMenu() {
       this.showMenu = !this.showMenu;
     },
-    handleScroll(e) {
-      if (window.scrollY > 50) {
-        this.fixed = true;
-      } else {
-        this.fixed = false;
-      }
-    },
     successfulLogin() {
       this.showLogin = !this.showLogin;
       this.$router.push("/u/overview");
@@ -212,13 +202,6 @@ export default {
 
     this.isAdmin = role.name === "admin";
     this.isTrainer = role.name === "admin" || role.name === "trainer";
-  },
-
-  beforeMount() {
-    window.addEventListener("scroll", this.handleScroll);
-  },
-  beforeDestroy() {
-    window.removeEventListener("scroll", this.handleScroll);
   }
 };
 </script>
