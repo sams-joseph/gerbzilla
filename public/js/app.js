@@ -1946,6 +1946,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -4858,7 +4861,7 @@ var render = function() {
         _vm.showDrawer
           ? _c("div", {
               staticClass:
-                "w-full h-screen bg-grey-translucent absolute pin-t pin-l pin-b",
+                "w-full h-screen bg-grey-translucent absolute pin-t pin-l pin-b z-50",
               on: { click: _vm.openDrawer }
             })
           : _vm._e()
@@ -4870,7 +4873,7 @@ var render = function() {
               "div",
               {
                 staticClass:
-                  "absolute bg-white w-64 h-screen shadow-lg pin-t pin-r pin-b"
+                  "absolute bg-white w-64 h-screen shadow-lg pin-t pin-r pin-b z-50"
               },
               [
                 _c(
@@ -4951,7 +4954,7 @@ var render = function() {
                   }
                 ],
                 staticClass:
-                  "absolute w-full pin-t pin-l h-screen bg-grey-gradient flex flex-col justify-center items-center"
+                  "absolute w-full pin-t pin-l h-screen bg-grey-gradient flex flex-col justify-center items-center z-50"
               },
               [
                 _c(
@@ -6136,7 +6139,7 @@ var render = function() {
         "div",
         {
           staticClass:
-            "absolute pin-t pin-l bg-grey-lightest h-screen w-full flex items-start justify-center pt-32"
+            "absolute pin-t pin-l bg-grey-lightest h-screen w-full flex items-start justify-center pt-32 z-50"
         },
         [
           _c(

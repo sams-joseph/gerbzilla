@@ -30,11 +30,14 @@
       <div
         v-if="showDrawer"
         @click="openDrawer"
-        class="w-full h-screen bg-grey-translucent absolute pin-t pin-l pin-b"
+        class="w-full h-screen bg-grey-translucent absolute pin-t pin-l pin-b z-50"
       ></div>
     </transition>
     <transition name="slide">
-      <div v-if="showDrawer" class="absolute bg-white w-64 h-screen shadow-lg pin-t pin-r pin-b">
+      <div
+        v-if="showDrawer"
+        class="absolute bg-white w-64 h-screen shadow-lg pin-t pin-r pin-b z-50"
+      >
         <div
           @click="openDrawer"
           class="absolute pin-r pin-t mr-4 mt-4 h-8 w-8 cursor-pointer"
@@ -68,7 +71,7 @@
       <div
         v-scroll-lock="showMenu"
         v-if="showMenu"
-        class="absolute w-full pin-t pin-l h-screen bg-grey-gradient flex flex-col justify-center items-center"
+        class="absolute w-full pin-t pin-l h-screen bg-grey-gradient flex flex-col justify-center items-center z-50"
       >
         <router-link
           exact-active-class="popover-active-exact"
