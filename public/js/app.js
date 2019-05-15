@@ -6291,7 +6291,7 @@ var render = function() {
         {
           ref: "button",
           staticClass:
-            "cursor-pointer fixed pin-b pin-l w-16 h-16 bg-white shadow-lg rounded-full ml-8 mb-8 flex items-center justify-center md:hidden",
+            "cursor-pointer fixed pin-b pin-l w-12 h-12 bg-white shadow-lg rounded-full ml-8 mb-8 flex items-center justify-center md:hidden",
           on: { click: _vm.toggleFilterMenu }
         },
         [

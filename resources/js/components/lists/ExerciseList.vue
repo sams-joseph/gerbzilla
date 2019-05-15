@@ -89,7 +89,7 @@
     <div
       ref="button"
       @click="toggleFilterMenu"
-      class="cursor-pointer fixed pin-b pin-l w-16 h-16 bg-white shadow-lg rounded-full ml-8 mb-8 flex items-center justify-center md:hidden"
+      class="cursor-pointer fixed pin-b pin-l w-12 h-12 bg-white shadow-lg rounded-full ml-8 mb-8 flex items-center justify-center md:hidden"
     >
       <svg
         class="fill-current text-grey-darkest"
