@@ -93,7 +93,9 @@
       </svg>
     </div>
     <section class="w-full py-12">
-      <h2 class="text-3xl text-red font-thin text-center">Everything you need to succeed.</h2>
+      <h2
+        class="text-3xl text-red font-thin text-center max-w-sm mx-auto"
+      >Everything you need to succeed.</h2>
     </section>
     <section class="w-full pb-20 pt-6">
       <div class="container flex mx-auto flex-wrap-reverse items-center">

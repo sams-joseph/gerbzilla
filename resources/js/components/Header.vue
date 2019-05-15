@@ -131,7 +131,7 @@
         <div class="mr-2">
           <img src="/images/Logo.png" alt="Gerbzilla Powerlifting">
         </div>
-        <div class="flex flex-col">
+        <div class="flex-col flex">
           <span class="text-lg text-red font-bold uppercase">Gerbzilla</span>
           <span class="text-sm text-grey font-thin uppercase">Powerlifting</span>
         </div>
