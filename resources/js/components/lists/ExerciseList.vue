@@ -28,8 +28,8 @@
             v-for="exercise in filteredExercises"
             v-bind:key="exercise.id"
           >
-            <span class="rounded-full mr-6 h-12 w-12 bg-red-gradient p-2">
-              <img :src="getCategoryIcon(exercise)" alt="Icon">
+            <span class="rounded-full mr-6 h-12 w-12">
+              <img width="100" height="100" :src="getCategoryIcon(exercise)" alt="Icon">
             </span>
             <span class="text-grey-darkest mr-6">{{ `${exercise.name}` }}</span>
             <span class="flex-1"></span>
@@ -120,7 +120,11 @@ export default {
 
     getCategoryIcon(exercise) {
       if (exercise.category_id === 1) {
-        return "/images/dumbbell-white.svg";
+        return "/images/weight-lifting-icon.svg";
+      } else if (exercise.category_id === 2) {
+        return "/images/circuit-icon.svg";
+      } else if (exercise.category_id === 3) {
+        return "/images/cardio-icon.svg";
       }
     },
 

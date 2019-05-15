@@ -2737,7 +2737,11 @@ __webpack_require__.r(__webpack_exports__);
     },
     getCategoryIcon: function getCategoryIcon(exercise) {
       if (exercise.category_id === 1) {
-        return "/images/dumbbell-white.svg";
+        return "/images/weight-lifting-icon.svg";
+      } else if (exercise.category_id === 2) {
+        return "/images/circuit-icon.svg";
+      } else if (exercise.category_id === 3) {
+        return "/images/cardio-icon.svg";
       }
     },
     getNumExercises: function getNumExercises(id) {
@@ -6113,21 +6117,16 @@ var render = function() {
                     "w-full py-4 md:hover:bg-grey-lighter rounded-lg px-4 flex items-center shadow-lg md:shadow-none mb-4 md:mb-0"
                 },
                 [
-                  _c(
-                    "span",
-                    {
-                      staticClass:
-                        "rounded-full mr-6 h-12 w-12 bg-red-gradient p-2"
-                    },
-                    [
-                      _c("img", {
-                        attrs: {
-                          src: _vm.getCategoryIcon(exercise),
-                          alt: "Icon"
-                        }
-                      })
-                    ]
-                  ),
+                  _c("span", { staticClass: "rounded-full mr-6 h-12 w-12" }, [
+                    _c("img", {
+                      attrs: {
+                        width: "100",
+                        height: "100",
+                        src: _vm.getCategoryIcon(exercise),
+                        alt: "Icon"
+                      }
+                    })
+                  ]),
                   _vm._v(" "),
                   _c("span", { staticClass: "text-grey-darkest mr-6" }, [
                     _vm._v(_vm._s("" + exercise.name))
