@@ -2,7 +2,7 @@
   <div
     v-if="show"
     v-scroll-lock="show"
-    class="fixed pin-t pin-l pin-r pin-b z-50 flex justify-center items-center px-8 bg-grey-translucent"
+    class="fixed pin-t pin-l pin-r pin-b z-50 flex justify-center items-center px-2 bg-grey-translucent"
   >
     <div class="relative max-w-md w-full bg-white p-8 shadow-lg rounded-lg">
       <h1 class="text-grey-darkest font-normal text-2xl mb-10">Create User</h1>

@@ -38,6 +38,7 @@ Route::middleware('auth:api', 'roles:admin|trainer')
     ->prefix('trainer')
     ->group(function () {
         Route::get('/users', 'UserController@index');
+        Route::get('/users/{user}', 'UserController@show');
         Route::post('/users', 'UserController@store');
 
         Route::get('/exercises', 'ExerciseController@index');

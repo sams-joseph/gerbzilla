@@ -62,7 +62,7 @@
               class="text-grey-darkest block"
               to="/"
               exact
-            >Home</router-link>
+            ></router-link>
           </li>
         </ul>
       </div>
@@ -126,15 +126,17 @@
         </div>
       </div>
     </transition>
-    <div class="flex items-center">
-      <div class="mr-2">
-        <img src="/images/Logo.png" alt="Gerbzilla Powerlifting">
+    <router-link exact-active-class="none" active-class="none" to="/">
+      <div class="flex items-center">
+        <div class="mr-2">
+          <img src="/images/Logo.png" alt="Gerbzilla Powerlifting">
+        </div>
+        <div class="flex flex-col">
+          <span class="text-lg text-red font-bold uppercase">Gerbzilla</span>
+          <span class="text-sm text-grey font-thin uppercase">Powerlifting</span>
+        </div>
       </div>
-      <div class="flex flex-col">
-        <span class="text-lg text-red font-bold uppercase">Gerbzilla</span>
-        <span class="text-sm text-grey font-thin uppercase">Powerlifting</span>
-      </div>
-    </div>
+    </router-link>
     <div class="flex items-center">
       <slot></slot>
       <nav v-if="!authorized">

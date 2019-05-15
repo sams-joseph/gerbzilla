@@ -2,7 +2,7 @@
   <div
     v-if="show"
     v-scroll-lock="show"
-    class="fixed pin-t pin-l pin-r pin-b z-50 flex justify-center items-center px-8 bg-grey-translucent"
+    class="fixed pin-t pin-l pin-r pin-b z-50 flex justify-center items-center px-2 bg-grey-translucent"
   >
     <div class="mx-8 w-full bg-white relative max-w-md p-8 rounded-lg shadow-lg">
       <h1 class="text-grey-darkest font-normal text-2xl mb-10">Create Exercise</h1>

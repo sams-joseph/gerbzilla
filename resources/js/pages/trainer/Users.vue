@@ -12,7 +12,7 @@
       </div>
     </div>
     <transition name="fade">
-      <user-list v-if="!loading" heading="Users" v-bind:data="users"></user-list>
+      <user-list v-if="!loading" heading="Users" v-bind:users="users"></user-list>
     </transition>
     <transition name="fade">
       <create-user-form

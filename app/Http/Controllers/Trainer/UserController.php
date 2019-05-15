@@ -13,9 +13,19 @@ class UserController extends Controller
 {
     public function index(Request $request)
     {
-        $users = User::all()->where('trainer_id', $request->user()->id);
+        $users = User::where('trainer_id', $request->user()->id)->get();
 
         return response()->json($users);
+    }
+
+    public function show(Request $request, User $user)
+    {
+        $trainer_id = $request->user()->id;
+        if ($user->trainer_id !== $trainer_id) {
+            return response()->json(['message' => 'You are not authorized to view this record.'], 401);
+        }
+
+        return response()->json($user);
     }
 
     public function store(Request $request)
