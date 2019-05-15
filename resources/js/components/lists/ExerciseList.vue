@@ -1,5 +1,5 @@
 <template>
-  <div class="container mx-auto mb-20 flex px-8">
+  <div class="container mx-auto mb-20 flex px-0 md:px-8">
     <aside class="w-48 hidden md:block">
       <h1 class="text-grey-darkest font-normal text-2xl mb-10">Categories</h1>
       <ul class="list-reset">

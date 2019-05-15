@@ -6015,7 +6015,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    { staticClass: "container mx-auto mb-20 flex px-8" },
+    { staticClass: "container mx-auto mb-20 flex px-0 md:px-8" },
     [
       _c("aside", { staticClass: "w-48 hidden md:block" }, [
         _c(
