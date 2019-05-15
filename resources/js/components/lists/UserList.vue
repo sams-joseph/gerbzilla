@@ -34,7 +34,7 @@
         <h1 class="text-grey-darkest font-normal text-2xl mb-10 px-4">{{ heading }}</h1>
         <ul class="list-reset px-4 md:px-0">
           <li
-            class="w-full py-4 md:hover:bg-grey-lighter rounded-lg px-4 flex items-center shadow-lg md:shadow-none mb-4 md:mb-0"
+            class="w-full py-4 md:hover:bg-grey-lighter rounded-lg px-4 flex items-center shadow-lg md:shadow-none mb-4 md:mb-0 bg-white"
             v-for="user in filteredUsers"
             v-bind:key="user.id"
           >
