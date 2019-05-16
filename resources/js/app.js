@@ -17,6 +17,7 @@ import UserList from "./components/lists/UserList";
 import ExerciseList from "./components/lists/ExerciseList";
 import SideNavigation from "./components/SideNavigation";
 import PageFooter from "./components/PageFooter";
+import Block from './components/Block';
 
 import Construction from './components/Construction';
 
@@ -40,6 +41,7 @@ Vue.component("user-list", UserList);
 Vue.component("exercise-list", ExerciseList);
 Vue.component("side-navigation", SideNavigation);
 Vue.component("page-footer", PageFooter);
+Vue.component("block", Block);
 
 Vue.component("construction", Construction);
 

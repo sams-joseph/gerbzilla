@@ -11,17 +11,27 @@
       </div>
     </div>
     <transition name="fade">
-      <div v-if="!loading" class="container mx-auto px-8">
+      <div v-if="!loading" class="container mx-auto px-0">
         <h1
-          class="text-grey-darkest font-normal text-2xl mb-4"
+          class="text-grey-darkest font-normal text-2xl mb-4 px-8"
         >{{ `${user.first_name} ${user.last_name}` }}</h1>
         <h4
-          class="text-white font-normal text-xs font-bold mb-12 uppercase inline-block py-1 px-4 bg-red border border-red-dark rounded-full"
+          class="text-white font-normal text-xs font-bold mb-12 uppercase inline-block py-1 px-4 ml-8 bg-red border border-red-dark rounded-full"
           :class="{ 'bg-green': isActive, 'border-green-dark': isActive }"
         >{{ user.is_active === 1 ? 'Active' : 'Inactive' }}</h4>
         <tabs class="flex-1">
           <tab name="Workouts" :selected="true">
-            <h1 class="text-grey-darkest font-normal text-2xl mb-4">Training Blocks</h1>
+            <h1 class="text-grey-darkest font-normal text-2xl mb-8 px-8">
+              Training Blocks
+              <router-link
+                to="/"
+                active-class="none"
+                class="float-right uppercase text-grey-dark text-sm py-2 px-4 rounded hover:bg-grey-lighter hover:text-red"
+              >Add Block</router-link>
+            </h1>
+            <div class="flex w-full flex-wrap px-6">
+              <block v-for="block in blocks" v-bind:key="block.id" v-bind:block="block"></block>
+            </div>
           </tab>
           <tab name="Profile">
             <div class="rounded-full mb-8 md:mr-4 w-full md:w-auto">
@@ -48,6 +58,7 @@ export default {
   data() {
     return {
       user: {},
+      blocks: [],
       isActive: false,
       loading: true
     };
@@ -55,12 +66,24 @@ export default {
 
   mounted() {
     this.$http
-      .get(`${process.env.MIX_BASE_URL}/trainer/users/${this.$route.params.id}`)
-      .then(res => {
-        this.user = res.data;
-        this.isActive = res.data.is_active === 1 ? true : false;
-        this.loading = false;
-      })
+      .all([
+        this.$http.get(
+          `${process.env.MIX_BASE_URL}/trainer/users/${this.$route.params.id}`
+        ),
+        this.$http.get(
+          `${process.env.MIX_BASE_URL}/trainer/users/${
+            this.$route.params.id
+          }/blocks`
+        )
+      ])
+      .then(
+        this.$http.spread((user, blocks) => {
+          this.user = user.data;
+          this.isActive = user.data.is_active === 1 ? true : false;
+          this.blocks = blocks.data;
+          this.loading = false;
+        })
+      )
       .catch(err => {
         console.log(err);
       });

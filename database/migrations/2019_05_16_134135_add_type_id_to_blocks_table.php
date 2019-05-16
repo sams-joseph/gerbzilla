@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateBodypartWorkoutTable extends Migration
+class AddTypeIdToBlocksTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,8 @@ class CreateBodypartWorkoutTable extends Migration
      */
     public function up()
     {
-        Schema::create('bodypart_workout', function (Blueprint $table) {
-            $table->increments('id');
-            $table->unsignedInteger('bodypart_id');
-            $table->unsignedInteger('workout_id');
-            $table->timestamps();
+        Schema::table('blocks', function (Blueprint $table) {
+            $table->unsignedInteger('type_id')->after('user_id');
         });
     }
 
@@ -28,6 +25,8 @@ class CreateBodypartWorkoutTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('bodypart_workout');
+        Schema::table('blocks', function (Blueprint $table) {
+            $table->dropColumn('type_id');
+        });
     }
 }

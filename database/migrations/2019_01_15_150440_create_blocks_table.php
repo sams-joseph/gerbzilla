@@ -18,6 +18,7 @@ class CreateBlocksTable extends Migration
             $table->string('name');
             $table->date('start_date');
             $table->unsignedInteger('user_id');
+            $table->unsignedInteger('type_id');
             $table->timestamps();
         });
     }

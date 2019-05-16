@@ -1,7 +1,7 @@
 <template>
   <div class="min-h-500">
     <div class="w-full">
-      <ul class="list-reset border-b">
+      <ul class="list-reset border-b mx-8">
         <li
           v-for="tab in tabs"
           v-bind:key="tab.name"

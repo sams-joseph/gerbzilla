@@ -45,4 +45,6 @@ Route::middleware('auth:api', 'roles:admin|trainer')
         Route::post('/exercises', 'ExerciseController@store');
 
         Route::get('/categories', 'CategoryController@index');
+
+        Route::get('/users/{user}/blocks', 'BlockController@index');
     });

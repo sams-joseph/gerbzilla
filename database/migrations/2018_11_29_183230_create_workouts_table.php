@@ -17,7 +17,7 @@ class CreateWorkoutsTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->unsignedInteger('user_id');
-            $table->unsignedInteger('day_id');
+            $table->unsignedInteger('block_id');
             $table->timestamps();
         });
     }
