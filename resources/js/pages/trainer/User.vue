@@ -8,7 +8,7 @@
       @cancel-block-create="toggleAddBlockForm"
       @create-block-success="refreshData"
     ></create-block-form>
-    <div v-if="loading" class="w-full">
+    <div v-if="loading" class="w-full pt-20">
       <div class="flex flex-col items-center">
         <div class="mb-4">
           <img src="/images/puff.svg" alt="Loading">

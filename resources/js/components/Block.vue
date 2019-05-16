@@ -21,7 +21,7 @@
           <h4 class="text-white text-base font-light opacity-75">{{ block.start_date }}</h4>
         </div>
       </div>
-      <div class="flex p-6">
+      <div class="flex py-4 px-8">
         <span
           class="text-center block w-full md:w-auto lg:w-full py-1 px-2 rounded-full text-xs text-grey-darkest font-thin border border-grey bg-grey-light uppercase"
         >{{ block.type.name }}</span>

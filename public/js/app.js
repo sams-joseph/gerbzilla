@@ -2733,6 +2733,107 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/forms/CreateWorkoutForm.vue?vue&type=script&lang=js&":
+/*!**********************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/forms/CreateWorkoutForm.vue?vue&type=script&lang=js& ***!
+  \**********************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      name: "",
+      date: "",
+      loading: false
+    };
+  },
+  props: {
+    show: Boolean
+  },
+  methods: {
+    closeWindow: function closeWindow() {
+      this.$emit("cancel-workout-create");
+    },
+    createWorkout: function createWorkout(e) {
+      var _this = this;
+
+      e.preventDefault();
+      this.loading = true;
+      var _this$$route$params = this.$route.params,
+          user_id = _this$$route$params.user_id,
+          block_id = _this$$route$params.block_id;
+      this.$http.post("".concat("http://localhost:8000/api", "/trainer/users/").concat(user_id, "/blocks/").concat(block_id, "/workouts"), {
+        name: this.name,
+        date: this.date
+      }).then(function (res) {
+        _this.name = "";
+        _this.date = "";
+        _this.loading = false;
+
+        _this.$emit("create-workout-success");
+
+        _this.$emit("cancel-workout-create");
+      })["catch"](function (err) {
+        _this.$emit("create-workout-error", err);
+
+        _this.$emit("cancel-workout-create");
+      });
+    }
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/forms/LoginForm.vue?vue&type=script&lang=js&":
 /*!**************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/forms/LoginForm.vue?vue&type=script&lang=js& ***!
@@ -3949,7 +4050,155 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-/* harmony default export */ __webpack_exports__["default"] = ({});
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      block: {},
+      type: {},
+      workouts: [],
+      showModal: false,
+      loading: true
+    };
+  },
+  methods: {
+    refreshData: function refreshData() {
+      var _this = this;
+
+      var _this$$route$params = this.$route.params,
+          user_id = _this$$route$params.user_id,
+          block_id = _this$$route$params.block_id;
+      this.loading = true;
+      this.$http.get("".concat("http://localhost:8000/api", "/trainer/users/").concat(user_id, "/blocks/").concat(block_id)).then(function (res) {
+        _this.workouts = res.data.workouts;
+        _this.loading = false;
+      })["catch"](function (err) {
+        console.log(err);
+      });
+    },
+    toggleModal: function toggleModal() {
+      this.showModal = !this.showModal;
+    },
+    getDay: function getDay(date) {
+      var d = new Date(date);
+      return d.getDay();
+    }
+  },
+  mounted: function mounted() {
+    var _this2 = this;
+
+    var _this$$route$params2 = this.$route.params,
+        user_id = _this$$route$params2.user_id,
+        block_id = _this$$route$params2.block_id;
+    this.loading = true;
+    this.$http.get("".concat("http://localhost:8000/api", "/trainer/users/").concat(user_id, "/blocks/").concat(block_id)).then(function (res) {
+      _this2.block = res.data.block;
+      _this2.type = res.data.type;
+      _this2.workouts = res.data.workouts;
+      _this2.loading = false;
+    })["catch"](function (err) {
+      console.log(err);
+    });
+  }
+});
 
 /***/ }),
 
@@ -5108,7 +5357,7 @@ var render = function() {
             ]
           ),
           _vm._v(" "),
-          _c("div", { staticClass: "flex p-6" }, [
+          _c("div", { staticClass: "flex py-4 px-8" }, [
             _c(
               "span",
               {
@@ -6775,6 +7024,170 @@ var render = function() {
                     attrs: { type: "submit" }
                   },
                   [_vm._v("Create User")]
+                ),
+                _vm._v(" "),
+                _c(
+                  "button",
+                  {
+                    staticClass:
+                      "text-grey-darker font-normal text-sm py-2 px-6 rounded-full focus:outline-none uppercase",
+                    attrs: { type: "button" },
+                    on: { click: _vm.closeWindow }
+                  },
+                  [_vm._v("Cancel")]
+                )
+              ])
+            ]
+          )
+        ]
+      )
+    : _vm._e()
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/forms/CreateWorkoutForm.vue?vue&type=template&id=346ee52c&":
+/*!**************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/forms/CreateWorkoutForm.vue?vue&type=template&id=346ee52c& ***!
+  \**************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _vm.show
+    ? _c(
+        "div",
+        {
+          directives: [
+            {
+              name: "scroll-lock",
+              rawName: "v-scroll-lock",
+              value: _vm.show,
+              expression: "show"
+            }
+          ],
+          staticClass:
+            "fixed pin-t pin-l pin-r pin-b z-50 flex justify-center items-center px-2 bg-grey-translucent"
+        },
+        [
+          _c(
+            "div",
+            {
+              staticClass:
+                "relative max-w-md w-full bg-white p-8 shadow-lg rounded-lg"
+            },
+            [
+              _c(
+                "h1",
+                { staticClass: "text-grey-darkest font-normal text-2xl mb-10" },
+                [_vm._v("Create Workout")]
+              ),
+              _vm._v(" "),
+              _vm.loading
+                ? _c(
+                    "div",
+                    {
+                      staticClass:
+                        "absolute pin-t pin-l pin-b w-full bg-white-translucent flex justify-center items-center"
+                    },
+                    [
+                      _c("img", {
+                        attrs: { src: "/images/puff.svg", alt: "Loading" }
+                      })
+                    ]
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              _c("form", { on: { submit: _vm.createWorkout } }, [
+                _c("div", { staticClass: "mb-6" }, [
+                  _c(
+                    "label",
+                    {
+                      staticClass:
+                        "block text-grey-darker text-sm font-normal mb-4",
+                      attrs: { for: "name" }
+                    },
+                    [_vm._v("Name")]
+                  ),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.name,
+                        expression: "name"
+                      }
+                    ],
+                    staticClass:
+                      "appearance-none border-b w-full py-2 text-grey-darker leading-tight focus:outline-none",
+                    attrs: { id: "name", type: "text" },
+                    domProps: { value: _vm.name },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.name = $event.target.value
+                      }
+                    }
+                  })
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "mb-6" }, [
+                  _c(
+                    "label",
+                    {
+                      staticClass:
+                        "block text-grey-darker text-sm font-normal mb-4",
+                      attrs: { for: "date" }
+                    },
+                    [_vm._v("Date")]
+                  ),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.date,
+                        expression: "date"
+                      }
+                    ],
+                    staticClass:
+                      "appearance-none border-b w-full py-2 text-grey-darker leading-tight focus:outline-none",
+                    attrs: { id: "date", type: "date" },
+                    domProps: { value: _vm.date },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.date = $event.target.value
+                      }
+                    }
+                  })
+                ]),
+                _vm._v(" "),
+                _c(
+                  "button",
+                  {
+                    staticClass:
+                      "mr-4 bg-blue hover:bg-blue-dark text-white font-normal text-sm py-2 px-6 rounded-full focus:outline-none uppercase",
+                    attrs: { type: "submit" }
+                  },
+                  [_vm._v("Create Workout")]
                 ),
                 _vm._v(" "),
                 _c(
@@ -9318,7 +9731,238 @@ var render = function() {
       _vm._v(" "),
       _c("side-navigation"),
       _vm._v(" "),
-      _vm._m(0)
+      _vm.loading
+        ? _c("div", { staticClass: "w-full pt-20" }, [_vm._m(0)])
+        : _vm._e(),
+      _vm._v(" "),
+      _c(
+        "transition",
+        { attrs: { name: "fade" } },
+        [
+          _c("create-workout-form", {
+            attrs: { show: _vm.showModal },
+            on: {
+              "cancel-workout-create": _vm.toggleModal,
+              "create-workout-success": _vm.refreshData
+            }
+          })
+        ],
+        1
+      ),
+      _vm._v(" "),
+      _c("transition", { attrs: { name: "fade" } }, [
+        _c("section", [
+          !_vm.loading
+            ? _c(
+                "div",
+                {
+                  staticClass: "w-full py-20",
+                  class: {
+                    "bg-red-gradient": _vm.type.name === "strength",
+                    "bg-blue-gradient": _vm.type.name === "hypertrophy",
+                    "bg-green-gradient": _vm.type.name === "fitness"
+                  }
+                },
+                [
+                  _c("div", { staticClass: "container mx-auto px-0" }, [
+                    _c(
+                      "h1",
+                      {
+                        staticClass: "text-white font-bold text-2xl mb-2 px-8"
+                      },
+                      [_vm._v(_vm._s(_vm.block.name))]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "h4",
+                      {
+                        staticClass:
+                          "text-white font-normal text-base opacity-75 px-8 mb-4"
+                      },
+                      [_vm._v(_vm._s(_vm.block.start_date))]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "span",
+                      {
+                        staticClass:
+                          "text-center inline-block w-auto mx-8 py-1 px-4 rounded-full text-xs text-white font-thin uppercase description-pill"
+                      },
+                      [_vm._v(_vm._s(_vm.type.name))]
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    {
+                      staticClass:
+                        "w-12 h-12 bg-red shadow-lg rounded-full fixed pin-r pin-b mr-8 mb-8 flex items-center justify-center cursor-pointer",
+                      on: { click: _vm.toggleModal }
+                    },
+                    [
+                      _c(
+                        "svg",
+                        {
+                          staticClass: "fill-current text-white",
+                          attrs: {
+                            xmlns: "http://www.w3.org/2000/svg",
+                            width: "24",
+                            height: "24",
+                            viewBox: "0 0 24 24"
+                          }
+                        },
+                        [
+                          _c("path", {
+                            attrs: {
+                              d:
+                                "M11 3L11 11 3 11 3 13 11 13 11 21 13 21 13 13 21 13 21 11 13 11 13 3z"
+                            }
+                          })
+                        ]
+                      )
+                    ]
+                  )
+                ]
+              )
+            : _vm._e(),
+          _vm._v(" "),
+          _c("div", { staticClass: "container mx-auto px-4 py-20" }, [
+            _c(
+              "h1",
+              {
+                staticClass: "text-grey-darkest font-normal text-2xl mb-10 px-4"
+              },
+              [_vm._v("Workouts")]
+            ),
+            _vm._v(" "),
+            _c(
+              "ul",
+              { staticClass: "list-reset" },
+              _vm._l(_vm.workouts, function(workout) {
+                return _c("li", { key: workout.id }, [
+                  _c(
+                    "div",
+                    {
+                      staticClass:
+                        "w-full bg-white shadow-lg md:shadow-none md:hover:bg-grey-lighter rounded-lg p-4 flex justify-between"
+                    },
+                    [
+                      _c("div", { staticClass: "flex items-center" }, [
+                        _c(
+                          "div",
+                          {
+                            staticClass:
+                              "w-12 h-12 rounded-full border border-red mr-4 flex items-center justify-center"
+                          },
+                          [
+                            _c(
+                              "span",
+                              { staticClass: "text-3xl text-red font-black" },
+                              [_vm._v(_vm._s(_vm.getDay(workout.date)))]
+                            )
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c("div", [
+                          _c(
+                            "h2",
+                            {
+                              staticClass:
+                                "text-lg text-grey-darkest font-bold mb-1"
+                            },
+                            [_vm._v(_vm._s(workout.name))]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "h3",
+                            { staticClass: "text-base text-blue font-medium" },
+                            [_vm._v(_vm._s(workout.date))]
+                          )
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "flex items-center" }, [
+                        _c(
+                          "div",
+                          {
+                            staticClass: "ml-4 bg-grey-lighter p-2 rounded-full"
+                          },
+                          [
+                            _c(
+                              "svg",
+                              {
+                                staticClass: "fill-current text-grey-darker",
+                                attrs: {
+                                  xmlns: "http://www.w3.org/2000/svg",
+                                  width: "24",
+                                  height: "24",
+                                  viewBox: "0 0 24 24"
+                                }
+                              },
+                              [
+                                _c("path", {
+                                  attrs: {
+                                    d:
+                                      "M4,22h12c1.104,0,2-0.896,2-2V8c0-1.104-0.896-2-2-2H4C2.896,6,2,6.896,2,8v12C2,21.104,2.896,22,4,22z M6,13h3v-3h2v3h3v2 h-3v3H9v-3H6V13z"
+                                  }
+                                }),
+                                _vm._v(" "),
+                                _c("path", {
+                                  attrs: {
+                                    d:
+                                      "M20,2H8v2h12v12h2V4C22,2.897,21.103,2,20,2z"
+                                  }
+                                })
+                              ]
+                            )
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          {
+                            staticClass: "ml-4 bg-grey-lighter p-2 rounded-full"
+                          },
+                          [
+                            _c(
+                              "svg",
+                              {
+                                staticClass: "fill-current text-grey-darker",
+                                attrs: {
+                                  xmlns: "http://www.w3.org/2000/svg",
+                                  width: "24",
+                                  height: "24",
+                                  viewBox: "0 0 24 24"
+                                }
+                              },
+                              [
+                                _c("path", {
+                                  attrs: {
+                                    transform: "rotate(45.001 16.357 4.656)",
+                                    d: "M14.235 3.039H18.478V6.273H14.235z"
+                                  }
+                                }),
+                                _vm._v(" "),
+                                _c("path", {
+                                  attrs: {
+                                    d:
+                                      "M4 14L4 17 7 17 15.299 8.713 12.299 5.713zM4 20H20V22H4z"
+                                  }
+                                })
+                              ]
+                            )
+                          ]
+                        )
+                      ])
+                    ]
+                  )
+                ])
+              }),
+              0
+            )
+          ])
+        ])
+      ])
     ],
     1
   )
@@ -9328,14 +9972,10 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "container mx-auto px-0" }, [
-      _c(
-        "h1",
-        {
-          staticClass: "text-grey-darkest font-normal text-2xl mb-4 px-8 pt-20"
-        },
-        [_vm._v("Block")]
-      )
+    return _c("div", { staticClass: "pl-6 flex flex-col items-center" }, [
+      _c("div", { staticClass: "mb-4" }, [
+        _c("img", { attrs: { src: "/images/puff.svg", alt: "Loading" } })
+      ])
     ])
   }
 ]
@@ -9490,7 +10130,7 @@ var render = function() {
       }),
       _vm._v(" "),
       _vm.loading
-        ? _c("div", { staticClass: "w-full" }, [_vm._m(0)])
+        ? _c("div", { staticClass: "w-full pt-20" }, [_vm._m(0)])
         : _vm._e(),
       _vm._v(" "),
       _c("transition", { attrs: { name: "fade" } }, [
@@ -24608,14 +25248,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_forms_CreateUserForm__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./components/forms/CreateUserForm */ "./resources/js/components/forms/CreateUserForm.vue");
 /* harmony import */ var _components_forms_CreateExerciseForm__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./components/forms/CreateExerciseForm */ "./resources/js/components/forms/CreateExerciseForm.vue");
 /* harmony import */ var _components_forms_CreateBlockForm__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./components/forms/CreateBlockForm */ "./resources/js/components/forms/CreateBlockForm.vue");
-/* harmony import */ var _components_Tabs__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./components/Tabs */ "./resources/js/components/Tabs.vue");
-/* harmony import */ var _components_Tab__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./components/Tab */ "./resources/js/components/Tab.vue");
-/* harmony import */ var _components_lists_UserList__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./components/lists/UserList */ "./resources/js/components/lists/UserList.vue");
-/* harmony import */ var _components_lists_ExerciseList__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./components/lists/ExerciseList */ "./resources/js/components/lists/ExerciseList.vue");
-/* harmony import */ var _components_SideNavigation__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./components/SideNavigation */ "./resources/js/components/SideNavigation.vue");
-/* harmony import */ var _components_PageFooter__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./components/PageFooter */ "./resources/js/components/PageFooter.vue");
-/* harmony import */ var _components_Block__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./components/Block */ "./resources/js/components/Block.vue");
-/* harmony import */ var _components_Construction__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./components/Construction */ "./resources/js/components/Construction.vue");
+/* harmony import */ var _components_forms_CreateWorkoutForm__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./components/forms/CreateWorkoutForm */ "./resources/js/components/forms/CreateWorkoutForm.vue");
+/* harmony import */ var _components_Tabs__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./components/Tabs */ "./resources/js/components/Tabs.vue");
+/* harmony import */ var _components_Tab__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./components/Tab */ "./resources/js/components/Tab.vue");
+/* harmony import */ var _components_lists_UserList__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./components/lists/UserList */ "./resources/js/components/lists/UserList.vue");
+/* harmony import */ var _components_lists_ExerciseList__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./components/lists/ExerciseList */ "./resources/js/components/lists/ExerciseList.vue");
+/* harmony import */ var _components_SideNavigation__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./components/SideNavigation */ "./resources/js/components/SideNavigation.vue");
+/* harmony import */ var _components_PageFooter__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./components/PageFooter */ "./resources/js/components/PageFooter.vue");
+/* harmony import */ var _components_Block__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./components/Block */ "./resources/js/components/Block.vue");
+/* harmony import */ var _components_Construction__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./components/Construction */ "./resources/js/components/Construction.vue");
+
 
 
 
@@ -24649,14 +25291,15 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.component("sub-navigation", _componen
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.component("create-user-form", _components_forms_CreateUserForm__WEBPACK_IMPORTED_MODULE_10__["default"]);
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.component("create-exercise-form", _components_forms_CreateExerciseForm__WEBPACK_IMPORTED_MODULE_11__["default"]);
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.component("create-block-form", _components_forms_CreateBlockForm__WEBPACK_IMPORTED_MODULE_12__["default"]);
-vue__WEBPACK_IMPORTED_MODULE_0___default.a.component("tabs", _components_Tabs__WEBPACK_IMPORTED_MODULE_13__["default"]);
-vue__WEBPACK_IMPORTED_MODULE_0___default.a.component("tab", _components_Tab__WEBPACK_IMPORTED_MODULE_14__["default"]);
-vue__WEBPACK_IMPORTED_MODULE_0___default.a.component("user-list", _components_lists_UserList__WEBPACK_IMPORTED_MODULE_15__["default"]);
-vue__WEBPACK_IMPORTED_MODULE_0___default.a.component("exercise-list", _components_lists_ExerciseList__WEBPACK_IMPORTED_MODULE_16__["default"]);
-vue__WEBPACK_IMPORTED_MODULE_0___default.a.component("side-navigation", _components_SideNavigation__WEBPACK_IMPORTED_MODULE_17__["default"]);
-vue__WEBPACK_IMPORTED_MODULE_0___default.a.component("page-footer", _components_PageFooter__WEBPACK_IMPORTED_MODULE_18__["default"]);
-vue__WEBPACK_IMPORTED_MODULE_0___default.a.component("block", _components_Block__WEBPACK_IMPORTED_MODULE_19__["default"]);
-vue__WEBPACK_IMPORTED_MODULE_0___default.a.component("construction", _components_Construction__WEBPACK_IMPORTED_MODULE_20__["default"]);
+vue__WEBPACK_IMPORTED_MODULE_0___default.a.component("create-workout-form", _components_forms_CreateWorkoutForm__WEBPACK_IMPORTED_MODULE_13__["default"]);
+vue__WEBPACK_IMPORTED_MODULE_0___default.a.component("tabs", _components_Tabs__WEBPACK_IMPORTED_MODULE_14__["default"]);
+vue__WEBPACK_IMPORTED_MODULE_0___default.a.component("tab", _components_Tab__WEBPACK_IMPORTED_MODULE_15__["default"]);
+vue__WEBPACK_IMPORTED_MODULE_0___default.a.component("user-list", _components_lists_UserList__WEBPACK_IMPORTED_MODULE_16__["default"]);
+vue__WEBPACK_IMPORTED_MODULE_0___default.a.component("exercise-list", _components_lists_ExerciseList__WEBPACK_IMPORTED_MODULE_17__["default"]);
+vue__WEBPACK_IMPORTED_MODULE_0___default.a.component("side-navigation", _components_SideNavigation__WEBPACK_IMPORTED_MODULE_18__["default"]);
+vue__WEBPACK_IMPORTED_MODULE_0___default.a.component("page-footer", _components_PageFooter__WEBPACK_IMPORTED_MODULE_19__["default"]);
+vue__WEBPACK_IMPORTED_MODULE_0___default.a.component("block", _components_Block__WEBPACK_IMPORTED_MODULE_20__["default"]);
+vue__WEBPACK_IMPORTED_MODULE_0___default.a.component("construction", _components_Construction__WEBPACK_IMPORTED_MODULE_21__["default"]);
 var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"](_routes__WEBPACK_IMPORTED_MODULE_5__["default"]);
 router.beforeEach(function (to, from, next) {
   if (to.matched.some(function (record) {
@@ -25668,6 +26311,75 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_CreateUserForm_vue_vue_type_template_id_749b0596___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_CreateUserForm_vue_vue_type_template_id_749b0596___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/forms/CreateWorkoutForm.vue":
+/*!*************************************************************!*\
+  !*** ./resources/js/components/forms/CreateWorkoutForm.vue ***!
+  \*************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _CreateWorkoutForm_vue_vue_type_template_id_346ee52c___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./CreateWorkoutForm.vue?vue&type=template&id=346ee52c& */ "./resources/js/components/forms/CreateWorkoutForm.vue?vue&type=template&id=346ee52c&");
+/* harmony import */ var _CreateWorkoutForm_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./CreateWorkoutForm.vue?vue&type=script&lang=js& */ "./resources/js/components/forms/CreateWorkoutForm.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _CreateWorkoutForm_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _CreateWorkoutForm_vue_vue_type_template_id_346ee52c___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _CreateWorkoutForm_vue_vue_type_template_id_346ee52c___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/forms/CreateWorkoutForm.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/forms/CreateWorkoutForm.vue?vue&type=script&lang=js&":
+/*!**************************************************************************************!*\
+  !*** ./resources/js/components/forms/CreateWorkoutForm.vue?vue&type=script&lang=js& ***!
+  \**************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_CreateWorkoutForm_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./CreateWorkoutForm.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/forms/CreateWorkoutForm.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_CreateWorkoutForm_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/forms/CreateWorkoutForm.vue?vue&type=template&id=346ee52c&":
+/*!********************************************************************************************!*\
+  !*** ./resources/js/components/forms/CreateWorkoutForm.vue?vue&type=template&id=346ee52c& ***!
+  \********************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_CreateWorkoutForm_vue_vue_type_template_id_346ee52c___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./CreateWorkoutForm.vue?vue&type=template&id=346ee52c& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/forms/CreateWorkoutForm.vue?vue&type=template&id=346ee52c&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_CreateWorkoutForm_vue_vue_type_template_id_346ee52c___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_CreateWorkoutForm_vue_vue_type_template_id_346ee52c___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 

@@ -22,6 +22,20 @@ class BlockController extends Controller
         return response()->json($blocks);
     }
 
+    public function show(Request $request, User $user, Block $block)
+    {
+        $trainer_id = $request->user()->id;
+        if ($user->trainer_id !== $trainer_id) {
+            return response()->json(['message' => 'You are not authorized to view this record.'], 401);
+        }
+
+        return response()->json([
+            'block' => $block,
+            'type' => $block->type,
+            'workouts' => $block->workouts
+        ]);
+    }
+
     public function store(User $user)
     {
         $attributes = request()->validate(['name' => 'required', 'start_date' => 'required', 'type_id' => 'required']);
