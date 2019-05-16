@@ -14,7 +14,7 @@ class AddDateColumnToWorkouts extends Migration
     public function up()
     {
         Schema::table('workouts', function (Blueprint $table) {
-            $table->date('date')->after('block_id');
+            $table->date('date')->after('block_id')->nullable();
         });
     }
 
