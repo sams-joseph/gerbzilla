@@ -1,5 +1,9 @@
 <template>
-  <div class="w-full lg:w-1/3 md:w-1/2 p-2">
+  <router-link
+    class="block w-full lg:w-1/3 md:w-1/2 p-2"
+    active-class="none"
+    :to="{ name: 'block', params: { user_id: this.$route.params.id, block_id: block.id }}"
+  >
     <div class="w-full bg-white rounded-lg shadow-lg cursor-pointer">
       <div
         class="flex items-center p-6 rounded-lg"
@@ -23,7 +27,7 @@
         >{{ block.type.name }}</span>
       </div>
     </div>
-  </div>
+  </router-link>
 </template>
 
 <script>

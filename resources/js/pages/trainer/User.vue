@@ -18,7 +18,7 @@
     <transition name="fade">
       <div v-if="!loading" class="container mx-auto px-0">
         <h1
-          class="text-grey-darkest font-normal text-2xl mb-4 px-8"
+          class="text-grey-darkest font-normal text-2xl mb-4 px-8 pt-20"
         >{{ `${user.first_name} ${user.last_name}` }}</h1>
         <h4
           class="text-white font-normal text-xs font-bold mb-12 uppercase inline-block py-1 px-4 ml-8 bg-red border border-red-dark rounded-full"

@@ -8,14 +8,9 @@
       <h1 class="text-grey-darkest font-normal text-2xl mb-10">Create User</h1>
       <div
         v-if="loading"
-        class="absolute pin-t pin-l pin-b w-full bg-white-translucent flex justify-center pt-12"
+        class="absolute pin-t pin-l pin-b w-full bg-white-translucent flex justify-center items-center"
       >
-        <div class="pl-6 flex flex-col items-center">
-          <div class="mb-4">
-            <img src="/images/puff.svg" alt="Loading">
-          </div>
-          <h6 class="text-grey-darkest font-bold text-lg">Loading</h6>
-        </div>
+        <img src="/images/puff.svg" alt="Loading">
       </div>
       <form @submit="createUser">
         <div class="mb-6">
@@ -105,15 +100,13 @@ export default {
     createUser(e) {
       e.preventDefault();
       this.loading = true;
-      const user = JSON.parse(localStorage.getItem("user"));
 
       this.$http
         .post(`${process.env.MIX_BASE_URL}/trainer/users`, {
           first_name: this.firstName,
           last_name: this.lastName,
           email: this.email,
-          password: this.password,
-          trainer_id: user.id
+          password: this.password
         })
         .then(res => {
           this.firstName = "";
@@ -128,7 +121,8 @@ export default {
           this.$emit("cancel-user-create");
         })
         .catch(err => {
-          console.log(err);
+          this.$emit("create-user-error", err);
+          this.$emit("cancel-user-create");
         });
     }
   }

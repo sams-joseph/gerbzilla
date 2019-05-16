@@ -30,13 +30,15 @@ class UserController extends Controller
 
     public function store(Request $request)
     {
+        $trainer_id = $request->user()->id;
+
         try {
             $user = User::create([
                 'first_name' => $request->input('first_name'),
                 'last_name' => $request->input('last_name'),
                 'email' => $request->input('email'),
                 'password' => Hash::make($request->input('password')),
-                'trainer_id' => $request->input('trainer_id'),
+                'trainer_id' => $trainer_id,
             ]);
 
             $user

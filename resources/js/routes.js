@@ -6,6 +6,7 @@ import Goals from "./pages/Goals";
 import Users from "./pages/trainer/Users";
 import User from './pages/trainer/User';
 import Exercises from "./pages/trainer/Exercises";
+import Blocks from './pages/trainer/Blocks';
 
 import NotFound from "./components/NotFound";
 
@@ -84,6 +85,15 @@ export default {
             path: "/t/exercises",
             name: "exercises",
             component: Exercises,
+            meta: {
+                requiresAuth: true,
+                is_trainer: true
+            }
+        },
+        {
+            path: "/t/users/:user_id/blocks/:block_id",
+            name: "block",
+            component: Blocks,
             meta: {
                 requiresAuth: true,
                 is_trainer: true

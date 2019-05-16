@@ -1791,6 +1791,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {};
@@ -2394,7 +2398,7 @@ __webpack_require__.r(__webpack_exports__);
   mounted: function mounted() {
     var _this = this;
 
-    this.$http.get("".concat("http://gerbzilla.test/api", "/trainer/types")).then(function (res) {
+    this.$http.get("".concat("http://localhost:8000/api", "/trainer/types")).then(function (res) {
       _this.loading = false;
       _this.types = res.data;
     })["catch"](function (err) {
@@ -2411,7 +2415,7 @@ __webpack_require__.r(__webpack_exports__);
       e.preventDefault();
       this.loading = true;
       var user = JSON.parse(localStorage.getItem("user"));
-      this.$http.post("".concat("http://gerbzilla.test/api", "/trainer/users/").concat(this.$route.params.id, "/blocks"), {
+      this.$http.post("".concat("http://localhost:8000/api", "/trainer/users/").concat(this.$route.params.id, "/blocks"), {
         name: this.name,
         start_date: this.date,
         type_id: this.type
@@ -2551,7 +2555,7 @@ __webpack_require__.r(__webpack_exports__);
   mounted: function mounted() {
     var _this = this;
 
-    this.$http.get("".concat("http://gerbzilla.test/api", "/trainer/categories")).then(function (res) {
+    this.$http.get("".concat("http://localhost:8000/api", "/trainer/categories")).then(function (res) {
       _this.loading = false;
       _this.categories = res.data;
     })["catch"](function (err) {
@@ -2568,7 +2572,7 @@ __webpack_require__.r(__webpack_exports__);
       e.preventDefault();
       this.loading = true;
       var user = JSON.parse(localStorage.getItem("user"));
-      this.$http.post("".concat("http://gerbzilla.test/api", "/trainer/exercises"), {
+      this.$http.post("".concat("http://localhost:8000/api", "/trainer/exercises"), {
         name: this.name,
         category_id: this.category
       }).then(function (res) {
@@ -2679,11 +2683,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2707,13 +2706,11 @@ __webpack_require__.r(__webpack_exports__);
 
       e.preventDefault();
       this.loading = true;
-      var user = JSON.parse(localStorage.getItem("user"));
-      this.$http.post("".concat("http://gerbzilla.test/api", "/trainer/users"), {
+      this.$http.post("".concat("http://localhost:8000/api", "/trainer/users"), {
         first_name: this.firstName,
         last_name: this.lastName,
         email: this.email,
-        password: this.password,
-        trainer_id: user.id
+        password: this.password
       }).then(function (res) {
         _this.firstName = "";
         _this.lastName = "";
@@ -2726,7 +2723,9 @@ __webpack_require__.r(__webpack_exports__);
 
         _this.$emit("cancel-user-create");
       })["catch"](function (err) {
-        console.log(err);
+        _this.$emit("create-user-error", err);
+
+        _this.$emit("cancel-user-create");
       });
     }
   }
@@ -2790,7 +2789,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       e.preventDefault();
-      this.$http.post("".concat("http://gerbzilla.test/api", "/login"), {
+      this.$http.post("".concat("http://localhost:8000/api", "/login"), {
         username: this.username,
         password: this.password
       }).then(function (res) {
@@ -2803,7 +2802,7 @@ __webpack_require__.r(__webpack_exports__);
           _this.$http.defaults.headers.common["Authorization"] = null;
         }
 
-        _this.$http.get("".concat("http://gerbzilla.test/api", "/user")).then(function (res) {
+        _this.$http.get("".concat("http://localhost:8000/api", "/user")).then(function (res) {
           localStorage.setItem("user", JSON.stringify(res.data.user));
           localStorage.setItem("role", JSON.stringify(res.data.role));
 
@@ -3557,7 +3556,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       e.preventDefault();
-      this.$http.post("".concat("http://gerbzilla.test/api", "/login"), {
+      this.$http.post("".concat("http://localhost:8000/api", "/login"), {
         username: this.username,
         password: this.password
       }).then(function (res) {
@@ -3570,7 +3569,7 @@ __webpack_require__.r(__webpack_exports__);
           _this.$http.defaults.headers.common["Authorization"] = null;
         }
 
-        _this.$http.get("".concat("http://gerbzilla.test/api", "/user")).then(function (res) {
+        _this.$http.get("".concat("http://localhost:8000/api", "/user")).then(function (res) {
           localStorage.setItem("user", JSON.stringify(res.data.user));
           localStorage.setItem("role", JSON.stringify(res.data.role));
 
@@ -3779,7 +3778,7 @@ __webpack_require__.r(__webpack_exports__);
   created: function created() {
     var _this = this;
 
-    this.$http.get("".concat("http://gerbzilla.test/api", "/user")).then(function (res) {
+    this.$http.get("".concat("http://localhost:8000/api", "/user")).then(function (res) {
       _this.firstName = res.data.user.first_name;
       _this.lastName = res.data.user.last_name;
       _this.status = res.data.user.is_active === 1 ? true : false;
@@ -3930,6 +3929,30 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/trainer/Blocks.vue?vue&type=script&lang=js&":
+/*!********************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/pages/trainer/Blocks.vue?vue&type=script&lang=js& ***!
+  \********************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/trainer/Exercises.vue?vue&type=script&lang=js&":
 /*!***********************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/pages/trainer/Exercises.vue?vue&type=script&lang=js& ***!
@@ -3997,7 +4020,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       this.loading = true;
-      this.$http.get("".concat("http://gerbzilla.test/api", "/trainer/exercises")).then(function (res) {
+      this.$http.get("".concat("http://localhost:8000/api", "/trainer/exercises")).then(function (res) {
         _this.exercises = res.data;
         _this.loading = false;
       })["catch"](function (err) {
@@ -4012,7 +4035,7 @@ __webpack_require__.r(__webpack_exports__);
     var _this2 = this;
 
     this.loading = true;
-    this.$http.all([this.$http.get("".concat("http://gerbzilla.test/api", "/trainer/exercises")), this.$http.get("".concat("http://gerbzilla.test/api", "/trainer/categories"))]).then(this.$http.spread(function (exercises, categories) {
+    this.$http.all([this.$http.get("".concat("http://localhost:8000/api", "/trainer/exercises")), this.$http.get("".concat("http://localhost:8000/api", "/trainer/categories"))]).then(this.$http.spread(function (exercises, categories) {
       _this2.exercises = exercises.data;
       _this2.categories = categories.data;
       _this2.loading = false;
@@ -4105,7 +4128,7 @@ __webpack_require__.r(__webpack_exports__);
   mounted: function mounted() {
     var _this = this;
 
-    this.$http.all([this.$http.get("".concat("http://gerbzilla.test/api", "/trainer/users/").concat(this.$route.params.id)), this.$http.get("".concat("http://gerbzilla.test/api", "/trainer/users/").concat(this.$route.params.id, "/blocks"))]).then(this.$http.spread(function (user, blocks) {
+    this.$http.all([this.$http.get("".concat("http://localhost:8000/api", "/trainer/users/").concat(this.$route.params.id)), this.$http.get("".concat("http://localhost:8000/api", "/trainer/users/").concat(this.$route.params.id, "/blocks"))]).then(this.$http.spread(function (user, blocks) {
       _this.user = user.data;
       _this.isActive = user.data.is_active === 1 ? true : false;
       _this.blocks = blocks.data.sort(function (a, b) {
@@ -4121,7 +4144,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this2 = this;
 
       this.loading = true;
-      this.$http.get("".concat("http://gerbzilla.test/api", "/trainer/users/").concat(this.$route.params.id, "/blocks")).then(function (res) {
+      this.$http.get("".concat("http://localhost:8000/api", "/trainer/users/").concat(this.$route.params.id, "/blocks")).then(function (res) {
         _this2.blocks = res.data.sort(function (a, b) {
           return a.start_date < b.start_date ? 1 : b.start_date < a.start_date ? -1 : 0;
         });
@@ -4186,12 +4209,27 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       users: {},
       showModal: false,
-      loading: true
+      loading: true,
+      message: {}
     };
   },
   methods: {
@@ -4199,26 +4237,44 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       this.loading = true;
-      this.$http.get("".concat("http://gerbzilla.test/api", "/trainer/users")).then(function (res) {
+      this.$http.get("".concat("http://localhost:8000/api", "/trainer/users")).then(function (res) {
         _this.users = res.data;
+        _this.message = {
+          message: "Successfully created user.",
+          isError: false
+        };
         _this.loading = false;
       })["catch"](function (err) {
-        console.log(err);
+        _this.message = {
+          message: err,
+          isError: true
+        };
       });
     },
     toggleModal: function toggleModal() {
       this.showModal = !this.showModal;
+    },
+    handleError: function handleError(err) {
+      this.message = {
+        message: err.message,
+        isError: true
+      };
     }
   },
   mounted: function mounted() {
     var _this2 = this;
 
-    this.$http.get("".concat("http://gerbzilla.test/api", "/trainer/users")).then(function (res) {
+    this.$http.get("".concat("http://localhost:8000/api", "/trainer/users")).then(function (res) {
       _this2.users = res.data;
       _this2.loading = false;
     })["catch"](function (err) {
       console.log(err);
     });
+  },
+  computed: {
+    isMessage: function isMessage() {
+      return Object.keys(this.message).length === 0 && this.message.constructor === Object;
+    }
   }
 });
 
@@ -5006,62 +5062,68 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "w-full lg:w-1/3 md:w-1/2 p-2" }, [
-    _c(
-      "div",
-      { staticClass: "w-full bg-white rounded-lg shadow-lg cursor-pointer" },
-      [
-        _c(
-          "div",
-          {
-            staticClass: "flex items-center p-6 rounded-lg",
-            class: {
-              "bg-red-gradient": _vm.block.type.name === "strength",
-              "bg-blue-gradient": _vm.block.type.name === "hypertrophy",
-              "bg-green-gradient": _vm.block.type.name === "fitness"
-            }
-          },
-          [
-            _vm._m(0),
-            _vm._v(" "),
-            _c("div", { staticClass: "flex flex-col" }, [
-              _c("h3", { staticClass: "text-white text-lg font-bold mb-2" }, [
-                _vm._v(_vm._s(_vm.block.name))
+  return _c(
+    "router-link",
+    {
+      staticClass: "block w-full lg:w-1/3 md:w-1/2 p-2",
+      attrs: {
+        "active-class": "none",
+        to: {
+          name: "block",
+          params: { user_id: this.$route.params.id, block_id: _vm.block.id }
+        }
+      }
+    },
+    [
+      _c(
+        "div",
+        { staticClass: "w-full bg-white rounded-lg shadow-lg cursor-pointer" },
+        [
+          _c(
+            "div",
+            {
+              staticClass: "flex items-center p-6 rounded-lg",
+              class: {
+                "bg-red-gradient": _vm.block.type.name === "strength",
+                "bg-blue-gradient": _vm.block.type.name === "hypertrophy",
+                "bg-green-gradient": _vm.block.type.name === "fitness"
+              }
+            },
+            [
+              _c("div", { staticClass: "mr-4" }, [
+                _c("div", { staticClass: "w-18 h-18 bg-white rounded-full" })
               ]),
               _vm._v(" "),
-              _c(
-                "h4",
-                { staticClass: "text-white text-base font-light opacity-75" },
-                [_vm._v(_vm._s(_vm.block.start_date))]
-              )
-            ])
-          ]
-        ),
-        _vm._v(" "),
-        _c("div", { staticClass: "flex p-6" }, [
-          _c(
-            "span",
-            {
-              staticClass:
-                "text-center block w-full md:w-auto lg:w-full py-1 px-2 rounded-full text-xs text-grey-darkest font-thin border border-grey bg-grey-light uppercase"
-            },
-            [_vm._v(_vm._s(_vm.block.type.name))]
-          )
-        ])
-      ]
-    )
-  ])
+              _c("div", { staticClass: "flex flex-col" }, [
+                _c("h3", { staticClass: "text-white text-lg font-bold mb-2" }, [
+                  _vm._v(_vm._s(_vm.block.name))
+                ]),
+                _vm._v(" "),
+                _c(
+                  "h4",
+                  { staticClass: "text-white text-base font-light opacity-75" },
+                  [_vm._v(_vm._s(_vm.block.start_date))]
+                )
+              ])
+            ]
+          ),
+          _vm._v(" "),
+          _c("div", { staticClass: "flex p-6" }, [
+            _c(
+              "span",
+              {
+                staticClass:
+                  "text-center block w-full md:w-auto lg:w-full py-1 px-2 rounded-full text-xs text-grey-darkest font-thin border border-grey bg-grey-light uppercase"
+              },
+              [_vm._v(_vm._s(_vm.block.type.name))]
+            )
+          ])
+        ]
+      )
+    ]
+  )
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "mr-4" }, [
-      _c("div", { staticClass: "w-18 h-18 bg-white rounded-full" })
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -5698,10 +5760,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "nav",
-    {
-      staticClass:
-        "w-full py-4 bg-grey-lighter border-b border-grey-light mb-20"
-    },
+    { staticClass: "w-full py-4 bg-grey-lighter border-b border-grey-light" },
     [
       _c("div", { staticClass: "container mx-auto px-8" }, [
         _c("ul", { staticClass: "list-reset" }, [
@@ -6522,9 +6581,13 @@ var render = function() {
                     "div",
                     {
                       staticClass:
-                        "absolute pin-t pin-l pin-b w-full bg-white-translucent flex justify-center pt-12"
+                        "absolute pin-t pin-l pin-b w-full bg-white-translucent flex justify-center items-center"
                     },
-                    [_vm._m(0)]
+                    [
+                      _c("img", {
+                        attrs: { src: "/images/puff.svg", alt: "Loading" }
+                      })
+                    ]
                   )
                 : _vm._e(),
               _vm._v(" "),
@@ -6731,22 +6794,7 @@ var render = function() {
       )
     : _vm._e()
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "pl-6 flex flex-col items-center" }, [
-      _c("div", { staticClass: "mb-4" }, [
-        _c("img", { attrs: { src: "/images/puff.svg", alt: "Loading" } })
-      ]),
-      _vm._v(" "),
-      _c("h6", { staticClass: "text-grey-darkest font-bold text-lg" }, [
-        _vm._v("Loading")
-      ])
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -6895,7 +6943,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    { staticClass: "container mx-auto mb-20 flex px-0 md:px-8" },
+    { staticClass: "container mx-auto mb-20 flex px-0 md:px-8 mt-20" },
     [
       _c("aside", { staticClass: "w-48 hidden md:block" }, [
         _c(
@@ -7214,7 +7262,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    { staticClass: "container mx-auto mb-20 flex px-0 md:px-8" },
+    { staticClass: "container mx-auto mb-20 flex px-0 md:px-8 mt-20" },
     [
       _c("aside", { staticClass: "w-48 hidden md:block" }, [
         _c(
@@ -9246,6 +9294,57 @@ render._withStripped = true
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/trainer/Blocks.vue?vue&type=template&id=6dd2242e&":
+/*!************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/pages/trainer/Blocks.vue?vue&type=template&id=6dd2242e& ***!
+  \************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    [
+      _c("page-header"),
+      _vm._v(" "),
+      _c("navigation"),
+      _vm._v(" "),
+      _c("side-navigation"),
+      _vm._v(" "),
+      _vm._m(0)
+    ],
+    1
+  )
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "container mx-auto px-0" }, [
+      _c(
+        "h1",
+        {
+          staticClass: "text-grey-darkest font-normal text-2xl mb-4 px-8 pt-20"
+        },
+        [_vm._v("Block")]
+      )
+    ])
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/trainer/Exercises.vue?vue&type=template&id=1e744e08&":
 /*!***************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/pages/trainer/Exercises.vue?vue&type=template&id=1e744e08& ***!
@@ -9271,7 +9370,7 @@ var render = function() {
       _c("side-navigation"),
       _vm._v(" "),
       _vm.loading
-        ? _c("div", { staticClass: "w-full" }, [_vm._m(0)])
+        ? _c("div", { staticClass: "w-full pt-20" }, [_vm._m(0)])
         : _vm._e(),
       _vm._v(" "),
       _c(
@@ -9404,7 +9503,7 @@ var render = function() {
                   "h1",
                   {
                     staticClass:
-                      "text-grey-darkest font-normal text-2xl mb-4 px-8"
+                      "text-grey-darkest font-normal text-2xl mb-4 px-8 pt-20"
                   },
                   [
                     _vm._v(
@@ -9577,7 +9676,44 @@ var render = function() {
       _c("side-navigation"),
       _vm._v(" "),
       _vm.loading
-        ? _c("div", { staticClass: "w-full" }, [_vm._m(0)])
+        ? _c("div", { staticClass: "w-full pt-20" }, [_vm._m(0)])
+        : _vm._e(),
+      _vm._v(" "),
+      !_vm.isMessage
+        ? _c(
+            "div",
+            {
+              staticClass:
+                "flex items-center text-white text-sm font-bold px-4 py-3",
+              class: {
+                "bg-blue": !_vm.message.isError,
+                "bg-red-light": _vm.message.isError
+              },
+              attrs: { role: "alert" }
+            },
+            [
+              _c(
+                "svg",
+                {
+                  staticClass: "fill-current w-4 h-4 mr-2",
+                  attrs: {
+                    xmlns: "http://www.w3.org/2000/svg",
+                    viewBox: "0 0 20 20"
+                  }
+                },
+                [
+                  _c("path", {
+                    attrs: {
+                      d:
+                        "M12.432 0c1.34 0 2.01.912 2.01 1.957 0 1.305-1.164 2.512-2.679 2.512-1.269 0-2.009-.75-1.974-1.99C9.789 1.436 10.67 0 12.432 0zM8.309 20c-1.058 0-1.833-.652-1.093-3.524l1.214-5.092c.211-.814.246-1.141 0-1.141-.317 0-1.689.562-2.502 1.117l-.528-.88c2.572-2.186 5.531-3.467 6.801-3.467 1.057 0 1.233 1.273.705 3.23l-1.391 5.352c-.246.945-.141 1.271.106 1.271.317 0 1.357-.392 2.379-1.207l.6.814C12.098 19.02 9.365 20 8.309 20z"
+                    }
+                  })
+                ]
+              ),
+              _vm._v(" "),
+              _c("p", [_vm._v(_vm._s(_vm.message.message))])
+            ]
+          )
         : _vm._e(),
       _vm._v(" "),
       _c(
@@ -9599,7 +9735,8 @@ var render = function() {
             attrs: { show: _vm.showModal },
             on: {
               "cancel-user-create": _vm.toggleModal,
-              "create-user-success": _vm.refreshData
+              "create-user-success": _vm.refreshData,
+              "create-user-error": _vm.handleError
             }
           })
         ],
@@ -24627,7 +24764,7 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
       var laravelToken = $cookies.get("laravel_token");
       var token = "Bearer ".concat(laravelToken);
       this.$http.defaults.headers.common["Authorization"] = token;
-      this.$http.get("".concat("http://gerbzilla.test/api", "/user")).then(function (res) {
+      this.$http.get("".concat("http://localhost:8000/api", "/user")).then(function (res) {
         localStorage.setItem("user", JSON.stringify(res.data.user));
         localStorage.setItem("role", JSON.stringify(res.data.role));
       })["catch"](function (err) {
@@ -26088,6 +26225,75 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/pages/trainer/Blocks.vue":
+/*!***********************************************!*\
+  !*** ./resources/js/pages/trainer/Blocks.vue ***!
+  \***********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _Blocks_vue_vue_type_template_id_6dd2242e___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Blocks.vue?vue&type=template&id=6dd2242e& */ "./resources/js/pages/trainer/Blocks.vue?vue&type=template&id=6dd2242e&");
+/* harmony import */ var _Blocks_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Blocks.vue?vue&type=script&lang=js& */ "./resources/js/pages/trainer/Blocks.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _Blocks_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _Blocks_vue_vue_type_template_id_6dd2242e___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _Blocks_vue_vue_type_template_id_6dd2242e___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/pages/trainer/Blocks.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/pages/trainer/Blocks.vue?vue&type=script&lang=js&":
+/*!************************************************************************!*\
+  !*** ./resources/js/pages/trainer/Blocks.vue?vue&type=script&lang=js& ***!
+  \************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Blocks_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./Blocks.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/trainer/Blocks.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Blocks_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/pages/trainer/Blocks.vue?vue&type=template&id=6dd2242e&":
+/*!******************************************************************************!*\
+  !*** ./resources/js/pages/trainer/Blocks.vue?vue&type=template&id=6dd2242e& ***!
+  \******************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Blocks_vue_vue_type_template_id_6dd2242e___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./Blocks.vue?vue&type=template&id=6dd2242e& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/trainer/Blocks.vue?vue&type=template&id=6dd2242e&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Blocks_vue_vue_type_template_id_6dd2242e___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Blocks_vue_vue_type_template_id_6dd2242e___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
 /***/ "./resources/js/pages/trainer/Exercises.vue":
 /*!**************************************************!*\
   !*** ./resources/js/pages/trainer/Exercises.vue ***!
@@ -26312,7 +26518,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _pages_trainer_Users__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./pages/trainer/Users */ "./resources/js/pages/trainer/Users.vue");
 /* harmony import */ var _pages_trainer_User__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./pages/trainer/User */ "./resources/js/pages/trainer/User.vue");
 /* harmony import */ var _pages_trainer_Exercises__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./pages/trainer/Exercises */ "./resources/js/pages/trainer/Exercises.vue");
-/* harmony import */ var _components_NotFound__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./components/NotFound */ "./resources/js/components/NotFound.vue");
+/* harmony import */ var _pages_trainer_Blocks__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./pages/trainer/Blocks */ "./resources/js/pages/trainer/Blocks.vue");
+/* harmony import */ var _components_NotFound__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./components/NotFound */ "./resources/js/components/NotFound.vue");
+
 
 
 
@@ -26327,7 +26535,7 @@ __webpack_require__.r(__webpack_exports__);
   routes: [{
     path: "*",
     name: "NotFound",
-    component: _components_NotFound__WEBPACK_IMPORTED_MODULE_8__["default"]
+    component: _components_NotFound__WEBPACK_IMPORTED_MODULE_9__["default"]
   }, {
     path: "/",
     name: "Home",
@@ -26389,6 +26597,14 @@ __webpack_require__.r(__webpack_exports__);
       requiresAuth: true,
       is_trainer: true
     }
+  }, {
+    path: "/t/users/:user_id/blocks/:block_id",
+    name: "block",
+    component: _pages_trainer_Blocks__WEBPACK_IMPORTED_MODULE_8__["default"],
+    meta: {
+      requiresAuth: true,
+      is_trainer: true
+    }
   }]
 });
 
@@ -26412,8 +26628,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /Users/joe.mac/projects/gerbzilla/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /Users/joe.mac/projects/gerbzilla/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /Users/jsams/projects/gerbzilla/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /Users/jsams/projects/gerbzilla/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
