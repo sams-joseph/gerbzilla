@@ -8,7 +8,6 @@
         <div class="mb-4">
           <img src="/images/puff.svg" alt="Loading">
         </div>
-        <h6 class="text-grey-darkest font-bold text-lg">Loading</h6>
       </div>
     </div>
     <transition name="fade">

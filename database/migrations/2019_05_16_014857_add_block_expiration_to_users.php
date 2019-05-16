@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddTrainerIdToUsers extends Migration
+class AddBlockExpirationToUsers extends Migration
 {
     /**
      * Run the migrations.
@@ -14,7 +14,7 @@ class AddTrainerIdToUsers extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->unsignedInteger('trainer_id')->after('is_active');
+            $table->date('block_expiration')->after('trainer_id')->nullable();
         });
     }
 
@@ -26,7 +26,7 @@ class AddTrainerIdToUsers extends Migration
     public function down()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->dropColumn('trainer_id');
+            $table->dropColumn('block_expiration');
         });
     }
 }

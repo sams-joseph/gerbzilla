@@ -19,6 +19,7 @@ class CreateUsersTable extends Migration
             $table->string('last_name');
             $table->boolean('is_active')->default(TRUE);
             $table->unsignedInteger('trainer_id')->nullable();
+            $table->date('block_expiration')->nullable();
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');

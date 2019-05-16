@@ -2930,23 +2930,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       showFilterMenu: false,
-      is_active: false,
-      not_active: false
+      activity: []
     };
   },
   methods: {
@@ -2962,13 +2950,38 @@ __webpack_require__.r(__webpack_exports__);
   },
   computed: {
     filteredUsers: function filteredUsers() {
-      if (this.is_active) {
+      var _this = this;
+
+      if (this.activity.length) {
         return this.users.filter(function (user) {
-          return user.is_active === 1;
-        });
-      } else if (this.not_active) {
-        return this.users.filter(function (user) {
-          return user.is_active === 2;
+          var _iteratorNormalCompletion = true;
+          var _didIteratorError = false;
+          var _iteratorError = undefined;
+
+          try {
+            for (var _iterator = _this.activity[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+              var status = _step.value;
+
+              if (user.is_active === parseInt(status)) {
+                return true;
+              }
+            }
+          } catch (err) {
+            _didIteratorError = true;
+            _iteratorError = err;
+          } finally {
+            try {
+              if (!_iteratorNormalCompletion && _iterator["return"] != null) {
+                _iterator["return"]();
+              }
+            } finally {
+              if (_didIteratorError) {
+                throw _iteratorError;
+              }
+            }
+          }
+
+          return false;
         });
       } else {
         return this.users;
@@ -3759,7 +3772,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -3853,6 +3865,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -3885,7 +3899,6 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-//
 //
 //
 //
@@ -6597,8 +6610,8 @@ var render = function() {
                   {
                     name: "model",
                     rawName: "v-model",
-                    value: _vm.is_active,
-                    expression: "is_active"
+                    value: _vm.activity,
+                    expression: "activity"
                   }
                 ],
                 attrs: {
@@ -6608,28 +6621,28 @@ var render = function() {
                   value: "1"
                 },
                 domProps: {
-                  checked: Array.isArray(_vm.is_active)
-                    ? _vm._i(_vm.is_active, "1") > -1
-                    : _vm.is_active
+                  checked: Array.isArray(_vm.activity)
+                    ? _vm._i(_vm.activity, "1") > -1
+                    : _vm.activity
                 },
                 on: {
                   change: function($event) {
-                    var $$a = _vm.is_active,
+                    var $$a = _vm.activity,
                       $$el = $event.target,
                       $$c = $$el.checked ? true : false
                     if (Array.isArray($$a)) {
                       var $$v = "1",
                         $$i = _vm._i($$a, $$v)
                       if ($$el.checked) {
-                        $$i < 0 && (_vm.is_active = $$a.concat([$$v]))
+                        $$i < 0 && (_vm.activity = $$a.concat([$$v]))
                       } else {
                         $$i > -1 &&
-                          (_vm.is_active = $$a
+                          (_vm.activity = $$a
                             .slice(0, $$i)
                             .concat($$a.slice($$i + 1)))
                       }
                     } else {
-                      _vm.is_active = $$c
+                      _vm.activity = $$c
                     }
                   }
                 }
@@ -6656,8 +6669,8 @@ var render = function() {
                   {
                     name: "model",
                     rawName: "v-model",
-                    value: _vm.not_active,
-                    expression: "not_active"
+                    value: _vm.activity,
+                    expression: "activity"
                   }
                 ],
                 attrs: {
@@ -6667,28 +6680,28 @@ var render = function() {
                   value: "2"
                 },
                 domProps: {
-                  checked: Array.isArray(_vm.not_active)
-                    ? _vm._i(_vm.not_active, "2") > -1
-                    : _vm.not_active
+                  checked: Array.isArray(_vm.activity)
+                    ? _vm._i(_vm.activity, "2") > -1
+                    : _vm.activity
                 },
                 on: {
                   change: function($event) {
-                    var $$a = _vm.not_active,
+                    var $$a = _vm.activity,
                       $$el = $event.target,
                       $$c = $$el.checked ? true : false
                     if (Array.isArray($$a)) {
                       var $$v = "2",
                         $$i = _vm._i($$a, $$v)
                       if ($$el.checked) {
-                        $$i < 0 && (_vm.not_active = $$a.concat([$$v]))
+                        $$i < 0 && (_vm.activity = $$a.concat([$$v]))
                       } else {
                         $$i > -1 &&
-                          (_vm.not_active = $$a
+                          (_vm.activity = $$a
                             .slice(0, $$i)
                             .concat($$a.slice($$i + 1)))
                       }
                     } else {
-                      _vm.not_active = $$c
+                      _vm.activity = $$c
                     }
                   }
                 }
@@ -6722,29 +6735,7 @@ var render = function() {
                     "w-full py-4 md:hover:bg-grey-lighter rounded-lg px-4 flex items-center shadow-lg md:shadow-none mb-4 md:mb-0 bg-white"
                 },
                 [
-                  _c("span", { staticClass: "rounded-full mr-6 h-12 w-12" }, [
-                    _c(
-                      "svg",
-                      {
-                        staticClass: "fill-current text-green",
-                        attrs: {
-                          width: "41",
-                          height: "41",
-                          viewBox: "0 0 41 41",
-                          fill: "none",
-                          xmlns: "http://www.w3.org/2000/svg"
-                        }
-                      },
-                      [
-                        _c("path", {
-                          attrs: {
-                            d:
-                              "M20.75 0.75C9.908 0.75 0.75 9.908 0.75 20.75C0.75 31.592 9.908 40.75 20.75 40.75C31.592 40.75 40.75 31.592 40.75 20.75C40.75 9.908 31.592 0.75 20.75 0.75ZM20.75 36.75C16.448 36.75 12.48 34.946 9.57 32.07C11.076 28.456 14.6 25.894 18.75 25.894H22.75C26.9 25.894 30.424 28.456 31.93 32.07C29.02 34.946 25.052 36.75 20.75 36.75ZM20.75 10.75C24.204 10.75 26.75 13.294 26.75 16.75C26.75 20.206 24.204 22.75 20.75 22.75C17.298 22.75 14.75 20.206 14.75 16.75C14.75 13.294 17.298 10.75 20.75 10.75Z"
-                          }
-                        })
-                      ]
-                    )
-                  ]),
+                  _vm._m(0, true),
                   _vm._v(" "),
                   _c("span", { staticClass: "text-grey-darkest mr-6" }, [
                     _vm._v(_vm._s(user.first_name + " " + user.last_name))
@@ -6852,8 +6843,8 @@ var render = function() {
                           {
                             name: "model",
                             rawName: "v-model",
-                            value: _vm.is_active,
-                            expression: "is_active"
+                            value: _vm.activity,
+                            expression: "activity"
                           }
                         ],
                         attrs: {
@@ -6863,28 +6854,28 @@ var render = function() {
                           value: "1"
                         },
                         domProps: {
-                          checked: Array.isArray(_vm.is_active)
-                            ? _vm._i(_vm.is_active, "1") > -1
-                            : _vm.is_active
+                          checked: Array.isArray(_vm.activity)
+                            ? _vm._i(_vm.activity, "1") > -1
+                            : _vm.activity
                         },
                         on: {
                           change: function($event) {
-                            var $$a = _vm.is_active,
+                            var $$a = _vm.activity,
                               $$el = $event.target,
                               $$c = $$el.checked ? true : false
                             if (Array.isArray($$a)) {
                               var $$v = "1",
                                 $$i = _vm._i($$a, $$v)
                               if ($$el.checked) {
-                                $$i < 0 && (_vm.is_active = $$a.concat([$$v]))
+                                $$i < 0 && (_vm.activity = $$a.concat([$$v]))
                               } else {
                                 $$i > -1 &&
-                                  (_vm.is_active = $$a
+                                  (_vm.activity = $$a
                                     .slice(0, $$i)
                                     .concat($$a.slice($$i + 1)))
                               }
                             } else {
-                              _vm.is_active = $$c
+                              _vm.activity = $$c
                             }
                           }
                         }
@@ -6911,8 +6902,8 @@ var render = function() {
                           {
                             name: "model",
                             rawName: "v-model",
-                            value: _vm.not_active,
-                            expression: "not_active"
+                            value: _vm.activity,
+                            expression: "activity"
                           }
                         ],
                         attrs: {
@@ -6922,28 +6913,28 @@ var render = function() {
                           value: "2"
                         },
                         domProps: {
-                          checked: Array.isArray(_vm.not_active)
-                            ? _vm._i(_vm.not_active, "2") > -1
-                            : _vm.not_active
+                          checked: Array.isArray(_vm.activity)
+                            ? _vm._i(_vm.activity, "2") > -1
+                            : _vm.activity
                         },
                         on: {
                           change: function($event) {
-                            var $$a = _vm.not_active,
+                            var $$a = _vm.activity,
                               $$el = $event.target,
                               $$c = $$el.checked ? true : false
                             if (Array.isArray($$a)) {
                               var $$v = "2",
                                 $$i = _vm._i($$a, $$v)
                               if ($$el.checked) {
-                                $$i < 0 && (_vm.not_active = $$a.concat([$$v]))
+                                $$i < 0 && (_vm.activity = $$a.concat([$$v]))
                               } else {
                                 $$i > -1 &&
-                                  (_vm.not_active = $$a
+                                  (_vm.activity = $$a
                                     .slice(0, $$i)
                                     .concat($$a.slice($$i + 1)))
                               }
                             } else {
-                              _vm.not_active = $$c
+                              _vm.activity = $$c
                             }
                           }
                         }
@@ -6990,7 +6981,18 @@ var render = function() {
     1
   )
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("span", { staticClass: "rounded-full mr-6 h-12 w-12" }, [
+      _c("img", {
+        attrs: { src: "/images/profile-icon.svg", alt: "Profile Icon" }
+      })
+    ])
+  }
+]
 render._withStripped = true
 
 
@@ -8715,10 +8717,6 @@ var staticRenderFns = [
     return _c("div", { staticClass: "pl-6 flex flex-col items-center" }, [
       _c("div", { staticClass: "mb-4" }, [
         _c("img", { attrs: { src: "/images/puff.svg", alt: "Loading" } })
-      ]),
-      _vm._v(" "),
-      _c("h6", { staticClass: "text-grey-darkest font-bold text-lg" }, [
-        _vm._v("Loading")
       ])
     ])
   }
@@ -8796,7 +8794,16 @@ var render = function() {
                   "tabs",
                   { staticClass: "flex-1" },
                   [
-                    _c("tab", { attrs: { name: "Workouts", selected: true } }),
+                    _c("tab", { attrs: { name: "Workouts", selected: true } }, [
+                      _c(
+                        "h1",
+                        {
+                          staticClass:
+                            "text-grey-darkest font-normal text-2xl mb-4"
+                        },
+                        [_vm._v("Training Blocks")]
+                      )
+                    ]),
                     _vm._v(" "),
                     _c("tab", { attrs: { name: "Profile" } }, [
                       _c(
@@ -8978,10 +8985,6 @@ var staticRenderFns = [
     return _c("div", { staticClass: "pl-6 flex flex-col items-center" }, [
       _c("div", { staticClass: "mb-4" }, [
         _c("img", { attrs: { src: "/images/puff.svg", alt: "Loading" } })
-      ]),
-      _vm._v(" "),
-      _c("h6", { staticClass: "text-grey-darkest font-bold text-lg" }, [
-        _vm._v("Loading")
       ])
     ])
   }

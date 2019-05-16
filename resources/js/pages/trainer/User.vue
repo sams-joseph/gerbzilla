@@ -20,7 +20,9 @@
           :class="{ 'bg-green': isActive, 'border-green-dark': isActive }"
         >{{ user.is_active === 1 ? 'Active' : 'Inactive' }}</h4>
         <tabs class="flex-1">
-          <tab name="Workouts" :selected="true"></tab>
+          <tab name="Workouts" :selected="true">
+            <h1 class="text-grey-darkest font-normal text-2xl mb-4">Training Blocks</h1>
+          </tab>
           <tab name="Profile">
             <div class="rounded-full mb-8 md:mr-4 w-full md:w-auto">
               <img class="w-32 h-32 mx-auto block" src="/images/profile-icon.svg" alt="Profile">

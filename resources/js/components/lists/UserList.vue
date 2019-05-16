@@ -9,7 +9,7 @@
             <span
               class="bg-grey-lighter rounded-full float-right px-2 py-1"
             >{{ getNumUsers(1) }}</span>
-            <input type="checkbox" id="active" name="active" value="1" v-model="is_active">
+            <input type="checkbox" id="active" name="active" value="1" v-model="activity">
             <span class="checkbox-checkmark"></span>
           </label>
         </li>
@@ -19,7 +19,7 @@
             <span
               class="bg-grey-lighter rounded-full float-right px-2 py-1"
             >{{ getNumUsers(2) }}</span>
-            <input type="checkbox" id="inactive" name="inactive" value="2" v-model="not_active">
+            <input type="checkbox" id="inactive" name="inactive" value="2" v-model="activity">
             <span class="checkbox-checkmark"></span>
           </label>
         </li>
@@ -35,18 +35,7 @@
             v-bind:key="user.id"
           >
             <span class="rounded-full mr-6 h-12 w-12">
-              <svg
-                class="fill-current text-green"
-                width="41"
-                height="41"
-                viewBox="0 0 41 41"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M20.75 0.75C9.908 0.75 0.75 9.908 0.75 20.75C0.75 31.592 9.908 40.75 20.75 40.75C31.592 40.75 40.75 31.592 40.75 20.75C40.75 9.908 31.592 0.75 20.75 0.75ZM20.75 36.75C16.448 36.75 12.48 34.946 9.57 32.07C11.076 28.456 14.6 25.894 18.75 25.894H22.75C26.9 25.894 30.424 28.456 31.93 32.07C29.02 34.946 25.052 36.75 20.75 36.75ZM20.75 10.75C24.204 10.75 26.75 13.294 26.75 16.75C26.75 20.206 24.204 22.75 20.75 22.75C17.298 22.75 14.75 20.206 14.75 16.75C14.75 13.294 17.298 10.75 20.75 10.75Z"
-                ></path>
-              </svg>
+              <img src="/images/profile-icon.svg" alt="Profile Icon">
             </span>
             <span class="text-grey-darkest mr-6">{{ `${user.first_name} ${user.last_name}` }}</span>
             <span class="flex-1"></span>
@@ -90,7 +79,7 @@
               <span
                 class="bg-grey-lighter rounded-full float-right px-2 py-1"
               >{{ getNumUsers(1) }}</span>
-              <input type="checkbox" id="active" name="active" value="1" v-model="is_active">
+              <input type="checkbox" id="active" name="active" value="1" v-model="activity">
               <span class="checkbox-checkmark"></span>
             </label>
           </li>
@@ -100,7 +89,7 @@
               <span
                 class="bg-grey-lighter rounded-full float-right px-2 py-1"
               >{{ getNumUsers(2) }}</span>
-              <input type="checkbox" id="inactive" name="inactive" value="2" v-model="not_active">
+              <input type="checkbox" id="inactive" name="inactive" value="2" v-model="activity">
               <span class="checkbox-checkmark"></span>
             </label>
           </li>
@@ -130,8 +119,7 @@ export default {
   data() {
     return {
       showFilterMenu: false,
-      is_active: false,
-      not_active: false
+      activity: []
     };
   },
 
@@ -151,13 +139,14 @@ export default {
 
   computed: {
     filteredUsers() {
-      if (this.is_active) {
+      if (this.activity.length) {
         return this.users.filter(user => {
-          return user.is_active === 1;
-        });
-      } else if (this.not_active) {
-        return this.users.filter(user => {
-          return user.is_active === 2;
+          for (const status of this.activity) {
+            if (user.is_active === parseInt(status)) {
+              return true;
+            }
+          }
+          return false;
         });
       } else {
         return this.users;
