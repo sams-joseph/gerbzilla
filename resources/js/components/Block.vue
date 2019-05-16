@@ -4,9 +4,9 @@
       <div
         class="flex items-center p-6 rounded-lg"
         v-bind:class="{
-        'bg-red-gradient': block.type.name === 'Strength',
-        'bg-blue-gradient': block.type.name === 'Hypertrophy',
-        'bg-green-gradient': block.type.name === 'Fitness'
+        'bg-red-gradient': block.type.name === 'strength',
+        'bg-blue-gradient': block.type.name === 'hypertrophy',
+        'bg-green-gradient': block.type.name === 'fitness'
         }"
       >
         <div class="mr-4">

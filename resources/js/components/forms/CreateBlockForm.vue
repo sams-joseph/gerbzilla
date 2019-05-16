@@ -55,7 +55,7 @@
           <label class="block text-grey-darker text-sm font-normal mb-4" for="category">Category</label>
           <div class="relative">
             <select
-              class="block appearance-none border-b rounded-none bg-white text-grey-darker w-full py-2 leading-tight focus:outline-none"
+              class="block appearance-none border-b rounded-none bg-white text-grey-darker w-full py-2 leading-tight focus:outline-none capitalize"
               id="category"
               v-model="type"
             >
