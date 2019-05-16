@@ -2941,18 +2941,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -6276,10 +6264,18 @@ var render = function() {
           "ul",
           { staticClass: "list-reset" },
           _vm._l(_vm.categories, function(category) {
-            return _c(
-              "li",
-              { key: category.id, staticClass: "text-grey-darkest pb-6" },
-              [
+            return _c("li", { key: category.id }, [
+              _c("label", { staticClass: "checkbox-container" }, [
+                _vm._v("\n          " + _vm._s(category.name) + "\n          "),
+                _c(
+                  "span",
+                  {
+                    staticClass:
+                      "bg-grey-lighter rounded-full float-right px-2 py-1"
+                  },
+                  [_vm._v(_vm._s(_vm.getNumExercises(category.id)))]
+                ),
+                _vm._v(" "),
                 _c("input", {
                   directives: [
                     {
@@ -6289,7 +6285,6 @@ var render = function() {
                       expression: "checkedCategories"
                     }
                   ],
-                  staticClass: "mr-2",
                   attrs: {
                     type: "checkbox",
                     id: category.name,
@@ -6324,20 +6319,9 @@ var render = function() {
                   }
                 }),
                 _vm._v(" "),
-                _c("label", { attrs: { for: category.name } }, [
-                  _vm._v(_vm._s(category.name))
-                ]),
-                _vm._v(" "),
-                _c(
-                  "span",
-                  {
-                    staticClass:
-                      "bg-grey-lighter rounded-full float-right px-2 py-1"
-                  },
-                  [_vm._v(_vm._s(_vm.getNumExercises(category.id)))]
-                )
-              ]
-            )
+                _c("span", { staticClass: "checkbox-checkmark" })
+              ])
+            ])
           }),
           0
         )
@@ -6459,13 +6443,22 @@ var render = function() {
                   "ul",
                   { staticClass: "list-reset" },
                   _vm._l(_vm.categories, function(category) {
-                    return _c(
-                      "li",
-                      {
-                        key: category.id,
-                        staticClass: "text-grey-darkest pb-6"
-                      },
-                      [
+                    return _c("li", { key: category.id }, [
+                      _c("label", { staticClass: "checkbox-container" }, [
+                        _vm._v(
+                          "\n            " +
+                            _vm._s(category.name) +
+                            "\n            "
+                        ),
+                        _c(
+                          "span",
+                          {
+                            staticClass:
+                              "bg-grey-lighter rounded-full float-right px-2 py-1"
+                          },
+                          [_vm._v(_vm._s(_vm.getNumExercises(category.id)))]
+                        ),
+                        _vm._v(" "),
                         _c("input", {
                           directives: [
                             {
@@ -6475,7 +6468,6 @@ var render = function() {
                               expression: "checkedCategories"
                             }
                           ],
-                          staticClass: "mr-2",
                           attrs: {
                             type: "checkbox",
                             id: category.name,
@@ -6510,21 +6502,10 @@ var render = function() {
                             }
                           }
                         }),
-                        _vm._v(
-                          "\n          " +
-                            _vm._s(category.name) +
-                            "\n          "
-                        ),
-                        _c(
-                          "span",
-                          {
-                            staticClass:
-                              "bg-grey-lighter rounded-full float-right px-2 py-1"
-                          },
-                          [_vm._v(_vm._s(_vm.getNumExercises(category.id)))]
-                        )
-                      ]
-                    )
+                        _vm._v(" "),
+                        _c("span", { staticClass: "checkbox-checkmark" })
+                      ])
+                    ])
                   }),
                   0
                 )
@@ -6599,118 +6580,122 @@ var render = function() {
         ),
         _vm._v(" "),
         _c("ul", { staticClass: "list-reset" }, [
-          _c("li", { staticClass: "text-grey-darkest pb-6" }, [
-            _c("input", {
-              directives: [
+          _c("li", [
+            _c("label", { staticClass: "checkbox-container" }, [
+              _vm._v("\n          Active\n          "),
+              _c(
+                "span",
                 {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.is_active,
-                  expression: "is_active"
-                }
-              ],
-              staticClass: "mr-2",
-              attrs: {
-                type: "checkbox",
-                id: "active",
-                name: "active",
-                value: "1"
-              },
-              domProps: {
-                checked: Array.isArray(_vm.is_active)
-                  ? _vm._i(_vm.is_active, "1") > -1
-                  : _vm.is_active
-              },
-              on: {
-                change: function($event) {
-                  var $$a = _vm.is_active,
-                    $$el = $event.target,
-                    $$c = $$el.checked ? true : false
-                  if (Array.isArray($$a)) {
-                    var $$v = "1",
-                      $$i = _vm._i($$a, $$v)
-                    if ($$el.checked) {
-                      $$i < 0 && (_vm.is_active = $$a.concat([$$v]))
+                  staticClass:
+                    "bg-grey-lighter rounded-full float-right px-2 py-1"
+                },
+                [_vm._v(_vm._s(_vm.getNumUsers(1)))]
+              ),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.is_active,
+                    expression: "is_active"
+                  }
+                ],
+                attrs: {
+                  type: "checkbox",
+                  id: "active",
+                  name: "active",
+                  value: "1"
+                },
+                domProps: {
+                  checked: Array.isArray(_vm.is_active)
+                    ? _vm._i(_vm.is_active, "1") > -1
+                    : _vm.is_active
+                },
+                on: {
+                  change: function($event) {
+                    var $$a = _vm.is_active,
+                      $$el = $event.target,
+                      $$c = $$el.checked ? true : false
+                    if (Array.isArray($$a)) {
+                      var $$v = "1",
+                        $$i = _vm._i($$a, $$v)
+                      if ($$el.checked) {
+                        $$i < 0 && (_vm.is_active = $$a.concat([$$v]))
+                      } else {
+                        $$i > -1 &&
+                          (_vm.is_active = $$a
+                            .slice(0, $$i)
+                            .concat($$a.slice($$i + 1)))
+                      }
                     } else {
-                      $$i > -1 &&
-                        (_vm.is_active = $$a
-                          .slice(0, $$i)
-                          .concat($$a.slice($$i + 1)))
+                      _vm.is_active = $$c
                     }
-                  } else {
-                    _vm.is_active = $$c
                   }
                 }
-              }
-            }),
-            _vm._v(" "),
-            _c("label", { attrs: { for: "active" } }, [_vm._v("Active")]),
-            _vm._v(" "),
-            _c(
-              "span",
-              {
-                staticClass:
-                  "bg-grey-lighter rounded-full float-right px-2 py-1"
-              },
-              [_vm._v(_vm._s(_vm.getNumUsers(1)))]
-            )
+              }),
+              _vm._v(" "),
+              _c("span", { staticClass: "checkbox-checkmark" })
+            ])
           ]),
           _vm._v(" "),
-          _c("li", { staticClass: "text-grey-darkest pb-6" }, [
-            _c("input", {
-              directives: [
+          _c("li", [
+            _c("label", { staticClass: "checkbox-container" }, [
+              _vm._v("\n          Inactive\n          "),
+              _c(
+                "span",
                 {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.not_active,
-                  expression: "not_active"
-                }
-              ],
-              staticClass: "mr-2",
-              attrs: {
-                type: "checkbox",
-                id: "inactive",
-                name: "inactive",
-                value: "2"
-              },
-              domProps: {
-                checked: Array.isArray(_vm.not_active)
-                  ? _vm._i(_vm.not_active, "2") > -1
-                  : _vm.not_active
-              },
-              on: {
-                change: function($event) {
-                  var $$a = _vm.not_active,
-                    $$el = $event.target,
-                    $$c = $$el.checked ? true : false
-                  if (Array.isArray($$a)) {
-                    var $$v = "2",
-                      $$i = _vm._i($$a, $$v)
-                    if ($$el.checked) {
-                      $$i < 0 && (_vm.not_active = $$a.concat([$$v]))
+                  staticClass:
+                    "bg-grey-lighter rounded-full float-right px-2 py-1"
+                },
+                [_vm._v(_vm._s(_vm.getNumUsers(2)))]
+              ),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.not_active,
+                    expression: "not_active"
+                  }
+                ],
+                attrs: {
+                  type: "checkbox",
+                  id: "inactive",
+                  name: "inactive",
+                  value: "2"
+                },
+                domProps: {
+                  checked: Array.isArray(_vm.not_active)
+                    ? _vm._i(_vm.not_active, "2") > -1
+                    : _vm.not_active
+                },
+                on: {
+                  change: function($event) {
+                    var $$a = _vm.not_active,
+                      $$el = $event.target,
+                      $$c = $$el.checked ? true : false
+                    if (Array.isArray($$a)) {
+                      var $$v = "2",
+                        $$i = _vm._i($$a, $$v)
+                      if ($$el.checked) {
+                        $$i < 0 && (_vm.not_active = $$a.concat([$$v]))
+                      } else {
+                        $$i > -1 &&
+                          (_vm.not_active = $$a
+                            .slice(0, $$i)
+                            .concat($$a.slice($$i + 1)))
+                      }
                     } else {
-                      $$i > -1 &&
-                        (_vm.not_active = $$a
-                          .slice(0, $$i)
-                          .concat($$a.slice($$i + 1)))
+                      _vm.not_active = $$c
                     }
-                  } else {
-                    _vm.not_active = $$c
                   }
                 }
-              }
-            }),
-            _vm._v(" "),
-            _c("label", { attrs: { for: "inactive" } }, [_vm._v("Inactive")]),
-            _vm._v(" "),
-            _c(
-              "span",
-              {
-                staticClass:
-                  "bg-grey-lighter rounded-full float-right px-2 py-1"
-              },
-              [_vm._v(_vm._s(_vm.getNumUsers(2)))]
-            )
+              }),
+              _vm._v(" "),
+              _c("span", { staticClass: "checkbox-checkmark" })
+            ])
           ])
         ])
       ]),
@@ -6734,7 +6719,7 @@ var render = function() {
                 {
                   key: user.id,
                   staticClass:
-                    "w-full py-4 md:hover:bg-grey-lighter rounded-lg px-4 flex items-center shadow-lg md:shadow-none mb-4 md:mb-0"
+                    "w-full py-4 md:hover:bg-grey-lighter rounded-lg px-4 flex items-center shadow-lg md:shadow-none mb-4 md:mb-0 bg-white"
                 },
                 [
                   _c("span", { staticClass: "rounded-full mr-6 h-12 w-12" }, [
@@ -6850,114 +6835,122 @@ var render = function() {
                 ),
                 _vm._v(" "),
                 _c("ul", { staticClass: "list-reset" }, [
-                  _c("li", { staticClass: "text-grey-darkest pb-6" }, [
-                    _c("input", {
-                      directives: [
+                  _c("li", [
+                    _c("label", { staticClass: "checkbox-container" }, [
+                      _vm._v("\n            Active\n            "),
+                      _c(
+                        "span",
                         {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.is_active,
-                          expression: "is_active"
-                        }
-                      ],
-                      staticClass: "mr-2",
-                      attrs: {
-                        type: "checkbox",
-                        id: "active",
-                        name: "active",
-                        value: "1"
-                      },
-                      domProps: {
-                        checked: Array.isArray(_vm.is_active)
-                          ? _vm._i(_vm.is_active, "1") > -1
-                          : _vm.is_active
-                      },
-                      on: {
-                        change: function($event) {
-                          var $$a = _vm.is_active,
-                            $$el = $event.target,
-                            $$c = $$el.checked ? true : false
-                          if (Array.isArray($$a)) {
-                            var $$v = "1",
-                              $$i = _vm._i($$a, $$v)
-                            if ($$el.checked) {
-                              $$i < 0 && (_vm.is_active = $$a.concat([$$v]))
+                          staticClass:
+                            "bg-grey-lighter rounded-full float-right px-2 py-1"
+                        },
+                        [_vm._v(_vm._s(_vm.getNumUsers(1)))]
+                      ),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.is_active,
+                            expression: "is_active"
+                          }
+                        ],
+                        attrs: {
+                          type: "checkbox",
+                          id: "active",
+                          name: "active",
+                          value: "1"
+                        },
+                        domProps: {
+                          checked: Array.isArray(_vm.is_active)
+                            ? _vm._i(_vm.is_active, "1") > -1
+                            : _vm.is_active
+                        },
+                        on: {
+                          change: function($event) {
+                            var $$a = _vm.is_active,
+                              $$el = $event.target,
+                              $$c = $$el.checked ? true : false
+                            if (Array.isArray($$a)) {
+                              var $$v = "1",
+                                $$i = _vm._i($$a, $$v)
+                              if ($$el.checked) {
+                                $$i < 0 && (_vm.is_active = $$a.concat([$$v]))
+                              } else {
+                                $$i > -1 &&
+                                  (_vm.is_active = $$a
+                                    .slice(0, $$i)
+                                    .concat($$a.slice($$i + 1)))
+                              }
                             } else {
-                              $$i > -1 &&
-                                (_vm.is_active = $$a
-                                  .slice(0, $$i)
-                                  .concat($$a.slice($$i + 1)))
+                              _vm.is_active = $$c
                             }
-                          } else {
-                            _vm.is_active = $$c
                           }
                         }
-                      }
-                    }),
-                    _vm._v("\n          Active\n          "),
-                    _c(
-                      "span",
-                      {
-                        staticClass:
-                          "bg-grey-lighter rounded-full float-right px-2 py-1"
-                      },
-                      [_vm._v(_vm._s(_vm.getNumUsers(1)))]
-                    )
+                      }),
+                      _vm._v(" "),
+                      _c("span", { staticClass: "checkbox-checkmark" })
+                    ])
                   ]),
                   _vm._v(" "),
-                  _c("li", { staticClass: "text-grey-darkest pb-6" }, [
-                    _c("input", {
-                      directives: [
+                  _c("li", [
+                    _c("label", { staticClass: "checkbox-container" }, [
+                      _vm._v("\n            Inactive\n            "),
+                      _c(
+                        "span",
                         {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.not_active,
-                          expression: "not_active"
-                        }
-                      ],
-                      staticClass: "mr-2",
-                      attrs: {
-                        type: "checkbox",
-                        id: "inactive",
-                        name: "inactive",
-                        value: "2"
-                      },
-                      domProps: {
-                        checked: Array.isArray(_vm.not_active)
-                          ? _vm._i(_vm.not_active, "2") > -1
-                          : _vm.not_active
-                      },
-                      on: {
-                        change: function($event) {
-                          var $$a = _vm.not_active,
-                            $$el = $event.target,
-                            $$c = $$el.checked ? true : false
-                          if (Array.isArray($$a)) {
-                            var $$v = "2",
-                              $$i = _vm._i($$a, $$v)
-                            if ($$el.checked) {
-                              $$i < 0 && (_vm.not_active = $$a.concat([$$v]))
+                          staticClass:
+                            "bg-grey-lighter rounded-full float-right px-2 py-1"
+                        },
+                        [_vm._v(_vm._s(_vm.getNumUsers(2)))]
+                      ),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.not_active,
+                            expression: "not_active"
+                          }
+                        ],
+                        attrs: {
+                          type: "checkbox",
+                          id: "inactive",
+                          name: "inactive",
+                          value: "2"
+                        },
+                        domProps: {
+                          checked: Array.isArray(_vm.not_active)
+                            ? _vm._i(_vm.not_active, "2") > -1
+                            : _vm.not_active
+                        },
+                        on: {
+                          change: function($event) {
+                            var $$a = _vm.not_active,
+                              $$el = $event.target,
+                              $$c = $$el.checked ? true : false
+                            if (Array.isArray($$a)) {
+                              var $$v = "2",
+                                $$i = _vm._i($$a, $$v)
+                              if ($$el.checked) {
+                                $$i < 0 && (_vm.not_active = $$a.concat([$$v]))
+                              } else {
+                                $$i > -1 &&
+                                  (_vm.not_active = $$a
+                                    .slice(0, $$i)
+                                    .concat($$a.slice($$i + 1)))
+                              }
                             } else {
-                              $$i > -1 &&
-                                (_vm.not_active = $$a
-                                  .slice(0, $$i)
-                                  .concat($$a.slice($$i + 1)))
+                              _vm.not_active = $$c
                             }
-                          } else {
-                            _vm.not_active = $$c
                           }
                         }
-                      }
-                    }),
-                    _vm._v("\n          Inactive\n          "),
-                    _c(
-                      "span",
-                      {
-                        staticClass:
-                          "bg-grey-lighter rounded-full float-right px-2 py-1"
-                      },
-                      [_vm._v(_vm._s(_vm.getNumUsers(2)))]
-                    )
+                      }),
+                      _vm._v(" "),
+                      _c("span", { staticClass: "checkbox-checkmark" })
+                    ])
                   ])
                 ])
               ]

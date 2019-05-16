@@ -154,7 +154,7 @@ a {
 }
 
 .list-style-check {
-    list-style-image: url('/images/green-checkmark.svg');
+    list-style-image: url("/images/green-checkmark.svg");
 }
 
 .fade-enter-active,
@@ -244,6 +244,68 @@ a {
     background-position: center;
     width: 320px;
     margin: 0 auto;
+}
+
+/*-----------------------------------*/
+// CHECKBOX ///////////////////////////
+/*-----------------------------------*/
+
+.checkbox-container {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 16px;
+    line-height: 20px;
+    color: #4a4a4a;
+    user-select: none;
+
+    input {
+        position: absolute;
+        opacity: 0;
+        cursor: pointer;
+        height: 0;
+        width: 0;
+
+        &:checked ~ .checkbox-checkmark:after {
+            display: block;
+        }
+    }
+
+    &:hover input ~ .checkbox-checkmark {
+        background-color: #ccc;
+    }
+
+    input:checked ~ .checkbox-checkmark {
+        background-color: #2196f3;
+    }
+
+    .checkbox-checkmark:after {
+        left: 8px;
+        top: 5px;
+        width: 5px;
+        height: 10px;
+        border: solid white;
+        border-width: 0 3px 3px 0;
+        transform: rotate(45deg);
+    }
+}
+
+.checkbox-checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 20px;
+    width: 20px;
+    border-radius: 2px;
+    background-color: #eee;
+
+    &:after {
+        content: "";
+        position: absolute;
+        display: none;
+    }
 }
 
 /*-----------------------------------*/

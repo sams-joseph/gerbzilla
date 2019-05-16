@@ -3,29 +3,25 @@
     <aside class="w-48 hidden md:block">
       <h1 class="text-grey-darkest font-normal text-2xl mb-10">Status</h1>
       <ul class="list-reset">
-        <li class="text-grey-darkest pb-6">
-          <input
-            class="mr-2"
-            type="checkbox"
-            id="active"
-            name="active"
-            value="1"
-            v-model="is_active"
-          >
-          <label for="active">Active</label>
-          <span class="bg-grey-lighter rounded-full float-right px-2 py-1">{{ getNumUsers(1) }}</span>
+        <li>
+          <label class="checkbox-container">
+            Active
+            <span
+              class="bg-grey-lighter rounded-full float-right px-2 py-1"
+            >{{ getNumUsers(1) }}</span>
+            <input type="checkbox" id="active" name="active" value="1" v-model="is_active">
+            <span class="checkbox-checkmark"></span>
+          </label>
         </li>
-        <li class="text-grey-darkest pb-6">
-          <input
-            class="mr-2"
-            type="checkbox"
-            id="inactive"
-            name="inactive"
-            value="2"
-            v-model="not_active"
-          >
-          <label for="inactive">Inactive</label>
-          <span class="bg-grey-lighter rounded-full float-right px-2 py-1">{{ getNumUsers(2) }}</span>
+        <li>
+          <label class="checkbox-container">
+            Inactive
+            <span
+              class="bg-grey-lighter rounded-full float-right px-2 py-1"
+            >{{ getNumUsers(2) }}</span>
+            <input type="checkbox" id="inactive" name="inactive" value="2" v-model="not_active">
+            <span class="checkbox-checkmark"></span>
+          </label>
         </li>
       </ul>
     </aside>
@@ -88,33 +84,25 @@
       >
         <h1 class="text-grey-darkest font-normal text-2xl mb-10">Status</h1>
         <ul class="list-reset">
-          <li class="text-grey-darkest pb-6">
-            <input
-              class="mr-2"
-              type="checkbox"
-              id="active"
-              name="active"
-              value="1"
-              v-model="is_active"
-            >
-            Active
-            <span
-              class="bg-grey-lighter rounded-full float-right px-2 py-1"
-            >{{ getNumUsers(1) }}</span>
+          <li>
+            <label class="checkbox-container">
+              Active
+              <span
+                class="bg-grey-lighter rounded-full float-right px-2 py-1"
+              >{{ getNumUsers(1) }}</span>
+              <input type="checkbox" id="active" name="active" value="1" v-model="is_active">
+              <span class="checkbox-checkmark"></span>
+            </label>
           </li>
-          <li class="text-grey-darkest pb-6">
-            <input
-              class="mr-2"
-              type="checkbox"
-              id="inactive"
-              name="inactive"
-              value="2"
-              v-model="not_active"
-            >
-            Inactive
-            <span
-              class="bg-grey-lighter rounded-full float-right px-2 py-1"
-            >{{ getNumUsers(2) }}</span>
+          <li>
+            <label class="checkbox-container">
+              Inactive
+              <span
+                class="bg-grey-lighter rounded-full float-right px-2 py-1"
+              >{{ getNumUsers(2) }}</span>
+              <input type="checkbox" id="inactive" name="inactive" value="2" v-model="not_active">
+              <span class="checkbox-checkmark"></span>
+            </label>
           </li>
         </ul>
       </div>

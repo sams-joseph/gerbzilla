@@ -3,19 +3,21 @@
     <aside class="w-48 hidden md:block">
       <h1 class="text-grey-darkest font-normal text-2xl mb-10">Categories</h1>
       <ul class="list-reset">
-        <li class="text-grey-darkest pb-6" v-for="category in categories" v-bind:key="category.id">
-          <input
-            class="mr-2"
-            type="checkbox"
-            :id="category.name"
-            :name="category.name"
-            :value="category.id"
-            v-model="checkedCategories"
-          >
-          <label :for="category.name">{{ category.name }}</label>
-          <span
-            class="bg-grey-lighter rounded-full float-right px-2 py-1"
-          >{{ getNumExercises(category.id) }}</span>
+        <li v-for="category in categories" v-bind:key="category.id">
+          <label class="checkbox-container">
+            {{ category.name }}
+            <span
+              class="bg-grey-lighter rounded-full float-right px-2 py-1"
+            >{{ getNumExercises(category.id) }}</span>
+            <input
+              type="checkbox"
+              :id="category.name"
+              :name="category.name"
+              :value="category.id"
+              v-model="checkedCategories"
+            >
+            <span class="checkbox-checkmark"></span>
+          </label>
         </li>
       </ul>
     </aside>
@@ -65,23 +67,21 @@
       >
         <h1 class="text-grey-darkest font-normal text-2xl mb-10">Categories</h1>
         <ul class="list-reset">
-          <li
-            class="text-grey-darkest pb-6"
-            v-for="category in categories"
-            v-bind:key="category.id"
-          >
-            <input
-              class="mr-2"
-              type="checkbox"
-              :id="category.name"
-              :name="category.name"
-              :value="category.id"
-              v-model="checkedCategories"
-            >
-            {{ category.name }}
-            <span
-              class="bg-grey-lighter rounded-full float-right px-2 py-1"
-            >{{ getNumExercises(category.id) }}</span>
+          <li v-for="category in categories" v-bind:key="category.id">
+            <label class="checkbox-container">
+              {{ category.name }}
+              <span
+                class="bg-grey-lighter rounded-full float-right px-2 py-1"
+              >{{ getNumExercises(category.id) }}</span>
+              <input
+                type="checkbox"
+                :id="category.name"
+                :name="category.name"
+                :value="category.id"
+                v-model="checkedCategories"
+              >
+              <span class="checkbox-checkmark"></span>
+            </label>
           </li>
         </ul>
       </div>
