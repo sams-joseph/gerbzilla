@@ -21,4 +21,15 @@ class BlockController extends Controller
 
         return response()->json($blocks);
     }
+
+    public function store(User $user)
+    {
+        $attributes = request()->validate(['name' => 'required', 'start_date' => 'required', 'type_id' => 'required']);
+
+        $attributes['user_id'] = $user->id;
+
+        $block = Block::create($attributes);
+
+        return response()->json($block);
+    }
 }

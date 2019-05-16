@@ -3,6 +3,11 @@
     <page-header></page-header>
     <navigation></navigation>
     <side-navigation></side-navigation>
+    <create-block-form
+      v-bind:show="showAddBlockForm"
+      @cancel-block-create="toggleAddBlockForm"
+      @create-block-success="refreshData"
+    ></create-block-form>
     <div v-if="loading" class="w-full">
       <div class="flex flex-col items-center">
         <div class="mb-4">
@@ -23,11 +28,10 @@
           <tab name="Workouts" :selected="true">
             <h1 class="text-grey-darkest font-normal text-2xl mb-8 px-8">
               Training Blocks
-              <router-link
-                to="/"
-                active-class="none"
-                class="float-right uppercase text-grey-dark text-sm py-2 px-4 rounded hover:bg-grey-lighter hover:text-red"
-              >Add Block</router-link>
+              <span
+                class="float-right uppercase text-grey-dark text-xs font-semibold py-2 px-4 rounded hover:bg-grey-lighter hover:text-red cursor-pointer"
+                @click="toggleAddBlockForm"
+              >Add Block</span>
             </h1>
             <div class="flex w-full flex-wrap px-6">
               <block v-for="block in blocks" v-bind:key="block.id" v-bind:block="block"></block>
@@ -60,7 +64,8 @@ export default {
       user: {},
       blocks: [],
       isActive: false,
-      loading: true
+      loading: true,
+      showAddBlockForm: false
     };
   },
 
@@ -80,13 +85,49 @@ export default {
         this.$http.spread((user, blocks) => {
           this.user = user.data;
           this.isActive = user.data.is_active === 1 ? true : false;
-          this.blocks = blocks.data;
+          this.blocks = blocks.data.sort((a, b) =>
+            a.start_date < b.start_date
+              ? 1
+              : b.start_date < a.start_date
+              ? -1
+              : 0
+          );
           this.loading = false;
         })
       )
       .catch(err => {
         console.log(err);
       });
+  },
+
+  methods: {
+    refreshData() {
+      this.loading = true;
+
+      this.$http
+        .get(
+          `${process.env.MIX_BASE_URL}/trainer/users/${
+            this.$route.params.id
+          }/blocks`
+        )
+        .then(res => {
+          this.blocks = res.data.sort((a, b) =>
+            a.start_date < b.start_date
+              ? 1
+              : b.start_date < a.start_date
+              ? -1
+              : 0
+          );
+          this.loading = false;
+        })
+        .catch(err => {
+          console.log(err);
+        });
+    },
+
+    toggleAddBlockForm() {
+      this.showAddBlockForm = !this.showAddBlockForm;
+    }
   }
 };
 </script>

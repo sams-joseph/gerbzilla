@@ -47,4 +47,7 @@ Route::middleware('auth:api', 'roles:admin|trainer')
         Route::get('/categories', 'CategoryController@index');
 
         Route::get('/users/{user}/blocks', 'BlockController@index');
+        Route::post('/users/{user}/blocks', 'BlockController@store');
+
+        Route::get('/types', 'TypeController@index');
     });
