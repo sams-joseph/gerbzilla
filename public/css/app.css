@@ -6377,6 +6377,10 @@ body {
   font-size: 5rem;
 }
 
+.pin-out-top {
+  top: -60px;
+}
+
 .card-hover {
   -webkit-transition: -webkit-transform .15s;
   transition: -webkit-transform .15s;

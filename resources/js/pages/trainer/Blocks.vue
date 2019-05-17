@@ -30,14 +30,16 @@
         >
           <div class="container mx-auto px-0">
             <h1 class="text-white font-bold text-2xl mb-2 px-8">{{ block.name }}</h1>
-            <h4 class="text-white font-normal text-base opacity-75 px-8 mb-4">{{ block.start_date }}</h4>
+            <h4
+              class="text-white font-normal text-base opacity-75 px-8 mb-4"
+            >{{ $moment(block.start_date).format('MMMM Do YYYY') }}</h4>
             <span
               class="text-center inline-block w-auto mx-8 py-1 px-4 rounded-full text-xs text-white font-thin uppercase description-pill"
             >{{ type.name }}</span>
           </div>
           <div
             @click="toggleModal"
-            class="w-12 h-12 bg-red shadow-lg rounded-full fixed pin-r pin-b mr-8 mb-8 flex items-center justify-center cursor-pointer"
+            class="z-50 w-12 h-12 bg-red shadow-lg rounded-full fixed pin-r pin-b mr-8 mb-8 flex items-center justify-center cursor-pointer"
           >
             <svg
               class="fill-current text-white"
@@ -52,24 +54,43 @@
         </div>
         <div class="container mx-auto px-4 py-20">
           <h1 class="text-grey-darkest font-normal text-2xl mb-10 px-4">Workouts</h1>
-          <ul class="list-reset">
-            <li v-for="workout in workouts" :key="workout.id">
+          <ul class="list-reset flex flex-wrap">
+            <li
+              v-for="workout in workouts"
+              :key="`element${workout.id}`"
+              class="w-full md:w-1/2 lg:w-1/3 mb-4"
+            >
               <div
-                class="w-full bg-white shadow-lg md:shadow-none md:hover:bg-grey-lighter rounded-lg p-4 flex justify-between"
+                class="relative w-full bg-white shadow-lg md:shadow-none md:hover:bg-grey-lighter rounded-lg p-4 flex justify-between"
               >
                 <div class="flex items-center">
-                  <div
-                    class="w-12 h-12 rounded-full border border-red mr-4 flex items-center justify-center"
-                  >
-                    <span class="text-3xl text-red font-black">{{ getDay(workout.date) }}</span>
-                  </div>
                   <div>
                     <h2 class="text-lg text-grey-darkest font-bold mb-1">{{ workout.name }}</h2>
-                    <h3 class="text-base text-blue font-medium">{{ workout.date }}</h3>
+                    <h3
+                      class="text-base text-blue font-medium"
+                    >{{ $moment(workout.date).format('dddd, MMM Do') }}</h3>
                   </div>
                 </div>
-                <div class="flex items-center">
-                  <div class="ml-4 border border-grey p-2 rounded-full">
+                <div class="items-center flex cursor-pointer">
+                  <div class="p-2" @click="togglePopover(`element${workout.id}`)">
+                    <svg
+                      class="fill-current text-grey-darker"
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        d="M12 10c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2S13.1 10 12 10zM12 4c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2S13.1 4 12 4zM12 16c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2S13.1 16 12 16z"
+                      ></path>
+                    </svg>
+                  </div>
+                </div>
+                <div
+                  class="items-center absolute hidden bg-white shadow-lg rounded-lg p-2 pin-r pin-out-top"
+                  :ref="'element' + workout.id"
+                >
+                  <div class="p-2">
                     <svg
                       class="fill-current text-grey-darker"
                       xmlns="http://www.w3.org/2000/svg"
@@ -86,7 +107,7 @@
                   <router-link
                     :to="{ name: 'workout', params: { user_id: userId, block_id: block.id, workout_id: workout.id }}"
                     active-class="none"
-                    class="ml-4 border border-grey p-2 rounded-full"
+                    class="ml-4 p-2"
                   >
                     <svg
                       class="fill-current text-grey-darker"
@@ -121,6 +142,7 @@ export default {
       workouts: [],
       userId: this.$route.params.user_id,
       showModal: false,
+      showPopover: false,
       loading: true
     };
   },
@@ -152,11 +174,20 @@ export default {
     getDay(date) {
       const d = new Date(date);
       return d.getDay();
+    },
+
+    togglePopover(ref) {
+      if (this.$refs[ref][0].classList.contains("flex")) {
+        this.$refs[ref][0].classList.add("hidden");
+        this.$refs[ref][0].classList.remove("flex");
+      } else {
+        this.$refs[ref][0].classList.add("flex");
+        this.$refs[ref][0].classList.remove("hidden");
+      }
     }
   },
 
   mounted() {
-    console.log(this.$route.params);
     const { user_id, block_id } = this.$route.params;
     this.loading = true;
 

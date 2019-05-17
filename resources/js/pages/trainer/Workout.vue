@@ -30,7 +30,9 @@
         >
           <div class="container mx-auto px-0">
             <h1 class="text-white font-bold text-2xl mb-2 px-8">{{ block.name }}</h1>
-            <h4 class="text-white font-normal text-base opacity-75 px-8 mb-4">{{ block.start_date }}</h4>
+            <h4
+              class="text-white font-normal text-base opacity-75 px-8 mb-4"
+            >{{ $moment(block.start_date).format('MMMM Do YYYY') }}</h4>
             <span
               class="text-center inline-block w-auto mx-8 py-1 px-4 rounded-full text-xs text-white font-thin uppercase description-pill"
             >{{ type.name }}</span>
@@ -51,7 +53,10 @@
           </div>
         </div>
         <div class="container mx-auto px-4 py-20">
-          <h1 class="text-grey-darkest font-normal text-2xl mb-10 px-4">{{ workout.name }}</h1>
+          <h1 class="text-grey-darkest font-normal text-2xl mb-2 px-4">{{ workout.name }}</h1>
+          <h4
+            class="text-grey-dark font-normal text-base px-4 mb-10"
+          >{{ $moment(block.start_date).format('MMMM Do YYYY') }}</h4>
         </div>
       </section>
     </transition>

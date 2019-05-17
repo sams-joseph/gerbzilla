@@ -3,6 +3,7 @@ import VueRouter from "vue-router";
 import VScrollLock from "v-scroll-lock";
 import VueCookies from "vue-cookies";
 import axios from "axios";
+import moment from 'moment';
 
 import routes from "./routes";
 import Header from "./components/Header";
@@ -24,6 +25,7 @@ import Block from "./components/Block";
 import Construction from "./components/Construction";
 
 Vue.prototype.$http = axios;
+Vue.prototype.$moment = moment;
 
 Vue.use(VueRouter);
 Vue.use(VScrollLock);
