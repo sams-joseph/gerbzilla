@@ -14,6 +14,7 @@ import CreateUserForm from "./components/forms/CreateUserForm";
 import CreateExerciseForm from "./components/forms/CreateExerciseForm";
 import CreateBlockForm from "./components/forms/CreateBlockForm";
 import CreateWorkoutForm from "./components/forms/CreateWorkoutForm";
+import CreateSetForm from './components/forms/CreateSetForm';
 import Tabs from "./components/Tabs";
 import Tab from "./components/Tab";
 import UserList from "./components/lists/UserList";
@@ -21,6 +22,7 @@ import ExerciseList from "./components/lists/ExerciseList";
 import SideNavigation from "./components/SideNavigation";
 import PageFooter from "./components/PageFooter";
 import Block from "./components/Block";
+import BlockHeader from './components/BlockHeader';
 
 import Construction from "./components/Construction";
 
@@ -41,6 +43,7 @@ Vue.component("create-user-form", CreateUserForm);
 Vue.component("create-exercise-form", CreateExerciseForm);
 Vue.component("create-block-form", CreateBlockForm);
 Vue.component("create-workout-form", CreateWorkoutForm);
+Vue.component("create-set-form", CreateSetForm);
 Vue.component("tabs", Tabs);
 Vue.component("tab", Tab);
 Vue.component("user-list", UserList);
@@ -48,6 +51,7 @@ Vue.component("exercise-list", ExerciseList);
 Vue.component("side-navigation", SideNavigation);
 Vue.component("page-footer", PageFooter);
 Vue.component("block", Block);
+Vue.component("block-header", BlockHeader);
 
 Vue.component("construction", Construction);
 
