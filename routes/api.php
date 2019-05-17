@@ -58,4 +58,5 @@ Route::middleware('auth:api', 'roles:admin|trainer')
         Route::get('/users/{user}/blocks/{block}/workouts/{workout}/sets', 'SetController@index');
         Route::post('/users/{user}/blocks/{block}/workouts/{workout}/sets', 'SetController@store');
         Route::get('/users/{user}/blocks/{block}/workouts/{workout}/sets/{set}', 'SetController@show');
+        Route::put('/users/{user}/blocks/{block}/workouts/{workout}/sets/{set}', 'SetController@update');
     });

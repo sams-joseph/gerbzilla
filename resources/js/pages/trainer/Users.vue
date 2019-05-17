@@ -23,18 +23,21 @@
       </svg>
       <p>{{ message.message }}</p>
     </div>
-    <transition name="fade">
-      <user-list v-if="!loading" heading="Users" v-bind:users="users"></user-list>
-    </transition>
-    <transition name="fade">
-      <create-user-form
-        @cancel-user-create="toggleModal"
-        @create-user-success="refreshData"
-        @create-user-error="handleError"
-        v-bind:show="showModal"
-      ></create-user-form>
-    </transition>
+    <div class="relative container mx-auto mb-20">
+      <transition name="fade">
+        <create-user-form
+          @cancel-user-create="toggleModal"
+          @create-user-success="refreshData"
+          @create-user-error="handleError"
+          v-bind:show="showModal"
+        ></create-user-form>
+      </transition>
+      <transition name="fade">
+        <user-list v-if="!loading" heading="Users" v-bind:users="users" v-bind:show="showModal"></user-list>
+      </transition>
+    </div>
     <div
+      v-if="!showModal"
       @click="toggleModal"
       class="cursor-pointer fixed pin-b pin-r w-12 h-12 bg-red hover:bg-red-dark shadow-lg rounded-full mr-8 mb-8 flex items-center justify-center"
     >

@@ -1,6 +1,5 @@
 <template>
   <div
-    v-if="!loading"
     class="w-full py-20"
     v-bind:class="{
         'bg-red-gradient': type.name === 'strength',
@@ -24,8 +23,7 @@
 export default {
   props: {
     block: Object,
-    type: Object,
-    loading: Boolean
+    type: Object
   }
 };
 </script>

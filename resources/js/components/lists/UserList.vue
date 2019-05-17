@@ -1,5 +1,5 @@
 <template>
-  <div class="container mx-auto mb-20 flex px-0 md:px-8 mt-20">
+  <div class="flex px-0 md:px-8 mt-20">
     <aside class="w-48 hidden md:block">
       <h1 class="text-grey-darkest font-normal text-2xl mb-10">Status</h1>
       <ul class="list-reset">
@@ -98,6 +98,7 @@
     </transition>
     <div
       ref="button"
+      v-if="!show"
       @click="toggleFilterMenu"
       class="cursor-pointer fixed pin-b pin-l w-12 h-12 bg-white shadow-lg rounded-full ml-8 mb-8 flex items-center justify-center md:hidden"
     >
@@ -156,7 +157,8 @@ export default {
 
   props: {
     users: Array,
-    heading: String
+    heading: String,
+    show: Boolean
   }
 };
 </script>

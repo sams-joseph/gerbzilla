@@ -8,6 +8,7 @@ import User from "./pages/trainer/User";
 import Exercises from "./pages/trainer/Exercises";
 import Blocks from "./pages/trainer/Blocks";
 import Workout from "./pages/trainer/Workout";
+import EditSet from './pages/trainer/EditSet';
 
 import NotFound from "./components/NotFound";
 
@@ -104,6 +105,15 @@ export default {
             path: "/t/users/:user_id/blocks/:block_id/workouts/:workout_id",
             name: "workout",
             component: Workout,
+            meta: {
+                requiresAuth: true,
+                is_trainer: true
+            }
+        },
+        {
+            path: "/t/users/:user_id/blocks/:block_id/workouts/:workout_id/sets/:set_id",
+            name: "edit-set",
+            component: EditSet,
             meta: {
                 requiresAuth: true,
                 is_trainer: true

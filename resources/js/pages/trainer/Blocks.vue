@@ -36,7 +36,7 @@
         </div>
         <div class="container mx-auto px-4 py-20">
           <h1 class="text-grey-darkest font-normal text-2xl mb-10 px-4">Workouts</h1>
-          <ul class="list-reset flex flex-wrap">
+          <ul class="list-reset flex flex-wrap px-4 md:px-0">
             <li
               v-for="workout in workouts"
               :key="`element${workout.id}`"
