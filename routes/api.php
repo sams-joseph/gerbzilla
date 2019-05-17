@@ -53,4 +53,5 @@ Route::middleware('auth:api', 'roles:admin|trainer')
         Route::get('/types', 'TypeController@index');
 
         Route::post('/users/{user}/blocks/{block}/workouts', 'WorkoutController@store');
+        Route::get('/users/{user}/blocks/{block}/workouts/{workout}', 'WorkoutController@show');
     });

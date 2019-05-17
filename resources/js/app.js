@@ -11,17 +11,17 @@ import Navigation from "./components/Navigation";
 import SubNavigation from "./components/SubNavigation";
 import CreateUserForm from "./components/forms/CreateUserForm";
 import CreateExerciseForm from "./components/forms/CreateExerciseForm";
-import CreateBlockForm from './components/forms/CreateBlockForm';
-import CreateWorkoutForm from './components/forms/CreateWorkoutForm';
+import CreateBlockForm from "./components/forms/CreateBlockForm";
+import CreateWorkoutForm from "./components/forms/CreateWorkoutForm";
 import Tabs from "./components/Tabs";
 import Tab from "./components/Tab";
 import UserList from "./components/lists/UserList";
 import ExerciseList from "./components/lists/ExerciseList";
 import SideNavigation from "./components/SideNavigation";
 import PageFooter from "./components/PageFooter";
-import Block from './components/Block';
+import Block from "./components/Block";
 
-import Construction from './components/Construction';
+import Construction from "./components/Construction";
 
 Vue.prototype.$http = axios;
 
@@ -89,44 +89,44 @@ router.beforeEach((to, from, next) => {
 });
 
 let handleOutsideClick;
-Vue.directive('closable', {
+Vue.directive("closable", {
     bind(el, binding, vnode) {
-        handleOutsideClick = (e) => {
-            e.stopPropagation()
+        handleOutsideClick = e => {
+            e.stopPropagation();
             // Get the handler method name and the exclude array
             // from the object used in v-closable
-            const { handler, exclude } = binding.value
+            const { handler, exclude } = binding.value;
             // This variable indicates if the clicked element is excluded
-            let clickedOnExcludedEl = false
+            let clickedOnExcludedEl = false;
             exclude.forEach(refName => {
                 // We only run this code if we haven't detected
                 // any excluded element yet
                 if (!clickedOnExcludedEl) {
                     // Get the element using the reference name
-                    const excludedEl = vnode.context.$refs[refName]
+                    const excludedEl = vnode.context.$refs[refName];
                     // See if this excluded element
                     // is the same element the user just clicked on
-                    clickedOnExcludedEl = excludedEl.contains(e.target)
+                    clickedOnExcludedEl = excludedEl.contains(e.target);
                 }
-            })
+            });
             // We check to see if the clicked element is not
             // the dialog element and not excluded
             if (!el.contains(e.target) && !clickedOnExcludedEl) {
                 // If the clicked element is outside the dialog
                 // and not the button, then call the outside-click handler
                 // from the same component this directive is used in
-                vnode.context[handler]()
+                vnode.context[handler]();
             }
-        }
+        };
         // Register click/touchstart event listeners on the whole page
-        document.addEventListener('click', handleOutsideClick)
-        document.addEventListener('touchstart', handleOutsideClick)
+        document.addEventListener("click", handleOutsideClick);
+        document.addEventListener("touchstart", handleOutsideClick);
     },
     unbind() {
         // If the element that has v-closable is removed, then
         // unbind click/touchstart listeners from the whole page
-        document.removeEventListener('click', handleOutsideClick)
-        document.removeEventListener('touchstart', handleOutsideClick)
+        document.removeEventListener("click", handleOutsideClick);
+        document.removeEventListener("touchstart", handleOutsideClick);
     }
 });
 

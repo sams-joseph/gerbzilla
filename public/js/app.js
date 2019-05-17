@@ -2398,7 +2398,7 @@ __webpack_require__.r(__webpack_exports__);
   mounted: function mounted() {
     var _this = this;
 
-    this.$http.get("".concat("http://localhost:8000/api", "/trainer/types")).then(function (res) {
+    this.$http.get("".concat("http://gerbzilla.test/api", "/trainer/types")).then(function (res) {
       _this.loading = false;
       _this.types = res.data;
     })["catch"](function (err) {
@@ -2415,7 +2415,7 @@ __webpack_require__.r(__webpack_exports__);
       e.preventDefault();
       this.loading = true;
       var user = JSON.parse(localStorage.getItem("user"));
-      this.$http.post("".concat("http://localhost:8000/api", "/trainer/users/").concat(this.$route.params.id, "/blocks"), {
+      this.$http.post("".concat("http://gerbzilla.test/api", "/trainer/users/").concat(this.$route.params.id, "/blocks"), {
         name: this.name,
         start_date: this.date,
         type_id: this.type
@@ -2555,7 +2555,7 @@ __webpack_require__.r(__webpack_exports__);
   mounted: function mounted() {
     var _this = this;
 
-    this.$http.get("".concat("http://localhost:8000/api", "/trainer/categories")).then(function (res) {
+    this.$http.get("".concat("http://gerbzilla.test/api", "/trainer/categories")).then(function (res) {
       _this.loading = false;
       _this.categories = res.data;
     })["catch"](function (err) {
@@ -2572,7 +2572,7 @@ __webpack_require__.r(__webpack_exports__);
       e.preventDefault();
       this.loading = true;
       var user = JSON.parse(localStorage.getItem("user"));
-      this.$http.post("".concat("http://localhost:8000/api", "/trainer/exercises"), {
+      this.$http.post("".concat("http://gerbzilla.test/api", "/trainer/exercises"), {
         name: this.name,
         category_id: this.category
       }).then(function (res) {
@@ -2706,7 +2706,7 @@ __webpack_require__.r(__webpack_exports__);
 
       e.preventDefault();
       this.loading = true;
-      this.$http.post("".concat("http://localhost:8000/api", "/trainer/users"), {
+      this.$http.post("".concat("http://gerbzilla.test/api", "/trainer/users"), {
         first_name: this.firstName,
         last_name: this.lastName,
         email: this.email,
@@ -2812,7 +2812,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this$$route$params = this.$route.params,
           user_id = _this$$route$params.user_id,
           block_id = _this$$route$params.block_id;
-      this.$http.post("".concat("http://localhost:8000/api", "/trainer/users/").concat(user_id, "/blocks/").concat(block_id, "/workouts"), {
+      this.$http.post("".concat("http://gerbzilla.test/api", "/trainer/users/").concat(user_id, "/blocks/").concat(block_id, "/workouts"), {
         name: this.name,
         date: this.date
       }).then(function (res) {
@@ -2890,7 +2890,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       e.preventDefault();
-      this.$http.post("".concat("http://localhost:8000/api", "/login"), {
+      this.$http.post("".concat("http://gerbzilla.test/api", "/login"), {
         username: this.username,
         password: this.password
       }).then(function (res) {
@@ -2903,7 +2903,7 @@ __webpack_require__.r(__webpack_exports__);
           _this.$http.defaults.headers.common["Authorization"] = null;
         }
 
-        _this.$http.get("".concat("http://localhost:8000/api", "/user")).then(function (res) {
+        _this.$http.get("".concat("http://gerbzilla.test/api", "/user")).then(function (res) {
           localStorage.setItem("user", JSON.stringify(res.data.user));
           localStorage.setItem("role", JSON.stringify(res.data.role));
 
@@ -3657,7 +3657,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       e.preventDefault();
-      this.$http.post("".concat("http://localhost:8000/api", "/login"), {
+      this.$http.post("".concat("http://gerbzilla.test/api", "/login"), {
         username: this.username,
         password: this.password
       }).then(function (res) {
@@ -3670,7 +3670,7 @@ __webpack_require__.r(__webpack_exports__);
           _this.$http.defaults.headers.common["Authorization"] = null;
         }
 
-        _this.$http.get("".concat("http://localhost:8000/api", "/user")).then(function (res) {
+        _this.$http.get("".concat("http://gerbzilla.test/api", "/user")).then(function (res) {
           localStorage.setItem("user", JSON.stringify(res.data.user));
           localStorage.setItem("role", JSON.stringify(res.data.role));
 
@@ -3879,7 +3879,7 @@ __webpack_require__.r(__webpack_exports__);
   created: function created() {
     var _this = this;
 
-    this.$http.get("".concat("http://localhost:8000/api", "/user")).then(function (res) {
+    this.$http.get("".concat("http://gerbzilla.test/api", "/user")).then(function (res) {
       _this.firstName = res.data.user.first_name;
       _this.lastName = res.data.user.last_name;
       _this.status = res.data.user.is_active === 1 ? true : false;
@@ -4149,12 +4149,17 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       block: {},
       type: {},
       workouts: [],
+      userId: this.$route.params.user_id,
       showModal: false,
       loading: true
     };
@@ -4167,7 +4172,7 @@ __webpack_require__.r(__webpack_exports__);
           user_id = _this$$route$params.user_id,
           block_id = _this$$route$params.block_id;
       this.loading = true;
-      this.$http.get("".concat("http://localhost:8000/api", "/trainer/users/").concat(user_id, "/blocks/").concat(block_id)).then(function (res) {
+      this.$http.get("".concat("http://gerbzilla.test/api", "/trainer/users/").concat(user_id, "/blocks/").concat(block_id)).then(function (res) {
         _this.workouts = res.data.workouts;
         _this.loading = false;
       })["catch"](function (err) {
@@ -4185,11 +4190,12 @@ __webpack_require__.r(__webpack_exports__);
   mounted: function mounted() {
     var _this2 = this;
 
+    console.log(this.$route.params);
     var _this$$route$params2 = this.$route.params,
         user_id = _this$$route$params2.user_id,
         block_id = _this$$route$params2.block_id;
     this.loading = true;
-    this.$http.get("".concat("http://localhost:8000/api", "/trainer/users/").concat(user_id, "/blocks/").concat(block_id)).then(function (res) {
+    this.$http.get("".concat("http://gerbzilla.test/api", "/trainer/users/").concat(user_id, "/blocks/").concat(block_id)).then(function (res) {
       _this2.block = res.data.block;
       _this2.type = res.data.type;
       _this2.workouts = res.data.workouts;
@@ -4269,7 +4275,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       this.loading = true;
-      this.$http.get("".concat("http://localhost:8000/api", "/trainer/exercises")).then(function (res) {
+      this.$http.get("".concat("http://gerbzilla.test/api", "/trainer/exercises")).then(function (res) {
         _this.exercises = res.data;
         _this.loading = false;
       })["catch"](function (err) {
@@ -4284,7 +4290,7 @@ __webpack_require__.r(__webpack_exports__);
     var _this2 = this;
 
     this.loading = true;
-    this.$http.all([this.$http.get("".concat("http://localhost:8000/api", "/trainer/exercises")), this.$http.get("".concat("http://localhost:8000/api", "/trainer/categories"))]).then(this.$http.spread(function (exercises, categories) {
+    this.$http.all([this.$http.get("".concat("http://gerbzilla.test/api", "/trainer/exercises")), this.$http.get("".concat("http://gerbzilla.test/api", "/trainer/categories"))]).then(this.$http.spread(function (exercises, categories) {
       _this2.exercises = exercises.data;
       _this2.categories = categories.data;
       _this2.loading = false;
@@ -4377,7 +4383,7 @@ __webpack_require__.r(__webpack_exports__);
   mounted: function mounted() {
     var _this = this;
 
-    this.$http.all([this.$http.get("".concat("http://localhost:8000/api", "/trainer/users/").concat(this.$route.params.id)), this.$http.get("".concat("http://localhost:8000/api", "/trainer/users/").concat(this.$route.params.id, "/blocks"))]).then(this.$http.spread(function (user, blocks) {
+    this.$http.all([this.$http.get("".concat("http://gerbzilla.test/api", "/trainer/users/").concat(this.$route.params.id)), this.$http.get("".concat("http://gerbzilla.test/api", "/trainer/users/").concat(this.$route.params.id, "/blocks"))]).then(this.$http.spread(function (user, blocks) {
       _this.user = user.data;
       _this.isActive = user.data.is_active === 1 ? true : false;
       _this.blocks = blocks.data.sort(function (a, b) {
@@ -4393,7 +4399,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this2 = this;
 
       this.loading = true;
-      this.$http.get("".concat("http://localhost:8000/api", "/trainer/users/").concat(this.$route.params.id, "/blocks")).then(function (res) {
+      this.$http.get("".concat("http://gerbzilla.test/api", "/trainer/users/").concat(this.$route.params.id, "/blocks")).then(function (res) {
         _this2.blocks = res.data.sort(function (a, b) {
           return a.start_date < b.start_date ? 1 : b.start_date < a.start_date ? -1 : 0;
         });
@@ -4486,7 +4492,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       this.loading = true;
-      this.$http.get("".concat("http://localhost:8000/api", "/trainer/users")).then(function (res) {
+      this.$http.get("".concat("http://gerbzilla.test/api", "/trainer/users")).then(function (res) {
         _this.users = res.data;
         _this.message = {
           message: "Successfully created user.",
@@ -4513,7 +4519,7 @@ __webpack_require__.r(__webpack_exports__);
   mounted: function mounted() {
     var _this2 = this;
 
-    this.$http.get("".concat("http://localhost:8000/api", "/trainer/users")).then(function (res) {
+    this.$http.get("".concat("http://gerbzilla.test/api", "/trainer/users")).then(function (res) {
       _this2.users = res.data;
       _this2.loading = false;
     })["catch"](function (err) {
@@ -4524,6 +4530,130 @@ __webpack_require__.r(__webpack_exports__);
     isMessage: function isMessage() {
       return Object.keys(this.message).length === 0 && this.message.constructor === Object;
     }
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/trainer/Workout.vue?vue&type=script&lang=js&":
+/*!*********************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/pages/trainer/Workout.vue?vue&type=script&lang=js& ***!
+  \*********************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      block: {},
+      type: {},
+      workout: {},
+      showModal: false,
+      loading: true
+    };
+  },
+  methods: {
+    refreshData: function refreshData() {
+      var _this = this;
+
+      var _this$$route$params = this.$route.params,
+          user_id = _this$$route$params.user_id,
+          block_id = _this$$route$params.block_id,
+          workout_id = _this$$route$params.workout_id;
+      this.loading = true;
+      this.$http.get("".concat("http://gerbzilla.test/api", "/trainer/users/").concat(user_id, "/blocks/").concat(block_id, "/workouts/").concat(workout_id)).then(function (res) {
+        _this.workout = res.data.workout;
+        _this.loading = false;
+      })["catch"](function (err) {
+        console.log(err);
+      });
+    },
+    toggleModal: function toggleModal() {
+      this.showModal = !this.showModal;
+    },
+    getDay: function getDay(date) {
+      var d = new Date(date);
+      return d.getDay();
+    }
+  },
+  mounted: function mounted() {
+    var _this2 = this;
+
+    var _this$$route$params2 = this.$route.params,
+        user_id = _this$$route$params2.user_id,
+        block_id = _this$$route$params2.block_id,
+        workout_id = _this$$route$params2.workout_id;
+    this.loading = true;
+    this.$http.get("".concat("http://gerbzilla.test/api", "/trainer/users/").concat(user_id, "/blocks/").concat(block_id, "/workouts/").concat(workout_id)).then(function (res) {
+      _this2.block = res.data.block;
+      _this2.type = res.data.type;
+      _this2.workout = res.data.workout;
+      _this2.loading = false;
+    })["catch"](function (err) {
+      console.log(err);
+    });
   }
 });
 
@@ -5326,43 +5456,39 @@ var render = function() {
     [
       _c(
         "div",
-        { staticClass: "w-full bg-white rounded-lg shadow-lg cursor-pointer" },
+        {
+          staticClass: "w-full bg-white rounded-lg shadow-lg cursor-pointer",
+          class: {
+            "bg-red-gradient": _vm.block.type.name === "strength",
+            "bg-blue-gradient": _vm.block.type.name === "hypertrophy",
+            "bg-green-gradient": _vm.block.type.name === "fitness"
+          }
+        },
         [
-          _c(
-            "div",
-            {
-              staticClass: "flex items-center p-6 rounded-lg",
-              class: {
-                "bg-red-gradient": _vm.block.type.name === "strength",
-                "bg-blue-gradient": _vm.block.type.name === "hypertrophy",
-                "bg-green-gradient": _vm.block.type.name === "fitness"
-              }
-            },
-            [
-              _c("div", { staticClass: "mr-4" }, [
-                _c("div", { staticClass: "w-18 h-18 bg-white rounded-full" })
+          _c("div", { staticClass: "flex items-center p-6 rounded-lg" }, [
+            _c("div", { staticClass: "mr-4" }, [
+              _c("div", { staticClass: "w-18 h-18 bg-white rounded-full" })
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "flex flex-col" }, [
+              _c("h3", { staticClass: "text-white text-lg font-bold mb-2" }, [
+                _vm._v(_vm._s(_vm.block.name))
               ]),
               _vm._v(" "),
-              _c("div", { staticClass: "flex flex-col" }, [
-                _c("h3", { staticClass: "text-white text-lg font-bold mb-2" }, [
-                  _vm._v(_vm._s(_vm.block.name))
-                ]),
-                _vm._v(" "),
-                _c(
-                  "h4",
-                  { staticClass: "text-white text-base font-light opacity-75" },
-                  [_vm._v(_vm._s(_vm.block.start_date))]
-                )
-              ])
-            ]
-          ),
+              _c(
+                "h4",
+                { staticClass: "text-white text-base font-light opacity-75" },
+                [_vm._v(_vm._s(_vm.block.start_date))]
+              )
+            ])
+          ]),
           _vm._v(" "),
           _c("div", { staticClass: "flex py-4 px-8" }, [
             _c(
               "span",
               {
                 staticClass:
-                  "text-center block w-full md:w-auto lg:w-full py-1 px-2 rounded-full text-xs text-grey-darkest font-thin border border-grey bg-grey-light uppercase"
+                  "text-center block w-full md:w-auto lg:w-full py-1 px-2 rounded-full text-xs text-white font-thin description-pill uppercase"
               },
               [_vm._v(_vm._s(_vm.block.type.name))]
             )
@@ -9881,79 +10007,97 @@ var render = function() {
                         ])
                       ]),
                       _vm._v(" "),
-                      _c("div", { staticClass: "flex items-center" }, [
-                        _c(
-                          "div",
-                          {
-                            staticClass: "ml-4 bg-grey-lighter p-2 rounded-full"
-                          },
-                          [
-                            _c(
-                              "svg",
-                              {
-                                staticClass: "fill-current text-grey-darker",
-                                attrs: {
-                                  xmlns: "http://www.w3.org/2000/svg",
-                                  width: "24",
-                                  height: "24",
-                                  viewBox: "0 0 24 24"
-                                }
-                              },
-                              [
-                                _c("path", {
+                      _c(
+                        "div",
+                        { staticClass: "flex items-center" },
+                        [
+                          _c(
+                            "div",
+                            {
+                              staticClass:
+                                "ml-4 border border-grey p-2 rounded-full"
+                            },
+                            [
+                              _c(
+                                "svg",
+                                {
+                                  staticClass: "fill-current text-grey-darker",
                                   attrs: {
-                                    d:
-                                      "M4,22h12c1.104,0,2-0.896,2-2V8c0-1.104-0.896-2-2-2H4C2.896,6,2,6.896,2,8v12C2,21.104,2.896,22,4,22z M6,13h3v-3h2v3h3v2 h-3v3H9v-3H6V13z"
+                                    xmlns: "http://www.w3.org/2000/svg",
+                                    width: "24",
+                                    height: "24",
+                                    viewBox: "0 0 24 24"
                                   }
-                                }),
-                                _vm._v(" "),
-                                _c("path", {
+                                },
+                                [
+                                  _c("path", {
+                                    attrs: {
+                                      d:
+                                        "M4,22h12c1.104,0,2-0.896,2-2V8c0-1.104-0.896-2-2-2H4C2.896,6,2,6.896,2,8v12C2,21.104,2.896,22,4,22z M6,13h3v-3h2v3h3v2 h-3v3H9v-3H6V13z"
+                                    }
+                                  }),
+                                  _vm._v(" "),
+                                  _c("path", {
+                                    attrs: {
+                                      d:
+                                        "M20,2H8v2h12v12h2V4C22,2.897,21.103,2,20,2z"
+                                    }
+                                  })
+                                ]
+                              )
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "router-link",
+                            {
+                              staticClass:
+                                "ml-4 border border-grey p-2 rounded-full",
+                              attrs: {
+                                to: {
+                                  name: "workout",
+                                  params: {
+                                    user_id: _vm.userId,
+                                    block_id: _vm.block.id,
+                                    workout_id: workout.id
+                                  }
+                                },
+                                "active-class": "none"
+                              }
+                            },
+                            [
+                              _c(
+                                "svg",
+                                {
+                                  staticClass: "fill-current text-grey-darker",
                                   attrs: {
-                                    d:
-                                      "M20,2H8v2h12v12h2V4C22,2.897,21.103,2,20,2z"
+                                    xmlns: "http://www.w3.org/2000/svg",
+                                    width: "24",
+                                    height: "24",
+                                    viewBox: "0 0 24 24"
                                   }
-                                })
-                              ]
-                            )
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "div",
-                          {
-                            staticClass: "ml-4 bg-grey-lighter p-2 rounded-full"
-                          },
-                          [
-                            _c(
-                              "svg",
-                              {
-                                staticClass: "fill-current text-grey-darker",
-                                attrs: {
-                                  xmlns: "http://www.w3.org/2000/svg",
-                                  width: "24",
-                                  height: "24",
-                                  viewBox: "0 0 24 24"
-                                }
-                              },
-                              [
-                                _c("path", {
-                                  attrs: {
-                                    transform: "rotate(45.001 16.357 4.656)",
-                                    d: "M14.235 3.039H18.478V6.273H14.235z"
-                                  }
-                                }),
-                                _vm._v(" "),
-                                _c("path", {
-                                  attrs: {
-                                    d:
-                                      "M4 14L4 17 7 17 15.299 8.713 12.299 5.713zM4 20H20V22H4z"
-                                  }
-                                })
-                              ]
-                            )
-                          ]
-                        )
-                      ])
+                                },
+                                [
+                                  _c("path", {
+                                    attrs: {
+                                      transform: "rotate(45.001 16.357 4.656)",
+                                      d: "M14.235 3.039H18.478V6.273H14.235z"
+                                    }
+                                  }),
+                                  _vm._v(" "),
+                                  _c("path", {
+                                    attrs: {
+                                      d:
+                                        "M4 14L4 17 7 17 15.299 8.713 12.299 5.713zM4 20H20V22H4z"
+                                    }
+                                  })
+                                ]
+                              )
+                            ]
+                          )
+                        ],
+                        1
+                      )
                     ]
                   )
                 ])
@@ -10413,6 +10557,158 @@ var render = function() {
           )
         ]
       )
+    ],
+    1
+  )
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "pl-6 flex flex-col items-center" }, [
+      _c("div", { staticClass: "mb-4" }, [
+        _c("img", { attrs: { src: "/images/puff.svg", alt: "Loading" } })
+      ])
+    ])
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/trainer/Workout.vue?vue&type=template&id=43f8d74a&":
+/*!*************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/pages/trainer/Workout.vue?vue&type=template&id=43f8d74a& ***!
+  \*************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    [
+      _c("page-header"),
+      _vm._v(" "),
+      _c("navigation"),
+      _vm._v(" "),
+      _c("side-navigation"),
+      _vm._v(" "),
+      _vm.loading
+        ? _c("div", { staticClass: "w-full pt-20" }, [_vm._m(0)])
+        : _vm._e(),
+      _vm._v(" "),
+      _c(
+        "transition",
+        { attrs: { name: "fade" } },
+        [
+          _c("create-workout-form", {
+            attrs: { show: _vm.showModal },
+            on: {
+              "cancel-workout-create": _vm.toggleModal,
+              "create-workout-success": _vm.refreshData
+            }
+          })
+        ],
+        1
+      ),
+      _vm._v(" "),
+      _c("transition", { attrs: { name: "fade" } }, [
+        _c("section", [
+          !_vm.loading
+            ? _c(
+                "div",
+                {
+                  staticClass: "w-full py-20",
+                  class: {
+                    "bg-red-gradient": _vm.type.name === "strength",
+                    "bg-blue-gradient": _vm.type.name === "hypertrophy",
+                    "bg-green-gradient": _vm.type.name === "fitness"
+                  }
+                },
+                [
+                  _c("div", { staticClass: "container mx-auto px-0" }, [
+                    _c(
+                      "h1",
+                      {
+                        staticClass: "text-white font-bold text-2xl mb-2 px-8"
+                      },
+                      [_vm._v(_vm._s(_vm.block.name))]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "h4",
+                      {
+                        staticClass:
+                          "text-white font-normal text-base opacity-75 px-8 mb-4"
+                      },
+                      [_vm._v(_vm._s(_vm.block.start_date))]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "span",
+                      {
+                        staticClass:
+                          "text-center inline-block w-auto mx-8 py-1 px-4 rounded-full text-xs text-white font-thin uppercase description-pill"
+                      },
+                      [_vm._v(_vm._s(_vm.type.name))]
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    {
+                      staticClass:
+                        "w-12 h-12 bg-red shadow-lg rounded-full fixed pin-r pin-b mr-8 mb-8 flex items-center justify-center cursor-pointer",
+                      on: { click: _vm.toggleModal }
+                    },
+                    [
+                      _c(
+                        "svg",
+                        {
+                          staticClass: "fill-current text-white",
+                          attrs: {
+                            xmlns: "http://www.w3.org/2000/svg",
+                            width: "24",
+                            height: "24",
+                            viewBox: "0 0 24 24"
+                          }
+                        },
+                        [
+                          _c("path", {
+                            attrs: {
+                              d:
+                                "M11 3L11 11 3 11 3 13 11 13 11 21 13 21 13 13 21 13 21 11 13 11 13 3z"
+                            }
+                          })
+                        ]
+                      )
+                    ]
+                  )
+                ]
+              )
+            : _vm._e(),
+          _vm._v(" "),
+          _c("div", { staticClass: "container mx-auto px-4 py-20" }, [
+            _c(
+              "h1",
+              {
+                staticClass: "text-grey-darkest font-normal text-2xl mb-10 px-4"
+              },
+              [_vm._v(_vm._s(_vm.workout.name))]
+            )
+          ])
+        ])
+      ])
     ],
     1
   )
@@ -25354,7 +25650,7 @@ router.beforeEach(function (to, from, next) {
   }
 });
 var handleOutsideClick;
-vue__WEBPACK_IMPORTED_MODULE_0___default.a.directive('closable', {
+vue__WEBPACK_IMPORTED_MODULE_0___default.a.directive("closable", {
   bind: function bind(el, binding, vnode) {
     handleOutsideClick = function handleOutsideClick(e) {
       e.stopPropagation(); // Get the handler method name and the exclude array
@@ -25387,14 +25683,14 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.directive('closable', {
     }; // Register click/touchstart event listeners on the whole page
 
 
-    document.addEventListener('click', handleOutsideClick);
-    document.addEventListener('touchstart', handleOutsideClick);
+    document.addEventListener("click", handleOutsideClick);
+    document.addEventListener("touchstart", handleOutsideClick);
   },
   unbind: function unbind() {
     // If the element that has v-closable is removed, then
     // unbind click/touchstart listeners from the whole page
-    document.removeEventListener('click', handleOutsideClick);
-    document.removeEventListener('touchstart', handleOutsideClick);
+    document.removeEventListener("click", handleOutsideClick);
+    document.removeEventListener("touchstart", handleOutsideClick);
   }
 });
 var app = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
@@ -25407,7 +25703,7 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
       var laravelToken = $cookies.get("laravel_token");
       var token = "Bearer ".concat(laravelToken);
       this.$http.defaults.headers.common["Authorization"] = token;
-      this.$http.get("".concat("http://localhost:8000/api", "/user")).then(function (res) {
+      this.$http.get("".concat("http://gerbzilla.test/api", "/user")).then(function (res) {
         localStorage.setItem("user", JSON.stringify(res.data.user));
         localStorage.setItem("role", JSON.stringify(res.data.role));
       })["catch"](function (err) {
@@ -27213,6 +27509,75 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/pages/trainer/Workout.vue":
+/*!************************************************!*\
+  !*** ./resources/js/pages/trainer/Workout.vue ***!
+  \************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _Workout_vue_vue_type_template_id_43f8d74a___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Workout.vue?vue&type=template&id=43f8d74a& */ "./resources/js/pages/trainer/Workout.vue?vue&type=template&id=43f8d74a&");
+/* harmony import */ var _Workout_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Workout.vue?vue&type=script&lang=js& */ "./resources/js/pages/trainer/Workout.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _Workout_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _Workout_vue_vue_type_template_id_43f8d74a___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _Workout_vue_vue_type_template_id_43f8d74a___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/pages/trainer/Workout.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/pages/trainer/Workout.vue?vue&type=script&lang=js&":
+/*!*************************************************************************!*\
+  !*** ./resources/js/pages/trainer/Workout.vue?vue&type=script&lang=js& ***!
+  \*************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Workout_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./Workout.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/trainer/Workout.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Workout_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/pages/trainer/Workout.vue?vue&type=template&id=43f8d74a&":
+/*!*******************************************************************************!*\
+  !*** ./resources/js/pages/trainer/Workout.vue?vue&type=template&id=43f8d74a& ***!
+  \*******************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Workout_vue_vue_type_template_id_43f8d74a___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./Workout.vue?vue&type=template&id=43f8d74a& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/trainer/Workout.vue?vue&type=template&id=43f8d74a&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Workout_vue_vue_type_template_id_43f8d74a___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Workout_vue_vue_type_template_id_43f8d74a___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
 /***/ "./resources/js/routes.js":
 /*!********************************!*\
   !*** ./resources/js/routes.js ***!
@@ -27231,7 +27596,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _pages_trainer_User__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./pages/trainer/User */ "./resources/js/pages/trainer/User.vue");
 /* harmony import */ var _pages_trainer_Exercises__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./pages/trainer/Exercises */ "./resources/js/pages/trainer/Exercises.vue");
 /* harmony import */ var _pages_trainer_Blocks__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./pages/trainer/Blocks */ "./resources/js/pages/trainer/Blocks.vue");
-/* harmony import */ var _components_NotFound__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./components/NotFound */ "./resources/js/components/NotFound.vue");
+/* harmony import */ var _pages_trainer_Workout__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./pages/trainer/Workout */ "./resources/js/pages/trainer/Workout.vue");
+/* harmony import */ var _components_NotFound__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./components/NotFound */ "./resources/js/components/NotFound.vue");
+
 
 
 
@@ -27247,7 +27614,7 @@ __webpack_require__.r(__webpack_exports__);
   routes: [{
     path: "*",
     name: "NotFound",
-    component: _components_NotFound__WEBPACK_IMPORTED_MODULE_9__["default"]
+    component: _components_NotFound__WEBPACK_IMPORTED_MODULE_10__["default"]
   }, {
     path: "/",
     name: "Home",
@@ -27317,6 +27684,14 @@ __webpack_require__.r(__webpack_exports__);
       requiresAuth: true,
       is_trainer: true
     }
+  }, {
+    path: "/t/users/:user_id/blocks/:block_id/workouts/:workout_id",
+    name: "workout",
+    component: _pages_trainer_Workout__WEBPACK_IMPORTED_MODULE_9__["default"],
+    meta: {
+      requiresAuth: true,
+      is_trainer: true
+    }
   }]
 });
 
@@ -27340,8 +27715,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /Users/jsams/projects/gerbzilla/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /Users/jsams/projects/gerbzilla/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /Users/joe.mac/projects/gerbzilla/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /Users/joe.mac/projects/gerbzilla/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

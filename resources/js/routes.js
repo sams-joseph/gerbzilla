@@ -4,9 +4,10 @@ import Overview from "./pages/Overview";
 import Workouts from "./pages/Workouts";
 import Goals from "./pages/Goals";
 import Users from "./pages/trainer/Users";
-import User from './pages/trainer/User';
+import User from "./pages/trainer/User";
 import Exercises from "./pages/trainer/Exercises";
-import Blocks from './pages/trainer/Blocks';
+import Blocks from "./pages/trainer/Blocks";
+import Workout from "./pages/trainer/Workout";
 
 import NotFound from "./components/NotFound";
 
@@ -94,6 +95,15 @@ export default {
             path: "/t/users/:user_id/blocks/:block_id",
             name: "block",
             component: Blocks,
+            meta: {
+                requiresAuth: true,
+                is_trainer: true
+            }
+        },
+        {
+            path: "/t/users/:user_id/blocks/:block_id/workouts/:workout_id",
+            name: "workout",
+            component: Workout,
             meta: {
                 requiresAuth: true,
                 is_trainer: true

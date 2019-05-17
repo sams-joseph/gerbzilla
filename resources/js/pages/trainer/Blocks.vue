@@ -69,7 +69,7 @@
                   </div>
                 </div>
                 <div class="flex items-center">
-                  <div class="ml-4 bg-grey-lighter p-2 rounded-full">
+                  <div class="ml-4 border border-grey p-2 rounded-full">
                     <svg
                       class="fill-current text-grey-darker"
                       xmlns="http://www.w3.org/2000/svg"
@@ -83,7 +83,11 @@
                       <path d="M20,2H8v2h12v12h2V4C22,2.897,21.103,2,20,2z"></path>
                     </svg>
                   </div>
-                  <div class="ml-4 bg-grey-lighter p-2 rounded-full">
+                  <router-link
+                    :to="{ name: 'workout', params: { user_id: userId, block_id: block.id, workout_id: workout.id }}"
+                    active-class="none"
+                    class="ml-4 border border-grey p-2 rounded-full"
+                  >
                     <svg
                       class="fill-current text-grey-darker"
                       xmlns="http://www.w3.org/2000/svg"
@@ -97,7 +101,7 @@
                       ></path>
                       <path d="M4 14L4 17 7 17 15.299 8.713 12.299 5.713zM4 20H20V22H4z"></path>
                     </svg>
-                  </div>
+                  </router-link>
                 </div>
               </div>
             </li>
@@ -115,6 +119,7 @@ export default {
       block: {},
       type: {},
       workouts: [],
+      userId: this.$route.params.user_id,
       showModal: false,
       loading: true
     };
@@ -151,6 +156,7 @@ export default {
   },
 
   mounted() {
+    console.log(this.$route.params);
     const { user_id, block_id } = this.$route.params;
     this.loading = true;
 
