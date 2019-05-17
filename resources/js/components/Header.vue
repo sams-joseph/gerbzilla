@@ -56,14 +56,10 @@
           </svg>
         </div>
         <ul class="list-reset mt-24">
-          <li @click="openDrawer" class="block px-8 py-2 hover:bg-grey-lighter">
-            <router-link
-              exact-active-class="router-link-active-drawer"
-              class="text-grey-darkest block"
-              to="/"
-              exact
-            ></router-link>
-          </li>
+          <li
+            @click="logout"
+            class="block px-8 py-2 hover:bg-grey-lighter text-grey-darkest cursor-pointer text-center"
+          >Logout</li>
         </ul>
       </div>
     </transition>
@@ -191,6 +187,15 @@ export default {
     successfulLogin() {
       this.showLogin = !this.showLogin;
       this.$router.push("/u/overview");
+    },
+
+    logout() {
+      this.$cookies.remove("laravel_token");
+      localStorage.removeItem("user");
+      localStorage.removeItem("role");
+      this.$http.defaults.headers.common["Authorization"] = "";
+      this.openDrawer();
+      this.$router.push("/");
     }
   },
 

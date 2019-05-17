@@ -25,6 +25,8 @@ import PageFooter from "./components/PageFooter";
 import Block from "./components/Block";
 import BlockHeader from './components/BlockHeader';
 
+import Loader from './components/Loader';
+
 import Construction from "./components/Construction";
 
 Vue.prototype.$http = axios;
@@ -54,6 +56,8 @@ Vue.component("side-navigation", SideNavigation);
 Vue.component("page-footer", PageFooter);
 Vue.component("block", Block);
 Vue.component("block-header", BlockHeader);
+
+Vue.component("loader", Loader);
 
 Vue.component("construction", Construction);
 

@@ -1,5 +1,5 @@
 <template>
-  <section class="w-full bg-grey-dark py-20"></section>
+  <section class="w-full bg-grey py-20"></section>
 </template>
 
 <script>

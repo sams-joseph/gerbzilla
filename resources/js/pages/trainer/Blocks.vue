@@ -3,13 +3,7 @@
     <page-header></page-header>
     <navigation></navigation>
     <side-navigation></side-navigation>
-    <div v-if="loading" class="w-full pt-20">
-      <div class="pl-6 flex flex-col items-center">
-        <div class="mb-4">
-          <img src="/images/puff.svg" alt="Loading">
-        </div>
-      </div>
-    </div>
+    <loader v-if="loading"></loader>
     <transition name="fade">
       <create-workout-form
         @cancel-workout-create="toggleModal"
@@ -18,7 +12,7 @@
       ></create-workout-form>
     </transition>
     <transition name="fade">
-      <section>
+      <section v-if="!loading">
         <block-header v-bind:block="block" v-bind:type="type" v-bind:loading="loading"></block-header>
         <div
           @click="toggleModal"

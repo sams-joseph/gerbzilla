@@ -8,13 +8,7 @@
       @cancel-block-create="toggleAddBlockForm"
       @create-block-success="refreshData"
     ></create-block-form>
-    <div v-if="loading" class="w-full pt-20">
-      <div class="flex flex-col items-center">
-        <div class="mb-4">
-          <img src="/images/puff.svg" alt="Loading">
-        </div>
-      </div>
-    </div>
+    <loader v-if="loading"></loader>
     <transition name="fade">
       <div v-if="!loading" class="container mx-auto px-0">
         <h1

@@ -3,13 +3,7 @@
     <page-header></page-header>
     <navigation></navigation>
     <side-navigation></side-navigation>
-    <div v-if="loading" class="w-full pt-20">
-      <div class="pl-6 flex flex-col items-center">
-        <div class="mb-4">
-          <img src="/images/puff.svg" alt="Loading">
-        </div>
-      </div>
-    </div>
+    <loader v-if="loading"></loader>
     <transition name="fade">
       <exercise-list
         v-if="!loading"

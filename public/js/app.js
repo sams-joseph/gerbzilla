@@ -2051,10 +2051,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2080,6 +2076,14 @@ __webpack_require__.r(__webpack_exports__);
     successfulLogin: function successfulLogin() {
       this.showLogin = !this.showLogin;
       this.$router.push("/u/overview");
+    },
+    logout: function logout() {
+      this.$cookies.remove("laravel_token");
+      localStorage.removeItem("user");
+      localStorage.removeItem("role");
+      this.$http.defaults.headers.common["Authorization"] = "";
+      this.openDrawer();
+      this.$router.push("/");
     }
   },
   created: function created() {
@@ -2093,6 +2097,29 @@ __webpack_require__.r(__webpack_exports__);
     this.isTrainer = role.name === "admin" || role.name === "trainer";
   }
 });
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Loader.vue?vue&type=script&lang=js&":
+/*!*****************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Loader.vue?vue&type=script&lang=js& ***!
+  \*****************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({});
 
 /***/ }),
 
@@ -4538,12 +4565,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -4632,11 +4653,15 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       block: {},
-      type: {}
+      type: {},
+      loading: true
     };
   },
   methods: {
@@ -4652,11 +4677,13 @@ __webpack_require__.r(__webpack_exports__);
         user_id = _this$$route$params.user_id,
         block_id = _this$$route$params.block_id,
         workout_id = _this$$route$params.workout_id;
+    this.loading = true;
     this.$http.get("".concat("http://localhost:8000/api", "/trainer/users/").concat(user_id, "/blocks/").concat(block_id, "/workouts/").concat(workout_id, "/sets")).then(function (res) {
       _this.block = res.data.block;
       _this.type = res.data.type;
       _this.workout = res.data.workout;
       _this.sets = res.data.sets;
+      _this.loading = false;
     })["catch"](function (err) {
       console.log(err);
     });
@@ -4674,12 +4701,6 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -4821,12 +4842,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -4882,12 +4897,6 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -5079,6 +5088,29 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -5087,7 +5119,8 @@ __webpack_require__.r(__webpack_exports__);
       workout: {},
       sets: [],
       set_id: 0,
-      showModal: false
+      showModal: false,
+      loading: true
     };
   },
   methods: {
@@ -5098,8 +5131,10 @@ __webpack_require__.r(__webpack_exports__);
           user_id = _this$$route$params.user_id,
           block_id = _this$$route$params.block_id,
           workout_id = _this$$route$params.workout_id;
+      this.loading = true;
       this.$http.get("".concat("http://localhost:8000/api", "/trainer/users/").concat(user_id, "/blocks/").concat(block_id, "/workouts/").concat(workout_id, "/sets")).then(function (res) {
         _this.sets = res.data.sets;
+        _this.loading = false;
       })["catch"](function (err) {
         console.log(err);
       });
@@ -5110,6 +5145,15 @@ __webpack_require__.r(__webpack_exports__);
     getDay: function getDay(date) {
       var d = new Date(date);
       return d.getDay();
+    },
+    togglePopover: function togglePopover(ref) {
+      if (this.$refs[ref][0].classList.contains("flex")) {
+        this.$refs[ref][0].classList.add("hidden");
+        this.$refs[ref][0].classList.remove("flex");
+      } else {
+        this.$refs[ref][0].classList.add("flex");
+        this.$refs[ref][0].classList.remove("hidden");
+      }
     }
   },
   mounted: function mounted() {
@@ -5119,11 +5163,13 @@ __webpack_require__.r(__webpack_exports__);
         user_id = _this$$route$params2.user_id,
         block_id = _this$$route$params2.block_id,
         workout_id = _this$$route$params2.workout_id;
+    this.loading = true;
     this.$http.get("".concat("http://localhost:8000/api", "/trainer/users/").concat(user_id, "/blocks/").concat(block_id, "/workouts/").concat(workout_id, "/sets")).then(function (res) {
       _this2.block = res.data.block;
       _this2.type = res.data.type;
       _this2.workout = res.data.workout;
       _this2.sets = res.data.sets;
+      _this2.loading = false;
     })["catch"](function (err) {
       console.log(err);
     });
@@ -23850,20 +23896,11 @@ var render = function() {
                   _c(
                     "li",
                     {
-                      staticClass: "block px-8 py-2 hover:bg-grey-lighter",
-                      on: { click: _vm.openDrawer }
+                      staticClass:
+                        "block px-8 py-2 hover:bg-grey-lighter text-grey-darkest cursor-pointer text-center",
+                      on: { click: _vm.logout }
                     },
-                    [
-                      _c("router-link", {
-                        staticClass: "text-grey-darkest block",
-                        attrs: {
-                          "exact-active-class": "router-link-active-drawer",
-                          to: "/",
-                          exact: ""
-                        }
-                      })
-                    ],
-                    1
+                    [_vm._v("Logout")]
                   )
                 ])
               ]
@@ -24108,6 +24145,47 @@ render._withStripped = true
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Loader.vue?vue&type=template&id=e79ec684&":
+/*!*********************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Loader.vue?vue&type=template&id=e79ec684& ***!
+  \*********************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _vm._m(0)
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      { staticClass: "w-full absolute pt-20 bg-white h-screen z-50" },
+      [
+        _c("div", { staticClass: "flex flex-col items-center" }, [
+          _c("div", [
+            _c("img", { attrs: { src: "/images/puff.svg", alt: "Loading" } })
+          ])
+        ])
+      ]
+    )
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Navigation.vue?vue&type=template&id=d456e682&":
 /*!*************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Navigation.vue?vue&type=template&id=d456e682& ***!
@@ -24275,7 +24353,7 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("section", { staticClass: "w-full bg-grey-dark py-20" })
+  return _c("section", { staticClass: "w-full bg-grey py-20" })
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -28591,9 +28669,7 @@ var render = function() {
       _vm._v(" "),
       _c("side-navigation"),
       _vm._v(" "),
-      _vm.loading
-        ? _c("div", { staticClass: "w-full pt-20" }, [_vm._m(0)])
-        : _vm._e(),
+      _vm.loading ? _c("loader") : _vm._e(),
       _vm._v(" "),
       _c(
         "transition",
@@ -28611,264 +28687,263 @@ var render = function() {
       ),
       _vm._v(" "),
       _c("transition", { attrs: { name: "fade" } }, [
-        _c(
-          "section",
-          [
-            _c("block-header", {
-              attrs: { block: _vm.block, type: _vm.type, loading: _vm.loading }
-            }),
-            _vm._v(" "),
-            _c(
-              "div",
-              {
-                staticClass:
-                  "z-50 w-12 h-12 bg-red shadow-lg rounded-full fixed pin-r pin-b mr-8 mb-8 flex items-center justify-center cursor-pointer",
-                on: { click: _vm.toggleModal }
-              },
+        !_vm.loading
+          ? _c(
+              "section",
               [
+                _c("block-header", {
+                  attrs: {
+                    block: _vm.block,
+                    type: _vm.type,
+                    loading: _vm.loading
+                  }
+                }),
+                _vm._v(" "),
                 _c(
-                  "svg",
+                  "div",
                   {
-                    staticClass: "fill-current text-white",
-                    attrs: {
-                      xmlns: "http://www.w3.org/2000/svg",
-                      width: "24",
-                      height: "24",
-                      viewBox: "0 0 24 24"
-                    }
+                    staticClass:
+                      "z-50 w-12 h-12 bg-red shadow-lg rounded-full fixed pin-r pin-b mr-8 mb-8 flex items-center justify-center cursor-pointer",
+                    on: { click: _vm.toggleModal }
                   },
                   [
-                    _c("path", {
-                      attrs: {
-                        d:
-                          "M11 3L11 11 3 11 3 13 11 13 11 21 13 21 13 13 21 13 21 11 13 11 13 3z"
-                      }
-                    })
+                    _c(
+                      "svg",
+                      {
+                        staticClass: "fill-current text-white",
+                        attrs: {
+                          xmlns: "http://www.w3.org/2000/svg",
+                          width: "24",
+                          height: "24",
+                          viewBox: "0 0 24 24"
+                        }
+                      },
+                      [
+                        _c("path", {
+                          attrs: {
+                            d:
+                              "M11 3L11 11 3 11 3 13 11 13 11 21 13 21 13 13 21 13 21 11 13 11 13 3z"
+                          }
+                        })
+                      ]
+                    )
                   ]
-                )
-              ]
-            ),
-            _vm._v(" "),
-            _c("div", { staticClass: "container mx-auto px-4 py-20" }, [
-              _c(
-                "h1",
-                {
-                  staticClass:
-                    "text-grey-darkest font-normal text-2xl mb-10 px-4"
-                },
-                [_vm._v("Workouts")]
-              ),
-              _vm._v(" "),
-              _c(
-                "ul",
-                { staticClass: "list-reset flex flex-wrap px-4 md:px-0" },
-                _vm._l(_vm.workouts, function(workout) {
-                  return _c(
-                    "li",
+                ),
+                _vm._v(" "),
+                _c("div", { staticClass: "container mx-auto px-4 py-20" }, [
+                  _c(
+                    "h1",
                     {
-                      key: "element" + workout.id,
-                      staticClass: "w-full md:w-1/2 lg:w-1/3 mb-4"
+                      staticClass:
+                        "text-grey-darkest font-normal text-2xl mb-10 px-4"
                     },
-                    [
-                      _c(
-                        "div",
+                    [_vm._v("Workouts")]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "ul",
+                    { staticClass: "list-reset flex flex-wrap px-4 md:px-0" },
+                    _vm._l(_vm.workouts, function(workout) {
+                      return _c(
+                        "li",
                         {
-                          staticClass:
-                            "relative w-full bg-white shadow-lg md:shadow-none md:hover:bg-grey-lighter rounded-lg p-4 flex justify-between"
+                          key: "element" + workout.id,
+                          staticClass: "w-full md:w-1/2 lg:w-1/3 mb-4"
                         },
                         [
-                          _c("div", { staticClass: "flex items-center" }, [
-                            _c("div", [
-                              _c(
-                                "h2",
-                                {
-                                  staticClass:
-                                    "text-lg text-grey-darkest font-bold mb-1"
-                                },
-                                [_vm._v(_vm._s(workout.name))]
-                              ),
-                              _vm._v(" "),
-                              _c(
-                                "h3",
-                                {
-                                  staticClass: "text-base text-blue font-medium"
-                                },
-                                [
-                                  _vm._v(
-                                    _vm._s(
-                                      _vm
-                                        .$moment(workout.date)
-                                        .format("dddd, MMM Do")
-                                    )
-                                  )
-                                ]
-                              )
-                            ])
-                          ]),
-                          _vm._v(" "),
-                          _c(
-                            "div",
-                            { staticClass: "items-center flex cursor-pointer" },
-                            [
-                              _c(
-                                "div",
-                                {
-                                  staticClass: "p-2",
-                                  on: {
-                                    click: function($event) {
-                                      return _vm.togglePopover(
-                                        "element" + workout.id
-                                      )
-                                    }
-                                  }
-                                },
-                                [
-                                  _c(
-                                    "svg",
-                                    {
-                                      staticClass:
-                                        "fill-current text-grey-darker",
-                                      attrs: {
-                                        xmlns: "http://www.w3.org/2000/svg",
-                                        width: "24",
-                                        height: "24",
-                                        viewBox: "0 0 24 24"
-                                      }
-                                    },
-                                    [
-                                      _c("path", {
-                                        attrs: {
-                                          d:
-                                            "M12 10c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2S13.1 10 12 10zM12 4c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2S13.1 4 12 4zM12 16c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2S13.1 16 12 16z"
-                                        }
-                                      })
-                                    ]
-                                  )
-                                ]
-                              )
-                            ]
-                          ),
-                          _vm._v(" "),
                           _c(
                             "div",
                             {
-                              ref: "element" + workout.id,
-                              refInFor: true,
                               staticClass:
-                                "items-center absolute hidden bg-white shadow-lg rounded-lg p-2 pin-r pin-out-top"
+                                "relative w-full bg-white shadow-lg md:shadow-none md:hover:bg-grey-lighter rounded-lg p-4 flex justify-between"
                             },
                             [
-                              _c("div", { staticClass: "p-2" }, [
-                                _c(
-                                  "svg",
-                                  {
-                                    staticClass:
-                                      "fill-current text-grey-darker",
-                                    attrs: {
-                                      xmlns: "http://www.w3.org/2000/svg",
-                                      width: "24",
-                                      height: "24",
-                                      viewBox: "0 0 24 24"
-                                    }
-                                  },
-                                  [
-                                    _c("path", {
-                                      attrs: {
-                                        d:
-                                          "M4,22h12c1.104,0,2-0.896,2-2V8c0-1.104-0.896-2-2-2H4C2.896,6,2,6.896,2,8v12C2,21.104,2.896,22,4,22z M6,13h3v-3h2v3h3v2 h-3v3H9v-3H6V13z"
-                                      }
-                                    }),
-                                    _vm._v(" "),
-                                    _c("path", {
-                                      attrs: {
-                                        d:
-                                          "M20,2H8v2h12v12h2V4C22,2.897,21.103,2,20,2z"
-                                      }
-                                    })
-                                  ]
-                                )
+                              _c("div", { staticClass: "flex items-center" }, [
+                                _c("div", [
+                                  _c(
+                                    "h2",
+                                    {
+                                      staticClass:
+                                        "text-lg text-grey-darkest font-bold mb-1"
+                                    },
+                                    [_vm._v(_vm._s(workout.name))]
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "h3",
+                                    {
+                                      staticClass:
+                                        "text-base text-blue font-medium"
+                                    },
+                                    [
+                                      _vm._v(
+                                        _vm._s(
+                                          _vm
+                                            .$moment(workout.date)
+                                            .format("dddd, MMM Do")
+                                        )
+                                      )
+                                    ]
+                                  )
+                                ])
                               ]),
                               _vm._v(" "),
                               _c(
-                                "router-link",
+                                "div",
                                 {
-                                  staticClass: "ml-4 p-2",
-                                  attrs: {
-                                    to: {
-                                      name: "workout",
-                                      params: {
-                                        user_id: _vm.userId,
-                                        block_id: _vm.block.id,
-                                        workout_id: workout.id
-                                      }
-                                    },
-                                    "active-class": "none"
-                                  }
+                                  staticClass:
+                                    "items-center flex cursor-pointer"
                                 },
                                 [
                                   _c(
-                                    "svg",
+                                    "div",
                                     {
-                                      staticClass:
-                                        "fill-current text-grey-darker",
-                                      attrs: {
-                                        xmlns: "http://www.w3.org/2000/svg",
-                                        width: "24",
-                                        height: "24",
-                                        viewBox: "0 0 24 24"
+                                      staticClass: "p-2",
+                                      on: {
+                                        click: function($event) {
+                                          return _vm.togglePopover(
+                                            "element" + workout.id
+                                          )
+                                        }
                                       }
                                     },
                                     [
-                                      _c("path", {
-                                        attrs: {
-                                          transform:
-                                            "rotate(45.001 16.357 4.656)",
-                                          d:
-                                            "M14.235 3.039H18.478V6.273H14.235z"
-                                        }
-                                      }),
-                                      _vm._v(" "),
-                                      _c("path", {
-                                        attrs: {
-                                          d:
-                                            "M4 14L4 17 7 17 15.299 8.713 12.299 5.713zM4 20H20V22H4z"
-                                        }
-                                      })
+                                      _c(
+                                        "svg",
+                                        {
+                                          staticClass:
+                                            "fill-current text-grey-darker",
+                                          attrs: {
+                                            xmlns: "http://www.w3.org/2000/svg",
+                                            width: "24",
+                                            height: "24",
+                                            viewBox: "0 0 24 24"
+                                          }
+                                        },
+                                        [
+                                          _c("path", {
+                                            attrs: {
+                                              d:
+                                                "M12 10c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2S13.1 10 12 10zM12 4c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2S13.1 4 12 4zM12 16c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2S13.1 16 12 16z"
+                                            }
+                                          })
+                                        ]
+                                      )
                                     ]
                                   )
                                 ]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "div",
+                                {
+                                  ref: "element" + workout.id,
+                                  refInFor: true,
+                                  staticClass:
+                                    "items-center absolute hidden bg-white shadow-lg rounded-lg p-2 pin-r pin-out-top"
+                                },
+                                [
+                                  _c("div", { staticClass: "p-2" }, [
+                                    _c(
+                                      "svg",
+                                      {
+                                        staticClass:
+                                          "fill-current text-grey-darker",
+                                        attrs: {
+                                          xmlns: "http://www.w3.org/2000/svg",
+                                          width: "24",
+                                          height: "24",
+                                          viewBox: "0 0 24 24"
+                                        }
+                                      },
+                                      [
+                                        _c("path", {
+                                          attrs: {
+                                            d:
+                                              "M4,22h12c1.104,0,2-0.896,2-2V8c0-1.104-0.896-2-2-2H4C2.896,6,2,6.896,2,8v12C2,21.104,2.896,22,4,22z M6,13h3v-3h2v3h3v2 h-3v3H9v-3H6V13z"
+                                          }
+                                        }),
+                                        _vm._v(" "),
+                                        _c("path", {
+                                          attrs: {
+                                            d:
+                                              "M20,2H8v2h12v12h2V4C22,2.897,21.103,2,20,2z"
+                                          }
+                                        })
+                                      ]
+                                    )
+                                  ]),
+                                  _vm._v(" "),
+                                  _c(
+                                    "router-link",
+                                    {
+                                      staticClass: "ml-4 p-2",
+                                      attrs: {
+                                        to: {
+                                          name: "workout",
+                                          params: {
+                                            user_id: _vm.userId,
+                                            block_id: _vm.block.id,
+                                            workout_id: workout.id
+                                          }
+                                        },
+                                        "active-class": "none"
+                                      }
+                                    },
+                                    [
+                                      _c(
+                                        "svg",
+                                        {
+                                          staticClass:
+                                            "fill-current text-grey-darker",
+                                          attrs: {
+                                            xmlns: "http://www.w3.org/2000/svg",
+                                            width: "24",
+                                            height: "24",
+                                            viewBox: "0 0 24 24"
+                                          }
+                                        },
+                                        [
+                                          _c("path", {
+                                            attrs: {
+                                              transform:
+                                                "rotate(45.001 16.357 4.656)",
+                                              d:
+                                                "M14.235 3.039H18.478V6.273H14.235z"
+                                            }
+                                          }),
+                                          _vm._v(" "),
+                                          _c("path", {
+                                            attrs: {
+                                              d:
+                                                "M4 14L4 17 7 17 15.299 8.713 12.299 5.713zM4 20H20V22H4z"
+                                            }
+                                          })
+                                        ]
+                                      )
+                                    ]
+                                  )
+                                ],
+                                1
                               )
-                            ],
-                            1
+                            ]
                           )
                         ]
                       )
-                    ]
+                    }),
+                    0
                   )
-                }),
-                0
-              )
-            ])
-          ],
-          1
-        )
+                ])
+              ],
+              1
+            )
+          : _vm._e()
       ])
     ],
     1
   )
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "pl-6 flex flex-col items-center" }, [
-      _c("div", { staticClass: "mb-4" }, [
-        _c("img", { attrs: { src: "/images/puff.svg", alt: "Loading" } })
-      ])
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -28899,20 +28974,28 @@ var render = function() {
       _vm._v(" "),
       _c("side-navigation"),
       _vm._v(" "),
-      _c(
-        "section",
-        [
-          _c("block-header", { attrs: { block: _vm.block, type: _vm.type } }),
-          _vm._v(" "),
-          _c(
-            "div",
-            { staticClass: "container mx-auto px-4 py-20 relative" },
-            [_c("edit-set-form")],
-            1
-          )
-        ],
-        1
-      )
+      _vm.loading ? _c("loader") : _vm._e(),
+      _vm._v(" "),
+      _c("transition", { attrs: { name: "fade" } }, [
+        !_vm.loading
+          ? _c(
+              "section",
+              [
+                _c("block-header", {
+                  attrs: { block: _vm.block, type: _vm.type }
+                }),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  { staticClass: "container mx-auto px-4 py-20 relative" },
+                  [_c("edit-set-form")],
+                  1
+                )
+              ],
+              1
+            )
+          : _vm._e()
+      ])
     ],
     1
   )
@@ -28948,9 +29031,7 @@ var render = function() {
       _vm._v(" "),
       _c("side-navigation"),
       _vm._v(" "),
-      _vm.loading
-        ? _c("div", { staticClass: "w-full pt-20" }, [_vm._m(0)])
-        : _vm._e(),
+      _vm.loading ? _c("loader") : _vm._e(),
       _vm._v(" "),
       _c(
         "transition",
@@ -29018,18 +29099,7 @@ var render = function() {
     1
   )
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "pl-6 flex flex-col items-center" }, [
-      _c("div", { staticClass: "mb-4" }, [
-        _c("img", { attrs: { src: "/images/puff.svg", alt: "Loading" } })
-      ])
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -29068,9 +29138,7 @@ var render = function() {
         }
       }),
       _vm._v(" "),
-      _vm.loading
-        ? _c("div", { staticClass: "w-full pt-20" }, [_vm._m(0)])
-        : _vm._e(),
+      _vm.loading ? _c("loader") : _vm._e(),
       _vm._v(" "),
       _c("transition", { attrs: { name: "fade" } }, [
         !_vm.loading
@@ -29212,18 +29280,7 @@ var render = function() {
     1
   )
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "flex flex-col items-center" }, [
-      _c("div", { staticClass: "mb-4" }, [
-        _c("img", { attrs: { src: "/images/puff.svg", alt: "Loading" } })
-      ])
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -29254,9 +29311,7 @@ var render = function() {
       _vm._v(" "),
       _c("side-navigation"),
       _vm._v(" "),
-      _vm.loading
-        ? _c("div", { staticClass: "w-full pt-20" }, [_vm._m(0)])
-        : _vm._e(),
+      _vm.loading ? _c("loader") : _vm._e(),
       _vm._v(" "),
       !_vm.isMessage
         ? _c(
@@ -29371,18 +29426,7 @@ var render = function() {
     1
   )
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "pl-6 flex flex-col items-center" }, [
-      _c("div", { staticClass: "mb-4" }, [
-        _c("img", { attrs: { src: "/images/puff.svg", alt: "Loading" } })
-      ])
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -29413,207 +29457,284 @@ var render = function() {
       _vm._v(" "),
       _c("side-navigation"),
       _vm._v(" "),
-      _c(
-        "section",
-        [
-          _c("block-header", { attrs: { block: _vm.block, type: _vm.type } }),
-          _vm._v(" "),
-          !_vm.showModal
-            ? _c(
-                "div",
-                {
-                  staticClass:
-                    "z-10 w-12 h-12 bg-red shadow-lg rounded-full fixed pin-r pin-b mr-8 mb-8 flex items-center justify-center cursor-pointer",
-                  on: { click: _vm.toggleModal }
-                },
-                [
-                  _c(
-                    "svg",
-                    {
-                      staticClass: "fill-current text-white",
-                      attrs: {
-                        xmlns: "http://www.w3.org/2000/svg",
-                        width: "24",
-                        height: "24",
-                        viewBox: "0 0 24 24"
-                      }
-                    },
-                    [
-                      _c("path", {
-                        attrs: {
-                          d:
-                            "M11 3L11 11 3 11 3 13 11 13 11 21 13 21 13 13 21 13 21 11 13 11 13 3z"
-                        }
-                      })
-                    ]
-                  )
-                ]
-              )
-            : _vm._e(),
-          _vm._v(" "),
-          _c(
-            "div",
-            { staticClass: "container mx-auto px-4 py-20 relative" },
-            [
-              _c(
-                "transition",
-                { attrs: { name: "fade" } },
-                [
-                  _c("create-set-form", {
-                    attrs: { show: _vm.showModal },
-                    on: {
-                      "cancel-set-create": _vm.toggleModal,
-                      "create-set-success": _vm.refreshData
-                    }
-                  })
-                ],
-                1
-              ),
-              _vm._v(" "),
-              _c(
-                "h1",
-                {
-                  staticClass:
-                    "text-grey-darkest font-normal text-2xl mb-2 px-4"
-                },
-                [_vm._v(_vm._s(_vm.workout.name))]
-              ),
-              _vm._v(" "),
-              _c(
-                "h4",
-                {
-                  staticClass: "text-grey-dark font-normal text-base px-4 mb-10"
-                },
-                [
-                  _vm._v(
-                    _vm._s(
-                      _vm.$moment(_vm.block.start_date).format("MMMM Do YYYY")
-                    )
-                  )
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "ul",
-                { staticClass: "list-reset flex flex-wrap px-4 md:px-0" },
-                _vm._l(_vm.sets, function(set) {
-                  return _c(
-                    "li",
-                    {
-                      key: set.id,
-                      staticClass: "w-full md:w-1/2 lg:w-1/3 mb-4"
-                    },
-                    [
-                      _c(
-                        "div",
-                        {
-                          staticClass:
-                            "relative w-full bg-white shadow-lg md:shadow-none md:hover:bg-grey-lighter rounded-lg p-4 flex justify-between"
-                        },
-                        [
-                          _c(
-                            "div",
-                            {
-                              staticClass:
-                                "w-full flex justify-between items-start"
-                            },
-                            [
-                              _c("div", { staticClass: "flex-1" }, [
-                                _c(
-                                  "h2",
-                                  {
-                                    staticClass:
-                                      "text-lg text-grey-darkest font-bold mb-1"
-                                  },
-                                  [_vm._v(_vm._s(set.exercise.name))]
-                                ),
-                                _vm._v(" "),
-                                _c(
-                                  "h3",
-                                  {
-                                    staticClass:
-                                      "text-base text-blue font-medium"
-                                  },
-                                  [_vm._v("Sets: " + _vm._s(set.num_sets))]
-                                ),
-                                _vm._v(" "),
-                                _c(
-                                  "p",
-                                  {
-                                    staticClass:
-                                      "text-base text-grey-dark font-base text-sm mt-4"
-                                  },
-                                  [_vm._v(_vm._s(set.notes))]
-                                )
-                              ]),
-                              _vm._v(" "),
-                              _c(
-                                "router-link",
-                                {
-                                  staticClass: "cursor-pointer",
-                                  attrs: {
-                                    "active-class": "none",
-                                    to: {
-                                      name: "edit-set",
-                                      params: {
-                                        user_id: _vm.$route.params.user_id,
-                                        block_id: _vm.$route.params.block_id,
-                                        workout_id:
-                                          _vm.$route.params.workout_id,
-                                        set_id: set.id
-                                      }
-                                    }
-                                  }
-                                },
-                                [
-                                  _c(
-                                    "svg",
-                                    {
-                                      staticClass:
-                                        "fill-current text-grey-darker",
-                                      attrs: {
-                                        xmlns: "http://www.w3.org/2000/svg",
-                                        width: "24",
-                                        height: "24",
-                                        viewBox: "0 0 24 24"
-                                      }
-                                    },
-                                    [
-                                      _c("path", {
-                                        attrs: {
-                                          transform:
-                                            "rotate(45.001 16.357 4.656)",
-                                          d:
-                                            "M14.235 3.039H18.478V6.273H14.235z"
-                                        }
-                                      }),
-                                      _vm._v(" "),
-                                      _c("path", {
-                                        attrs: {
-                                          d:
-                                            "M4 14L4 17 7 17 15.299 8.713 12.299 5.713zM4 20H20V22H4z"
-                                        }
-                                      })
-                                    ]
-                                  )
-                                ]
-                              )
-                            ],
-                            1
-                          )
-                        ]
-                      )
-                    ]
-                  )
+      _vm.loading ? _c("loader") : _vm._e(),
+      _vm._v(" "),
+      _c("transition", { attrs: { name: "fade" } }, [
+        !_vm.loading
+          ? _c(
+              "section",
+              [
+                _c("block-header", {
+                  attrs: { block: _vm.block, type: _vm.type }
                 }),
-                0
-              )
-            ],
-            1
-          )
-        ],
-        1
-      )
+                _vm._v(" "),
+                !_vm.showModal
+                  ? _c(
+                      "div",
+                      {
+                        staticClass:
+                          "z-10 w-12 h-12 bg-red shadow-lg rounded-full fixed pin-r pin-b mr-8 mb-8 flex items-center justify-center cursor-pointer",
+                        on: { click: _vm.toggleModal }
+                      },
+                      [
+                        _c(
+                          "svg",
+                          {
+                            staticClass: "fill-current text-white",
+                            attrs: {
+                              xmlns: "http://www.w3.org/2000/svg",
+                              width: "24",
+                              height: "24",
+                              viewBox: "0 0 24 24"
+                            }
+                          },
+                          [
+                            _c("path", {
+                              attrs: {
+                                d:
+                                  "M11 3L11 11 3 11 3 13 11 13 11 21 13 21 13 13 21 13 21 11 13 11 13 3z"
+                              }
+                            })
+                          ]
+                        )
+                      ]
+                    )
+                  : _vm._e(),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  { staticClass: "container mx-auto px-4 py-20 relative" },
+                  [
+                    _c(
+                      "transition",
+                      { attrs: { name: "fade" } },
+                      [
+                        _c("create-set-form", {
+                          attrs: { show: _vm.showModal },
+                          on: {
+                            "cancel-set-create": _vm.toggleModal,
+                            "create-set-success": _vm.refreshData
+                          }
+                        })
+                      ],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "h1",
+                      {
+                        staticClass:
+                          "text-grey-darkest font-normal text-2xl mb-2 px-4"
+                      },
+                      [_vm._v(_vm._s(_vm.workout.name))]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "h4",
+                      {
+                        staticClass:
+                          "text-grey-dark font-normal text-base px-4 mb-10"
+                      },
+                      [
+                        _vm._v(
+                          _vm._s(
+                            _vm
+                              .$moment(_vm.block.start_date)
+                              .format("MMMM Do YYYY")
+                          )
+                        )
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "ul",
+                      { staticClass: "list-reset flex flex-wrap px-4 md:px-0" },
+                      _vm._l(_vm.sets, function(set) {
+                        return _c(
+                          "li",
+                          {
+                            key: set.id,
+                            staticClass: "w-full md:w-1/2 lg:w-1/3 mb-4"
+                          },
+                          [
+                            _c(
+                              "div",
+                              {
+                                staticClass:
+                                  "relative w-full bg-white shadow-lg md:shadow-none md:hover:bg-grey-lighter rounded-lg p-4 flex justify-between"
+                              },
+                              [
+                                _c(
+                                  "div",
+                                  {
+                                    staticClass:
+                                      "w-full flex justify-between items-start relative"
+                                  },
+                                  [
+                                    _c("div", { staticClass: "flex-1" }, [
+                                      _c(
+                                        "h2",
+                                        {
+                                          staticClass:
+                                            "text-lg text-grey-darkest font-bold mb-1"
+                                        },
+                                        [_vm._v(_vm._s(set.exercise.name))]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "h3",
+                                        {
+                                          staticClass:
+                                            "text-base text-blue font-medium"
+                                        },
+                                        [
+                                          _vm._v(
+                                            "Sets: " + _vm._s(set.num_sets)
+                                          )
+                                        ]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "p",
+                                        {
+                                          staticClass:
+                                            "text-base text-grey-dark font-base text-sm mt-4"
+                                        },
+                                        [_vm._v(_vm._s(set.notes))]
+                                      )
+                                    ]),
+                                    _vm._v(" "),
+                                    _c(
+                                      "div",
+                                      {
+                                        staticClass:
+                                          "items-center flex cursor-pointer"
+                                      },
+                                      [
+                                        _c(
+                                          "div",
+                                          {
+                                            staticClass: "p-0",
+                                            on: {
+                                              click: function($event) {
+                                                return _vm.togglePopover(
+                                                  "element" + set.id
+                                                )
+                                              }
+                                            }
+                                          },
+                                          [
+                                            _c(
+                                              "svg",
+                                              {
+                                                staticClass:
+                                                  "fill-current text-grey-darker",
+                                                attrs: {
+                                                  xmlns:
+                                                    "http://www.w3.org/2000/svg",
+                                                  width: "24",
+                                                  height: "24",
+                                                  viewBox: "0 0 24 24"
+                                                }
+                                              },
+                                              [
+                                                _c("path", {
+                                                  attrs: {
+                                                    d:
+                                                      "M12 10c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2S13.1 10 12 10zM12 4c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2S13.1 4 12 4zM12 16c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2S13.1 16 12 16z"
+                                                  }
+                                                })
+                                              ]
+                                            )
+                                          ]
+                                        )
+                                      ]
+                                    ),
+                                    _vm._v(" "),
+                                    _c(
+                                      "div",
+                                      {
+                                        ref: "element" + set.id,
+                                        refInFor: true,
+                                        staticClass:
+                                          "items-center absolute hidden bg-white shadow-lg rounded-lg p-2 pin-r pin-out-top"
+                                      },
+                                      [
+                                        _c(
+                                          "router-link",
+                                          {
+                                            staticClass: "cursor-pointer",
+                                            attrs: {
+                                              "active-class": "none",
+                                              to: {
+                                                name: "edit-set",
+                                                params: {
+                                                  user_id:
+                                                    _vm.$route.params.user_id,
+                                                  block_id:
+                                                    _vm.$route.params.block_id,
+                                                  workout_id:
+                                                    _vm.$route.params
+                                                      .workout_id,
+                                                  set_id: set.id
+                                                }
+                                              }
+                                            }
+                                          },
+                                          [
+                                            _c(
+                                              "svg",
+                                              {
+                                                staticClass:
+                                                  "fill-current text-grey-darker",
+                                                attrs: {
+                                                  xmlns:
+                                                    "http://www.w3.org/2000/svg",
+                                                  width: "24",
+                                                  height: "24",
+                                                  viewBox: "0 0 24 24"
+                                                }
+                                              },
+                                              [
+                                                _c("path", {
+                                                  attrs: {
+                                                    transform:
+                                                      "rotate(45.001 16.357 4.656)",
+                                                    d:
+                                                      "M14.235 3.039H18.478V6.273H14.235z"
+                                                  }
+                                                }),
+                                                _vm._v(" "),
+                                                _c("path", {
+                                                  attrs: {
+                                                    d:
+                                                      "M4 14L4 17 7 17 15.299 8.713 12.299 5.713zM4 20H20V22H4z"
+                                                  }
+                                                })
+                                              ]
+                                            )
+                                          ]
+                                        )
+                                      ],
+                                      1
+                                    )
+                                  ]
+                                )
+                              ]
+                            )
+                          ]
+                        )
+                      }),
+                      0
+                    )
+                  ],
+                  1
+                )
+              ],
+              1
+            )
+          : _vm._e()
+      ])
     ],
     1
   )
@@ -44484,7 +44605,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_PageFooter__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ./components/PageFooter */ "./resources/js/components/PageFooter.vue");
 /* harmony import */ var _components_Block__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ./components/Block */ "./resources/js/components/Block.vue");
 /* harmony import */ var _components_BlockHeader__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! ./components/BlockHeader */ "./resources/js/components/BlockHeader.vue");
-/* harmony import */ var _components_Construction__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! ./components/Construction */ "./resources/js/components/Construction.vue");
+/* harmony import */ var _components_Loader__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! ./components/Loader */ "./resources/js/components/Loader.vue");
+/* harmony import */ var _components_Construction__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(/*! ./components/Construction */ "./resources/js/components/Construction.vue");
+
 
 
 
@@ -44535,7 +44658,8 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.component("side-navigation", _compone
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.component("page-footer", _components_PageFooter__WEBPACK_IMPORTED_MODULE_22__["default"]);
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.component("block", _components_Block__WEBPACK_IMPORTED_MODULE_23__["default"]);
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.component("block-header", _components_BlockHeader__WEBPACK_IMPORTED_MODULE_24__["default"]);
-vue__WEBPACK_IMPORTED_MODULE_0___default.a.component("construction", _components_Construction__WEBPACK_IMPORTED_MODULE_25__["default"]);
+vue__WEBPACK_IMPORTED_MODULE_0___default.a.component("loader", _components_Loader__WEBPACK_IMPORTED_MODULE_25__["default"]);
+vue__WEBPACK_IMPORTED_MODULE_0___default.a.component("construction", _components_Construction__WEBPACK_IMPORTED_MODULE_26__["default"]);
 var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"](_routes__WEBPACK_IMPORTED_MODULE_6__["default"]);
 router.beforeEach(function (to, from, next) {
   if (to.matched.some(function (record) {
@@ -44926,6 +45050,75 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Header_vue_vue_type_template_id_1f42fb90___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Header_vue_vue_type_template_id_1f42fb90___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/Loader.vue":
+/*!********************************************!*\
+  !*** ./resources/js/components/Loader.vue ***!
+  \********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _Loader_vue_vue_type_template_id_e79ec684___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Loader.vue?vue&type=template&id=e79ec684& */ "./resources/js/components/Loader.vue?vue&type=template&id=e79ec684&");
+/* harmony import */ var _Loader_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Loader.vue?vue&type=script&lang=js& */ "./resources/js/components/Loader.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _Loader_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _Loader_vue_vue_type_template_id_e79ec684___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _Loader_vue_vue_type_template_id_e79ec684___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/Loader.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/Loader.vue?vue&type=script&lang=js&":
+/*!*********************************************************************!*\
+  !*** ./resources/js/components/Loader.vue?vue&type=script&lang=js& ***!
+  \*********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Loader_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./Loader.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Loader.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Loader_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/Loader.vue?vue&type=template&id=e79ec684&":
+/*!***************************************************************************!*\
+  !*** ./resources/js/components/Loader.vue?vue&type=template&id=e79ec684& ***!
+  \***************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Loader_vue_vue_type_template_id_e79ec684___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./Loader.vue?vue&type=template&id=e79ec684& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Loader.vue?vue&type=template&id=e79ec684&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Loader_vue_vue_type_template_id_e79ec684___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Loader_vue_vue_type_template_id_e79ec684___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 
