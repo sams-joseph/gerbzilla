@@ -5,6 +5,8 @@ import VueCookies from "vue-cookies";
 import axios from "axios";
 import moment from 'moment';
 
+import store from './store';
+
 import routes from "./routes";
 import Header from "./components/Header";
 import LoginForm from "./components/forms/LoginForm";
@@ -24,11 +26,13 @@ import SideNavigation from "./components/SideNavigation";
 import PageFooter from "./components/PageFooter";
 import Block from "./components/Block";
 import BlockHeader from './components/BlockHeader';
+import WorkoutItem from './components/WorkoutItem';
 
 import Loader from './components/Loader';
 
 import Construction from "./components/Construction";
 
+Vue.prototype.$store = store;
 Vue.prototype.$http = axios;
 Vue.prototype.$moment = moment;
 
@@ -56,6 +60,7 @@ Vue.component("side-navigation", SideNavigation);
 Vue.component("page-footer", PageFooter);
 Vue.component("block", Block);
 Vue.component("block-header", BlockHeader);
+Vue.component("workout-item", WorkoutItem);
 
 Vue.component("loader", Loader);
 
@@ -65,22 +70,20 @@ let router = new VueRouter(routes);
 
 router.beforeEach((to, from, next) => {
     if (to.matched.some(record => record.meta.requiresAuth)) {
-        if (VueCookies.get("laravel_token") == null) {
+        if (!store.getters.isLoggedIn) {
             next({
                 path: "/login",
                 params: { nextUrl: to.fullPath }
             });
         } else {
-            let role = JSON.parse(localStorage.getItem("role"));
-
             if (to.matched.some(record => record.meta.is_admin)) {
-                if (role.name == "admin") {
+                if (store.getters.isAdmin) {
                     next();
                 } else {
                     next({ name: "overview" });
                 }
             } else if (to.matched.some(record => record.meta.is_trainer)) {
-                if (role.name == "admin" || role.name == "trainer") {
+                if (store.getters.isTrainer || store.getters.isAdmin) {
                     next();
                 } else {
                     next({ name: "overview" });
@@ -90,10 +93,10 @@ router.beforeEach((to, from, next) => {
             }
         }
     } else if (to.matched.some(record => record.meta.guest)) {
-        if (VueCookies.get("laravel_token") == null) {
-            next();
-        } else {
+        if (store.getters.isLoggedIn) {
             next({ name: "overview" });
+        } else {
+            next();
         }
     } else {
         next();

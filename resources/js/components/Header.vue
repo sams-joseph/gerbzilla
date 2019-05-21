@@ -169,9 +169,9 @@ export default {
       showDrawer: false,
       showMenu: false,
       fixed: false,
-      authorized: false,
-      isAdmin: false,
-      isTrainer: false
+      authorized: this.$store.getters.isLoggedIn,
+      isAdmin: this.$store.getters.isAdmin,
+      isTrainer: this.$store.getters.isTrainer
     };
   },
   methods: {
@@ -190,26 +190,14 @@ export default {
     },
 
     logout() {
-      this.$cookies.remove("laravel_token");
-      localStorage.removeItem("user");
-      localStorage.removeItem("role");
-      this.$http.defaults.headers.common["Authorization"] = "";
-      this.openDrawer();
-      this.$router.push("/");
+      this.$store
+        .dispatch("logout")
+        .then(() => {
+          this.$router.push("/");
+          this.openDrawer();
+        })
+        .catch(err => console.log(err));
     }
-  },
-
-  created() {
-    if ($cookies.isKey("laravel_token")) {
-      this.authorized = true;
-    }
-  },
-
-  mounted() {
-    const role = JSON.parse(localStorage.getItem("role"));
-
-    this.isAdmin = role.name === "admin";
-    this.isTrainer = role.name === "admin" || role.name === "trainer";
   }
 };
 </script>

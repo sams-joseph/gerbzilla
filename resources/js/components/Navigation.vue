@@ -26,15 +26,9 @@
 export default {
   data() {
     return {
-      isAdmin: false,
-      isTrainer: false
+      isAdmin: this.$store.getters.isAdmin,
+      isTrainer: this.$store.getters.isTrainer
     };
-  },
-  mounted() {
-    const role = JSON.parse(localStorage.getItem("role"));
-
-    this.isAdmin = role.name === "admin";
-    this.isTrainer = role.name === "admin" || role.name === "trainer";
   }
 };
 </script>

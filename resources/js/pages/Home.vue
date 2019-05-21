@@ -247,21 +247,10 @@
 export default {
   data() {
     return {
-      authorized: false,
-      isAdmin: false,
-      isTrainer: false
+      authorized: this.$store.getters.isLoggedIn,
+      isAdmin: this.$store.getters.isAdmin,
+      isTrainer: this.$store.getters.isTrainer
     };
-  },
-
-  mounted() {
-    if ($cookies.isKey("laravel_token")) {
-      this.authorized = true;
-    }
-
-    const role = JSON.parse(localStorage.getItem("role"));
-
-    this.isAdmin = role.name === "admin";
-    this.isTrainer = role.name === "admin" || role.name === "trainer";
   }
 };
 </script>
