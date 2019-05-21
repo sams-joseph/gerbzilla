@@ -20,23 +20,26 @@
     </div>
     <div class="w-full bg-grey-lightest border-b border-grey-lighter py-6">
       <div class="container mx-auto px-8">
-        <router-link
-          :to="{ name: 'user', params: { id: $route.params.user_id }}"
-          active-class="none"
-          class="text-grey-dark text-sm font-semibold uppercase mr-4 flex items-center hover:text-red"
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            class="fill-current"
-          >
-            <path
-              d="M12.707 17.293L8.414 13 18 13 18 11 8.414 11 12.707 6.707 11.293 5.293 4.586 12 11.293 18.707z"
-            ></path>
-          </svg>Back to User
-        </router-link>
+        <div class="inline-block flex items-center">
+          <span>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              class="fill-current text-grey-dark"
+            >
+              <path
+                d="M12.707 17.293L8.414 13 18 13 18 11 8.414 11 12.707 6.707 11.293 5.293 4.586 12 11.293 18.707z"
+              ></path>
+            </svg>
+          </span>
+          <router-link
+            :to="{ name: 'user', params: { id: $route.params.user_id }}"
+            active-class="none"
+            class="text-grey-dark hover:text-red text-xs font-semibold uppercase mr-4"
+          >Back to User</router-link>
+        </div>
       </div>
     </div>
   </div>

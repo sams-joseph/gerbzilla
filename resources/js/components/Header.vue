@@ -44,7 +44,7 @@
           v-scroll-lock="showDrawer"
         >
           <svg
-            class="fill-current text-grey-darkest"
+            class="fill-current text-white"
             xmlns="http://www.w3.org/2000/svg"
             width="24"
             height="24"
@@ -55,7 +55,11 @@
             ></path>
           </svg>
         </div>
-        <ul class="list-reset mt-24">
+        <div class="bg-blue-gradient">
+          <h6 class="text-center text-xl font-hairline text-white mb-1 pt-24">Jamie</h6>
+          <h6 class="text-center text-xl font-hairline text-white pb-10">Lannister</h6>
+        </div>
+        <ul class="list-reset">
           <li
             @click="logout"
             class="block px-8 py-2 hover:bg-grey-lighter text-grey-darkest cursor-pointer text-center"

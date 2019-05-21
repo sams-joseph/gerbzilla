@@ -84,5 +84,9 @@ export default new Vuex.Store({
     authStatus: state => state.status,
     isTrainer: state => state.role ? state.role.name === 'trainer' || state.role.name === 'admin' : false,
     isAdmin: state => state.role ? state.role.name === 'admin' : false,
+    getUser: state => {
+      return state.user;
+    },
+    isActive: state => !!state.user.is_active,
   }
 });

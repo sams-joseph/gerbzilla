@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 
 use App\Set;
+use App\Block;
 
 class Workout extends Model
 {
@@ -15,5 +16,10 @@ class Workout extends Model
     public function sets()
     {
         return $this->hasMany(Set::class);
+    }
+
+    public function block()
+    {
+        return $this->belongsTo(Block::class);
     }
 }

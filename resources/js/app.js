@@ -27,6 +27,7 @@ import PageFooter from "./components/PageFooter";
 import Block from "./components/Block";
 import BlockHeader from './components/BlockHeader';
 import WorkoutItem from './components/WorkoutItem';
+import WorkoutCard from './components/WorkoutCard';
 
 import Loader from './components/Loader';
 
@@ -61,6 +62,7 @@ Vue.component("page-footer", PageFooter);
 Vue.component("block", Block);
 Vue.component("block-header", BlockHeader);
 Vue.component("workout-item", WorkoutItem);
+Vue.component("workout-card", WorkoutCard);
 
 Vue.component("loader", Loader);
 

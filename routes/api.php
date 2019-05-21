@@ -17,6 +17,9 @@ Route::get('/user', 'UserController@index')->middleware('auth:api');
 
 Route::post('/login', 'AuthController@login');
 
+Route::get('/users/{user}/blocks', 'BlockController@index')->middleware('auth:api');
+Route::get('/users/{user}/workouts/{date}', 'WorkoutController@getByDate')->middleware('auth:api');
+
 /*
 ADMIN
 */
