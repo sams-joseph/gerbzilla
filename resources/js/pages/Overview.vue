@@ -51,11 +51,11 @@
         <section class="px-6">
           <div class="flex flex-wrap justify-between w-full mb-20">
             <workout-card
-              v-for="workout in workoutsAtAGlance"
+              v-for="workout in weeksWorkouts"
               v-bind:key="workout.id"
               v-bind:workout="workout"
             ></workout-card>
-            <div v-if="!workoutsAtAGlance.length" class="w-full p-10 text-center">
+            <div v-if="!weeksWorkouts.length" class="w-full p-10 text-center">
               <h1 class="text-xl font-light text-grey">No upcoming workouts</h1>
             </div>
           </div>
@@ -96,7 +96,7 @@ export default {
       user: this.$store.getters.getUser,
       status: this.$store.getters.isActive,
       todaysWorkout: {},
-      workoutsAtAGlance: [],
+      weeksWorkouts: [],
       sets: [],
       loading: true
     };
@@ -104,15 +104,13 @@ export default {
 
   mounted() {
     const todaysDate = this.$moment(new Date()).format("YYYY-MM-DD");
-    const tomorrowsDate = this.$moment(new Date())
+    const startDate = this.$moment(new Date())
       .add(1, "d")
       .format("YYYY-MM-DD");
-    const nextTwoDaysDate = this.$moment(new Date())
-      .add(2, "d")
-      .format("YYYY-MM-DD");
-    const nextThreeDaysDate = this.$moment(new Date())
+    const endDate = this.$moment(new Date())
       .add(3, "d")
       .format("YYYY-MM-DD");
+
     this.loading = true;
 
     this.$http
@@ -120,33 +118,25 @@ export default {
         this.$http.get(
           `${process.env.MIX_BASE_URL}/users/${
             this.user.id
-          }/workouts/${todaysDate}`
+          }/workouts/date/${todaysDate}`
         ),
         this.$http.get(
           `${process.env.MIX_BASE_URL}/users/${
             this.user.id
-          }/workouts/${tomorrowsDate}`
-        ),
-        this.$http.get(
-          `${process.env.MIX_BASE_URL}/users/${
-            this.user.id
-          }/workouts/${nextTwoDaysDate}`
-        ),
-        this.$http.get(
-          `${process.env.MIX_BASE_URL}/users/${
-            this.user.id
-          }/workouts/${nextThreeDaysDate}`
+          }/workouts/date-range`,
+          {
+            params: {
+              start: startDate,
+              end: endDate
+            }
+          }
         )
       ])
       .then(
-        this.$http.spread((today, tomorrow, nextTwoDays, nextThreeDays) => {
+        this.$http.spread((today, week) => {
           this.todaysWorkout = today.data.workout;
           this.sets = today.data.sets;
-          this.workoutsAtAGlance.push(tomorrow.data.workout);
-
-          this.workoutsAtAGlance.push(nextTwoDays.data.workout);
-
-          this.workoutsAtAGlance.push(nextThreeDays.data.workout);
+          this.weeksWorkouts = week.data;
 
           this.loading = false;
         })

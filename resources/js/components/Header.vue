@@ -55,9 +55,13 @@
             ></path>
           </svg>
         </div>
-        <div class="bg-blue-gradient">
-          <h6 class="text-center text-xl font-hairline text-white mb-1 pt-24">Jamie</h6>
-          <h6 class="text-center text-xl font-hairline text-white pb-10">Lannister</h6>
+        <div class="bg-blue-gradient pb-4 flex justify-center flex-col px-4">
+          <h6
+            class="text-center text-xl font-hairline text-white mb-4 pt-24"
+          >{{ `${user.first_name} ${user.last_name}` }}</h6>
+          <h6
+            class="text-center text-xs font-hairline rounded-full text-white py-1 px-4 uppercase description-pill flex-base"
+          >{{ role.name }}</h6>
         </div>
         <ul class="list-reset">
           <li
@@ -175,9 +179,12 @@ export default {
       fixed: false,
       authorized: this.$store.getters.isLoggedIn,
       isAdmin: this.$store.getters.isAdmin,
-      isTrainer: this.$store.getters.isTrainer
+      isTrainer: this.$store.getters.isTrainer,
+      user: this.$store.getters.getUser,
+      role: this.$store.getters.getRole
     };
   },
+
   methods: {
     login() {
       this.showLogin = !this.showLogin;

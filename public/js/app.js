@@ -2081,6 +2081,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2090,7 +2094,9 @@ __webpack_require__.r(__webpack_exports__);
       fixed: false,
       authorized: this.$store.getters.isLoggedIn,
       isAdmin: this.$store.getters.isAdmin,
-      isTrainer: this.$store.getters.isTrainer
+      isTrainer: this.$store.getters.isTrainer,
+      user: this.$store.getters.getUser,
+      role: this.$store.getters.getRole
     };
   },
   methods: {
@@ -2653,7 +2659,7 @@ __webpack_require__.r(__webpack_exports__);
   mounted: function mounted() {
     var _this = this;
 
-    this.$http.get("".concat("http://localhost:8000/api", "/trainer/types")).then(function (res) {
+    this.$http.get("".concat("http://gerbzilla.test/api", "/trainer/types")).then(function (res) {
       _this.loading = false;
       _this.types = res.data;
     })["catch"](function (err) {
@@ -2670,7 +2676,7 @@ __webpack_require__.r(__webpack_exports__);
       e.preventDefault();
       this.loading = true;
       var user = JSON.parse(localStorage.getItem("user"));
-      this.$http.post("".concat("http://localhost:8000/api", "/trainer/users/").concat(this.$route.params.id, "/blocks"), {
+      this.$http.post("".concat("http://gerbzilla.test/api", "/trainer/users/").concat(this.$route.params.id, "/blocks"), {
         name: this.name,
         start_date: this.date,
         type_id: this.type
@@ -2810,7 +2816,7 @@ __webpack_require__.r(__webpack_exports__);
   mounted: function mounted() {
     var _this = this;
 
-    this.$http.get("".concat("http://localhost:8000/api", "/trainer/categories")).then(function (res) {
+    this.$http.get("".concat("http://gerbzilla.test/api", "/trainer/categories")).then(function (res) {
       _this.loading = false;
       _this.categories = res.data;
     })["catch"](function (err) {
@@ -2827,7 +2833,7 @@ __webpack_require__.r(__webpack_exports__);
       e.preventDefault();
       this.loading = true;
       var user = JSON.parse(localStorage.getItem("user"));
-      this.$http.post("".concat("http://localhost:8000/api", "/trainer/exercises"), {
+      this.$http.post("".concat("http://gerbzilla.test/api", "/trainer/exercises"), {
         name: this.name,
         category_id: this.category
       }).then(function (res) {
@@ -2982,7 +2988,7 @@ __webpack_require__.r(__webpack_exports__);
   mounted: function mounted() {
     var _this = this;
 
-    this.$http.get("".concat("http://localhost:8000/api", "/trainer/exercises")).then(function (res) {
+    this.$http.get("".concat("http://gerbzilla.test/api", "/trainer/exercises")).then(function (res) {
       _this.loading = false;
       _this.exercises = res.data;
     })["catch"](function (err) {
@@ -3003,7 +3009,7 @@ __webpack_require__.r(__webpack_exports__);
           user_id = _this$$route$params.user_id,
           block_id = _this$$route$params.block_id,
           workout_id = _this$$route$params.workout_id;
-      this.$http.post("".concat("http://localhost:8000/api", "/trainer/users/").concat(user_id, "/blocks/").concat(block_id, "/workouts/").concat(workout_id, "/sets"), {
+      this.$http.post("".concat("http://gerbzilla.test/api", "/trainer/users/").concat(user_id, "/blocks/").concat(block_id, "/workouts/").concat(workout_id, "/sets"), {
         num_sets: this.sets,
         notes: this.notes,
         exercise_id: this.exercise
@@ -3146,7 +3152,7 @@ __webpack_require__.r(__webpack_exports__);
 
       e.preventDefault();
       this.loading = true;
-      this.$http.post("".concat("http://localhost:8000/api", "/trainer/users"), {
+      this.$http.post("".concat("http://gerbzilla.test/api", "/trainer/users"), {
         first_name: this.firstName,
         last_name: this.lastName,
         email: this.email,
@@ -3252,7 +3258,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this$$route$params = this.$route.params,
           user_id = _this$$route$params.user_id,
           block_id = _this$$route$params.block_id;
-      this.$http.post("".concat("http://localhost:8000/api", "/trainer/users/").concat(user_id, "/blocks/").concat(block_id, "/workouts"), {
+      this.$http.post("".concat("http://gerbzilla.test/api", "/trainer/users/").concat(user_id, "/blocks/").concat(block_id, "/workouts"), {
         name: this.name,
         date: this.date
       }).then(function (res) {
@@ -3378,7 +3384,7 @@ __webpack_require__.r(__webpack_exports__);
         block_id = _this$$route$params.block_id,
         workout_id = _this$$route$params.workout_id,
         set_id = _this$$route$params.set_id;
-    this.$http.all([this.$http.get("".concat("http://localhost:8000/api", "/trainer/users/").concat(user_id, "/blocks/").concat(block_id, "/workouts/").concat(workout_id, "/sets/").concat(set_id)), this.$http.get("".concat("http://localhost:8000/api", "/trainer/exercises"))]).then(this.$http.spread(function (set, exercises) {
+    this.$http.all([this.$http.get("".concat("http://gerbzilla.test/api", "/trainer/users/").concat(user_id, "/blocks/").concat(block_id, "/workouts/").concat(workout_id, "/sets/").concat(set_id)), this.$http.get("".concat("http://gerbzilla.test/api", "/trainer/exercises"))]).then(this.$http.spread(function (set, exercises) {
       _this.exercises = exercises.data;
       _this.exercise = set.data.set.exercise_id;
       _this.sets = set.data.set.num_sets;
@@ -3406,7 +3412,7 @@ __webpack_require__.r(__webpack_exports__);
           block_id = _this$$route$params2.block_id,
           workout_id = _this$$route$params2.workout_id,
           set_id = _this$$route$params2.set_id;
-      this.$http.put("".concat("http://localhost:8000/api", "/trainer/users/").concat(user_id, "/blocks/").concat(block_id, "/workouts/").concat(workout_id, "/sets/").concat(set_id), {
+      this.$http.put("".concat("http://gerbzilla.test/api", "/trainer/users/").concat(user_id, "/blocks/").concat(block_id, "/workouts/").concat(workout_id, "/sets/").concat(set_id), {
         num_sets: this.sets,
         notes: this.notes,
         exercise_id: this.exercise
@@ -4342,7 +4348,7 @@ __webpack_require__.r(__webpack_exports__);
       user: this.$store.getters.getUser,
       status: this.$store.getters.isActive,
       todaysWorkout: {},
-      workoutsAtAGlance: [],
+      weeksWorkouts: [],
       sets: [],
       loading: true
     };
@@ -4351,20 +4357,18 @@ __webpack_require__.r(__webpack_exports__);
     var _this = this;
 
     var todaysDate = this.$moment(new Date()).format("YYYY-MM-DD");
-    var tomorrowsDate = this.$moment(new Date()).add(1, "d").format("YYYY-MM-DD");
-    var nextTwoDaysDate = this.$moment(new Date()).add(2, "d").format("YYYY-MM-DD");
-    var nextThreeDaysDate = this.$moment(new Date()).add(3, "d").format("YYYY-MM-DD");
+    var startDate = this.$moment(new Date()).add(1, "d").format("YYYY-MM-DD");
+    var endDate = this.$moment(new Date()).add(3, "d").format("YYYY-MM-DD");
     this.loading = true;
-    this.$http.all([this.$http.get("".concat("http://localhost:8000/api", "/users/").concat(this.user.id, "/workouts/").concat(todaysDate)), this.$http.get("".concat("http://localhost:8000/api", "/users/").concat(this.user.id, "/workouts/").concat(tomorrowsDate)), this.$http.get("".concat("http://localhost:8000/api", "/users/").concat(this.user.id, "/workouts/").concat(nextTwoDaysDate)), this.$http.get("".concat("http://localhost:8000/api", "/users/").concat(this.user.id, "/workouts/").concat(nextThreeDaysDate))]).then(this.$http.spread(function (today, tomorrow, nextTwoDays, nextThreeDays) {
+    this.$http.all([this.$http.get("".concat("http://gerbzilla.test/api", "/users/").concat(this.user.id, "/workouts/date/").concat(todaysDate)), this.$http.get("".concat("http://gerbzilla.test/api", "/users/").concat(this.user.id, "/workouts/date-range"), {
+      params: {
+        start: startDate,
+        end: endDate
+      }
+    })]).then(this.$http.spread(function (today, week) {
       _this.todaysWorkout = today.data.workout;
       _this.sets = today.data.sets;
-
-      _this.workoutsAtAGlance.push(tomorrow.data.workout);
-
-      _this.workoutsAtAGlance.push(nextTwoDays.data.workout);
-
-      _this.workoutsAtAGlance.push(nextThreeDays.data.workout);
-
+      _this.weeksWorkouts = week.data;
       _this.loading = false;
     }))["catch"](function (err) {
       console.log(err);
@@ -4416,7 +4420,7 @@ __webpack_require__.r(__webpack_exports__);
     var _this = this;
 
     this.loading = true;
-    this.$http.get("".concat("http://localhost:8000/api", "/users/").concat(this.user.id, "/blocks")).then(function (res) {
+    this.$http.get("".concat("http://gerbzilla.test/api", "/users/").concat(this.user.id, "/blocks")).then(function (res) {
       _this.blocks = res.data.sort(function (a, b) {
         return a.start_date < b.start_date ? 1 : b.start_date < a.start_date ? -1 : 0;
       });
@@ -4430,7 +4434,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this2 = this;
 
       this.loading = true;
-      this.$http.get("".concat("http://localhost:8000/api", "/users/").concat(this.user.id, "/blocks")).then(function (res) {
+      this.$http.get("".concat("http://gerbzilla.test/api", "/users/").concat(this.user.id, "/blocks")).then(function (res) {
         _this2.blocks = res.data.sort(function (a, b) {
           return a.start_date < b.start_date ? 1 : b.start_date < a.start_date ? -1 : 0;
         });
@@ -4523,7 +4527,7 @@ __webpack_require__.r(__webpack_exports__);
           user_id = _this$$route$params.user_id,
           block_id = _this$$route$params.block_id;
       this.loading = true;
-      this.$http.get("".concat("http://localhost:8000/api", "/trainer/users/").concat(user_id, "/blocks/").concat(block_id)).then(function (res) {
+      this.$http.get("".concat("http://gerbzilla.test/api", "/trainer/users/").concat(user_id, "/blocks/").concat(block_id)).then(function (res) {
         _this.workouts = res.data.workouts;
         _this.loading = false;
       })["catch"](function (err) {
@@ -4545,7 +4549,7 @@ __webpack_require__.r(__webpack_exports__);
         user_id = _this$$route$params2.user_id,
         block_id = _this$$route$params2.block_id;
     this.loading = true;
-    this.$http.get("".concat("http://localhost:8000/api", "/trainer/users/").concat(user_id, "/blocks/").concat(block_id)).then(function (res) {
+    this.$http.get("".concat("http://gerbzilla.test/api", "/trainer/users/").concat(user_id, "/blocks/").concat(block_id)).then(function (res) {
       _this2.block = res.data.block;
       _this2.type = res.data.type;
       _this2.workouts = res.data.workouts;
@@ -4607,7 +4611,7 @@ __webpack_require__.r(__webpack_exports__);
         block_id = _this$$route$params.block_id,
         workout_id = _this$$route$params.workout_id;
     this.loading = true;
-    this.$http.get("".concat("http://localhost:8000/api", "/trainer/users/").concat(user_id, "/blocks/").concat(block_id, "/workouts/").concat(workout_id, "/sets")).then(function (res) {
+    this.$http.get("".concat("http://gerbzilla.test/api", "/trainer/users/").concat(user_id, "/blocks/").concat(block_id, "/workouts/").concat(workout_id, "/sets")).then(function (res) {
       _this.block = res.data.block;
       _this.type = res.data.type;
       _this.workout = res.data.workout;
@@ -4682,7 +4686,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       this.loading = true;
-      this.$http.get("".concat("http://localhost:8000/api", "/trainer/exercises")).then(function (res) {
+      this.$http.get("".concat("http://gerbzilla.test/api", "/trainer/exercises")).then(function (res) {
         _this.exercises = res.data;
         _this.loading = false;
       })["catch"](function (err) {
@@ -4697,7 +4701,7 @@ __webpack_require__.r(__webpack_exports__);
     var _this2 = this;
 
     this.loading = true;
-    this.$http.all([this.$http.get("".concat("http://localhost:8000/api", "/trainer/exercises")), this.$http.get("".concat("http://localhost:8000/api", "/trainer/categories"))]).then(this.$http.spread(function (exercises, categories) {
+    this.$http.all([this.$http.get("".concat("http://gerbzilla.test/api", "/trainer/exercises")), this.$http.get("".concat("http://gerbzilla.test/api", "/trainer/categories"))]).then(this.$http.spread(function (exercises, categories) {
       _this2.exercises = exercises.data;
       _this2.categories = categories.data;
       _this2.loading = false;
@@ -4784,7 +4788,7 @@ __webpack_require__.r(__webpack_exports__);
   mounted: function mounted() {
     var _this = this;
 
-    this.$http.all([this.$http.get("".concat("http://localhost:8000/api", "/trainer/users/").concat(this.$route.params.id)), this.$http.get("".concat("http://localhost:8000/api", "/trainer/users/").concat(this.$route.params.id, "/blocks"))]).then(this.$http.spread(function (user, blocks) {
+    this.$http.all([this.$http.get("".concat("http://gerbzilla.test/api", "/trainer/users/").concat(this.$route.params.id)), this.$http.get("".concat("http://gerbzilla.test/api", "/trainer/users/").concat(this.$route.params.id, "/blocks"))]).then(this.$http.spread(function (user, blocks) {
       _this.user = user.data;
       _this.isActive = user.data.is_active === 1 ? true : false;
       _this.blocks = blocks.data.sort(function (a, b) {
@@ -4800,7 +4804,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this2 = this;
 
       this.loading = true;
-      this.$http.get("".concat("http://localhost:8000/api", "/trainer/users/").concat(this.$route.params.id, "/blocks")).then(function (res) {
+      this.$http.get("".concat("http://gerbzilla.test/api", "/trainer/users/").concat(this.$route.params.id, "/blocks")).then(function (res) {
         _this2.blocks = res.data.sort(function (a, b) {
           return a.start_date < b.start_date ? 1 : b.start_date < a.start_date ? -1 : 0;
         });
@@ -4890,7 +4894,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       this.loading = true;
-      this.$http.get("".concat("http://localhost:8000/api", "/trainer/users")).then(function (res) {
+      this.$http.get("".concat("http://gerbzilla.test/api", "/trainer/users")).then(function (res) {
         _this.users = res.data;
         _this.message = {
           message: "Successfully created user.",
@@ -4917,7 +4921,7 @@ __webpack_require__.r(__webpack_exports__);
   mounted: function mounted() {
     var _this2 = this;
 
-    this.$http.get("".concat("http://localhost:8000/api", "/trainer/users")).then(function (res) {
+    this.$http.get("".concat("http://gerbzilla.test/api", "/trainer/users")).then(function (res) {
       _this2.users = res.data;
       _this2.loading = false;
     })["catch"](function (err) {
@@ -5061,7 +5065,7 @@ __webpack_require__.r(__webpack_exports__);
           block_id = _this$$route$params.block_id,
           workout_id = _this$$route$params.workout_id;
       this.loading = true;
-      this.$http.get("".concat("http://localhost:8000/api", "/trainer/users/").concat(user_id, "/blocks/").concat(block_id, "/workouts/").concat(workout_id, "/sets")).then(function (res) {
+      this.$http.get("".concat("http://gerbzilla.test/api", "/trainer/users/").concat(user_id, "/blocks/").concat(block_id, "/workouts/").concat(workout_id, "/sets")).then(function (res) {
         _this.sets = res.data.sets;
         _this.loading = false;
       })["catch"](function (err) {
@@ -5093,7 +5097,7 @@ __webpack_require__.r(__webpack_exports__);
         block_id = _this$$route$params2.block_id,
         workout_id = _this$$route$params2.workout_id;
     this.loading = true;
-    this.$http.get("".concat("http://localhost:8000/api", "/trainer/users/").concat(user_id, "/blocks/").concat(block_id, "/workouts/").concat(workout_id, "/sets")).then(function (res) {
+    this.$http.get("".concat("http://gerbzilla.test/api", "/trainer/users/").concat(user_id, "/blocks/").concat(block_id, "/workouts/").concat(workout_id, "/sets")).then(function (res) {
       _this2.block = res.data.block;
       _this2.type = res.data.type;
       _this2.workout = res.data.workout;
@@ -23880,25 +23884,36 @@ var render = function() {
                   ]
                 ),
                 _vm._v(" "),
-                _c("div", { staticClass: "bg-blue-gradient" }, [
-                  _c(
-                    "h6",
-                    {
-                      staticClass:
-                        "text-center text-xl font-hairline text-white mb-1 pt-24"
-                    },
-                    [_vm._v("Jamie")]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "h6",
-                    {
-                      staticClass:
-                        "text-center text-xl font-hairline text-white pb-10"
-                    },
-                    [_vm._v("Lannister")]
-                  )
-                ]),
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "bg-blue-gradient pb-4 flex justify-center flex-col px-4"
+                  },
+                  [
+                    _c(
+                      "h6",
+                      {
+                        staticClass:
+                          "text-center text-xl font-hairline text-white mb-4 pt-24"
+                      },
+                      [
+                        _vm._v(
+                          _vm._s(_vm.user.first_name + " " + _vm.user.last_name)
+                        )
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "h6",
+                      {
+                        staticClass:
+                          "text-center text-xs font-hairline rounded-full text-white py-1 px-4 uppercase description-pill flex-base"
+                      },
+                      [_vm._v(_vm._s(_vm.role.name))]
+                    )
+                  ]
+                ),
                 _vm._v(" "),
                 _c("ul", { staticClass: "list-reset" }, [
                   _c(
@@ -28183,14 +28198,14 @@ var render = function() {
               "div",
               { staticClass: "flex flex-wrap justify-between w-full mb-20" },
               [
-                _vm._l(_vm.workoutsAtAGlance, function(workout) {
+                _vm._l(_vm.weeksWorkouts, function(workout) {
                   return _c("workout-card", {
                     key: workout.id,
                     attrs: { workout: workout }
                   })
                 }),
                 _vm._v(" "),
-                !_vm.workoutsAtAGlance.length
+                !_vm.weeksWorkouts.length
                   ? _c("div", { staticClass: "w-full p-10 text-center" }, [
                       _c(
                         "h1",
@@ -45435,7 +45450,7 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
       var laravelToken = $cookies.get("laravel_token");
       var token = "Bearer ".concat(laravelToken);
       this.$http.defaults.headers.common["Authorization"] = token;
-      this.$http.get("".concat("http://localhost:8000/api", "/user")).then(function (res) {
+      this.$http.get("".concat("http://gerbzilla.test/api", "/user")).then(function (res) {
         localStorage.setItem("user", JSON.stringify(res.data.user));
         localStorage.setItem("role", JSON.stringify(res.data.role));
       })["catch"](function (err) {
@@ -47942,27 +47957,27 @@ __webpack_require__.r(__webpack_exports__);
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vuex__WEBPACK_IMPORTED_MODULE_1__["default"]);
 /* harmony default export */ __webpack_exports__["default"] = (new vuex__WEBPACK_IMPORTED_MODULE_1__["default"].Store({
   state: {
-    status: '',
-    token: $cookies.get("laravel_token") || '',
+    status: "",
+    token: $cookies.get("laravel_token") || "",
     user: JSON.parse(localStorage.getItem("user")) || {},
     role: JSON.parse(localStorage.getItem("role")) || {}
   },
   mutations: {
     auth_request: function auth_request(state) {
-      state.status = 'loading';
+      state.status = "loading";
     },
     auth_success: function auth_success(state, payload) {
-      state.status = 'success';
+      state.status = "success";
       state.token = payload.token;
       state.user = payload.user;
       state.role = payload.role;
     },
     auth_error: function auth_error(state) {
-      state.status = 'error';
+      state.status = "error";
     },
     logout: function logout(state) {
-      state.status = '';
-      state.token = '';
+      state.status = "";
+      state.token = "";
       state.user = {};
       state.role = {};
     }
@@ -47971,38 +47986,38 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vuex__WEBPACK_IMPORTED_MODULE_1__
     login: function login(_ref, user) {
       var commit = _ref.commit;
       return new Promise(function (resolve, reject) {
-        commit('auth_request');
+        commit("auth_request");
         axios__WEBPACK_IMPORTED_MODULE_2___default()({
-          url: "".concat("http://localhost:8000/api", "/login"),
+          url: "".concat("http://gerbzilla.test/api", "/login"),
           data: user,
-          method: 'POST'
+          method: "POST"
         }).then(function (res) {
           var token = res.data.access_token;
           $cookies.set("laravel_token", token);
-          axios__WEBPACK_IMPORTED_MODULE_2___default.a.defaults.headers.common['Authorization'] = "Bearer ".concat(token);
+          axios__WEBPACK_IMPORTED_MODULE_2___default.a.defaults.headers.common["Authorization"] = "Bearer ".concat(token);
           axios__WEBPACK_IMPORTED_MODULE_2___default()({
-            url: "".concat("http://localhost:8000/api", "/user"),
-            method: 'GET'
+            url: "".concat("http://gerbzilla.test/api", "/user"),
+            method: "GET"
           }).then(function (resp) {
             var user = resp.data.user;
             var role = resp.data.role;
             localStorage.setItem("user", JSON.stringify(user));
             localStorage.setItem("role", JSON.stringify(role));
-            commit('auth_success', {
+            commit("auth_success", {
               token: token,
               user: user,
               role: role
             });
             resolve(resp);
           })["catch"](function (err) {
-            commit('auth_error');
+            commit("auth_error");
             $cookies.remove("laravel_token");
             localStorage.removeItem("user");
             localStorage.removeItem("role");
             reject(err);
           });
         })["catch"](function (error) {
-          commit('auth_error');
+          commit("auth_error");
           $cookies.remove("laravel_token");
           localStorage.removeItem("user");
           localStorage.removeItem("role");
@@ -48013,11 +48028,11 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vuex__WEBPACK_IMPORTED_MODULE_1__
     logout: function logout(_ref2) {
       var commit = _ref2.commit;
       return new Promise(function (resolve, reject) {
-        commit('logout');
+        commit("logout");
         $cookies.remove("laravel_token");
         localStorage.removeItem("user");
         localStorage.removeItem("role");
-        delete axios__WEBPACK_IMPORTED_MODULE_2___default.a.defaults.headers.common['Authorization'];
+        delete axios__WEBPACK_IMPORTED_MODULE_2___default.a.defaults.headers.common["Authorization"];
         resolve();
       });
     }
@@ -48030,13 +48045,16 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vuex__WEBPACK_IMPORTED_MODULE_1__
       return state.status;
     },
     isTrainer: function isTrainer(state) {
-      return state.role ? state.role.name === 'trainer' || state.role.name === 'admin' : false;
+      return state.role ? state.role.name === "trainer" || state.role.name === "admin" : false;
     },
     isAdmin: function isAdmin(state) {
-      return state.role ? state.role.name === 'admin' : false;
+      return state.role ? state.role.name === "admin" : false;
     },
     getUser: function getUser(state) {
       return state.user;
+    },
+    getRole: function getRole(state) {
+      return state.role;
     },
     isActive: function isActive(state) {
       return !!state.user.is_active;
@@ -48064,8 +48082,8 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vuex__WEBPACK_IMPORTED_MODULE_1__
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /Users/jsams/projects/gerbzilla/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /Users/jsams/projects/gerbzilla/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /Users/joe.mac/projects/gerbzilla/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /Users/joe.mac/projects/gerbzilla/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
