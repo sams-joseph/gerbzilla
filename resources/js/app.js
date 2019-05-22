@@ -1,11 +1,11 @@
-import Vue from "vue";
+import Vue, { mapGetters } from "vue";
 import VueRouter from "vue-router";
 import VScrollLock from "v-scroll-lock";
 import VueCookies from "vue-cookies";
 import axios from "axios";
-import moment from 'moment';
+import moment from "moment";
 
-import store from './store';
+import store from "./store";
 
 import routes from "./routes";
 import Header from "./components/Header";
@@ -16,8 +16,8 @@ import CreateUserForm from "./components/forms/CreateUserForm";
 import CreateExerciseForm from "./components/forms/CreateExerciseForm";
 import CreateBlockForm from "./components/forms/CreateBlockForm";
 import CreateWorkoutForm from "./components/forms/CreateWorkoutForm";
-import CreateSetForm from './components/forms/CreateSetForm';
-import EditSetForm from './components/forms/EditSetForm';
+import CreateSetForm from "./components/forms/CreateSetForm";
+import EditSetForm from "./components/forms/EditSetForm";
 import Tabs from "./components/Tabs";
 import Tab from "./components/Tab";
 import UserList from "./components/lists/UserList";
@@ -25,12 +25,12 @@ import ExerciseList from "./components/lists/ExerciseList";
 import SideNavigation from "./components/SideNavigation";
 import PageFooter from "./components/PageFooter";
 import Block from "./components/Block";
-import BlockHeader from './components/BlockHeader';
-import WorkoutItem from './components/WorkoutItem';
-import WorkoutCard from './components/WorkoutCard';
-import Snackbar from './components/Snackbar';
+import BlockHeader from "./components/BlockHeader";
+import WorkoutItem from "./components/WorkoutItem";
+import WorkoutCard from "./components/WorkoutCard";
+import Snackbar from "./components/Snackbar";
 
-import Loader from './components/Loader';
+import Loader from "./components/Loader";
 
 import Construction from "./components/Construction";
 
@@ -74,7 +74,7 @@ let router = new VueRouter(routes);
 
 router.beforeEach((to, from, next) => {
     if (to.matched.some(record => record.meta.requiresAuth)) {
-        if (!store.getters.isLoggedIn) {
+        if (!store.getters.authorized) {
             next({
                 path: "/login",
                 params: { nextUrl: to.fullPath }
@@ -97,7 +97,7 @@ router.beforeEach((to, from, next) => {
             }
         }
     } else if (to.matched.some(record => record.meta.guest)) {
-        if (store.getters.isLoggedIn) {
+        if (store.getters.authorized) {
             next({ name: "overview" });
         } else {
             next();

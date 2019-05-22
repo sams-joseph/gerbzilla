@@ -244,13 +244,10 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex";
 export default {
-  data() {
-    return {
-      authorized: this.$store.getters.isLoggedIn,
-      isAdmin: this.$store.getters.isAdmin,
-      isTrainer: this.$store.getters.isTrainer
-    };
+  computed: {
+    ...mapGetters(["authorized", "isAdmin", "isTrainer"])
   }
 };
 </script>

@@ -28,42 +28,18 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex";
+
 export default {
   data() {
     return {
-      user: this.$store.getters.getUser,
       blocks: [],
-      isActive: this.$store.getters.isActive,
-      loading: true,
-      showAddBlockForm: false
+      loading: true
     };
   },
 
   mounted() {
-    const today = this.$moment();
-    const weekStart = this.$moment(today)
-      .startOf("week")
-      .add(1, "days")
-      .format("YYYY-MM-DD");
-    const weekEnd = this.$moment(today)
-      .endOf("week")
-      .add(1, "days")
-      .format("YYYY-MM-DD");
-
     this.loading = true;
-    this.$http
-      .get(
-        `${process.env.MIX_BASE_URL}/users/${this.user.id}/workouts/date-range`,
-        {
-          params: {
-            start: weekStart,
-            end: weekEnd
-          }
-        }
-      )
-      .then(res => {
-        console.log(res);
-      });
 
     this.$http
       .get(`${process.env.MIX_BASE_URL}/blocks`)
@@ -78,6 +54,8 @@ export default {
       });
   },
 
-  methods: {}
+  computed: {
+    ...mapGetters(["isActive", "user"])
+  }
 };
 </script>

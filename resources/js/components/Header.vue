@@ -170,18 +170,15 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex";
+
 export default {
   data() {
     return {
       showLogin: false,
       showDrawer: false,
       showMenu: false,
-      fixed: false,
-      authorized: this.$store.getters.isLoggedIn,
-      isAdmin: this.$store.getters.isAdmin,
-      isTrainer: this.$store.getters.isTrainer,
-      user: this.$store.getters.getUser,
-      role: this.$store.getters.getRole
+      fixed: false
     };
   },
 
@@ -209,6 +206,10 @@ export default {
         })
         .catch(err => console.log(err));
     }
+  },
+
+  computed: {
+    ...mapGetters(["authorized", "isAdmin", "isTrainer", "user", "role"])
   }
 };
 </script>

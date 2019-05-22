@@ -118,17 +118,17 @@ export default new Vuex.Store({
         }
     },
     getters: {
-        isLoggedIn: state => !!state.token,
+        authorized: state => !!state.token,
         authStatus: state => state.status,
         isTrainer: state =>
             state.role
                 ? state.role.name === "trainer" || state.role.name === "admin"
                 : false,
         isAdmin: state => (state.role ? state.role.name === "admin" : false),
-        getUser: state => {
+        user: state => {
             return state.user;
         },
-        getRole: state => {
+        role: state => {
             return state.role;
         },
         isActive: state => !!state.user.is_active,

@@ -1914,6 +1914,11 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; var ownKeys = Object.keys(source); if (typeof Object.getOwnPropertySymbols === 'function') { ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) { return Object.getOwnPropertyDescriptor(source, sym).enumerable; })); } ownKeys.forEach(function (key) { _defineProperty(target, key, source[key]); }); } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 //
 //
 //
@@ -2085,18 +2090,14 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       showLogin: false,
       showDrawer: false,
       showMenu: false,
-      fixed: false,
-      authorized: this.$store.getters.isLoggedIn,
-      isAdmin: this.$store.getters.isAdmin,
-      isTrainer: this.$store.getters.isTrainer,
-      user: this.$store.getters.getUser,
-      role: this.$store.getters.getRole
+      fixed: false
     };
   },
   methods: {
@@ -2124,7 +2125,8 @@ __webpack_require__.r(__webpack_exports__);
         return console.log(err);
       });
     }
-  }
+  },
+  computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])(["authorized", "isAdmin", "isTrainer", "user", "role"]))
 });
 
 /***/ }),
@@ -4018,6 +4020,11 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; var ownKeys = Object.keys(source); if (typeof Object.getOwnPropertySymbols === 'function') { ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) { return Object.getOwnPropertyDescriptor(source, sym).enumerable; })); } ownKeys.forEach(function (key) { _defineProperty(target, key, source[key]); }); } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 //
 //
 //
@@ -4263,14 +4270,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+
 /* harmony default export */ __webpack_exports__["default"] = ({
-  data: function data() {
-    return {
-      authorized: this.$store.getters.isLoggedIn,
-      isAdmin: this.$store.getters.isAdmin,
-      isTrainer: this.$store.getters.isTrainer
-    };
-  }
+  computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])(["authorized", "isAdmin", "isTrainer"]))
 });
 
 /***/ }),
@@ -4352,6 +4354,11 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; var ownKeys = Object.keys(source); if (typeof Object.getOwnPropertySymbols === 'function') { ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) { return Object.getOwnPropertyDescriptor(source, sym).enumerable; })); } ownKeys.forEach(function (key) { _defineProperty(target, key, source[key]); }); } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 //
 //
 //
@@ -4443,11 +4450,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      user: this.$store.getters.getUser,
-      status: this.$store.getters.isActive,
       todaysWorkout: {},
       weeksWorkouts: [],
       allWorkouts: [],
@@ -4472,11 +4478,11 @@ __webpack_require__.r(__webpack_exports__);
       console.log(err);
     });
   },
-  computed: {
+  computed: _objectSpread({
     numWorkouts: function numWorkouts() {
       return this.allWorkouts.length;
     }
-  }
+  }, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])(["isActive", "user"]))
 });
 
 /***/ }),
@@ -4490,6 +4496,11 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; var ownKeys = Object.keys(source); if (typeof Object.getOwnPropertySymbols === 'function') { ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) { return Object.getOwnPropertyDescriptor(source, sym).enumerable; })); } ownKeys.forEach(function (key) { _defineProperty(target, key, source[key]); }); } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 //
 //
 //
@@ -4519,31 +4530,18 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      user: this.$store.getters.getUser,
       blocks: [],
-      isActive: this.$store.getters.isActive,
-      loading: true,
-      showAddBlockForm: false
+      loading: true
     };
   },
   mounted: function mounted() {
     var _this = this;
 
-    var today = this.$moment();
-    var weekStart = this.$moment(today).startOf("week").add(1, "days").format("YYYY-MM-DD");
-    var weekEnd = this.$moment(today).endOf("week").add(1, "days").format("YYYY-MM-DD");
     this.loading = true;
-    this.$http.get("".concat("http://gerbzilla.test/api", "/users/").concat(this.user.id, "/workouts/date-range"), {
-      params: {
-        start: weekStart,
-        end: weekEnd
-      }
-    }).then(function (res) {
-      console.log(res);
-    });
     this.$http.get("".concat("http://gerbzilla.test/api", "/blocks")).then(function (res) {
       _this.blocks = res.data.sort(function (a, b) {
         return a.start_date < b.start_date ? 1 : b.start_date < a.start_date ? -1 : 0;
@@ -4553,7 +4551,7 @@ __webpack_require__.r(__webpack_exports__);
       console.log(err);
     });
   },
-  methods: {}
+  computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])(["isActive", "user"]))
 });
 
 /***/ }),
@@ -4651,6 +4649,11 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; var ownKeys = Object.keys(source); if (typeof Object.getOwnPropertySymbols === 'function') { ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) { return Object.getOwnPropertyDescriptor(source, sym).enumerable; })); } ownKeys.forEach(function (key) { _defineProperty(target, key, source[key]); }); } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 //
 //
 //
@@ -4733,11 +4736,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      user: this.$store.getters.getUser,
-      isActive: this.$store.getters.isActive,
       weekStart: "",
       workouts: [],
       loading: true
@@ -4756,7 +4758,7 @@ __webpack_require__.r(__webpack_exports__);
       _this.loading = false;
     });
   },
-  computed: {
+  computed: _objectSpread({
     typeName: function typeName() {
       if (this.workouts.length) {
         return this.workouts[0].block.type.name;
@@ -4774,7 +4776,7 @@ __webpack_require__.r(__webpack_exports__);
         };
       }
     }
-  },
+  }, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])(["isActive", "user"])),
   methods: {
     isPastDate: function isPastDate(date) {
       var today = this.$moment();
@@ -4848,7 +4850,6 @@ __webpack_require__.r(__webpack_exports__);
       block: {},
       type: {},
       workouts: [],
-      userId: this.$route.params.user_id,
       showModal: false,
       showPopover: false,
       loading: true
@@ -4892,6 +4893,11 @@ __webpack_require__.r(__webpack_exports__);
     })["catch"](function (err) {
       console.log(err);
     });
+  },
+  computed: {
+    userId: function userId() {
+      return this.$route.params.user_id;
+    }
   }
 });
 
@@ -28536,11 +28542,15 @@ var render = function() {
                             staticClass:
                               "text-base font-light uppercase mb-4 text-center md:text-left",
                             class: {
-                              "text-green": _vm.status,
-                              "text-red": !_vm.status
+                              "text-green": _vm.isActive,
+                              "text-red": !_vm.isActive
                             }
                           },
-                          [_vm._v(_vm._s(this.status ? "Active" : "Inactive"))]
+                          [
+                            _vm._v(
+                              _vm._s(this.isActive ? "Active" : "Inactive")
+                            )
+                          ]
                         ),
                         _vm._v(" "),
                         _vm._m(1)
@@ -46140,7 +46150,7 @@ router.beforeEach(function (to, from, next) {
   if (to.matched.some(function (record) {
     return record.meta.requiresAuth;
   })) {
-    if (!_store__WEBPACK_IMPORTED_MODULE_6__["default"].getters.isLoggedIn) {
+    if (!_store__WEBPACK_IMPORTED_MODULE_6__["default"].getters.authorized) {
       next({
         path: "/login",
         params: {
@@ -46175,7 +46185,7 @@ router.beforeEach(function (to, from, next) {
   } else if (to.matched.some(function (record) {
     return record.meta.guest;
   })) {
-    if (_store__WEBPACK_IMPORTED_MODULE_6__["default"].getters.isLoggedIn) {
+    if (_store__WEBPACK_IMPORTED_MODULE_6__["default"].getters.authorized) {
       next({
         name: "overview"
       });
@@ -49095,7 +49105,7 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vuex__WEBPACK_IMPORTED_MODULE_1__
     }
   },
   getters: {
-    isLoggedIn: function isLoggedIn(state) {
+    authorized: function authorized(state) {
       return !!state.token;
     },
     authStatus: function authStatus(state) {
@@ -49107,10 +49117,10 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vuex__WEBPACK_IMPORTED_MODULE_1__
     isAdmin: function isAdmin(state) {
       return state.role ? state.role.name === "admin" : false;
     },
-    getUser: function getUser(state) {
+    user: function user(state) {
       return state.user;
     },
-    getRole: function getRole(state) {
+    role: function role(state) {
       return state.role;
     },
     isActive: function isActive(state) {

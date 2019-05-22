@@ -81,11 +81,11 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex";
+
 export default {
   data() {
     return {
-      user: this.$store.getters.getUser,
-      isActive: this.$store.getters.isActive,
       weekStart: "",
       workouts: [],
       loading: true
@@ -133,7 +133,8 @@ export default {
           start_date: ""
         };
       }
-    }
+    },
+    ...mapGetters(["isActive", "user"])
   },
 
   methods: {

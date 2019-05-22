@@ -16,9 +16,9 @@
               class="text-grey-darkest text-xl mb-2 text-center md:text-left"
             >{{ `${this.user.first_name} ${this.user.last_name}` }}</h1>
             <h3
-              v-bind:class="{'text-green': status, 'text-red': !status}"
+              v-bind:class="{'text-green': isActive, 'text-red': !isActive}"
               class="text-base font-light uppercase mb-4 text-center md:text-left"
-            >{{ this.status ? 'Active' : 'Inactive' }}</h3>
+            >{{ this.isActive ? 'Active' : 'Inactive' }}</h3>
             <div class="mx-auto mb-12 md:mb-0 md:mx-0">
               <button
                 class="cursor-pointer text-xs font-semibold rounded-full px-4 py-1 leading-normal bg-grey-lighter border border-red text-red hover:bg-red hover:text-white uppercase focus:outline-none"
@@ -90,11 +90,11 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex";
+
 export default {
   data() {
     return {
-      user: this.$store.getters.getUser,
-      status: this.$store.getters.isActive,
       todaysWorkout: {},
       weeksWorkouts: [],
       allWorkouts: [],
@@ -142,7 +142,8 @@ export default {
   computed: {
     numWorkouts() {
       return this.allWorkouts.length;
-    }
+    },
+    ...mapGetters(["isActive", "user"])
   }
 };
 </script>

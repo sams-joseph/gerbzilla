@@ -52,7 +52,6 @@ export default {
       block: {},
       type: {},
       workouts: [],
-      userId: this.$route.params.user_id,
       showModal: false,
       showPopover: false,
       loading: true
@@ -108,6 +107,12 @@ export default {
       .catch(err => {
         console.log(err);
       });
+  },
+
+  computed: {
+    userId() {
+      return this.$route.params.user_id;
+    }
   }
 };
 </script>
