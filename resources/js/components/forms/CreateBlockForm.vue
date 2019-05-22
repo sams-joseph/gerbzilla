@@ -151,15 +151,21 @@ export default {
           this.loading = false;
           this.success = true;
 
-          setTimeout(() => {
-            this.success = false;
-          }, 3000);
+          this.$store.dispatch("add", {
+            type: "success",
+            message: "Added block successfully.",
+            show: true
+          });
 
           this.$emit("create-block-success");
           this.$emit("cancel-block-create");
         })
         .catch(err => {
-          console.log(err);
+          this.$store.dispatch("add", {
+            type: "error",
+            message: err.message,
+            show: true
+          });
         });
     }
   }

@@ -85,10 +85,21 @@ export default {
 
           this.loading = false;
 
+          this.$store.dispatch("add", {
+            type: "success",
+            message: "Added workout successfully.",
+            show: true
+          });
+
           this.$emit("create-workout-success");
           this.$emit("cancel-workout-create");
         })
         .catch(err => {
+          this.$store.dispatch("add", {
+            type: "error",
+            message: err.message,
+            show: true
+          });
           this.$emit("create-workout-error", err);
           this.$emit("cancel-workout-create");
         });

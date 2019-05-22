@@ -138,15 +138,21 @@ export default {
           this.loading = false;
           this.success = true;
 
-          setTimeout(() => {
-            this.success = false;
-          }, 3000);
+          this.$store.dispatch("add", {
+            type: "success",
+            message: "Added exercise successfully.",
+            show: true
+          });
 
           this.$emit("create-exercise-success");
           this.$emit("cancel-user-create");
         })
         .catch(err => {
-          console.log(err);
+          this.$store.dispatch("add", {
+            type: "error",
+            message: err.message,
+            show: true
+          });
         });
     }
   }

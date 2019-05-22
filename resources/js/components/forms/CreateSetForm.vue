@@ -154,20 +154,24 @@ export default {
           }
         )
         .then(res => {
-          console.log(res);
-
           this.loading = false;
           this.success = true;
 
-          setTimeout(() => {
-            this.success = false;
-          }, 3000);
+          this.$store.dispatch("add", {
+            type: "success",
+            message: "Added exercise successfully",
+            show: true
+          });
 
           this.$emit("create-set-success");
           this.$emit("cancel-set-create");
         })
         .catch(err => {
-          console.log(err);
+          this.$store.dispatch("add", {
+            type: "error",
+            message: err.message,
+            show: true
+          });
         });
     }
   }

@@ -9,13 +9,16 @@ import User from "./pages/trainer/User";
 import Exercises from "./pages/trainer/Exercises";
 import Blocks from "./pages/trainer/Blocks";
 import Workout from "./pages/trainer/Workout";
-import EditSet from './pages/trainer/EditSet';
-import UserWorkout from './pages/UserWorkout';
+import EditSet from "./pages/trainer/EditSet";
+import UserWorkout from "./pages/UserWorkout";
 
 import NotFound from "./components/NotFound";
 
 export default {
     mode: "history",
+    scrollBehavior(to, from, savedPosition) {
+        return { x: 0, y: 0 };
+    },
 
     routes: [
         {
@@ -135,7 +138,8 @@ export default {
             }
         },
         {
-            path: "/t/users/:user_id/blocks/:block_id/workouts/:workout_id/sets/:set_id",
+            path:
+                "/t/users/:user_id/blocks/:block_id/workouts/:workout_id/sets/:set_id",
             name: "edit-set",
             component: EditSet,
             meta: {

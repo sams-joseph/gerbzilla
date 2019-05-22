@@ -48,10 +48,21 @@ export default {
       this.$store
         .dispatch("login", { username, password })
         .then(() => {
+          this.$store.dispatch("add", {
+            type: "success",
+            message: "Logged in successfully.",
+            show: true
+          });
           this.$router.push("/");
           this.$emit("logged-in");
         })
-        .catch(err => console.log(err));
+        .catch(err => {
+          this.$store.dispatch("add", {
+            type: "error",
+            message: err.message,
+            show: true
+          });
+        });
     }
   },
   props: {

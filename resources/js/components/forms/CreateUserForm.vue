@@ -127,10 +127,21 @@ export default {
 
           this.loading = false;
 
+          this.$store.dispatch("add", {
+            type: "success",
+            message: "Added user successfully.",
+            show: true
+          });
+
           this.$emit("create-user-success");
           this.$emit("cancel-user-create");
         })
         .catch(err => {
+          this.$store.dispatch("add", {
+            type: "error",
+            message: err.message,
+            show: true
+          });
           this.$emit("create-user-error", err);
           this.$emit("cancel-user-create");
         });

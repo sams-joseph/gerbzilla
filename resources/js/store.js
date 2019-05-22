@@ -10,7 +10,7 @@ export default new Vuex.Store({
         token: $cookies.get("laravel_token") || "",
         user: JSON.parse(localStorage.getItem("user")) || {},
         role: JSON.parse(localStorage.getItem("role")) || {},
-        msg: { type: '', message: '', show: false }
+        msg: { type: "", message: "", show: false }
     },
     mutations: {
         auth_request(state) {
@@ -37,7 +37,7 @@ export default new Vuex.Store({
         },
         remove_message(state) {
             state.status = "remove-message";
-            state.msg = { type: '', message: '', show: false };
+            state.msg = { type: "", message: "", show: false };
         }
     },
     actions: {
@@ -104,15 +104,15 @@ export default new Vuex.Store({
         },
 
         add({ commit }, message) {
-            return new Promise((resolve, reject) => {
-                commit('add_message', message);
-                resolve();
-            });
+            commit("add_message", message);
+            setTimeout(() => {
+                commit("remove_message");
+            }, 4000);
         },
 
         remove({ commit }) {
             return new Promise((resolve, reject) => {
-                commit('remove_message');
+                commit("remove_message");
                 resolve();
             });
         }
