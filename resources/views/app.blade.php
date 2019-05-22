@@ -12,6 +12,7 @@
 
 <body class="font-sans">
     <div id="app">
+        <snackbar></snackbar>
         <router-view></router-view>
     </div>
 

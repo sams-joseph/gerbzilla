@@ -6288,6 +6288,13 @@ body {
   height: 100%;
 }
 
+.pin-center {
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+      -ms-transform: translateX(-50%);
+          transform: translateX(-50%);
+}
+
 .transition-all {
   -webkit-transition: all .25s;
   -o-transition: all .25s;
@@ -6424,6 +6431,19 @@ a {
 .slide-enter,
 .slide-leave-to {
   right: -300px;
+  opacity: 0;
+}
+
+.drop-enter-active,
+.drop-leave-active {
+  -webkit-transition: all .125s;
+  -o-transition: all .125s;
+  transition: all .125s;
+}
+
+.drop-enter,
+.drop-leave-to {
+  top: -100px;
   opacity: 0;
 }
 

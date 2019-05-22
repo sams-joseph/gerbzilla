@@ -9,7 +9,8 @@ export default new Vuex.Store({
         status: "",
         token: $cookies.get("laravel_token") || "",
         user: JSON.parse(localStorage.getItem("user")) || {},
-        role: JSON.parse(localStorage.getItem("role")) || {}
+        role: JSON.parse(localStorage.getItem("role")) || {},
+        msg: { type: '', message: '', show: false }
     },
     mutations: {
         auth_request(state) {
@@ -29,6 +30,14 @@ export default new Vuex.Store({
             state.token = "";
             state.user = {};
             state.role = {};
+        },
+        add_message(state, payload) {
+            state.status = "add-message";
+            state.msg = payload;
+        },
+        remove_message(state) {
+            state.status = "remove-message";
+            state.msg = { type: '', message: '', show: false };
         }
     },
     actions: {
@@ -92,6 +101,20 @@ export default new Vuex.Store({
                 delete axios.defaults.headers.common["Authorization"];
                 resolve();
             });
+        },
+
+        add({ commit }, message) {
+            return new Promise((resolve, reject) => {
+                commit('add_message', message);
+                resolve();
+            });
+        },
+
+        remove({ commit }) {
+            return new Promise((resolve, reject) => {
+                commit('remove_message');
+                resolve();
+            });
         }
     },
     getters: {
@@ -108,6 +131,7 @@ export default new Vuex.Store({
         getRole: state => {
             return state.role;
         },
-        isActive: state => !!state.user.is_active
+        isActive: state => !!state.user.is_active,
+        getMsg: state => state.msg
     }
 });
