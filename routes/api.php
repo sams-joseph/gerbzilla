@@ -17,9 +17,13 @@ Route::get('/user', 'UserController@index')->middleware('auth:api');
 
 Route::post('/login', 'AuthController@login');
 
-Route::get('/users/{user}/blocks', 'BlockController@index')->middleware('auth:api');
-Route::get('/users/{user}/workouts/date/{date}', 'WorkoutController@getByDate')->middleware('auth:api');
-Route::get('/users/{user}/workouts/date-range', 'WorkoutController@getByDateRange')->middleware('auth:api');
+Route::get('/blocks', 'BlockController@index')->middleware('auth:api');
+
+Route::get('/workouts', 'WorkoutController@index')->middleware('auth:api');
+Route::get('/workouts/{workout}', 'WorkoutController@show')->middleware('auth:api');
+
+Route::get('/workouts/date/{start}/{end}', 'WorkoutController@getByDateRange')->middleware('auth:api');
+Route::get('/workouts/date/{date}', 'WorkoutController@getByDate')->middleware('auth:api');
 
 /*
 ADMIN

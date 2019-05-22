@@ -10,6 +10,7 @@ import Exercises from "./pages/trainer/Exercises";
 import Blocks from "./pages/trainer/Blocks";
 import Workout from "./pages/trainer/Workout";
 import EditSet from './pages/trainer/EditSet';
+import UserWorkout from './pages/UserWorkout';
 
 import NotFound from "./components/NotFound";
 
@@ -47,6 +48,14 @@ export default {
             path: "/u/workouts",
             redirect: {
                 name: "user-workouts-week"
+            }
+        },
+        {
+            path: "/u/workouts/workout/:id",
+            name: "user-workout",
+            component: UserWorkout,
+            meta: {
+                requiresAuth: true
             }
         },
         {

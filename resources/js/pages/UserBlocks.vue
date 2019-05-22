@@ -66,7 +66,7 @@ export default {
       });
 
     this.$http
-      .get(`${process.env.MIX_BASE_URL}/users/${this.user.id}/blocks`)
+      .get(`${process.env.MIX_BASE_URL}/blocks`)
       .then(res => {
         this.blocks = res.data.sort((a, b) =>
           a.start_date < b.start_date ? 1 : b.start_date < a.start_date ? -1 : 0

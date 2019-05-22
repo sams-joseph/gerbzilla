@@ -1,5 +1,9 @@
 <template>
-  <router-link class="block w-full lg:w-1/3 md:w-1/2 p-2" active-class="none" to="/">
+  <router-link
+    class="block w-full lg:w-1/3 md:w-1/2 p-2"
+    active-class="none"
+    :to="{ name: 'user-workout', params: { id: workout.id }}"
+  >
     <div
       class="w-full bg-white rounded-lg shadow-lg cursor-pointer"
       v-bind:class="{

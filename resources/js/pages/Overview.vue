@@ -31,7 +31,7 @@
             <div class="w-full h-16 mb-6">
               <img src="/images/workouts-illust.svg" alt="Workouts">
             </div>
-            <h2 class="text-grey-darkest text-xl font-bold mb-2">100</h2>
+            <h2 class="text-grey-darkest text-xl font-bold mb-2">{{ numWorkouts }}</h2>
             <h3 class="text-grey-darkest text-base font-thin">Total Workouts</h3>
           </div>
 
@@ -97,6 +97,7 @@ export default {
       status: this.$store.getters.isActive,
       todaysWorkout: {},
       weeksWorkouts: [],
+      allWorkouts: [],
       sets: [],
       loading: true
     };
@@ -116,27 +117,19 @@ export default {
     this.$http
       .all([
         this.$http.get(
-          `${process.env.MIX_BASE_URL}/users/${
-            this.user.id
-          }/workouts/date/${todaysDate}`
+          `${process.env.MIX_BASE_URL}/workouts/date/${todaysDate}`
         ),
         this.$http.get(
-          `${process.env.MIX_BASE_URL}/users/${
-            this.user.id
-          }/workouts/date-range`,
-          {
-            params: {
-              start: startDate,
-              end: endDate
-            }
-          }
-        )
+          `${process.env.MIX_BASE_URL}/workouts/date/${startDate}/${endDate}`
+        ),
+        this.$http.get(`${process.env.MIX_BASE_URL}/workouts`)
       ])
       .then(
-        this.$http.spread((today, week) => {
+        this.$http.spread((today, week, all) => {
           this.todaysWorkout = today.data.workout;
           this.sets = today.data.sets;
           this.weeksWorkouts = week.data;
+          this.allWorkouts = all.data;
 
           this.loading = false;
         })
@@ -144,6 +137,12 @@ export default {
       .catch(err => {
         console.log(err);
       });
+  },
+
+  computed: {
+    numWorkouts() {
+      return this.allWorkouts.length;
+    }
   }
 };
 </script>

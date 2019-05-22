@@ -16,7 +16,7 @@
             to="/u/workouts/blocks"
             class="text-grey-darker mr-4"
             exact
-          >Blocks</router-link>
+          >Training Blocks</router-link>
         </li>
       </ul>
     </div>
