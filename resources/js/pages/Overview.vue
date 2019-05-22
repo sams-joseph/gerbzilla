@@ -32,7 +32,7 @@
               <img src="/images/workouts-illust.svg" alt="Workouts">
             </div>
             <h2 class="text-grey-darkest text-xl font-bold mb-2">100</h2>
-            <h3 class="text-grey-darkest text-base font-thin">Workouts Completed</h3>
+            <h3 class="text-grey-darkest text-base font-thin">Total Workouts</h3>
           </div>
 
           <div class="h-48 w-32 bg-grey-light rounded p-4 text-center ml-2">
@@ -49,7 +49,7 @@
       <main>
         <h2 class="text-grey-darkest font-normal text-2xl mb-12 px-8">Week at a Glance</h2>
         <section class="px-6">
-          <div class="flex flex-wrap justify-between w-full mb-20">
+          <div class="flex flex-wrap w-full mb-20">
             <workout-card
               v-for="workout in weeksWorkouts"
               v-bind:key="workout.id"
@@ -103,11 +103,11 @@ export default {
   },
 
   mounted() {
-    const todaysDate = this.$moment(new Date()).format("YYYY-MM-DD");
-    const startDate = this.$moment(new Date())
+    const todaysDate = this.$moment().format("YYYY-MM-DD");
+    const startDate = this.$moment()
       .add(1, "d")
       .format("YYYY-MM-DD");
-    const endDate = this.$moment(new Date())
+    const endDate = this.$moment()
       .add(3, "d")
       .format("YYYY-MM-DD");
 

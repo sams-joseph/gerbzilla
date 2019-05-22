@@ -1,7 +1,8 @@
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Overview from "./pages/Overview";
-import Workouts from "./pages/Workouts";
+import UserBlocks from "./pages/UserBlocks";
+import Week from "./pages/Week";
 import Goals from "./pages/Goals";
 import Users from "./pages/trainer/Users";
 import User from "./pages/trainer/User";
@@ -44,8 +45,22 @@ export default {
         },
         {
             path: "/u/workouts",
-            name: "workouts",
-            component: Workouts,
+            redirect: {
+                name: "user-workouts-week"
+            }
+        },
+        {
+            path: "/u/workouts/week",
+            name: "user-workouts-week",
+            component: Week,
+            meta: {
+                requiresAuth: true
+            }
+        },
+        {
+            path: "/u/workouts/blocks",
+            name: "user-workouts-blocks",
+            component: UserBlocks,
             meta: {
                 requiresAuth: true
             }

@@ -1,7 +1,7 @@
 <template>
   <div
     v-if="isToggled"
-    class="absolute pin-t pin-l bg-grey-lightest h-screen w-full flex items-start justify-center pt-32 z-50"
+    class="fixed pin-t pin-l bg-grey-lightest h-screen w-full flex items-start justify-center pt-32 z-50 px-8"
   >
     <div class="bg-white max-w-sm shadow-lg rounded-lg overflow-hidden">
       <div class="sm:flex sm:items-center p-8">

@@ -2284,6 +2284,24 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({});
 
 /***/ }),
@@ -2659,7 +2677,7 @@ __webpack_require__.r(__webpack_exports__);
   mounted: function mounted() {
     var _this = this;
 
-    this.$http.get("".concat("http://gerbzilla.test/api", "/trainer/types")).then(function (res) {
+    this.$http.get("".concat("http://localhost:8000/api", "/trainer/types")).then(function (res) {
       _this.loading = false;
       _this.types = res.data;
     })["catch"](function (err) {
@@ -2676,7 +2694,7 @@ __webpack_require__.r(__webpack_exports__);
       e.preventDefault();
       this.loading = true;
       var user = JSON.parse(localStorage.getItem("user"));
-      this.$http.post("".concat("http://gerbzilla.test/api", "/trainer/users/").concat(this.$route.params.id, "/blocks"), {
+      this.$http.post("".concat("http://localhost:8000/api", "/trainer/users/").concat(this.$route.params.id, "/blocks"), {
         name: this.name,
         start_date: this.date,
         type_id: this.type
@@ -2816,7 +2834,7 @@ __webpack_require__.r(__webpack_exports__);
   mounted: function mounted() {
     var _this = this;
 
-    this.$http.get("".concat("http://gerbzilla.test/api", "/trainer/categories")).then(function (res) {
+    this.$http.get("".concat("http://localhost:8000/api", "/trainer/categories")).then(function (res) {
       _this.loading = false;
       _this.categories = res.data;
     })["catch"](function (err) {
@@ -2833,7 +2851,7 @@ __webpack_require__.r(__webpack_exports__);
       e.preventDefault();
       this.loading = true;
       var user = JSON.parse(localStorage.getItem("user"));
-      this.$http.post("".concat("http://gerbzilla.test/api", "/trainer/exercises"), {
+      this.$http.post("".concat("http://localhost:8000/api", "/trainer/exercises"), {
         name: this.name,
         category_id: this.category
       }).then(function (res) {
@@ -2988,7 +3006,7 @@ __webpack_require__.r(__webpack_exports__);
   mounted: function mounted() {
     var _this = this;
 
-    this.$http.get("".concat("http://gerbzilla.test/api", "/trainer/exercises")).then(function (res) {
+    this.$http.get("".concat("http://localhost:8000/api", "/trainer/exercises")).then(function (res) {
       _this.loading = false;
       _this.exercises = res.data;
     })["catch"](function (err) {
@@ -3009,7 +3027,7 @@ __webpack_require__.r(__webpack_exports__);
           user_id = _this$$route$params.user_id,
           block_id = _this$$route$params.block_id,
           workout_id = _this$$route$params.workout_id;
-      this.$http.post("".concat("http://gerbzilla.test/api", "/trainer/users/").concat(user_id, "/blocks/").concat(block_id, "/workouts/").concat(workout_id, "/sets"), {
+      this.$http.post("".concat("http://localhost:8000/api", "/trainer/users/").concat(user_id, "/blocks/").concat(block_id, "/workouts/").concat(workout_id, "/sets"), {
         num_sets: this.sets,
         notes: this.notes,
         exercise_id: this.exercise
@@ -3152,7 +3170,7 @@ __webpack_require__.r(__webpack_exports__);
 
       e.preventDefault();
       this.loading = true;
-      this.$http.post("".concat("http://gerbzilla.test/api", "/trainer/users"), {
+      this.$http.post("".concat("http://localhost:8000/api", "/trainer/users"), {
         first_name: this.firstName,
         last_name: this.lastName,
         email: this.email,
@@ -3258,7 +3276,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this$$route$params = this.$route.params,
           user_id = _this$$route$params.user_id,
           block_id = _this$$route$params.block_id;
-      this.$http.post("".concat("http://gerbzilla.test/api", "/trainer/users/").concat(user_id, "/blocks/").concat(block_id, "/workouts"), {
+      this.$http.post("".concat("http://localhost:8000/api", "/trainer/users/").concat(user_id, "/blocks/").concat(block_id, "/workouts"), {
         name: this.name,
         date: this.date
       }).then(function (res) {
@@ -3384,7 +3402,7 @@ __webpack_require__.r(__webpack_exports__);
         block_id = _this$$route$params.block_id,
         workout_id = _this$$route$params.workout_id,
         set_id = _this$$route$params.set_id;
-    this.$http.all([this.$http.get("".concat("http://gerbzilla.test/api", "/trainer/users/").concat(user_id, "/blocks/").concat(block_id, "/workouts/").concat(workout_id, "/sets/").concat(set_id)), this.$http.get("".concat("http://gerbzilla.test/api", "/trainer/exercises"))]).then(this.$http.spread(function (set, exercises) {
+    this.$http.all([this.$http.get("".concat("http://localhost:8000/api", "/trainer/users/").concat(user_id, "/blocks/").concat(block_id, "/workouts/").concat(workout_id, "/sets/").concat(set_id)), this.$http.get("".concat("http://localhost:8000/api", "/trainer/exercises"))]).then(this.$http.spread(function (set, exercises) {
       _this.exercises = exercises.data;
       _this.exercise = set.data.set.exercise_id;
       _this.sets = set.data.set.num_sets;
@@ -3412,7 +3430,7 @@ __webpack_require__.r(__webpack_exports__);
           block_id = _this$$route$params2.block_id,
           workout_id = _this$$route$params2.workout_id,
           set_id = _this$$route$params2.set_id;
-      this.$http.put("".concat("http://gerbzilla.test/api", "/trainer/users/").concat(user_id, "/blocks/").concat(block_id, "/workouts/").concat(workout_id, "/sets/").concat(set_id), {
+      this.$http.put("".concat("http://localhost:8000/api", "/trainer/users/").concat(user_id, "/blocks/").concat(block_id, "/workouts/").concat(workout_id, "/sets/").concat(set_id), {
         num_sets: this.sets,
         notes: this.notes,
         exercise_id: this.exercise
@@ -4356,11 +4374,11 @@ __webpack_require__.r(__webpack_exports__);
   mounted: function mounted() {
     var _this = this;
 
-    var todaysDate = this.$moment(new Date()).format("YYYY-MM-DD");
-    var startDate = this.$moment(new Date()).add(1, "d").format("YYYY-MM-DD");
-    var endDate = this.$moment(new Date()).add(3, "d").format("YYYY-MM-DD");
+    var todaysDate = this.$moment().format("YYYY-MM-DD");
+    var startDate = this.$moment().add(1, "d").format("YYYY-MM-DD");
+    var endDate = this.$moment().add(3, "d").format("YYYY-MM-DD");
     this.loading = true;
-    this.$http.all([this.$http.get("".concat("http://gerbzilla.test/api", "/users/").concat(this.user.id, "/workouts/date/").concat(todaysDate)), this.$http.get("".concat("http://gerbzilla.test/api", "/users/").concat(this.user.id, "/workouts/date-range"), {
+    this.$http.all([this.$http.get("".concat("http://localhost:8000/api", "/users/").concat(this.user.id, "/workouts/date/").concat(todaysDate)), this.$http.get("".concat("http://localhost:8000/api", "/users/").concat(this.user.id, "/workouts/date-range"), {
       params: {
         start: startDate,
         end: endDate
@@ -4378,15 +4396,25 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/Workouts.vue?vue&type=script&lang=js&":
-/*!**************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/pages/Workouts.vue?vue&type=script&lang=js& ***!
-  \**************************************************************************************************************************************************************/
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/UserBlocks.vue?vue&type=script&lang=js&":
+/*!****************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/pages/UserBlocks.vue?vue&type=script&lang=js& ***!
+  \****************************************************************************************************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -4419,8 +4447,19 @@ __webpack_require__.r(__webpack_exports__);
   mounted: function mounted() {
     var _this = this;
 
+    var today = this.$moment();
+    var weekStart = this.$moment(today).startOf("week").add(1, "days").format("YYYY-MM-DD");
+    var weekEnd = this.$moment(today).endOf("week").add(1, "days").format("YYYY-MM-DD");
     this.loading = true;
-    this.$http.get("".concat("http://gerbzilla.test/api", "/users/").concat(this.user.id, "/blocks")).then(function (res) {
+    this.$http.get("".concat("http://localhost:8000/api", "/users/").concat(this.user.id, "/workouts/date-range"), {
+      params: {
+        start: weekStart,
+        end: weekEnd
+      }
+    }).then(function (res) {
+      console.log(res);
+    });
+    this.$http.get("".concat("http://localhost:8000/api", "/users/").concat(this.user.id, "/blocks")).then(function (res) {
       _this.blocks = res.data.sort(function (a, b) {
         return a.start_date < b.start_date ? 1 : b.start_date < a.start_date ? -1 : 0;
       });
@@ -4429,24 +4468,147 @@ __webpack_require__.r(__webpack_exports__);
       console.log(err);
     });
   },
-  methods: {
-    refreshData: function refreshData() {
-      var _this2 = this;
+  methods: {}
+});
 
-      this.loading = true;
-      this.$http.get("".concat("http://gerbzilla.test/api", "/users/").concat(this.user.id, "/blocks")).then(function (res) {
-        _this2.blocks = res.data.sort(function (a, b) {
-          return a.start_date < b.start_date ? 1 : b.start_date < a.start_date ? -1 : 0;
-        });
-        _this2.loading = false;
-      })["catch"](function (err) {
-        console.log(err);
-      });
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/Week.vue?vue&type=script&lang=js&":
+/*!**********************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/pages/Week.vue?vue&type=script&lang=js& ***!
+  \**********************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      user: this.$store.getters.getUser,
+      isActive: this.$store.getters.isActive,
+      weekStart: "",
+      workouts: [],
+      loading: true
+    };
+  },
+  mounted: function mounted() {
+    var _this = this;
+
+    var today = this.$moment();
+    var weekStart = this.$moment(today).startOf("week").add(1, "days");
+    var weekEnd = this.$moment(today).endOf("week").add(1, "days");
+    this.weekStart = weekStart;
+    this.loading = true;
+    this.$http.get("".concat("http://localhost:8000/api", "/users/").concat(this.user.id, "/workouts/date-range"), {
+      params: {
+        start: weekStart.format("YYYY-MM-DD"),
+        end: weekEnd.format("YYYY-MM-DD")
+      }
+    }).then(function (res) {
+      _this.workouts = res.data;
+      _this.loading = false;
+    });
+  },
+  computed: {
+    typeName: function typeName() {
+      if (this.workouts.length) {
+        return this.workouts[0].block.type.name;
+      } else {
+        return "";
+      }
     },
-    toggleAddBlockForm: function toggleAddBlockForm() {
-      this.showAddBlockForm = !this.showAddBlockForm;
+    firstBlock: function firstBlock() {
+      if (this.workouts.length) {
+        return this.workouts[0].block;
+      } else {
+        return {
+          name: "",
+          start_date: ""
+        };
+      }
     }
-  }
+  },
+  methods: {}
 });
 
 /***/ }),
@@ -4527,7 +4689,7 @@ __webpack_require__.r(__webpack_exports__);
           user_id = _this$$route$params.user_id,
           block_id = _this$$route$params.block_id;
       this.loading = true;
-      this.$http.get("".concat("http://gerbzilla.test/api", "/trainer/users/").concat(user_id, "/blocks/").concat(block_id)).then(function (res) {
+      this.$http.get("".concat("http://localhost:8000/api", "/trainer/users/").concat(user_id, "/blocks/").concat(block_id)).then(function (res) {
         _this.workouts = res.data.workouts;
         _this.loading = false;
       })["catch"](function (err) {
@@ -4549,7 +4711,7 @@ __webpack_require__.r(__webpack_exports__);
         user_id = _this$$route$params2.user_id,
         block_id = _this$$route$params2.block_id;
     this.loading = true;
-    this.$http.get("".concat("http://gerbzilla.test/api", "/trainer/users/").concat(user_id, "/blocks/").concat(block_id)).then(function (res) {
+    this.$http.get("".concat("http://localhost:8000/api", "/trainer/users/").concat(user_id, "/blocks/").concat(block_id)).then(function (res) {
       _this2.block = res.data.block;
       _this2.type = res.data.type;
       _this2.workouts = res.data.workouts;
@@ -4611,7 +4773,7 @@ __webpack_require__.r(__webpack_exports__);
         block_id = _this$$route$params.block_id,
         workout_id = _this$$route$params.workout_id;
     this.loading = true;
-    this.$http.get("".concat("http://gerbzilla.test/api", "/trainer/users/").concat(user_id, "/blocks/").concat(block_id, "/workouts/").concat(workout_id, "/sets")).then(function (res) {
+    this.$http.get("".concat("http://localhost:8000/api", "/trainer/users/").concat(user_id, "/blocks/").concat(block_id, "/workouts/").concat(workout_id, "/sets")).then(function (res) {
       _this.block = res.data.block;
       _this.type = res.data.type;
       _this.workout = res.data.workout;
@@ -4686,7 +4848,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       this.loading = true;
-      this.$http.get("".concat("http://gerbzilla.test/api", "/trainer/exercises")).then(function (res) {
+      this.$http.get("".concat("http://localhost:8000/api", "/trainer/exercises")).then(function (res) {
         _this.exercises = res.data;
         _this.loading = false;
       })["catch"](function (err) {
@@ -4701,7 +4863,7 @@ __webpack_require__.r(__webpack_exports__);
     var _this2 = this;
 
     this.loading = true;
-    this.$http.all([this.$http.get("".concat("http://gerbzilla.test/api", "/trainer/exercises")), this.$http.get("".concat("http://gerbzilla.test/api", "/trainer/categories"))]).then(this.$http.spread(function (exercises, categories) {
+    this.$http.all([this.$http.get("".concat("http://localhost:8000/api", "/trainer/exercises")), this.$http.get("".concat("http://localhost:8000/api", "/trainer/categories"))]).then(this.$http.spread(function (exercises, categories) {
       _this2.exercises = exercises.data;
       _this2.categories = categories.data;
       _this2.loading = false;
@@ -4788,7 +4950,7 @@ __webpack_require__.r(__webpack_exports__);
   mounted: function mounted() {
     var _this = this;
 
-    this.$http.all([this.$http.get("".concat("http://gerbzilla.test/api", "/trainer/users/").concat(this.$route.params.id)), this.$http.get("".concat("http://gerbzilla.test/api", "/trainer/users/").concat(this.$route.params.id, "/blocks"))]).then(this.$http.spread(function (user, blocks) {
+    this.$http.all([this.$http.get("".concat("http://localhost:8000/api", "/trainer/users/").concat(this.$route.params.id)), this.$http.get("".concat("http://localhost:8000/api", "/trainer/users/").concat(this.$route.params.id, "/blocks"))]).then(this.$http.spread(function (user, blocks) {
       _this.user = user.data;
       _this.isActive = user.data.is_active === 1 ? true : false;
       _this.blocks = blocks.data.sort(function (a, b) {
@@ -4804,7 +4966,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this2 = this;
 
       this.loading = true;
-      this.$http.get("".concat("http://gerbzilla.test/api", "/trainer/users/").concat(this.$route.params.id, "/blocks")).then(function (res) {
+      this.$http.get("".concat("http://localhost:8000/api", "/trainer/users/").concat(this.$route.params.id, "/blocks")).then(function (res) {
         _this2.blocks = res.data.sort(function (a, b) {
           return a.start_date < b.start_date ? 1 : b.start_date < a.start_date ? -1 : 0;
         });
@@ -4894,7 +5056,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       this.loading = true;
-      this.$http.get("".concat("http://gerbzilla.test/api", "/trainer/users")).then(function (res) {
+      this.$http.get("".concat("http://localhost:8000/api", "/trainer/users")).then(function (res) {
         _this.users = res.data;
         _this.message = {
           message: "Successfully created user.",
@@ -4921,7 +5083,7 @@ __webpack_require__.r(__webpack_exports__);
   mounted: function mounted() {
     var _this2 = this;
 
-    this.$http.get("".concat("http://gerbzilla.test/api", "/trainer/users")).then(function (res) {
+    this.$http.get("".concat("http://localhost:8000/api", "/trainer/users")).then(function (res) {
       _this2.users = res.data;
       _this2.loading = false;
     })["catch"](function (err) {
@@ -5065,7 +5227,7 @@ __webpack_require__.r(__webpack_exports__);
           block_id = _this$$route$params.block_id,
           workout_id = _this$$route$params.workout_id;
       this.loading = true;
-      this.$http.get("".concat("http://gerbzilla.test/api", "/trainer/users/").concat(user_id, "/blocks/").concat(block_id, "/workouts/").concat(workout_id, "/sets")).then(function (res) {
+      this.$http.get("".concat("http://localhost:8000/api", "/trainer/users/").concat(user_id, "/blocks/").concat(block_id, "/workouts/").concat(workout_id, "/sets")).then(function (res) {
         _this.sets = res.data.sets;
         _this.loading = false;
       })["catch"](function (err) {
@@ -5097,7 +5259,7 @@ __webpack_require__.r(__webpack_exports__);
         block_id = _this$$route$params2.block_id,
         workout_id = _this$$route$params2.workout_id;
     this.loading = true;
-    this.$http.get("".concat("http://gerbzilla.test/api", "/trainer/users/").concat(user_id, "/blocks/").concat(block_id, "/workouts/").concat(workout_id, "/sets")).then(function (res) {
+    this.$http.get("".concat("http://localhost:8000/api", "/trainer/users/").concat(user_id, "/blocks/").concat(block_id, "/workouts/").concat(workout_id, "/sets")).then(function (res) {
       _this2.block = res.data.block;
       _this2.type = res.data.type;
       _this2.workout = res.data.workout;
@@ -24260,7 +24422,7 @@ var render = function() {
                 "router-link",
                 {
                   staticClass: "text-grey-darkest",
-                  attrs: { to: "/u/workouts", exact: "" }
+                  attrs: { to: "/u/workouts" }
                 },
                 [_vm._v("Workouts")]
               )
@@ -24473,28 +24635,53 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c(
-    "div",
-    {
-      staticClass:
-        "w-full flex items-center py-4 px-8 bg-grey-lighter border-b border-grey-light mb-20"
-    },
+    "nav",
+    { staticClass: "w-full py-4 bg-grey-lighter border-b border-grey-light" },
     [
-      _c(
-        "router-link",
-        {
-          staticClass: "text-grey-darker mr-4",
-          attrs: { to: "/workouts/week" }
-        },
-        [_vm._v("Week")]
-      ),
-      _vm._v(" "),
-      _c(
-        "router-link",
-        { staticClass: "text-grey-darker", attrs: { to: "/workouts/block" } },
-        [_vm._v("Block")]
-      )
-    ],
-    1
+      _c("div", { staticClass: "container mx-auto px-8" }, [
+        _c("ul", { staticClass: "list-reset" }, [
+          _c(
+            "li",
+            { staticClass: "inline-block" },
+            [
+              _c(
+                "router-link",
+                {
+                  staticClass: "text-grey-darker mr-4",
+                  attrs: {
+                    "exact-active-class": "router-link-active-alt",
+                    to: "/u/workouts/week",
+                    exact: ""
+                  }
+                },
+                [_vm._v("Week")]
+              )
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "li",
+            { staticClass: "inline-block" },
+            [
+              _c(
+                "router-link",
+                {
+                  staticClass: "text-grey-darker mr-4",
+                  attrs: {
+                    "exact-active-class": "router-link-active-alt",
+                    to: "/u/workouts/blocks",
+                    exact: ""
+                  }
+                },
+                [_vm._v("Blocks")]
+              )
+            ],
+            1
+          )
+        ])
+      ])
+    ]
   )
 }
 var staticRenderFns = []
@@ -26440,7 +26627,7 @@ var render = function() {
         "div",
         {
           staticClass:
-            "absolute pin-t pin-l bg-grey-lightest h-screen w-full flex items-start justify-center pt-32 z-50"
+            "fixed pin-t pin-l bg-grey-lightest h-screen w-full flex items-start justify-center pt-32 z-50 px-8"
         },
         [
           _c(
@@ -28196,7 +28383,7 @@ var render = function() {
           _c("section", { staticClass: "px-6" }, [
             _c(
               "div",
-              { staticClass: "flex flex-wrap justify-between w-full mb-20" },
+              { staticClass: "flex flex-wrap w-full mb-20" },
               [
                 _vm._l(_vm.weeksWorkouts, function(workout) {
                   return _c("workout-card", {
@@ -28365,7 +28552,7 @@ var staticRenderFns = [
             ),
             _vm._v(" "),
             _c("h3", { staticClass: "text-grey-darkest text-base font-thin" }, [
-              _vm._v("Workouts Completed")
+              _vm._v("Total Workouts")
             ])
           ]
         ),
@@ -28403,10 +28590,10 @@ render._withStripped = true
 
 /***/ }),
 
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/Workouts.vue?vue&type=template&id=f72b1e02&":
-/*!******************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/pages/Workouts.vue?vue&type=template&id=f72b1e02& ***!
-  \******************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/UserBlocks.vue?vue&type=template&id=ba5d9a0c&":
+/*!********************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/pages/UserBlocks.vue?vue&type=template&id=ba5d9a0c& ***!
+  \********************************************************************************************************************************************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -28425,12 +28612,43 @@ var render = function() {
       _vm._v(" "),
       _c("navigation"),
       _vm._v(" "),
-      _c("side-navigation"),
+      _c("sub-navigation"),
       _vm._v(" "),
       _vm.loading ? _c("loader") : _vm._e(),
       _vm._v(" "),
       _c("transition", { attrs: { name: "fade" } }, [
-        !_vm.loading
+        !_vm.loading && !_vm.blocks.length
+          ? _c("div", [
+              _c("div", { staticClass: "w-full py-20" }, [
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "container mx-auto px-8 flex flex-col items-center"
+                  },
+                  [
+                    _c("img", {
+                      staticClass: "w-16 h-16 mb-4",
+                      attrs: { src: "/images/ban.svg", alt: "Warning" }
+                    }),
+                    _vm._v(" "),
+                    _c(
+                      "h1",
+                      {
+                        staticClass:
+                          "text-center text-grey font-hairline text-2xl"
+                      },
+                      [_vm._v("No blocks to display")]
+                    )
+                  ]
+                )
+              ])
+            ])
+          : _vm._e()
+      ]),
+      _vm._v(" "),
+      _c("transition", { attrs: { name: "fade" } }, [
+        !_vm.loading && _vm.blocks.length
           ? _c("div", { staticClass: "container mx-auto px-0" }, [
               _c("div", { staticClass: "flex-1" }, [
                 _c(
@@ -28452,6 +28670,228 @@ var render = function() {
                     })
                   }),
                   1
+                )
+              ])
+            ])
+          : _vm._e()
+      ])
+    ],
+    1
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/Week.vue?vue&type=template&id=c4039e06&":
+/*!**************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/pages/Week.vue?vue&type=template&id=c4039e06& ***!
+  \**************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    [
+      _c("page-header"),
+      _vm._v(" "),
+      _c("navigation"),
+      _vm._v(" "),
+      _c("sub-navigation"),
+      _vm._v(" "),
+      _vm.loading ? _c("loader") : _vm._e(),
+      _vm._v(" "),
+      _c("transition", { attrs: { name: "fade" } }, [
+        !_vm.loading && !_vm.workouts.length
+          ? _c("div", [
+              _c("div", { staticClass: "w-full py-20" }, [
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "container mx-auto px-8 flex flex-col items-center"
+                  },
+                  [
+                    _c("img", {
+                      staticClass: "w-16 h-16 mb-4",
+                      attrs: { src: "/images/ban.svg", alt: "Warning" }
+                    }),
+                    _vm._v(" "),
+                    _c(
+                      "h1",
+                      {
+                        staticClass:
+                          "text-center text-grey font-hairline text-2xl"
+                      },
+                      [_vm._v("No workouts this week")]
+                    )
+                  ]
+                )
+              ])
+            ])
+          : _vm._e()
+      ]),
+      _vm._v(" "),
+      _c("transition", { attrs: { name: "fade" } }, [
+        !_vm.loading && _vm.workouts.length
+          ? _c("div", [
+              _c("div", [
+                _c(
+                  "div",
+                  {
+                    staticClass: "w-full py-20",
+                    class: {
+                      "bg-red-gradient": _vm.typeName === "strength",
+                      "bg-blue-gradient": _vm.typeName === "hypertrophy",
+                      "bg-green-gradient": _vm.typeName === "fitness"
+                    }
+                  },
+                  [
+                    _c("div", { staticClass: "container mx-auto px-0" }, [
+                      _c(
+                        "h1",
+                        {
+                          staticClass: "text-white font-bold text-2xl mb-2 px-8"
+                        },
+                        [_vm._v(_vm._s(_vm.firstBlock.name))]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "h4",
+                        {
+                          staticClass:
+                            "text-white font-normal text-base opacity-75 px-8 mb-4"
+                        },
+                        [
+                          _vm._v(
+                            _vm._s(
+                              _vm
+                                .$moment(_vm.firstBlock.start_date)
+                                .format("MMMM Do YYYY")
+                            )
+                          )
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "span",
+                        {
+                          staticClass:
+                            "text-center inline-block w-auto mx-8 py-1 px-4 rounded-full text-xs text-white font-thin uppercase description-pill"
+                        },
+                        [_vm._v(_vm._s(_vm.typeName))]
+                      )
+                    ])
+                  ]
+                )
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "container mx-auto px-4 pb-20" }, [
+                _c(
+                  "h1",
+                  {
+                    staticClass:
+                      "text-grey-darkest font-normal text-2xl mb-10 px-4 pt-20"
+                  },
+                  [_vm._v("Week of " + _vm._s(this.weekStart.format("MMM Do")))]
+                ),
+                _vm._v(" "),
+                _c(
+                  "ul",
+                  { staticClass: "list-reset flex flex-wrap px-4 md:px-0" },
+                  _vm._l(_vm.workouts, function(workout) {
+                    return _c(
+                      "li",
+                      {
+                        key: workout.id,
+                        staticClass: "w-full md:w-1/2 lg:w-1/3 mb-4"
+                      },
+                      [
+                        _c(
+                          "div",
+                          {
+                            staticClass:
+                              "relative w-full bg-white shadow-lg md:shadow-none md:hover:bg-grey-lighter rounded-lg p-4 flex justify-between items-start"
+                          },
+                          [
+                            _c("div", { staticClass: "flex items-center" }, [
+                              _c("div", [
+                                _c(
+                                  "h2",
+                                  {
+                                    staticClass:
+                                      "text-lg text-grey-darkest font-bold mb-1"
+                                  },
+                                  [_vm._v(_vm._s(workout.name))]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "h3",
+                                  {
+                                    staticClass:
+                                      "text-base text-blue font-medium"
+                                  },
+                                  [
+                                    _vm._v(
+                                      _vm._s(
+                                        _vm
+                                          .$moment(workout.date)
+                                          .format("dddd, MMM Do")
+                                      )
+                                    )
+                                  ]
+                                )
+                              ])
+                            ]),
+                            _vm._v(" "),
+                            _c(
+                              "div",
+                              {
+                                staticClass: "items-center flex cursor-pointer"
+                              },
+                              [
+                                _c("div", { ref: "button", refInFor: true }, [
+                                  _c(
+                                    "svg",
+                                    {
+                                      staticClass:
+                                        "fill-current text-grey-darker",
+                                      attrs: {
+                                        xmlns: "http://www.w3.org/2000/svg",
+                                        width: "24",
+                                        height: "24",
+                                        viewBox: "0 0 24 24"
+                                      }
+                                    },
+                                    [
+                                      _c("path", {
+                                        attrs: {
+                                          d:
+                                            "M12 10c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2S13.1 10 12 10zM12 4c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2S13.1 4 12 4zM12 16c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2S13.1 16 12 16z"
+                                        }
+                                      })
+                                    ]
+                                  )
+                                ])
+                              ]
+                            )
+                          ]
+                        )
+                      ]
+                    )
+                  }),
+                  0
                 )
               ])
             ])
@@ -45450,7 +45890,7 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
       var laravelToken = $cookies.get("laravel_token");
       var token = "Bearer ".concat(laravelToken);
       this.$http.defaults.headers.common["Authorization"] = token;
-      this.$http.get("".concat("http://gerbzilla.test/api", "/user")).then(function (res) {
+      this.$http.get("".concat("http://localhost:8000/api", "/user")).then(function (res) {
         localStorage.setItem("user", JSON.stringify(res.data.user));
         localStorage.setItem("role", JSON.stringify(res.data.role));
       })["catch"](function (err) {
@@ -47325,17 +47765,17 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/js/pages/Workouts.vue":
-/*!*****************************************!*\
-  !*** ./resources/js/pages/Workouts.vue ***!
-  \*****************************************/
+/***/ "./resources/js/pages/UserBlocks.vue":
+/*!*******************************************!*\
+  !*** ./resources/js/pages/UserBlocks.vue ***!
+  \*******************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _Workouts_vue_vue_type_template_id_f72b1e02___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Workouts.vue?vue&type=template&id=f72b1e02& */ "./resources/js/pages/Workouts.vue?vue&type=template&id=f72b1e02&");
-/* harmony import */ var _Workouts_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Workouts.vue?vue&type=script&lang=js& */ "./resources/js/pages/Workouts.vue?vue&type=script&lang=js&");
+/* harmony import */ var _UserBlocks_vue_vue_type_template_id_ba5d9a0c___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./UserBlocks.vue?vue&type=template&id=ba5d9a0c& */ "./resources/js/pages/UserBlocks.vue?vue&type=template&id=ba5d9a0c&");
+/* harmony import */ var _UserBlocks_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./UserBlocks.vue?vue&type=script&lang=js& */ "./resources/js/pages/UserBlocks.vue?vue&type=script&lang=js&");
 /* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
@@ -47345,9 +47785,9 @@ __webpack_require__.r(__webpack_exports__);
 /* normalize component */
 
 var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
-  _Workouts_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
-  _Workouts_vue_vue_type_template_id_f72b1e02___WEBPACK_IMPORTED_MODULE_0__["render"],
-  _Workouts_vue_vue_type_template_id_f72b1e02___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  _UserBlocks_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _UserBlocks_vue_vue_type_template_id_ba5d9a0c___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _UserBlocks_vue_vue_type_template_id_ba5d9a0c___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
   false,
   null,
   null,
@@ -47357,38 +47797,107 @@ var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_
 
 /* hot reload */
 if (false) { var api; }
-component.options.__file = "resources/js/pages/Workouts.vue"
+component.options.__file = "resources/js/pages/UserBlocks.vue"
 /* harmony default export */ __webpack_exports__["default"] = (component.exports);
 
 /***/ }),
 
-/***/ "./resources/js/pages/Workouts.vue?vue&type=script&lang=js&":
-/*!******************************************************************!*\
-  !*** ./resources/js/pages/Workouts.vue?vue&type=script&lang=js& ***!
-  \******************************************************************/
+/***/ "./resources/js/pages/UserBlocks.vue?vue&type=script&lang=js&":
+/*!********************************************************************!*\
+  !*** ./resources/js/pages/UserBlocks.vue?vue&type=script&lang=js& ***!
+  \********************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Workouts_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./Workouts.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/Workouts.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Workouts_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_UserBlocks_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./UserBlocks.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/UserBlocks.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_UserBlocks_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
 
 /***/ }),
 
-/***/ "./resources/js/pages/Workouts.vue?vue&type=template&id=f72b1e02&":
-/*!************************************************************************!*\
-  !*** ./resources/js/pages/Workouts.vue?vue&type=template&id=f72b1e02& ***!
-  \************************************************************************/
+/***/ "./resources/js/pages/UserBlocks.vue?vue&type=template&id=ba5d9a0c&":
+/*!**************************************************************************!*\
+  !*** ./resources/js/pages/UserBlocks.vue?vue&type=template&id=ba5d9a0c& ***!
+  \**************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Workouts_vue_vue_type_template_id_f72b1e02___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./Workouts.vue?vue&type=template&id=f72b1e02& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/Workouts.vue?vue&type=template&id=f72b1e02&");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Workouts_vue_vue_type_template_id_f72b1e02___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_UserBlocks_vue_vue_type_template_id_ba5d9a0c___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./UserBlocks.vue?vue&type=template&id=ba5d9a0c& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/UserBlocks.vue?vue&type=template&id=ba5d9a0c&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_UserBlocks_vue_vue_type_template_id_ba5d9a0c___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Workouts_vue_vue_type_template_id_f72b1e02___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_UserBlocks_vue_vue_type_template_id_ba5d9a0c___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/pages/Week.vue":
+/*!*************************************!*\
+  !*** ./resources/js/pages/Week.vue ***!
+  \*************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _Week_vue_vue_type_template_id_c4039e06___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Week.vue?vue&type=template&id=c4039e06& */ "./resources/js/pages/Week.vue?vue&type=template&id=c4039e06&");
+/* harmony import */ var _Week_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Week.vue?vue&type=script&lang=js& */ "./resources/js/pages/Week.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _Week_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _Week_vue_vue_type_template_id_c4039e06___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _Week_vue_vue_type_template_id_c4039e06___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/pages/Week.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/pages/Week.vue?vue&type=script&lang=js&":
+/*!**************************************************************!*\
+  !*** ./resources/js/pages/Week.vue?vue&type=script&lang=js& ***!
+  \**************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Week_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./Week.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/Week.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Week_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/pages/Week.vue?vue&type=template&id=c4039e06&":
+/*!********************************************************************!*\
+  !*** ./resources/js/pages/Week.vue?vue&type=template&id=c4039e06& ***!
+  \********************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Week_vue_vue_type_template_id_c4039e06___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./Week.vue?vue&type=template&id=c4039e06& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/Week.vue?vue&type=template&id=c4039e06&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Week_vue_vue_type_template_id_c4039e06___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Week_vue_vue_type_template_id_c4039e06___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 
@@ -47820,15 +48329,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _pages_Home__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./pages/Home */ "./resources/js/pages/Home.vue");
 /* harmony import */ var _pages_Login__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./pages/Login */ "./resources/js/pages/Login.vue");
 /* harmony import */ var _pages_Overview__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./pages/Overview */ "./resources/js/pages/Overview.vue");
-/* harmony import */ var _pages_Workouts__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./pages/Workouts */ "./resources/js/pages/Workouts.vue");
-/* harmony import */ var _pages_Goals__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./pages/Goals */ "./resources/js/pages/Goals.vue");
-/* harmony import */ var _pages_trainer_Users__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./pages/trainer/Users */ "./resources/js/pages/trainer/Users.vue");
-/* harmony import */ var _pages_trainer_User__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./pages/trainer/User */ "./resources/js/pages/trainer/User.vue");
-/* harmony import */ var _pages_trainer_Exercises__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./pages/trainer/Exercises */ "./resources/js/pages/trainer/Exercises.vue");
-/* harmony import */ var _pages_trainer_Blocks__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./pages/trainer/Blocks */ "./resources/js/pages/trainer/Blocks.vue");
-/* harmony import */ var _pages_trainer_Workout__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./pages/trainer/Workout */ "./resources/js/pages/trainer/Workout.vue");
-/* harmony import */ var _pages_trainer_EditSet__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./pages/trainer/EditSet */ "./resources/js/pages/trainer/EditSet.vue");
-/* harmony import */ var _components_NotFound__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./components/NotFound */ "./resources/js/components/NotFound.vue");
+/* harmony import */ var _pages_UserBlocks__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./pages/UserBlocks */ "./resources/js/pages/UserBlocks.vue");
+/* harmony import */ var _pages_Week__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./pages/Week */ "./resources/js/pages/Week.vue");
+/* harmony import */ var _pages_Goals__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./pages/Goals */ "./resources/js/pages/Goals.vue");
+/* harmony import */ var _pages_trainer_Users__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./pages/trainer/Users */ "./resources/js/pages/trainer/Users.vue");
+/* harmony import */ var _pages_trainer_User__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./pages/trainer/User */ "./resources/js/pages/trainer/User.vue");
+/* harmony import */ var _pages_trainer_Exercises__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./pages/trainer/Exercises */ "./resources/js/pages/trainer/Exercises.vue");
+/* harmony import */ var _pages_trainer_Blocks__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./pages/trainer/Blocks */ "./resources/js/pages/trainer/Blocks.vue");
+/* harmony import */ var _pages_trainer_Workout__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./pages/trainer/Workout */ "./resources/js/pages/trainer/Workout.vue");
+/* harmony import */ var _pages_trainer_EditSet__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./pages/trainer/EditSet */ "./resources/js/pages/trainer/EditSet.vue");
+/* harmony import */ var _components_NotFound__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./components/NotFound */ "./resources/js/components/NotFound.vue");
+
 
 
 
@@ -47846,7 +48357,7 @@ __webpack_require__.r(__webpack_exports__);
   routes: [{
     path: "*",
     name: "NotFound",
-    component: _components_NotFound__WEBPACK_IMPORTED_MODULE_11__["default"]
+    component: _components_NotFound__WEBPACK_IMPORTED_MODULE_12__["default"]
   }, {
     path: "/",
     name: "Home",
@@ -47867,15 +48378,27 @@ __webpack_require__.r(__webpack_exports__);
     }
   }, {
     path: "/u/workouts",
-    name: "workouts",
-    component: _pages_Workouts__WEBPACK_IMPORTED_MODULE_3__["default"],
+    redirect: {
+      name: "user-workouts-week"
+    }
+  }, {
+    path: "/u/workouts/week",
+    name: "user-workouts-week",
+    component: _pages_Week__WEBPACK_IMPORTED_MODULE_4__["default"],
+    meta: {
+      requiresAuth: true
+    }
+  }, {
+    path: "/u/workouts/blocks",
+    name: "user-workouts-blocks",
+    component: _pages_UserBlocks__WEBPACK_IMPORTED_MODULE_3__["default"],
     meta: {
       requiresAuth: true
     }
   }, {
     path: "/u/goals",
     name: "goals",
-    component: _pages_Goals__WEBPACK_IMPORTED_MODULE_4__["default"],
+    component: _pages_Goals__WEBPACK_IMPORTED_MODULE_5__["default"],
     meta: {
       requiresAuth: true
     }
@@ -47887,7 +48410,7 @@ __webpack_require__.r(__webpack_exports__);
   }, {
     path: "/t/users",
     name: "users",
-    component: _pages_trainer_Users__WEBPACK_IMPORTED_MODULE_5__["default"],
+    component: _pages_trainer_Users__WEBPACK_IMPORTED_MODULE_6__["default"],
     meta: {
       requiresAuth: true,
       is_trainer: true
@@ -47895,7 +48418,7 @@ __webpack_require__.r(__webpack_exports__);
   },, {
     path: "/t/users/:id",
     name: "user",
-    component: _pages_trainer_User__WEBPACK_IMPORTED_MODULE_6__["default"],
+    component: _pages_trainer_User__WEBPACK_IMPORTED_MODULE_7__["default"],
     meta: {
       requiresAuth: true,
       is_trainer: true
@@ -47903,7 +48426,7 @@ __webpack_require__.r(__webpack_exports__);
   }, {
     path: "/t/exercises",
     name: "exercises",
-    component: _pages_trainer_Exercises__WEBPACK_IMPORTED_MODULE_7__["default"],
+    component: _pages_trainer_Exercises__WEBPACK_IMPORTED_MODULE_8__["default"],
     meta: {
       requiresAuth: true,
       is_trainer: true
@@ -47911,7 +48434,7 @@ __webpack_require__.r(__webpack_exports__);
   }, {
     path: "/t/users/:user_id/blocks/:block_id",
     name: "block",
-    component: _pages_trainer_Blocks__WEBPACK_IMPORTED_MODULE_8__["default"],
+    component: _pages_trainer_Blocks__WEBPACK_IMPORTED_MODULE_9__["default"],
     meta: {
       requiresAuth: true,
       is_trainer: true
@@ -47919,7 +48442,7 @@ __webpack_require__.r(__webpack_exports__);
   }, {
     path: "/t/users/:user_id/blocks/:block_id/workouts/:workout_id",
     name: "workout",
-    component: _pages_trainer_Workout__WEBPACK_IMPORTED_MODULE_9__["default"],
+    component: _pages_trainer_Workout__WEBPACK_IMPORTED_MODULE_10__["default"],
     meta: {
       requiresAuth: true,
       is_trainer: true
@@ -47927,7 +48450,7 @@ __webpack_require__.r(__webpack_exports__);
   }, {
     path: "/t/users/:user_id/blocks/:block_id/workouts/:workout_id/sets/:set_id",
     name: "edit-set",
-    component: _pages_trainer_EditSet__WEBPACK_IMPORTED_MODULE_10__["default"],
+    component: _pages_trainer_EditSet__WEBPACK_IMPORTED_MODULE_11__["default"],
     meta: {
       requiresAuth: true,
       is_trainer: true
@@ -47988,7 +48511,7 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vuex__WEBPACK_IMPORTED_MODULE_1__
       return new Promise(function (resolve, reject) {
         commit("auth_request");
         axios__WEBPACK_IMPORTED_MODULE_2___default()({
-          url: "".concat("http://gerbzilla.test/api", "/login"),
+          url: "".concat("http://localhost:8000/api", "/login"),
           data: user,
           method: "POST"
         }).then(function (res) {
@@ -47996,7 +48519,7 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vuex__WEBPACK_IMPORTED_MODULE_1__
           $cookies.set("laravel_token", token);
           axios__WEBPACK_IMPORTED_MODULE_2___default.a.defaults.headers.common["Authorization"] = "Bearer ".concat(token);
           axios__WEBPACK_IMPORTED_MODULE_2___default()({
-            url: "".concat("http://gerbzilla.test/api", "/user"),
+            url: "".concat("http://localhost:8000/api", "/user"),
             method: "GET"
           }).then(function (resp) {
             var user = resp.data.user;
@@ -48082,8 +48605,8 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vuex__WEBPACK_IMPORTED_MODULE_1__
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /Users/joe.mac/projects/gerbzilla/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /Users/joe.mac/projects/gerbzilla/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /Users/jsams/projects/gerbzilla/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /Users/jsams/projects/gerbzilla/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

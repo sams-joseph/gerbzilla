@@ -6,7 +6,7 @@
           <router-link class="text-grey-darkest font-base" to="/u/overview" exact>Overview</router-link>
         </li>
         <li class="inline-block mx-8 pb-4 border-b-4 border-transparent">
-          <router-link class="text-grey-darkest" to="/u/workouts" exact>Workouts</router-link>
+          <router-link class="text-grey-darkest" to="/u/workouts">Workouts</router-link>
         </li>
         <li class="inline-block mx-8 pb-4 border-b-4 border-transparent">
           <router-link class="text-grey-darkest" to="/u/goals" exact>Goals</router-link>
