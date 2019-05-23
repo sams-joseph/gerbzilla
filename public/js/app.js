@@ -3983,6 +3983,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   props: {
     users: Array,
+    expiring: Array,
     heading: String,
     show: Boolean
   }
@@ -5207,10 +5208,17 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       users: {},
+      expiring: {},
       showModal: false,
       loading: true
     };
@@ -5232,10 +5240,11 @@ __webpack_require__.r(__webpack_exports__);
   mounted: function mounted() {
     var _this2 = this;
 
-    this.$http.get("".concat("http://gerbzilla.test/api", "/trainer/users")).then(function (res) {
-      _this2.users = res.data;
+    this.$http.all([this.$http.get("".concat("http://gerbzilla.test/api", "/trainer/expiring")), this.$http.get("".concat("http://gerbzilla.test/api", "/trainer/users"))]).then(this.$http.spread(function (expiring, all) {
+      _this2.users = all.data;
+      _this2.expiring = expiring.data;
       _this2.loading = false;
-    })["catch"](function (err) {
+    }))["catch"](function (err) {
       console.log(err);
     });
   }
@@ -27407,71 +27416,100 @@ var render = function() {
             {
               staticClass: "text-grey-darkest font-normal text-2xl mb-10 px-4"
             },
+            [_vm._v("Last Week")]
+          ),
+          _vm._v(" "),
+          _c(
+            "ul",
+            { staticClass: "list-reset px-4 md:px-0 mb-10 flex flex-wrap" },
+            _vm._l(_vm.expiring, function(user) {
+              return _c(
+                "li",
+                {
+                  key: user.id,
+                  staticClass:
+                    "w-full md:w-1/2 lg:w-1/3 py-4 md:hover:bg-grey-lighter rounded-lg px-4 flex items-center shadow-lg md:shadow-none mb-4 md:mb-0 bg-white"
+                },
+                [
+                  _c(
+                    "router-link",
+                    {
+                      staticClass: "flex items-center",
+                      attrs: { to: { name: "user", params: { id: user.id } } }
+                    },
+                    [
+                      _c(
+                        "span",
+                        { staticClass: "rounded-full mr-6 h-12 w-12" },
+                        [
+                          _c("img", {
+                            attrs: {
+                              src: "/images/profile-icon.svg",
+                              alt: "Profile Icon"
+                            }
+                          })
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c("span", { staticClass: "text-grey-darkest mr-6" }, [
+                        _vm._v(_vm._s(user.first_name + " " + user.last_name))
+                      ]),
+                      _vm._v(" "),
+                      _c("span", { staticClass: "flex-1" })
+                    ]
+                  )
+                ],
+                1
+              )
+            }),
+            0
+          ),
+          _vm._v(" "),
+          _c(
+            "h1",
+            {
+              staticClass: "text-grey-darkest font-normal text-2xl mb-10 px-4"
+            },
             [_vm._v(_vm._s(_vm.heading))]
           ),
           _vm._v(" "),
           _c(
             "ul",
-            { staticClass: "list-reset px-4 md:px-0" },
+            { staticClass: "list-reset px-4 md:px-0 flex flex-wrap" },
             _vm._l(_vm.filteredUsers, function(user) {
               return _c(
                 "li",
                 {
                   key: user.id,
                   staticClass:
-                    "w-full py-4 md:hover:bg-grey-lighter rounded-lg px-4 flex items-center shadow-lg md:shadow-none mb-4 md:mb-0 bg-white"
+                    "w-full md:w-1/2 lg:w-1/3 py-4 md:hover:bg-grey-lighter rounded-lg px-4 flex items-center shadow-lg md:shadow-none mb-4 md:mb-0 bg-white"
                 },
                 [
-                  _vm._m(0, true),
-                  _vm._v(" "),
-                  _c("span", { staticClass: "text-grey-darkest mr-6" }, [
-                    _vm._v(_vm._s(user.first_name + " " + user.last_name))
-                  ]),
-                  _vm._v(" "),
-                  _c("span", { staticClass: "flex-1" }),
-                  _vm._v(" "),
                   _c(
                     "router-link",
                     {
+                      staticClass: "flex items-center",
                       attrs: { to: { name: "user", params: { id: user.id } } }
                     },
                     [
                       _c(
                         "span",
-                        {
-                          staticClass:
-                            "h-10 w-10 rounded-full bg-grey-light flex items-center justify-center"
-                        },
+                        { staticClass: "rounded-full mr-6 h-12 w-12" },
                         [
-                          _c(
-                            "svg",
-                            {
-                              staticClass: "fill-current text-grey-darkest",
-                              attrs: {
-                                xmlns: "http://www.w3.org/2000/svg",
-                                width: "24",
-                                height: "24",
-                                viewBox: "0 0 24 24"
-                              }
-                            },
-                            [
-                              _c("path", {
-                                attrs: {
-                                  d:
-                                    "M10,18c1.846,0,3.543-0.635,4.897-1.688l4.396,4.396l1.414-1.414l-4.396-4.396C17.365,13.543,18,11.846,18,10 c0-4.411-3.589-8-8-8s-8,3.589-8,8S5.589,18,10,18z M10,4c3.309,0,6,2.691,6,6s-2.691,6-6,6s-6-2.691-6-6S6.691,4,10,4z"
-                                }
-                              }),
-                              _vm._v(" "),
-                              _c("path", {
-                                attrs: {
-                                  d:
-                                    "M11.412,8.586C11.791,8.966,12,9.468,12,10h2c0-1.065-0.416-2.069-1.174-2.828c-1.514-1.512-4.139-1.512-5.652,0 l1.412,1.416C9.346,7.83,10.656,7.832,11.412,8.586z"
-                                }
-                              })
-                            ]
-                          )
+                          _c("img", {
+                            attrs: {
+                              src: "/images/profile-icon.svg",
+                              alt: "Profile Icon"
+                            }
+                          })
                         ]
-                      )
+                      ),
+                      _vm._v(" "),
+                      _c("span", { staticClass: "text-grey-darkest mr-6" }, [
+                        _vm._v(_vm._s(user.first_name + " " + user.last_name))
+                      ]),
+                      _vm._v(" "),
+                      _c("span", { staticClass: "flex-1" })
                     ]
                   )
                 ],
@@ -27670,18 +27708,7 @@ var render = function() {
     1
   )
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("span", { staticClass: "rounded-full mr-6 h-12 w-12" }, [
-      _c("img", {
-        attrs: { src: "/images/profile-icon.svg", alt: "Profile Icon" }
-      })
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -29821,7 +29848,8 @@ var render = function() {
                     attrs: {
                       heading: "Users",
                       users: _vm.users,
-                      show: _vm.showModal
+                      show: _vm.showModal,
+                      expiring: _vm.expiring
                     }
                   })
                 : _vm._e()

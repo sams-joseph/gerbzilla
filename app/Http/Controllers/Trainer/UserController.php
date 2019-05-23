@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Trainer;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
+use Carbon\Carbon;
+
 use App\User;
 use App\Role;
 use Illuminate\Support\Facades\Hash;
@@ -49,5 +51,17 @@ class UserController extends Controller
         } catch (\Illuminate\Database\QueryException $e) {
             return response()->json('Email address already exists', 400);
         }
+    }
+
+    public function expiring(Request $request)
+    {
+        Carbon::setWeekStartsAt(Carbon::MONDAY);
+        Carbon::setWeekEndsAt(Carbon::SUNDAY);
+
+        $users = User::where('trainer_id', $request->user()->id)
+            ->whereBetween('block_expiration', [Carbon::now()->startOfWeek(), Carbon::now()->endOfWeek()])
+            ->get();
+
+        return response()->json($users);
     }
 }

@@ -27,35 +27,35 @@
     </aside>
     <div class="flex-1">
       <div class="px-4">
-        <h1 class="text-grey-darkest font-normal text-2xl mb-10 px-4">{{ heading }}</h1>
-        <ul class="list-reset px-4 md:px-0">
+        <h1 class="text-grey-darkest font-normal text-2xl mb-10 px-4">Last Week</h1>
+        <ul class="list-reset px-4 md:px-0 mb-10 flex flex-wrap">
           <li
-            class="w-full py-4 md:hover:bg-grey-lighter rounded-lg px-4 flex items-center shadow-lg md:shadow-none mb-4 md:mb-0 bg-white"
+            v-for="user in expiring"
+            v-bind:key="user.id"
+            class="w-full md:w-1/2 lg:w-1/3 py-4 md:hover:bg-grey-lighter rounded-lg px-4 flex items-center shadow-lg md:shadow-none mb-4 md:mb-0 bg-white"
+          >
+            <router-link :to="{ name: 'user', params: { id: user.id }}" class="flex items-center">
+              <span class="rounded-full mr-6 h-12 w-12">
+                <img src="/images/profile-icon.svg" alt="Profile Icon">
+              </span>
+              <span class="text-grey-darkest mr-6">{{ `${user.first_name} ${user.last_name}` }}</span>
+              <span class="flex-1"></span>
+            </router-link>
+          </li>
+        </ul>
+        <h1 class="text-grey-darkest font-normal text-2xl mb-10 px-4">{{ heading }}</h1>
+        <ul class="list-reset px-4 md:px-0 flex flex-wrap">
+          <li
             v-for="user in filteredUsers"
             v-bind:key="user.id"
+            class="w-full md:w-1/2 lg:w-1/3 py-4 md:hover:bg-grey-lighter rounded-lg px-4 flex items-center shadow-lg md:shadow-none mb-4 md:mb-0 bg-white"
           >
-            <span class="rounded-full mr-6 h-12 w-12">
-              <img src="/images/profile-icon.svg" alt="Profile Icon">
-            </span>
-            <span class="text-grey-darkest mr-6">{{ `${user.first_name} ${user.last_name}` }}</span>
-            <span class="flex-1"></span>
-            <router-link :to="{ name: 'user', params: { id: user.id }}">
-              <span class="h-10 w-10 rounded-full bg-grey-light flex items-center justify-center">
-                <svg
-                  class="fill-current text-grey-darkest"
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    d="M10,18c1.846,0,3.543-0.635,4.897-1.688l4.396,4.396l1.414-1.414l-4.396-4.396C17.365,13.543,18,11.846,18,10 c0-4.411-3.589-8-8-8s-8,3.589-8,8S5.589,18,10,18z M10,4c3.309,0,6,2.691,6,6s-2.691,6-6,6s-6-2.691-6-6S6.691,4,10,4z"
-                  ></path>
-                  <path
-                    d="M11.412,8.586C11.791,8.966,12,9.468,12,10h2c0-1.065-0.416-2.069-1.174-2.828c-1.514-1.512-4.139-1.512-5.652,0 l1.412,1.416C9.346,7.83,10.656,7.832,11.412,8.586z"
-                  ></path>
-                </svg>
+            <router-link :to="{ name: 'user', params: { id: user.id }}" class="flex items-center">
+              <span class="rounded-full mr-6 h-12 w-12">
+                <img src="/images/profile-icon.svg" alt="Profile Icon">
               </span>
+              <span class="text-grey-darkest mr-6">{{ `${user.first_name} ${user.last_name}` }}</span>
+              <span class="flex-1"></span>
             </router-link>
           </li>
         </ul>
@@ -157,6 +157,7 @@ export default {
 
   props: {
     users: Array,
+    expiring: Array,
     heading: String,
     show: Boolean
   }

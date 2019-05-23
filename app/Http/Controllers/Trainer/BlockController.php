@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Trainer;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Carbon\Carbon;
 
 use App\User;
 use App\Block;
@@ -43,6 +44,10 @@ class BlockController extends Controller
         $attributes['user_id'] = $user->id;
 
         $block = Block::create($attributes);
+
+        $expiration = Carbon::now()->addWeeks(4);
+
+        $user->update(['block_expiration' => $expiration]);
 
         return response()->json($block);
     }

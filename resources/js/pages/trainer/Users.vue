@@ -13,7 +13,13 @@
         ></create-user-form>
       </transition>
       <transition name="fade">
-        <user-list v-if="!loading" heading="Users" v-bind:users="users" v-bind:show="showModal"></user-list>
+        <user-list
+          v-if="!loading"
+          heading="Users"
+          v-bind:users="users"
+          v-bind:show="showModal"
+          v-bind:expiring="expiring"
+        ></user-list>
       </transition>
     </div>
     <div
@@ -39,6 +45,7 @@ export default {
   data() {
     return {
       users: {},
+      expiring: {},
       showModal: false,
       loading: true
     };
@@ -64,11 +71,18 @@ export default {
 
   mounted() {
     this.$http
-      .get(`${process.env.MIX_BASE_URL}/trainer/users`)
-      .then(res => {
-        this.users = res.data;
-        this.loading = false;
-      })
+      .all([
+        this.$http.get(`${process.env.MIX_BASE_URL}/trainer/expiring`),
+        this.$http.get(`${process.env.MIX_BASE_URL}/trainer/users`)
+      ])
+      .then(
+        this.$http.spread((expiring, all) => {
+          this.users = all.data;
+          this.expiring = expiring.data;
+
+          this.loading = false;
+        })
+      )
       .catch(err => {
         console.log(err);
       });

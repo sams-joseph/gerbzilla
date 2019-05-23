@@ -48,6 +48,7 @@ Route::middleware('auth:api', 'roles:admin|trainer')
         Route::get('/users', 'UserController@index');
         Route::get('/users/{user}', 'UserController@show');
         Route::post('/users', 'UserController@store');
+        Route::get('/expiring', 'UserController@expiring');
 
         Route::get('/exercises', 'ExerciseController@index');
         Route::post('/exercises', 'ExerciseController@store');
