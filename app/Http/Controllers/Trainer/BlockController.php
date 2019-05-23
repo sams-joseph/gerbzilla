@@ -45,9 +45,9 @@ class BlockController extends Controller
 
         $block = Block::create($attributes);
 
-        $expiration = Carbon::now()->addWeeks(4);
+        $expiration = new Carbon($block->start_date);
 
-        $user->update(['block_expiration' => $expiration]);
+        $user->update(['block_expiration' => $expiration->addWeeks(4)]);
 
         return response()->json($block);
     }
