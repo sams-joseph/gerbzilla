@@ -2,6 +2,7 @@
   <router-link
     class="block w-full lg:w-1/3 md:w-1/2 p-2"
     active-class="none"
+    :class="{ 'disabled': workout.block.type.name === 'rest' }"
     :to="{ name: 'user-workout', params: { id: workout.id }}"
   >
     <div
@@ -9,7 +10,8 @@
       v-bind:class="{
         'bg-red-gradient': workout.block.type.name === 'strength',
         'bg-blue-gradient': workout.block.type.name === 'hypertrophy',
-        'bg-green-gradient': workout.block.type.name === 'fitness'
+        'bg-green-gradient': workout.block.type.name === 'fitness',
+        'bg-grey-gradient': workout.block.type.name === 'rest',
         }"
     >
       <div class="flex items-center p-6 rounded-lg">

@@ -55,13 +55,13 @@
             ></path>
           </svg>
         </div>
-        <div class="bg-blue-gradient pb-4 flex justify-center flex-col px-4">
+        <div class="bg-blue-gradient pb-4 flex items-center flex-col px-4">
           <h6
             class="text-center text-xl font-hairline text-white mb-4 pt-24"
           >{{ `${user.first_name} ${user.last_name}` }}</h6>
-          <h6
-            class="text-center text-xs font-hairline rounded-full text-white py-1 px-4 uppercase description-pill flex-base"
-          >{{ role.name }}</h6>
+          <span
+            class="w-32 text-center text-xs font-hairline rounded-full text-white py-1 px-4 uppercase description-pill"
+          >{{ role.name }}</span>
         </div>
         <ul class="list-reset">
           <li

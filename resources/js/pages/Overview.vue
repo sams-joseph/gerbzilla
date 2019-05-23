@@ -51,13 +51,10 @@
         <section class="px-6">
           <div class="flex flex-wrap w-full mb-20">
             <workout-card
-              v-for="workout in weeksWorkouts"
+              v-for="workout in weekAhead"
               v-bind:key="workout.id"
               v-bind:workout="workout"
             ></workout-card>
-            <div v-if="!weeksWorkouts.length" class="w-full p-10 text-center">
-              <h1 class="text-xl font-light text-grey">No upcoming workouts</h1>
-            </div>
           </div>
         </section>
 
@@ -66,7 +63,7 @@
         >{{ $moment(new Date()).format('dddd MMM Do') }}</h2>
         <h2 class="text-grey-dark font-normal text-base mb-12 px-8">{{ todaysWorkout.name }}</h2>
         <section class="px-4">
-          <ul class="list-reset flex flex-wrap px-4 md:px-0">
+          <ul v-if="!!sets.length" class="list-reset flex flex-wrap px-4 md:px-0">
             <li v-for="(set, index) in sets" :key="set.id" class="w-full md:w-1/2 lg:w-1/3 mb-4">
               <div
                 class="relative w-full bg-white shadow-lg md:shadow-none md:hover:bg-grey-lighter rounded-lg p-4 flex justify-between"
@@ -82,6 +79,13 @@
               </div>
             </li>
           </ul>
+          <div v-if="!sets.length" class="w-full p-10 text-center">
+            <div class="w-full">
+              <div class="container mx-auto px-8 flex flex-col items-center">
+                <img class="w-32 h-32 opacity-75" src="/images/empty_weight_icon.svg" alt="Empty">
+              </div>
+            </div>
+          </div>
         </section>
       </main>
       <footer class="h-64"></footer>
@@ -143,6 +147,40 @@ export default {
     numWorkouts() {
       return this.allWorkouts.length;
     },
+
+    weekAhead() {
+      const first = this.$moment()
+        .add(1, "d")
+        .format("YYYY-MM-DD");
+      const second = this.$moment()
+        .add(2, "d")
+        .format("YYYY-MM-DD");
+      const third = this.$moment()
+        .add(3, "d")
+        .format("YYYY-MM-DD");
+
+      const days = [first, second, third];
+
+      const nextWorkouts = [];
+
+      this.weeksWorkouts.forEach(workout => {
+        days.splice(days.indexOf(workout.date), 1);
+        nextWorkouts.push(workout);
+      });
+
+      days.forEach(day => {
+        nextWorkouts.push({
+          name: "No Workout",
+          block: { type: { name: "rest" } },
+          date: day
+        });
+      });
+
+      return nextWorkouts.sort((a, b) =>
+        a.date > b.date ? 1 : b.date > a.date ? -1 : 0
+      );
+    },
+
     ...mapGetters(["isActive", "user"])
   }
 };

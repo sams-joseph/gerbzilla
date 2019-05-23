@@ -1,6 +1,13 @@
 <template>
   <div class="flex px-0 md:px-8 mt-20">
     <aside class="w-48 hidden md:block">
+      <input
+        class="w-full border border-grey-light bg-grey-lighter rounded-full px-4 py-2 focus:outline-none mb-8"
+        type="text"
+        name="search"
+        v-bind="query"
+        placeholder="Search"
+      >
       <h1 class="text-grey-darkest font-normal text-2xl mb-10">Status</h1>
       <ul class="list-reset">
         <li>
@@ -27,8 +34,8 @@
     </aside>
     <div class="flex-1">
       <div class="px-4">
-        <h1 class="text-grey-darkest font-normal text-2xl mb-10 px-4">Last Week</h1>
-        <ul class="list-reset px-4 md:px-0 mb-10 flex flex-wrap">
+        <h1 v-if="showLastWeek" class="text-grey-darkest font-normal text-2xl mb-10 px-4">Last Week</h1>
+        <ul v-if="showLastWeek" class="list-reset px-4 md:px-0 mb-10 flex flex-wrap">
           <li
             v-for="user in expiring"
             v-bind:key="user.id"
@@ -39,7 +46,6 @@
                 <img src="/images/profile-icon.svg" alt="Profile Icon">
               </span>
               <span class="text-grey-darkest mr-6">{{ `${user.first_name} ${user.last_name}` }}</span>
-              <span class="flex-1"></span>
             </router-link>
           </li>
         </ul>
@@ -55,7 +61,6 @@
                 <img src="/images/profile-icon.svg" alt="Profile Icon">
               </span>
               <span class="text-grey-darkest mr-6">{{ `${user.first_name} ${user.last_name}` }}</span>
-              <span class="flex-1"></span>
             </router-link>
           </li>
         </ul>
@@ -120,7 +125,8 @@ export default {
   data() {
     return {
       showFilterMenu: false,
-      activity: []
+      activity: [],
+      query: ""
     };
   },
 
@@ -152,6 +158,10 @@ export default {
       } else {
         return this.users;
       }
+    },
+
+    showLastWeek() {
+      return !!this.expiring.length;
     }
   },
 

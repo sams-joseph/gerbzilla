@@ -2467,6 +2467,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {};
@@ -2708,7 +2710,7 @@ __webpack_require__.r(__webpack_exports__);
   mounted: function mounted() {
     var _this = this;
 
-    this.$http.get("".concat("http://gerbzilla.test/api", "/trainer/types")).then(function (res) {
+    this.$http.get("".concat("http://localhost:8000/api", "/trainer/types")).then(function (res) {
       _this.loading = false;
       _this.types = res.data;
     })["catch"](function (err) {
@@ -2725,7 +2727,7 @@ __webpack_require__.r(__webpack_exports__);
       e.preventDefault();
       this.loading = true;
       var user = JSON.parse(localStorage.getItem("user"));
-      this.$http.post("".concat("http://gerbzilla.test/api", "/trainer/users/").concat(this.$route.params.id, "/blocks"), {
+      this.$http.post("".concat("http://localhost:8000/api", "/trainer/users/").concat(this.$route.params.id, "/blocks"), {
         name: this.name,
         start_date: this.date,
         type_id: this.type
@@ -2872,7 +2874,7 @@ __webpack_require__.r(__webpack_exports__);
   mounted: function mounted() {
     var _this = this;
 
-    this.$http.get("".concat("http://gerbzilla.test/api", "/trainer/categories")).then(function (res) {
+    this.$http.get("".concat("http://localhost:8000/api", "/trainer/categories")).then(function (res) {
       _this.loading = false;
       _this.categories = res.data;
     })["catch"](function (err) {
@@ -2889,7 +2891,7 @@ __webpack_require__.r(__webpack_exports__);
       e.preventDefault();
       this.loading = true;
       var user = JSON.parse(localStorage.getItem("user"));
-      this.$http.post("".concat("http://gerbzilla.test/api", "/trainer/exercises"), {
+      this.$http.post("".concat("http://localhost:8000/api", "/trainer/exercises"), {
         name: this.name,
         category_id: this.category
       }).then(function (res) {
@@ -3051,7 +3053,7 @@ __webpack_require__.r(__webpack_exports__);
   mounted: function mounted() {
     var _this = this;
 
-    this.$http.get("".concat("http://gerbzilla.test/api", "/trainer/exercises")).then(function (res) {
+    this.$http.get("".concat("http://localhost:8000/api", "/trainer/exercises")).then(function (res) {
       _this.loading = false;
       _this.exercises = res.data;
     })["catch"](function (err) {
@@ -3072,7 +3074,7 @@ __webpack_require__.r(__webpack_exports__);
           user_id = _this$$route$params.user_id,
           block_id = _this$$route$params.block_id,
           workout_id = _this$$route$params.workout_id;
-      this.$http.post("".concat("http://gerbzilla.test/api", "/trainer/users/").concat(user_id, "/blocks/").concat(block_id, "/workouts/").concat(workout_id, "/sets"), {
+      this.$http.post("".concat("http://localhost:8000/api", "/trainer/users/").concat(user_id, "/blocks/").concat(block_id, "/workouts/").concat(workout_id, "/sets"), {
         num_sets: this.sets,
         notes: this.notes,
         exercise_id: this.exercise
@@ -3221,7 +3223,7 @@ __webpack_require__.r(__webpack_exports__);
 
       e.preventDefault();
       this.loading = true;
-      this.$http.post("".concat("http://gerbzilla.test/api", "/trainer/users"), {
+      this.$http.post("".concat("http://localhost:8000/api", "/trainer/users"), {
         first_name: this.firstName,
         last_name: this.lastName,
         email: this.email,
@@ -3339,7 +3341,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this$$route$params = this.$route.params,
           user_id = _this$$route$params.user_id,
           block_id = _this$$route$params.block_id;
-      this.$http.post("".concat("http://gerbzilla.test/api", "/trainer/users/").concat(user_id, "/blocks/").concat(block_id, "/workouts"), {
+      this.$http.post("".concat("http://localhost:8000/api", "/trainer/users/").concat(user_id, "/blocks/").concat(block_id, "/workouts"), {
         name: this.name,
         date: this.date
       }).then(function (res) {
@@ -3477,7 +3479,7 @@ __webpack_require__.r(__webpack_exports__);
         block_id = _this$$route$params.block_id,
         workout_id = _this$$route$params.workout_id,
         set_id = _this$$route$params.set_id;
-    this.$http.all([this.$http.get("".concat("http://gerbzilla.test/api", "/trainer/users/").concat(user_id, "/blocks/").concat(block_id, "/workouts/").concat(workout_id, "/sets/").concat(set_id)), this.$http.get("".concat("http://gerbzilla.test/api", "/trainer/exercises"))]).then(this.$http.spread(function (set, exercises) {
+    this.$http.all([this.$http.get("".concat("http://localhost:8000/api", "/trainer/users/").concat(user_id, "/blocks/").concat(block_id, "/workouts/").concat(workout_id, "/sets/").concat(set_id)), this.$http.get("".concat("http://localhost:8000/api", "/trainer/exercises"))]).then(this.$http.spread(function (set, exercises) {
       _this.exercises = exercises.data;
       _this.exercise = set.data.set.exercise_id;
       _this.sets = set.data.set.num_sets;
@@ -3505,7 +3507,7 @@ __webpack_require__.r(__webpack_exports__);
           block_id = _this$$route$params2.block_id,
           workout_id = _this$$route$params2.workout_id,
           set_id = _this$$route$params2.set_id;
-      this.$http.put("".concat("http://gerbzilla.test/api", "/trainer/users/").concat(user_id, "/blocks/").concat(block_id, "/workouts/").concat(workout_id, "/sets/").concat(set_id), {
+      this.$http.put("".concat("http://localhost:8000/api", "/trainer/users/").concat(user_id, "/blocks/").concat(block_id, "/workouts/").concat(workout_id, "/sets/").concat(set_id), {
         num_sets: this.sets,
         notes: this.notes,
         exercise_id: this.exercise
@@ -3923,11 +3925,17 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       showFilterMenu: false,
-      activity: []
+      activity: [],
+      query: ""
     };
   },
   methods: {
@@ -3979,6 +3987,9 @@ __webpack_require__.r(__webpack_exports__);
       } else {
         return this.users;
       }
+    },
+    showLastWeek: function showLastWeek() {
+      return !!this.expiring.length;
     }
   },
   props: {
@@ -4451,6 +4462,10 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -4469,7 +4484,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     var startDate = this.$moment().add(1, "d").format("YYYY-MM-DD");
     var endDate = this.$moment().add(3, "d").format("YYYY-MM-DD");
     this.loading = true;
-    this.$http.all([this.$http.get("".concat("http://gerbzilla.test/api", "/workouts/date/").concat(todaysDate)), this.$http.get("".concat("http://gerbzilla.test/api", "/workouts/date/").concat(startDate, "/").concat(endDate)), this.$http.get("".concat("http://gerbzilla.test/api", "/workouts"))]).then(this.$http.spread(function (today, week, all) {
+    this.$http.all([this.$http.get("".concat("http://localhost:8000/api", "/workouts/date/").concat(todaysDate)), this.$http.get("".concat("http://localhost:8000/api", "/workouts/date/").concat(startDate, "/").concat(endDate)), this.$http.get("".concat("http://localhost:8000/api", "/workouts"))]).then(this.$http.spread(function (today, week, all) {
       _this.todaysWorkout = today.data.workout;
       _this.sets = today.data.sets;
       _this.weeksWorkouts = week.data;
@@ -4482,6 +4497,31 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   computed: _objectSpread({
     numWorkouts: function numWorkouts() {
       return this.allWorkouts.length;
+    },
+    weekAhead: function weekAhead() {
+      var first = this.$moment().add(1, "d").format("YYYY-MM-DD");
+      var second = this.$moment().add(2, "d").format("YYYY-MM-DD");
+      var third = this.$moment().add(3, "d").format("YYYY-MM-DD");
+      var days = [first, second, third];
+      var nextWorkouts = [];
+      this.weeksWorkouts.forEach(function (workout) {
+        days.splice(days.indexOf(workout.date), 1);
+        nextWorkouts.push(workout);
+      });
+      days.forEach(function (day) {
+        nextWorkouts.push({
+          name: "No Workout",
+          block: {
+            type: {
+              name: "rest"
+            }
+          },
+          date: day
+        });
+      });
+      return nextWorkouts.sort(function (a, b) {
+        return a.date > b.date ? 1 : b.date > a.date ? -1 : 0;
+      });
     }
   }, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])(["isActive", "user"]))
 });
@@ -4530,7 +4570,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -4543,7 +4582,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     var _this = this;
 
     this.loading = true;
-    this.$http.get("".concat("http://gerbzilla.test/api", "/blocks")).then(function (res) {
+    this.$http.get("".concat("http://localhost:8000/api", "/blocks")).then(function (res) {
       _this.blocks = res.data.sort(function (a, b) {
         return a.start_date < b.start_date ? 1 : b.start_date < a.start_date ? -1 : 0;
       });
@@ -4629,7 +4668,7 @@ __webpack_require__.r(__webpack_exports__);
   mounted: function mounted() {
     var _this = this;
 
-    this.$http.get("".concat("http://gerbzilla.test/api", "/workouts/").concat(this.$route.params.id)).then(function (res) {
+    this.$http.get("".concat("http://localhost:8000/api", "/workouts/").concat(this.$route.params.id)).then(function (res) {
       _this.workout = res.data.workout;
       _this.sets = res.data.sets;
       _this.loading = false;
@@ -4736,7 +4775,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -4754,7 +4792,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     var weekEnd = this.$moment(today).endOf("week").add(1, "days");
     this.weekStart = weekStart;
     this.loading = true;
-    this.$http.get("".concat("http://gerbzilla.test/api", "/workouts/date/").concat(weekStart.format("YYYY-MM-DD"), "/").concat(weekEnd.format("YYYY-MM-DD"))).then(function (res) {
+    this.$http.get("".concat("http://localhost:8000/api", "/workouts/date/").concat(weekStart.format("YYYY-MM-DD"), "/").concat(weekEnd.format("YYYY-MM-DD"))).then(function (res) {
       _this.workouts = res.data;
       _this.loading = false;
     });
@@ -4864,7 +4902,7 @@ __webpack_require__.r(__webpack_exports__);
           user_id = _this$$route$params.user_id,
           block_id = _this$$route$params.block_id;
       this.loading = true;
-      this.$http.get("".concat("http://gerbzilla.test/api", "/trainer/users/").concat(user_id, "/blocks/").concat(block_id)).then(function (res) {
+      this.$http.get("".concat("http://localhost:8000/api", "/trainer/users/").concat(user_id, "/blocks/").concat(block_id)).then(function (res) {
         _this.workouts = res.data.workouts;
         _this.loading = false;
       })["catch"](function (err) {
@@ -4886,7 +4924,7 @@ __webpack_require__.r(__webpack_exports__);
         user_id = _this$$route$params2.user_id,
         block_id = _this$$route$params2.block_id;
     this.loading = true;
-    this.$http.get("".concat("http://gerbzilla.test/api", "/trainer/users/").concat(user_id, "/blocks/").concat(block_id)).then(function (res) {
+    this.$http.get("".concat("http://localhost:8000/api", "/trainer/users/").concat(user_id, "/blocks/").concat(block_id)).then(function (res) {
       _this2.block = res.data.block;
       _this2.type = res.data.type;
       _this2.workouts = res.data.workouts;
@@ -4953,7 +4991,7 @@ __webpack_require__.r(__webpack_exports__);
         block_id = _this$$route$params.block_id,
         workout_id = _this$$route$params.workout_id;
     this.loading = true;
-    this.$http.get("".concat("http://gerbzilla.test/api", "/trainer/users/").concat(user_id, "/blocks/").concat(block_id, "/workouts/").concat(workout_id, "/sets")).then(function (res) {
+    this.$http.get("".concat("http://localhost:8000/api", "/trainer/users/").concat(user_id, "/blocks/").concat(block_id, "/workouts/").concat(workout_id, "/sets")).then(function (res) {
       _this.block = res.data.block;
       _this.type = res.data.type;
       _this.workout = res.data.workout;
@@ -5028,7 +5066,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       this.loading = true;
-      this.$http.get("".concat("http://gerbzilla.test/api", "/trainer/exercises")).then(function (res) {
+      this.$http.get("".concat("http://localhost:8000/api", "/trainer/exercises")).then(function (res) {
         _this.exercises = res.data;
         _this.loading = false;
       })["catch"](function (err) {
@@ -5043,7 +5081,7 @@ __webpack_require__.r(__webpack_exports__);
     var _this2 = this;
 
     this.loading = true;
-    this.$http.all([this.$http.get("".concat("http://gerbzilla.test/api", "/trainer/exercises")), this.$http.get("".concat("http://gerbzilla.test/api", "/trainer/categories"))]).then(this.$http.spread(function (exercises, categories) {
+    this.$http.all([this.$http.get("".concat("http://localhost:8000/api", "/trainer/exercises")), this.$http.get("".concat("http://localhost:8000/api", "/trainer/categories"))]).then(this.$http.spread(function (exercises, categories) {
       _this2.exercises = exercises.data;
       _this2.categories = categories.data;
       _this2.loading = false;
@@ -5130,7 +5168,7 @@ __webpack_require__.r(__webpack_exports__);
   mounted: function mounted() {
     var _this = this;
 
-    this.$http.all([this.$http.get("".concat("http://gerbzilla.test/api", "/trainer/users/").concat(this.$route.params.id)), this.$http.get("".concat("http://gerbzilla.test/api", "/trainer/users/").concat(this.$route.params.id, "/blocks"))]).then(this.$http.spread(function (user, blocks) {
+    this.$http.all([this.$http.get("".concat("http://localhost:8000/api", "/trainer/users/").concat(this.$route.params.id)), this.$http.get("".concat("http://localhost:8000/api", "/trainer/users/").concat(this.$route.params.id, "/blocks"))]).then(this.$http.spread(function (user, blocks) {
       _this.user = user.data;
       _this.isActive = user.data.is_active === 1 ? true : false;
       _this.blocks = blocks.data.sort(function (a, b) {
@@ -5146,7 +5184,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this2 = this;
 
       this.loading = true;
-      this.$http.get("".concat("http://gerbzilla.test/api", "/trainer/users/").concat(this.$route.params.id, "/blocks")).then(function (res) {
+      this.$http.get("".concat("http://localhost:8000/api", "/trainer/users/").concat(this.$route.params.id, "/blocks")).then(function (res) {
         _this2.blocks = res.data.sort(function (a, b) {
           return a.start_date < b.start_date ? 1 : b.start_date < a.start_date ? -1 : 0;
         });
@@ -5228,7 +5266,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       this.loading = true;
-      this.$http.get("".concat("http://gerbzilla.test/api", "/trainer/users")).then(function (res) {
+      this.$http.get("".concat("http://localhost:8000/api", "/trainer/users")).then(function (res) {
         _this.users = res.data;
         _this.loading = false;
       })["catch"](function (err) {});
@@ -5240,7 +5278,7 @@ __webpack_require__.r(__webpack_exports__);
   mounted: function mounted() {
     var _this2 = this;
 
-    this.$http.all([this.$http.get("".concat("http://gerbzilla.test/api", "/trainer/expiring")), this.$http.get("".concat("http://gerbzilla.test/api", "/trainer/users"))]).then(this.$http.spread(function (expiring, all) {
+    this.$http.all([this.$http.get("".concat("http://localhost:8000/api", "/trainer/expiring")), this.$http.get("".concat("http://localhost:8000/api", "/trainer/users"))]).then(this.$http.spread(function (expiring, all) {
       _this2.users = all.data;
       _this2.expiring = expiring.data;
       _this2.loading = false;
@@ -5380,7 +5418,7 @@ __webpack_require__.r(__webpack_exports__);
           block_id = _this$$route$params.block_id,
           workout_id = _this$$route$params.workout_id;
       this.loading = true;
-      this.$http.get("".concat("http://gerbzilla.test/api", "/trainer/users/").concat(user_id, "/blocks/").concat(block_id, "/workouts/").concat(workout_id, "/sets")).then(function (res) {
+      this.$http.get("".concat("http://localhost:8000/api", "/trainer/users/").concat(user_id, "/blocks/").concat(block_id, "/workouts/").concat(workout_id, "/sets")).then(function (res) {
         _this.sets = res.data.sets;
         _this.loading = false;
       })["catch"](function (err) {
@@ -5412,7 +5450,7 @@ __webpack_require__.r(__webpack_exports__);
         block_id = _this$$route$params2.block_id,
         workout_id = _this$$route$params2.workout_id;
     this.loading = true;
-    this.$http.get("".concat("http://gerbzilla.test/api", "/trainer/users/").concat(user_id, "/blocks/").concat(block_id, "/workouts/").concat(workout_id, "/sets")).then(function (res) {
+    this.$http.get("".concat("http://localhost:8000/api", "/trainer/users/").concat(user_id, "/blocks/").concat(block_id, "/workouts/").concat(workout_id, "/sets")).then(function (res) {
       _this2.block = res.data.block;
       _this2.type = res.data.type;
       _this2.workout = res.data.workout;
@@ -24203,7 +24241,7 @@ var render = function() {
                   "div",
                   {
                     staticClass:
-                      "bg-blue-gradient pb-4 flex justify-center flex-col px-4"
+                      "bg-blue-gradient pb-4 flex items-center flex-col px-4"
                   },
                   [
                     _c(
@@ -24220,10 +24258,10 @@ var render = function() {
                     ),
                     _vm._v(" "),
                     _c(
-                      "h6",
+                      "span",
                       {
                         staticClass:
-                          "text-center text-xs font-hairline rounded-full text-white py-1 px-4 uppercase description-pill flex-base"
+                          "w-32 text-center text-xs font-hairline rounded-full text-white py-1 px-4 uppercase description-pill"
                       },
                       [_vm._v(_vm._s(_vm.role.name))]
                     )
@@ -24997,6 +25035,7 @@ var render = function() {
     "router-link",
     {
       staticClass: "block w-full lg:w-1/3 md:w-1/2 p-2",
+      class: { disabled: _vm.workout.block.type.name === "rest" },
       attrs: {
         "active-class": "none",
         to: { name: "user-workout", params: { id: _vm.workout.id } }
@@ -25010,7 +25049,8 @@ var render = function() {
           class: {
             "bg-red-gradient": _vm.workout.block.type.name === "strength",
             "bg-blue-gradient": _vm.workout.block.type.name === "hypertrophy",
-            "bg-green-gradient": _vm.workout.block.type.name === "fitness"
+            "bg-green-gradient": _vm.workout.block.type.name === "fitness",
+            "bg-grey-gradient": _vm.workout.block.type.name === "rest"
           }
         },
         [
@@ -27283,6 +27323,20 @@ var render = function() {
     [
       _c("aside", { staticClass: "w-48 hidden md:block" }, [
         _c(
+          "input",
+          _vm._b(
+            {
+              staticClass:
+                "w-full border border-grey-light bg-grey-lighter rounded-full px-4 py-2 focus:outline-none mb-8",
+              attrs: { type: "text", name: "search", placeholder: "Search" }
+            },
+            "input",
+            _vm.query,
+            false
+          )
+        ),
+        _vm._v(" "),
+        _c(
           "h1",
           { staticClass: "text-grey-darkest font-normal text-2xl mb-10" },
           [_vm._v("Status")]
@@ -27411,59 +27465,70 @@ var render = function() {
       _vm._v(" "),
       _c("div", { staticClass: "flex-1" }, [
         _c("div", { staticClass: "px-4" }, [
-          _c(
-            "h1",
-            {
-              staticClass: "text-grey-darkest font-normal text-2xl mb-10 px-4"
-            },
-            [_vm._v("Last Week")]
-          ),
-          _vm._v(" "),
-          _c(
-            "ul",
-            { staticClass: "list-reset px-4 md:px-0 mb-10 flex flex-wrap" },
-            _vm._l(_vm.expiring, function(user) {
-              return _c(
-                "li",
+          _vm.showLastWeek
+            ? _c(
+                "h1",
                 {
-                  key: user.id,
                   staticClass:
-                    "w-full md:w-1/2 lg:w-1/3 py-4 md:hover:bg-grey-lighter rounded-lg px-4 flex items-center shadow-lg md:shadow-none mb-4 md:mb-0 bg-white"
+                    "text-grey-darkest font-normal text-2xl mb-10 px-4"
                 },
-                [
-                  _c(
-                    "router-link",
+                [_vm._v("Last Week")]
+              )
+            : _vm._e(),
+          _vm._v(" "),
+          _vm.showLastWeek
+            ? _c(
+                "ul",
+                { staticClass: "list-reset px-4 md:px-0 mb-10 flex flex-wrap" },
+                _vm._l(_vm.expiring, function(user) {
+                  return _c(
+                    "li",
                     {
-                      staticClass: "flex items-center",
-                      attrs: { to: { name: "user", params: { id: user.id } } }
+                      key: user.id,
+                      staticClass:
+                        "w-full md:w-1/2 lg:w-1/3 py-4 md:hover:bg-grey-lighter rounded-lg px-4 flex items-center shadow-lg md:shadow-none mb-4 md:mb-0 bg-white"
                     },
                     [
                       _c(
-                        "span",
-                        { staticClass: "rounded-full mr-6 h-12 w-12" },
+                        "router-link",
+                        {
+                          staticClass: "flex items-center",
+                          attrs: {
+                            to: { name: "user", params: { id: user.id } }
+                          }
+                        },
                         [
-                          _c("img", {
-                            attrs: {
-                              src: "/images/profile-icon.svg",
-                              alt: "Profile Icon"
-                            }
-                          })
+                          _c(
+                            "span",
+                            { staticClass: "rounded-full mr-6 h-12 w-12" },
+                            [
+                              _c("img", {
+                                attrs: {
+                                  src: "/images/profile-icon.svg",
+                                  alt: "Profile Icon"
+                                }
+                              })
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "span",
+                            { staticClass: "text-grey-darkest mr-6" },
+                            [
+                              _vm._v(
+                                _vm._s(user.first_name + " " + user.last_name)
+                              )
+                            ]
+                          )
                         ]
-                      ),
-                      _vm._v(" "),
-                      _c("span", { staticClass: "text-grey-darkest mr-6" }, [
-                        _vm._v(_vm._s(user.first_name + " " + user.last_name))
-                      ]),
-                      _vm._v(" "),
-                      _c("span", { staticClass: "flex-1" })
-                    ]
+                      )
+                    ],
+                    1
                   )
-                ],
-                1
+                }),
+                0
               )
-            }),
-            0
-          ),
+            : _vm._e(),
           _vm._v(" "),
           _c(
             "h1",
@@ -27507,9 +27572,7 @@ var render = function() {
                       _vm._v(" "),
                       _c("span", { staticClass: "text-grey-darkest mr-6" }, [
                         _vm._v(_vm._s(user.first_name + " " + user.last_name))
-                      ]),
-                      _vm._v(" "),
-                      _c("span", { staticClass: "flex-1" })
+                      ])
                     ]
                   )
                 ],
@@ -28644,25 +28707,13 @@ var render = function() {
             _c(
               "div",
               { staticClass: "flex flex-wrap w-full mb-20" },
-              [
-                _vm._l(_vm.weeksWorkouts, function(workout) {
-                  return _c("workout-card", {
-                    key: workout.id,
-                    attrs: { workout: workout }
-                  })
-                }),
-                _vm._v(" "),
-                !_vm.weeksWorkouts.length
-                  ? _c("div", { staticClass: "w-full p-10 text-center" }, [
-                      _c(
-                        "h1",
-                        { staticClass: "text-xl font-light text-grey" },
-                        [_vm._v("No upcoming workouts")]
-                      )
-                    ])
-                  : _vm._e()
-              ],
-              2
+              _vm._l(_vm.weekAhead, function(workout) {
+                return _c("workout-card", {
+                  key: workout.id,
+                  attrs: { workout: workout }
+                })
+              }),
+              1
             )
           ]),
           _vm._v(" "),
@@ -28679,72 +28730,85 @@ var render = function() {
           ),
           _vm._v(" "),
           _c("section", { staticClass: "px-4" }, [
-            _c(
-              "ul",
-              { staticClass: "list-reset flex flex-wrap px-4 md:px-0" },
-              _vm._l(_vm.sets, function(set, index) {
-                return _c(
-                  "li",
-                  { key: set.id, staticClass: "w-full md:w-1/2 lg:w-1/3 mb-4" },
-                  [
-                    _c(
-                      "div",
+            !!_vm.sets.length
+              ? _c(
+                  "ul",
+                  { staticClass: "list-reset flex flex-wrap px-4 md:px-0" },
+                  _vm._l(_vm.sets, function(set, index) {
+                    return _c(
+                      "li",
                       {
-                        staticClass:
-                          "relative w-full bg-white shadow-lg md:shadow-none md:hover:bg-grey-lighter rounded-lg p-4 flex justify-between"
+                        key: set.id,
+                        staticClass: "w-full md:w-1/2 lg:w-1/3 mb-4"
                       },
                       [
                         _c(
                           "div",
                           {
                             staticClass:
-                              "w-full flex justify-between items-start relative"
+                              "relative w-full bg-white shadow-lg md:shadow-none md:hover:bg-grey-lighter rounded-lg p-4 flex justify-between"
                           },
                           [
-                            _c("div", { staticClass: "flex-1" }, [
-                              _c(
-                                "h2",
-                                {
-                                  staticClass: "text-xl text-red font-bold mb-2"
-                                },
-                                [_vm._v(_vm._s(index + 1))]
-                              ),
-                              _vm._v(" "),
-                              _c(
-                                "h2",
-                                {
-                                  staticClass:
-                                    "text-lg text-grey-darkest font-bold mb-1"
-                                },
-                                [_vm._v(_vm._s(set.exercise.name))]
-                              ),
-                              _vm._v(" "),
-                              _c(
-                                "h3",
-                                {
-                                  staticClass: "text-base text-blue font-medium"
-                                },
-                                [_vm._v("Sets: " + _vm._s(set.num_sets))]
-                              ),
-                              _vm._v(" "),
-                              _c(
-                                "p",
-                                {
-                                  staticClass:
-                                    "text-base text-grey-dark font-base text-sm mt-4"
-                                },
-                                [_vm._v(_vm._s(set.notes))]
-                              )
-                            ])
+                            _c(
+                              "div",
+                              {
+                                staticClass:
+                                  "w-full flex justify-between items-start relative"
+                              },
+                              [
+                                _c("div", { staticClass: "flex-1" }, [
+                                  _c(
+                                    "h2",
+                                    {
+                                      staticClass:
+                                        "text-xl text-red font-bold mb-2"
+                                    },
+                                    [_vm._v(_vm._s(index + 1))]
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "h2",
+                                    {
+                                      staticClass:
+                                        "text-lg text-grey-darkest font-bold mb-1"
+                                    },
+                                    [_vm._v(_vm._s(set.exercise.name))]
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "h3",
+                                    {
+                                      staticClass:
+                                        "text-base text-blue font-medium"
+                                    },
+                                    [_vm._v("Sets: " + _vm._s(set.num_sets))]
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "p",
+                                    {
+                                      staticClass:
+                                        "text-base text-grey-dark font-base text-sm mt-4"
+                                    },
+                                    [_vm._v(_vm._s(set.notes))]
+                                  )
+                                ])
+                              ]
+                            )
                           ]
                         )
                       ]
                     )
-                  ]
+                  }),
+                  0
                 )
-              }),
-              0
-            )
+              : _vm._e(),
+            _vm._v(" "),
+            !_vm.sets.length
+              ? _c("div", { staticClass: "w-full p-10 text-center" }, [
+                  _vm._m(4)
+                ])
+              : _vm._e()
           ])
         ]),
         _vm._v(" "),
@@ -28818,6 +28882,23 @@ var staticRenderFns = [
         ])
       ]
     )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "w-full" }, [
+      _c(
+        "div",
+        { staticClass: "container mx-auto px-8 flex flex-col items-center" },
+        [
+          _c("img", {
+            staticClass: "w-32 h-32 opacity-75",
+            attrs: { src: "/images/empty_weight_icon.svg", alt: "Empty" }
+          })
+        ]
+      )
+    ])
   }
 ]
 render._withStripped = true
@@ -28864,18 +28945,12 @@ var render = function() {
                   },
                   [
                     _c("img", {
-                      staticClass: "w-16 h-16 mb-4",
-                      attrs: { src: "/images/ban.svg", alt: "Warning" }
-                    }),
-                    _vm._v(" "),
-                    _c(
-                      "h1",
-                      {
-                        staticClass:
-                          "text-center text-grey font-hairline text-2xl"
-                      },
-                      [_vm._v("No blocks to display")]
-                    )
+                      staticClass: "w-32 h-32 opacity-75",
+                      attrs: {
+                        src: "/images/empty_weight_icon.svg",
+                        alt: "Empty"
+                      }
+                    })
                   ]
                 )
               ])
@@ -29126,18 +29201,12 @@ var render = function() {
                   },
                   [
                     _c("img", {
-                      staticClass: "w-16 h-16 mb-4",
-                      attrs: { src: "/images/ban.svg", alt: "Warning" }
-                    }),
-                    _vm._v(" "),
-                    _c(
-                      "h1",
-                      {
-                        staticClass:
-                          "text-center text-grey font-hairline text-2xl"
-                      },
-                      [_vm._v("No workouts this week")]
-                    )
+                      staticClass: "w-32 h-32 opacity-75",
+                      attrs: {
+                        src: "/images/empty_weight_icon.svg",
+                        alt: "Empty"
+                      }
+                    })
                   ]
                 )
               ])
@@ -46278,7 +46347,7 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
       var laravelToken = $cookies.get("laravel_token");
       var token = "Bearer ".concat(laravelToken);
       this.$http.defaults.headers.common["Authorization"] = token;
-      this.$http.get("".concat("http://gerbzilla.test/api", "/user")).then(function (res) {
+      this.$http.get("".concat("http://localhost:8000/api", "/user")).then(function (res) {
         localStorage.setItem("user", JSON.stringify(res.data.user));
         localStorage.setItem("role", JSON.stringify(res.data.role));
       })["catch"](function (err) {
@@ -49069,7 +49138,7 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vuex__WEBPACK_IMPORTED_MODULE_1__
       return new Promise(function (resolve, reject) {
         commit("auth_request");
         axios__WEBPACK_IMPORTED_MODULE_2___default()({
-          url: "".concat("http://gerbzilla.test/api", "/login"),
+          url: "".concat("http://localhost:8000/api", "/login"),
           data: user,
           method: "POST"
         }).then(function (res) {
@@ -49077,7 +49146,7 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vuex__WEBPACK_IMPORTED_MODULE_1__
           $cookies.set("laravel_token", token);
           axios__WEBPACK_IMPORTED_MODULE_2___default.a.defaults.headers.common["Authorization"] = "Bearer ".concat(token);
           axios__WEBPACK_IMPORTED_MODULE_2___default()({
-            url: "".concat("http://gerbzilla.test/api", "/user"),
+            url: "".concat("http://localhost:8000/api", "/user"),
             method: "GET"
           }).then(function (resp) {
             var user = resp.data.user;
@@ -49180,8 +49249,8 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vuex__WEBPACK_IMPORTED_MODULE_1__
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /Users/joe.mac/projects/gerbzilla/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /Users/joe.mac/projects/gerbzilla/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /Users/jsams/projects/gerbzilla/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /Users/jsams/projects/gerbzilla/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

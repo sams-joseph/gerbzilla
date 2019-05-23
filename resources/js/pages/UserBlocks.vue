@@ -8,8 +8,7 @@
       <div v-if="!loading && !blocks.length">
         <div class="w-full py-20">
           <div class="container mx-auto px-8 flex flex-col items-center">
-            <img class="w-16 h-16 mb-4" src="/images/ban.svg" alt="Warning">
-            <h1 class="text-center text-grey font-hairline text-2xl">No blocks to display</h1>
+            <img class="w-32 h-32 opacity-75" src="/images/empty_weight_icon.svg" alt="Empty">
           </div>
         </div>
       </div>
