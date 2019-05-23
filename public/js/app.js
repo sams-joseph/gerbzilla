@@ -4466,6 +4466,17 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -28591,7 +28602,7 @@ var render = function() {
             "section",
             {
               staticClass:
-                "w-full bg-grey-lighter border-b border-grey-light py-8 mb-20"
+                "w-full bg-grey-lighter border-b border-t border-grey-light py-8 mb-20"
             },
             [
               _c(
@@ -28659,7 +28670,7 @@ var render = function() {
                         "div",
                         {
                           staticClass:
-                            "h-48 w-32 bg-grey-light rounded p-4 text-center ml-2"
+                            "h-48 w-32 bg-grey-light rounded p-4 text-center"
                         },
                         [
                           _vm._m(2),
@@ -28761,15 +28772,6 @@ var render = function() {
                                     "h2",
                                     {
                                       staticClass:
-                                        "text-xl text-red font-bold mb-2"
-                                    },
-                                    [_vm._v(_vm._s(index + 1))]
-                                  ),
-                                  _vm._v(" "),
-                                  _c(
-                                    "h2",
-                                    {
-                                      staticClass:
                                         "text-lg text-grey-darkest font-bold mb-1"
                                     },
                                     [_vm._v(_vm._s(set.exercise.name))]
@@ -28791,6 +28793,17 @@ var render = function() {
                                         "text-base text-grey-dark font-base text-sm mt-4"
                                     },
                                     [_vm._v(_vm._s(set.notes))]
+                                  )
+                                ]),
+                                _vm._v(" "),
+                                _c("div", [
+                                  _c(
+                                    "span",
+                                    {
+                                      staticClass:
+                                        "bg-grey-dark rounded-full w-6 h-6 flex items-center justify-center text-white text-xs"
+                                    },
+                                    [_vm._v(_vm._s(index + 1))]
                                   )
                                 ])
                               ]
@@ -28825,7 +28838,7 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c(
       "div",
-      { staticClass: "rounded-full mb-8 md:mb-0 md:mr-4 w-full md:w-auto" },
+      { staticClass: "rounded-full mb-8 md:mb-0 md:mr-8 w-full md:w-auto" },
       [
         _c("img", {
           staticClass: "w-32 h-32 mx-auto block",
@@ -28853,10 +28866,12 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "w-full h-16 mb-6" }, [
-      _c("img", {
-        attrs: { src: "/images/workouts-illust.svg", alt: "Workouts" }
-      })
+    return _c("div", { staticClass: "w-full h-18 mb-4 flex justify-center" }, [
+      _c(
+        "div",
+        { staticClass: "h-18 w-18 rounded-full bg-white p-3 shadow-lg" },
+        [_c("img", { attrs: { src: "/images/weight.svg", alt: "Workouts" } })]
+      )
     ])
   },
   function() {
@@ -28867,10 +28882,16 @@ var staticRenderFns = [
       "div",
       { staticClass: "h-48 w-32 bg-grey-light rounded p-4 text-center ml-2" },
       [
-        _c("div", { staticClass: "w-full h-16 mb-6" }, [
-          _c("img", {
-            attrs: { src: "/images/goals-illust.svg", alt: "Workouts" }
-          })
+        _c("div", { staticClass: "w-full h-18 mb-4 flex justify-center" }, [
+          _c(
+            "div",
+            { staticClass: "h-18 w-18 rounded-full bg-white p-4 shadow-lg" },
+            [
+              _c("img", {
+                attrs: { src: "/images/award.svg", alt: "Workouts" }
+              })
+            ]
+          )
         ]),
         _vm._v(" "),
         _c("h2", { staticClass: "text-grey-darkest text-xl font-bold mb-2" }, [

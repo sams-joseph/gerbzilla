@@ -3,12 +3,15 @@
     <page-header></page-header>
     <navigation></navigation>
     <loader v-if="loading"></loader>
-    <section v-if="!loading" class="w-full bg-grey-lighter border-b border-grey-light py-8 mb-20">
+    <section
+      v-if="!loading"
+      class="w-full bg-grey-lighter border-b border-t border-grey-light py-8 mb-20"
+    >
       <div class="container mx-auto px-8 flex justify-between flex-wrap">
         <div
           class="flex flex-column md:flex-row justify-center md:items-center flex-wrap md:flex-no-wrap w-full md:w-auto"
         >
-          <div class="rounded-full mb-8 md:mb-0 md:mr-4 w-full md:w-auto">
+          <div class="rounded-full mb-8 md:mb-0 md:mr-8 w-full md:w-auto">
             <img class="w-32 h-32 mx-auto block" src="/images/profile-icon.svg" alt="Profile">
           </div>
           <div class="flex flex-col">
@@ -27,17 +30,21 @@
           </div>
         </div>
         <div class="flex justify-center md:justify-start w-full md:w-auto">
-          <div class="h-48 w-32 bg-grey-light rounded p-4 text-center ml-2">
-            <div class="w-full h-16 mb-6">
-              <img src="/images/workouts-illust.svg" alt="Workouts">
+          <div class="h-48 w-32 bg-grey-light rounded p-4 text-center">
+            <div class="w-full h-18 mb-4 flex justify-center">
+              <div class="h-18 w-18 rounded-full bg-white p-3 shadow-lg">
+                <img src="/images/weight.svg" alt="Workouts">
+              </div>
             </div>
             <h2 class="text-grey-darkest text-xl font-bold mb-2">{{ numWorkouts }}</h2>
             <h3 class="text-grey-darkest text-base font-thin">Total Workouts</h3>
           </div>
 
           <div class="h-48 w-32 bg-grey-light rounded p-4 text-center ml-2">
-            <div class="w-full h-16 mb-6">
-              <img src="/images/goals-illust.svg" alt="Workouts">
+            <div class="w-full h-18 mb-4 flex justify-center">
+              <div class="h-18 w-18 rounded-full bg-white p-4 shadow-lg">
+                <img src="/images/award.svg" alt="Workouts">
+              </div>
             </div>
             <h2 class="text-grey-darkest text-xl font-bold mb-2">3</h2>
             <h3 class="text-grey-darkest text-base font-thin">Goals In Progress</h3>
@@ -70,10 +77,14 @@
               >
                 <div class="w-full flex justify-between items-start relative">
                   <div class="flex-1">
-                    <h2 class="text-xl text-red font-bold mb-2">{{ index + 1 }}</h2>
                     <h2 class="text-lg text-grey-darkest font-bold mb-1">{{ set.exercise.name }}</h2>
                     <h3 class="text-base text-blue font-medium">Sets: {{ set.num_sets }}</h3>
                     <p class="text-base text-grey-dark font-base text-sm mt-4">{{ set.notes }}</p>
+                  </div>
+                  <div>
+                    <span
+                      class="bg-grey-dark rounded-full w-6 h-6 flex items-center justify-center text-white text-xs"
+                    >{{ index + 1 }}</span>
                   </div>
                 </div>
               </div>
