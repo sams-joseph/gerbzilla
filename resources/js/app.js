@@ -29,6 +29,7 @@ import BlockHeader from "./components/BlockHeader";
 import WorkoutItem from "./components/WorkoutItem";
 import WorkoutCard from "./components/WorkoutCard";
 import Snackbar from "./components/Snackbar";
+import Instagram from './components/Instagram';
 
 import Loader from "./components/Loader";
 
@@ -65,6 +66,7 @@ Vue.component("block-header", BlockHeader);
 Vue.component("workout-item", WorkoutItem);
 Vue.component("workout-card", WorkoutCard);
 Vue.component("snackbar", Snackbar);
+Vue.component("instagram", Instagram);
 
 Vue.component("loader", Loader);
 

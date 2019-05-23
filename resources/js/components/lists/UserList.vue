@@ -34,7 +34,7 @@
     </aside>
     <div class="flex-1">
       <div class="px-4">
-        <h1 v-if="showLastWeek" class="text-grey-darkest font-normal text-2xl mb-10 px-4">Last Week</h1>
+        <h1 v-if="showLastWeek" class="text-grey-darkest font-normal text-2xl mb-10 px-4">Expiring</h1>
         <ul v-if="showLastWeek" class="list-reset px-4 md:px-0 mb-10 flex flex-wrap">
           <li
             v-for="user in expiring"

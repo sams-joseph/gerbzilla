@@ -30,19 +30,6 @@
         </div>
       </div>
     </transition>
-    <transition name="fade">
-      <div
-        v-if="success"
-        class="absolute pin-t pin-l pin-b w-full bg-white-translucent flex justify-center pt-12 z-50"
-      >
-        <div class="flex flex-col items-center">
-          <div class="mb-4 w-24 h-24">
-            <img src="/images/success-illustration.svg" alt="Success">
-          </div>
-          <h6 class="text-grey-darkest font-bold text-lg">Exercise Added</h6>
-        </div>
-      </div>
-    </transition>
     <form @submit="createExercise" class="max-w-md">
       <div class="mb-6">
         <label class="block text-grey-darker text-sm font-normal mb-4" for="sets">Sets</label>

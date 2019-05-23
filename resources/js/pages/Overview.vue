@@ -54,7 +54,6 @@
     </section>
     <div class="container mx-auto">
       <main>
-        <h2 class="text-grey-darkest font-normal text-2xl mb-12 px-8">Week at a Glance</h2>
         <section class="px-6">
           <div class="flex flex-wrap w-full mb-20">
             <workout-card

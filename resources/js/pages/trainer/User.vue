@@ -28,7 +28,13 @@
               >Add Block</span>
             </h1>
             <div class="flex w-full flex-wrap px-6">
-              <block v-for="block in blocks" v-bind:key="block.id" v-bind:block="block"></block>
+              <block
+                v-for="block in blocks"
+                v-bind:key="block.id"
+                v-bind:block="block"
+                v-bind:name="'block'"
+                v-bind:params="{ user_id: $route.params.id, block_id: block.id }"
+              ></block>
             </div>
           </tab>
           <tab name="Profile">

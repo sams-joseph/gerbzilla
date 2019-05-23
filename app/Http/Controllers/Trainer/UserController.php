@@ -58,7 +58,7 @@ class UserController extends Controller
         Carbon::setWeekStartsAt(Carbon::MONDAY);
         Carbon::setWeekEndsAt(Carbon::SUNDAY);
 
-        $users = User::where('trainer_id', $request->user()->id)
+        $users = User::where(['trainer_id' => $request->user()->id, 'is_active' => 1])
             ->whereBetween('block_expiration', [Carbon::now()->startOfWeek(), Carbon::now()->endOfWeek()])
             ->get();
 

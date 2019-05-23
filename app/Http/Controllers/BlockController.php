@@ -16,4 +16,16 @@ class BlockController extends Controller
 
         return response()->json($blocks);
     }
+
+    public function show(Request $request, Block $block)
+    {
+        $user = $request->user();
+        if ($user->id !== $block->user_id) {
+            return response()->json(['message' => 'You are not authorized to view this record.'], 401);
+        }
+
+        $blocks = Block::where('id', $block->id)->with('Type')->with('Workouts')->first();
+
+        return response()->json($blocks);
+    }
 }

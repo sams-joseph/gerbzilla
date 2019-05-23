@@ -18,6 +18,7 @@ Route::get('/user', 'UserController@index')->middleware('auth:api');
 Route::post('/login', 'AuthController@login');
 
 Route::get('/blocks', 'BlockController@index')->middleware('auth:api');
+Route::get('/blocks/{block}', 'BlockController@show')->middleware('auth:api');
 
 Route::get('/workouts', 'WorkoutController@index')->middleware('auth:api');
 Route::get('/workouts/{workout}', 'WorkoutController@show')->middleware('auth:api');

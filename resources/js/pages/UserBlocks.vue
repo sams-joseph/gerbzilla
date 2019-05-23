@@ -18,7 +18,13 @@
         <div class="flex-1">
           <h1 class="text-grey-darkest font-normal text-2xl mb-8 px-8 pt-20">Training Blocks</h1>
           <div class="flex w-full flex-wrap px-6">
-            <block v-for="block in blocks" v-bind:key="block.id" v-bind:block="block"></block>
+            <block
+              v-for="block in blocks"
+              v-bind:key="block.id"
+              v-bind:block="block"
+              v-bind:name="'user-workouts-block'"
+              v-bind:params="{ id: block.id }"
+            ></block>
           </div>
         </div>
       </div>
