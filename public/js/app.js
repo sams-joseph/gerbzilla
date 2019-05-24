@@ -5362,7 +5362,9 @@ __webpack_require__.r(__webpack_exports__);
     this.$http.get("".concat("http://localhost:8000/api", "/trainer/users/").concat(user_id, "/blocks/").concat(block_id)).then(function (res) {
       _this2.block = res.data.block;
       _this2.type = res.data.type;
-      _this2.workouts = res.data.workouts;
+      _this2.workouts = res.data.workouts.sort(function (a, b) {
+        return a.date > b.date ? 1 : b.date > a.date ? -1 : 0;
+      });
       _this2.loading = false;
     })["catch"](function (err) {
       console.log(err);
@@ -5481,6 +5483,14 @@ __webpack_require__.r(__webpack_exports__);
           type: "success",
           message: "Duplicated workout.",
           show: true
+        });
+
+        _this.$router.push({
+          name: "block",
+          params: {
+            user_id: user_id,
+            block_id: block_id
+          }
         });
       })["catch"](function (err) {
         _this.$store.dispatch("add", {

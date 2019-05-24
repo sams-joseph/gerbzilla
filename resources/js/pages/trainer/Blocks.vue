@@ -101,7 +101,9 @@ export default {
       .then(res => {
         this.block = res.data.block;
         this.type = res.data.type;
-        this.workouts = res.data.workouts;
+        this.workouts = res.data.workouts.sort((a, b) =>
+          a.date > b.date ? 1 : b.date > a.date ? -1 : 0
+        );
         this.loading = false;
       })
       .catch(err => {

@@ -98,6 +98,8 @@ export default {
             message: "Duplicated workout.",
             show: true
           });
+
+          this.$router.push({ name: "block", params: { user_id, block_id } });
         })
         .catch(err => {
           this.$store.dispatch("add", {
