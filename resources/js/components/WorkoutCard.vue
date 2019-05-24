@@ -6,7 +6,7 @@
     :to="{ name: 'user-workout', params: { id: workout.id }}"
   >
     <div
-      class="w-full bg-white rounded shadow-lg cursor-pointer"
+      class="w-full bg-white rounded-lg shadow-lg cursor-pointer"
       v-bind:class="{
         'bg-red-gradient': workout.block.type.name === 'strength',
         'bg-blue-gradient': workout.block.type.name === 'hypertrophy',

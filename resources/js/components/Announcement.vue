@@ -1,31 +1,49 @@
 <template>
-  <div>
+  <div v-if="!!expiring.length">
     <div class="bg-blue text-center py-4 lg:px-4">
-      <div
-        class="p-2 bg-blue-light items-center text-indigo-100 leading-none lg:rounded-full flex lg:inline-flex"
-        role="alert"
-      >
-        <span
-          class="flex rounded-full bg-blue-lighter uppercase px-2 py-1 text-xs font-bold mr-3 text-white"
-        >New</span>
-        <span
-          class="font-semibold mr-2 text-left flex-auto text-white"
-        >Get the coolest t-shirts from our brand new store</span>
-        <svg
-          class="fill-current text-white opacity-75 h-4 w-4"
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 20 20"
+      <router-link to="/t/users">
+        <div
+          class="p-2 bg-blue-light items-center text-indigo-100 leading-none lg:rounded-full flex lg:inline-flex"
+          role="alert"
         >
-          <path
-            d="M12.95 10.707l.707-.707L8 4.343 6.586 5.757 10.828 10l-4.242 4.243L8 15.657l4.95-4.95z"
-          ></path>
-        </svg>
-      </div>
+          <span
+            class="flex rounded-full bg-blue-lighter uppercase px-2 py-1 text-xs font-bold mr-3 text-white"
+          >Alert</span>
+          <span
+            class="font-semibold mr-2 text-left flex-auto text-white"
+          >Some users need your attention.</span>
+          <svg
+            class="fill-current text-white opacity-75 h-4 w-4"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 20 20"
+          >
+            <path
+              d="M12.95 10.707l.707-.707L8 4.343 6.586 5.757 10.828 10l-4.242 4.243L8 15.657l4.95-4.95z"
+            ></path>
+          </svg>
+        </div>
+      </router-link>
     </div>
+  </div>
 </template>
 
 <script>
 export default {
+  data() {
+    return {
+      expiring: []
+    };
+  },
 
-}
+  mounted() {
+    this.$http
+      .get(`${process.env.MIX_BASE_URL}/trainer/expiring`)
+      .then(res => {
+        this.expiring = res.data;
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  }
+};
 </script>

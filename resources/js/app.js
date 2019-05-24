@@ -30,6 +30,7 @@ import WorkoutItem from "./components/WorkoutItem";
 import WorkoutCard from "./components/WorkoutCard";
 import Snackbar from "./components/Snackbar";
 import Instagram from './components/Instagram';
+import Announcement from './components/Announcement';
 
 import Loader from "./components/Loader";
 
@@ -67,6 +68,7 @@ Vue.component("workout-item", WorkoutItem);
 Vue.component("workout-card", WorkoutCard);
 Vue.component("snackbar", Snackbar);
 Vue.component("instagram", Instagram);
+Vue.component("announcement", Announcement);
 
 Vue.component("loader", Loader);
 

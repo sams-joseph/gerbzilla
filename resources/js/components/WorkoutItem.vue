@@ -7,7 +7,7 @@
         <div>
           <h2 class="text-lg text-grey-darkest font-bold mb-1">{{ workout.name }}</h2>
           <h3
-            class="text-base text-blue font-medium"
+            class="text-base text-blue font-normal"
           >{{ $moment(workout.date).format('dddd, MMM Do') }}</h3>
         </div>
       </div>

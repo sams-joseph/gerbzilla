@@ -5,7 +5,7 @@
     <loader v-if="loading"></loader>
     <section
       v-if="!loading"
-      class="w-full bg-grey-lighter border-b border-t border-grey-light py-8 mb-20"
+      class="w-full bg-grey-lighter border-b border-t border-grey-light py-8"
     >
       <div class="container mx-auto px-8 flex justify-between flex-wrap">
         <div
@@ -52,7 +52,8 @@
         </div>
       </div>
     </section>
-    <div class="container mx-auto">
+    <announcement v-if="isTrainer"></announcement>
+    <div class="container mx-auto mt-20">
       <main>
         <section class="px-6">
           <h2 class="text-grey-darkest text-center font-normal text-2xl px-2 mb-1">Week Ahead</h2>
@@ -197,7 +198,7 @@ export default {
       );
     },
 
-    ...mapGetters(["isActive", "user"])
+    ...mapGetters(["isActive", "user", "isTrainer"])
   }
 };
 </script>
