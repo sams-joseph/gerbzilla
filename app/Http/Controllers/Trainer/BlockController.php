@@ -58,6 +58,9 @@ class BlockController extends Controller
         $new_block = $block->replicate();
         $original_date = new Carbon($block->start_date);
         $new_date = new Carbon($request->start_date);
+
+        $user->update(['block_expiration' => $new_date->addWeeks(4)]);
+
         $day_gap = $original_date->diffInDays($new_date);
         $new_block->name = $request->name;
         $new_block->start_date = $request->start_date;

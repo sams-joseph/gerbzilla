@@ -84,7 +84,7 @@ export default {
 
   props: {
     workout: Object,
-    userId: String,
+    userId: Number,
     blockId: Number
   },
 
