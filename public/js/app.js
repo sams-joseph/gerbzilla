@@ -1877,8 +1877,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     block: Object,
@@ -4396,6 +4394,12 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -24093,7 +24097,7 @@ var render = function() {
                 "span",
                 {
                   staticClass:
-                    "text-center block w-auto py-1 px-2 rounded-full text-xs text-white font-thin description-pill uppercase"
+                    "text-center block w-auto py-1 px-2 rounded-full text-xs text-white font-medium description-pill uppercase"
                 },
                 [_vm._v(_vm._s(_vm.block.type.name))]
               )
@@ -24160,7 +24164,7 @@ var render = function() {
             "span",
             {
               staticClass:
-                "text-center inline-block w-auto mx-8 py-1 px-4 rounded-full text-xs text-white font-thin uppercase description-pill"
+                "text-center inline-block w-auto mx-8 py-1 px-4 rounded-full text-xs text-white font-medium uppercase description-pill"
             },
             [_vm._v(_vm._s(_vm.type.name))]
           )
@@ -24179,28 +24183,26 @@ var render = function() {
             "div",
             { staticClass: "inline-block flex items-center" },
             [
-              _c("span", [
-                _c(
-                  "svg",
-                  {
-                    staticClass: "fill-current text-grey-dark",
+              _c(
+                "svg",
+                {
+                  staticClass: "fill-current text-grey-dark",
+                  attrs: {
+                    xmlns: "http://www.w3.org/2000/svg",
+                    width: "24",
+                    height: "24",
+                    viewBox: "0 0 24 24"
+                  }
+                },
+                [
+                  _c("path", {
                     attrs: {
-                      xmlns: "http://www.w3.org/2000/svg",
-                      width: "24",
-                      height: "24",
-                      viewBox: "0 0 24 24"
+                      d:
+                        "M12.707 17.293L8.414 13 18 13 18 11 8.414 11 12.707 6.707 11.293 5.293 4.586 12 11.293 18.707z"
                     }
-                  },
-                  [
-                    _c("path", {
-                      attrs: {
-                        d:
-                          "M12.707 17.293L8.414 13 18 13 18 11 8.414 11 12.707 6.707 11.293 5.293 4.586 12 11.293 18.707z"
-                      }
-                    })
-                  ]
-                )
-              ]),
+                  })
+                ]
+              ),
               _vm._v(" "),
               _c(
                 "router-link",
@@ -24812,10 +24814,10 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    { staticClass: "w-full h-16 md:h-24 flex justify-center items-end" },
+    { staticClass: "w-full md:h-24 flex justify-center items-end" },
     [
       _c("nav", { staticClass: "hidden md:block" }, [
-        _c("ul", { staticClass: "list-reset mb-px" }, [
+        _c("ul", { staticClass: "list-reset" }, [
           _c(
             "li",
             {
@@ -25284,7 +25286,7 @@ var render = function() {
       _c(
         "div",
         {
-          staticClass: "w-full bg-white rounded-lg shadow-lg cursor-pointer",
+          staticClass: "w-full bg-white rounded shadow-lg cursor-pointer",
           class: {
             "bg-red-gradient": _vm.workout.block.type.name === "strength",
             "bg-blue-gradient": _vm.workout.block.type.name === "hypertrophy",
@@ -25301,7 +25303,7 @@ var render = function() {
               _vm._v(" "),
               _c(
                 "h4",
-                { staticClass: "text-white text-base font-light opacity-75" },
+                { staticClass: "text-white text-base font-normal opacity-75" },
                 [_vm._v(_vm._s(_vm.workout.name))]
               )
             ])
@@ -25315,7 +25317,7 @@ var render = function() {
                 "span",
                 {
                   staticClass:
-                    "text-center block w-auto py-1 px-2 rounded-full text-xs text-white font-thin description-pill uppercase"
+                    "text-center block w-auto py-1 px-2 rounded-full text-xs text-white font-medium description-pill uppercase"
                 },
                 [_vm._v(_vm._s(_vm.workout.block.type.name))]
               )
@@ -28865,7 +28867,7 @@ var render = function() {
                           "h3",
                           {
                             staticClass:
-                              "text-base font-light uppercase mb-4 text-center md:text-left",
+                              "text-base font-normal uppercase mb-4 text-center md:text-left",
                             class: {
                               "text-green": _vm.isActive,
                               "text-red": !_vm.isActive
@@ -28912,7 +28914,7 @@ var render = function() {
                             "h3",
                             {
                               staticClass:
-                                "text-grey-darkest text-base font-thin"
+                                "text-grey-darkest text-base font-medium"
                             },
                             [_vm._v("Total Workouts")]
                           )
@@ -28932,6 +28934,24 @@ var render = function() {
         _c("main", [
           _c("section", { staticClass: "px-6" }, [
             _c(
+              "h2",
+              {
+                staticClass:
+                  "text-grey-darkest text-center font-normal text-2xl px-2 mb-1"
+              },
+              [_vm._v("Week Ahead")]
+            ),
+            _vm._v(" "),
+            _c(
+              "h2",
+              {
+                staticClass:
+                  "text-grey-darkest text-center font-normal text-base mb-12 px-8"
+              },
+              [_vm._v("Upcoming workouts over the next three days.")]
+            ),
+            _vm._v(" "),
+            _c(
               "div",
               { staticClass: "flex flex-wrap w-full mb-20" },
               _vm._l(_vm.weekAhead, function(workout) {
@@ -28946,13 +28966,19 @@ var render = function() {
           _vm._v(" "),
           _c(
             "h2",
-            { staticClass: "text-grey-darkest font-normal text-2xl mb-2 px-8" },
+            {
+              staticClass:
+                "text-grey-darkest text-center font-normal text-2xl mb-2 px-8"
+            },
             [_vm._v(_vm._s(_vm.$moment(new Date()).format("dddd MMM Do")))]
           ),
           _vm._v(" "),
           _c(
             "h2",
-            { staticClass: "text-grey-dark font-normal text-base mb-12 px-8" },
+            {
+              staticClass:
+                "text-center text-grey-darkest font-normal text-base mb-12 px-8"
+            },
             [_vm._v(_vm._s(_vm.todaysWorkout.name))]
           ),
           _vm._v(" "),
@@ -29114,7 +29140,7 @@ var staticRenderFns = [
           _vm._v("3")
         ]),
         _vm._v(" "),
-        _c("h3", { staticClass: "text-grey-darkest text-base font-thin" }, [
+        _c("h3", { staticClass: "text-grey-darkest text-base font-medium" }, [
           _vm._v("Goals In Progress")
         ])
       ]

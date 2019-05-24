@@ -191,6 +191,7 @@ module.exports = {
 
     fonts: {
         sans: [
+            "Montserrat",
             "Open Sans",
             "system-ui",
             "BlinkMacSystemFont",

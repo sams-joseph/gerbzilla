@@ -30,7 +30,7 @@
           class="uppercase text-xs text-white font-semibold opacity-75"
         >{{ block.workouts.length }} Workouts</span>
         <span
-          class="text-center block w-auto py-1 px-2 rounded-full text-xs text-white font-thin description-pill uppercase"
+          class="text-center block w-auto py-1 px-2 rounded-full text-xs text-white font-medium description-pill uppercase"
         >{{ block.type.name }}</span>
       </div>
     </div>

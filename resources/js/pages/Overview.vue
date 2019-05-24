@@ -20,7 +20,7 @@
             >{{ `${this.user.first_name} ${this.user.last_name}` }}</h1>
             <h3
               v-bind:class="{'text-green': isActive, 'text-red': !isActive}"
-              class="text-base font-light uppercase mb-4 text-center md:text-left"
+              class="text-base font-normal uppercase mb-4 text-center md:text-left"
             >{{ this.isActive ? 'Active' : 'Inactive' }}</h3>
             <div class="mx-auto mb-12 md:mb-0 md:mx-0">
               <button
@@ -37,7 +37,7 @@
               </div>
             </div>
             <h2 class="text-grey-darkest text-xl font-bold mb-2">{{ numWorkouts }}</h2>
-            <h3 class="text-grey-darkest text-base font-thin">Total Workouts</h3>
+            <h3 class="text-grey-darkest text-base font-medium">Total Workouts</h3>
           </div>
 
           <div class="h-48 w-32 bg-grey-light rounded p-4 text-center ml-2">
@@ -47,7 +47,7 @@
               </div>
             </div>
             <h2 class="text-grey-darkest text-xl font-bold mb-2">3</h2>
-            <h3 class="text-grey-darkest text-base font-thin">Goals In Progress</h3>
+            <h3 class="text-grey-darkest text-base font-medium">Goals In Progress</h3>
           </div>
         </div>
       </div>
@@ -55,6 +55,10 @@
     <div class="container mx-auto">
       <main>
         <section class="px-6">
+          <h2 class="text-grey-darkest text-center font-normal text-2xl px-2 mb-1">Week Ahead</h2>
+          <h2
+            class="text-grey-darkest text-center font-normal text-base mb-12 px-8"
+          >Upcoming workouts over the next three days.</h2>
           <div class="flex flex-wrap w-full mb-20">
             <workout-card
               v-for="workout in weekAhead"
@@ -65,9 +69,11 @@
         </section>
 
         <h2
-          class="text-grey-darkest font-normal text-2xl mb-2 px-8"
+          class="text-grey-darkest text-center font-normal text-2xl mb-2 px-8"
         >{{ $moment(new Date()).format('dddd MMM Do') }}</h2>
-        <h2 class="text-grey-dark font-normal text-base mb-12 px-8">{{ todaysWorkout.name }}</h2>
+        <h2
+          class="text-center text-grey-darkest font-normal text-base mb-12 px-8"
+        >{{ todaysWorkout.name }}</h2>
         <section class="px-4">
           <ul v-if="!!sets.length" class="list-reset flex flex-wrap px-4 md:px-0">
             <li v-for="(set, index) in sets" :key="set.id" class="w-full md:w-1/2 lg:w-1/3 mb-4">
