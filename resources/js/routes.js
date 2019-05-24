@@ -12,6 +12,7 @@ import Blocks from "./pages/trainer/Blocks";
 import Workout from "./pages/trainer/Workout";
 import EditSet from "./pages/trainer/EditSet";
 import UserWorkout from "./pages/UserWorkout";
+import DuplicateWorkout from './pages/trainer/DuplicateWorkout';
 
 import NotFound from "./components/NotFound";
 
@@ -141,6 +142,15 @@ export default {
             path: "/t/users/:user_id/blocks/:block_id/workouts/:workout_id",
             name: "workout",
             component: Workout,
+            meta: {
+                requiresAuth: true,
+                is_trainer: true
+            }
+        },
+        {
+            path: "/t/users/:user_id/blocks/:block_id/workouts/duplicate/:workout_id",
+            name: "duplicate-workout",
+            component: DuplicateWorkout,
             meta: {
                 requiresAuth: true,
                 is_trainer: true

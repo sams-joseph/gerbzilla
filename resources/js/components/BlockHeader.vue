@@ -18,9 +18,9 @@
         >{{ type.name }}</span>
       </div>
     </div>
-    <div class="w-full bg-grey-lightest border-b border-grey-lighter py-6">
-      <div class="container mx-auto px-8">
-        <div class="inline-block flex items-center">
+    <div class="w-full bg-grey-lightest border-b border-grey-lighter">
+      <div class="container mx-auto px-8 flex">
+        <div class="inline-block flex items-center py-6">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="24"
@@ -38,6 +38,16 @@
             class="text-grey-dark hover:text-red text-xs font-semibold uppercase mr-4"
           >Back to User</router-link>
         </div>
+        <div
+          v-if="action"
+          class="inline-block flex items-center border-r border-l border-grey-light py-6"
+        >
+          <router-link
+            :to="{ name: action.name, params: action.params}"
+            active-class="none"
+            class="text-grey-dark hover:text-red text-xs font-semibold uppercase mx-4"
+          >{{ action.text }}</router-link>
+        </div>
       </div>
     </div>
   </div>
@@ -47,6 +57,7 @@
 export default {
   props: {
     block: Object,
+    action: Object,
     type: Object
   }
 };

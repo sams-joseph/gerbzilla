@@ -27,31 +27,36 @@
         </div>
       </div>
       <div
-        class="items-center absolute flex bg-white shadow-lg rounded-lg p-2 pin-r pin-out-top"
+        class="items-center absolute flex bg-white shadow-lg rounded-lg p-4 pin-r pin-out-top"
         v-if="showPopover"
         v-closable="{
           exclude: ['button'],
           handler: 'closePopover'
         }"
       >
-        <div class="p-2">
-          <svg
-            class="fill-current text-grey-darker"
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
+        <div>
+          <router-link
+            :to="{ name: 'duplicate-workout', params: { user_id: userId, workout_id: workout.id }}"
+            active-class="none"
           >
-            <path
-              d="M4,22h12c1.104,0,2-0.896,2-2V8c0-1.104-0.896-2-2-2H4C2.896,6,2,6.896,2,8v12C2,21.104,2.896,22,4,22z M6,13h3v-3h2v3h3v2 h-3v3H9v-3H6V13z"
-            ></path>
-            <path d="M20,2H8v2h12v12h2V4C22,2.897,21.103,2,20,2z"></path>
-          </svg>
+            <svg
+              class="fill-current text-grey-darker"
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M4,22h12c1.104,0,2-0.896,2-2V8c0-1.104-0.896-2-2-2H4C2.896,6,2,6.896,2,8v12C2,21.104,2.896,22,4,22z M6,13h3v-3h2v3h3v2 h-3v3H9v-3H6V13z"
+              ></path>
+              <path d="M20,2H8v2h12v12h2V4C22,2.897,21.103,2,20,2z"></path>
+            </svg>
+          </router-link>
         </div>
         <router-link
           :to="{ name: 'workout', params: { user_id: userId, block_id: blockId, workout_id: workout.id }}"
           active-class="none"
-          class="ml-4 p-2"
+          class="ml-2"
         >
           <svg
             class="fill-current text-grey-darker"
