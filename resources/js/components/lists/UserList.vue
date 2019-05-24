@@ -1,6 +1,6 @@
 <template>
   <div class="flex px-0 md:px-8 mt-20">
-    <aside class="w-48 hidden md:block">
+    <aside class="w-1/4 hidden md:block">
       <input
         class="w-full border border-grey-light bg-grey-lighter rounded-full px-4 py-2 focus:outline-none mb-8"
         type="text"
@@ -8,27 +8,29 @@
         v-bind="query"
         placeholder="Search"
       >
-      <h1 class="text-grey-darkest font-normal text-2xl mb-10">Status</h1>
+      <h1 class="text-grey-darkest font-normal text-2xl mb-10 mx-2">Status</h1>
       <ul class="list-reset">
-        <li>
-          <label class="checkbox-container">
+        <li class="hover:bg-grey-lightest p-2 rounded flex items-center">
+          <label class="checkbox-container flex-1">
             Active
-            <span
-              class="bg-grey-lighter rounded-full float-right px-2 py-1"
-            >{{ getNumUsers(1) }}</span>
             <input type="checkbox" id="active" name="active" value="1" v-model="activity">
             <span class="checkbox-checkmark"></span>
           </label>
+          <span class="bg-grey-lighter rounded-full float-right px-2 py-1">{{ getNumUsers(1) }}</span>
         </li>
-        <li>
-          <label class="checkbox-container">
+        <li class="hover:bg-grey-lightest p-2 rounded flex items-center">
+          <label class="checkbox-container flex-1">
             Inactive
-            <span
-              class="bg-grey-lighter rounded-full float-right px-2 py-1"
-            >{{ getNumUsers(2) }}</span>
-            <input type="checkbox" id="inactive" name="inactive" value="2" v-model="activity">
+            <input
+              type="checkbox"
+              id="inactive"
+              name="inactive"
+              value="2"
+              v-model="activity"
+            >
             <span class="checkbox-checkmark"></span>
           </label>
+          <span class="bg-grey-lighter rounded-full float-right px-2 py-1">{{ getNumUsers(2) }}</span>
         </li>
       </ul>
     </aside>

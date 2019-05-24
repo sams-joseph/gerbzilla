@@ -6534,10 +6534,10 @@ a {
   display: block;
   position: relative;
   padding-left: 35px;
-  margin-bottom: 12px;
+  margin-bottom: 0px;
   cursor: pointer;
   font-size: 16px;
-  line-height: 20px;
+  line-height: 18px;
   color: #4a4a4a;
   -webkit-user-select: none;
      -moz-user-select: none;

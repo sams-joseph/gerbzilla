@@ -93,6 +93,7 @@
             <div class="w-full">
               <div class="container mx-auto px-8 flex flex-col items-center">
                 <img class="w-32 h-32 opacity-75" src="/images/empty_weight_icon.svg" alt="Empty">
+                <h6 class="font-thin text-grey-dark text-xl mt-4 uppercase">No workout today</h6>
               </div>
             </div>
           </div>

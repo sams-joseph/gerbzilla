@@ -1,14 +1,15 @@
 <template>
   <div class="container mx-auto mb-20 flex px-0 md:px-8 mt-20">
-    <aside class="w-48 hidden md:block">
-      <h1 class="text-grey-darkest font-normal text-2xl mb-10">Categories</h1>
+    <aside class="w-1/4 hidden md:block">
+      <h1 class="text-grey-darkest font-normal text-2xl mb-10 mx-2">Categories</h1>
       <ul class="list-reset">
-        <li v-for="category in categories" v-bind:key="category.id">
-          <label class="checkbox-container">
+        <li
+          v-for="category in categories"
+          v-bind:key="category.id"
+          class="hover:bg-grey-lightest p-2 rounded flex items-center"
+        >
+          <label class="checkbox-container flex-1">
             {{ category.name }}
-            <span
-              class="bg-grey-lighter rounded-full float-right px-2 py-1"
-            >{{ getNumExercises(category.id) }}</span>
             <input
               type="checkbox"
               :id="category.name"
@@ -18,6 +19,9 @@
             >
             <span class="checkbox-checkmark"></span>
           </label>
+          <span
+            class="bg-grey-lighter rounded-full float-right px-2 py-1"
+          >{{ getNumExercises(category.id) }}</span>
         </li>
       </ul>
     </aside>
