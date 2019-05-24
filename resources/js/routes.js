@@ -12,7 +12,8 @@ import Blocks from "./pages/trainer/Blocks";
 import Workout from "./pages/trainer/Workout";
 import EditSet from "./pages/trainer/EditSet";
 import UserWorkout from "./pages/UserWorkout";
-import DuplicateWorkout from './pages/trainer/DuplicateWorkout';
+import DuplicateWorkout from "./pages/trainer/DuplicateWorkout";
+import DuplicateBlock from "./pages/trainer/DuplicateBlock";
 
 import NotFound from "./components/NotFound";
 
@@ -139,6 +140,15 @@ export default {
             }
         },
         {
+            path: "/t/users/:user_id/blocks/duplicate/:block_id",
+            name: "duplicate-block",
+            component: DuplicateBlock,
+            meta: {
+                requiresAuth: true,
+                is_trainer: true
+            }
+        },
+        {
             path: "/t/users/:user_id/blocks/:block_id/workouts/:workout_id",
             name: "workout",
             component: Workout,
@@ -148,7 +158,8 @@ export default {
             }
         },
         {
-            path: "/t/users/:user_id/blocks/:block_id/workouts/duplicate/:workout_id",
+            path:
+                "/t/users/:user_id/blocks/:block_id/workouts/duplicate/:workout_id",
             name: "duplicate-workout",
             component: DuplicateWorkout,
             meta: {

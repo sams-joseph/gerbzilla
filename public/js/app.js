@@ -1811,7 +1811,7 @@ __webpack_require__.r(__webpack_exports__);
   mounted: function mounted() {
     var _this = this;
 
-    this.$http.get("".concat("http://localhost:8000/api", "/trainer/expiring")).then(function (res) {
+    this.$http.get("".concat("http://gerbzilla.test/api", "/trainer/expiring")).then(function (res) {
       _this.expiring = res.data;
     })["catch"](function (err) {
       console.log(err);
@@ -2815,7 +2815,7 @@ __webpack_require__.r(__webpack_exports__);
   mounted: function mounted() {
     var _this = this;
 
-    this.$http.get("".concat("http://localhost:8000/api", "/trainer/types")).then(function (res) {
+    this.$http.get("".concat("http://gerbzilla.test/api", "/trainer/types")).then(function (res) {
       _this.loading = false;
       _this.types = res.data;
     })["catch"](function (err) {
@@ -2832,7 +2832,7 @@ __webpack_require__.r(__webpack_exports__);
       e.preventDefault();
       this.loading = true;
       var user = JSON.parse(localStorage.getItem("user"));
-      this.$http.post("".concat("http://localhost:8000/api", "/trainer/users/").concat(this.$route.params.id, "/blocks"), {
+      this.$http.post("".concat("http://gerbzilla.test/api", "/trainer/users/").concat(this.$route.params.id, "/blocks"), {
         name: this.name,
         start_date: this.date,
         type_id: this.type
@@ -2966,7 +2966,7 @@ __webpack_require__.r(__webpack_exports__);
   mounted: function mounted() {
     var _this = this;
 
-    this.$http.get("".concat("http://localhost:8000/api", "/trainer/categories")).then(function (res) {
+    this.$http.get("".concat("http://gerbzilla.test/api", "/trainer/categories")).then(function (res) {
       _this.loading = false;
       _this.categories = res.data;
     })["catch"](function (err) {
@@ -2983,7 +2983,7 @@ __webpack_require__.r(__webpack_exports__);
       e.preventDefault();
       this.loading = true;
       var user = JSON.parse(localStorage.getItem("user"));
-      this.$http.post("".concat("http://localhost:8000/api", "/trainer/exercises"), {
+      this.$http.post("".concat("http://gerbzilla.test/api", "/trainer/exercises"), {
         name: this.name,
         category_id: this.category
       }).then(function (res) {
@@ -3132,7 +3132,7 @@ __webpack_require__.r(__webpack_exports__);
   mounted: function mounted() {
     var _this = this;
 
-    this.$http.get("".concat("http://localhost:8000/api", "/trainer/exercises")).then(function (res) {
+    this.$http.get("".concat("http://gerbzilla.test/api", "/trainer/exercises")).then(function (res) {
       _this.loading = false;
       _this.exercises = res.data;
     })["catch"](function (err) {
@@ -3153,7 +3153,7 @@ __webpack_require__.r(__webpack_exports__);
           user_id = _this$$route$params.user_id,
           block_id = _this$$route$params.block_id,
           workout_id = _this$$route$params.workout_id;
-      this.$http.post("".concat("http://localhost:8000/api", "/trainer/users/").concat(user_id, "/blocks/").concat(block_id, "/workouts/").concat(workout_id, "/sets"), {
+      this.$http.post("".concat("http://gerbzilla.test/api", "/trainer/users/").concat(user_id, "/blocks/").concat(block_id, "/workouts/").concat(workout_id, "/sets"), {
         num_sets: this.sets,
         notes: this.notes,
         exercise_id: this.exercise
@@ -3302,7 +3302,7 @@ __webpack_require__.r(__webpack_exports__);
 
       e.preventDefault();
       this.loading = true;
-      this.$http.post("".concat("http://localhost:8000/api", "/trainer/users"), {
+      this.$http.post("".concat("http://gerbzilla.test/api", "/trainer/users"), {
         first_name: this.firstName,
         last_name: this.lastName,
         email: this.email,
@@ -3420,7 +3420,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this$$route$params = this.$route.params,
           user_id = _this$$route$params.user_id,
           block_id = _this$$route$params.block_id;
-      this.$http.post("".concat("http://localhost:8000/api", "/trainer/users/").concat(user_id, "/blocks/").concat(block_id, "/workouts"), {
+      this.$http.post("".concat("http://gerbzilla.test/api", "/trainer/users/").concat(user_id, "/blocks/").concat(block_id, "/workouts"), {
         name: this.name,
         date: this.date
       }).then(function (res) {
@@ -3522,7 +3522,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this$$route$params = this.$route.params,
           user_id = _this$$route$params.user_id,
           workout_id = _this$$route$params.workout_id;
-      this.$http.post("".concat("http://localhost:8000/api", "/trainer/users/").concat(user_id, "/workouts/").concat(workout_id), {
+      this.$http.post("".concat("http://gerbzilla.test/api", "/trainer/users/").concat(user_id, "/workouts/").concat(workout_id), {
         date: this.date
       }).then(function (res) {
         _this.date = "";
@@ -3658,7 +3658,7 @@ __webpack_require__.r(__webpack_exports__);
         block_id = _this$$route$params.block_id,
         workout_id = _this$$route$params.workout_id,
         set_id = _this$$route$params.set_id;
-    this.$http.all([this.$http.get("".concat("http://localhost:8000/api", "/trainer/users/").concat(user_id, "/blocks/").concat(block_id, "/workouts/").concat(workout_id, "/sets/").concat(set_id)), this.$http.get("".concat("http://localhost:8000/api", "/trainer/exercises"))]).then(this.$http.spread(function (set, exercises) {
+    this.$http.all([this.$http.get("".concat("http://gerbzilla.test/api", "/trainer/users/").concat(user_id, "/blocks/").concat(block_id, "/workouts/").concat(workout_id, "/sets/").concat(set_id)), this.$http.get("".concat("http://gerbzilla.test/api", "/trainer/exercises"))]).then(this.$http.spread(function (set, exercises) {
       _this.exercises = exercises.data;
       _this.exercise = set.data.set.exercise_id;
       _this.sets = set.data.set.num_sets;
@@ -3686,7 +3686,7 @@ __webpack_require__.r(__webpack_exports__);
           block_id = _this$$route$params2.block_id,
           workout_id = _this$$route$params2.workout_id,
           set_id = _this$$route$params2.set_id;
-      this.$http.put("".concat("http://localhost:8000/api", "/trainer/users/").concat(user_id, "/blocks/").concat(block_id, "/workouts/").concat(workout_id, "/sets/").concat(set_id), {
+      this.$http.put("".concat("http://gerbzilla.test/api", "/trainer/users/").concat(user_id, "/blocks/").concat(block_id, "/workouts/").concat(workout_id, "/sets/").concat(set_id), {
         num_sets: this.sets,
         notes: this.notes,
         exercise_id: this.exercise
@@ -4788,7 +4788,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     var startDate = this.$moment().add(1, "d").format("YYYY-MM-DD");
     var endDate = this.$moment().add(3, "d").format("YYYY-MM-DD");
     this.loading = true;
-    this.$http.all([this.$http.get("".concat("http://localhost:8000/api", "/workouts/date/").concat(todaysDate)), this.$http.get("".concat("http://localhost:8000/api", "/workouts/date/").concat(startDate, "/").concat(endDate)), this.$http.get("".concat("http://localhost:8000/api", "/workouts"))]).then(this.$http.spread(function (today, week, all) {
+    this.$http.all([this.$http.get("".concat("http://gerbzilla.test/api", "/workouts/date/").concat(todaysDate)), this.$http.get("".concat("http://gerbzilla.test/api", "/workouts/date/").concat(startDate, "/").concat(endDate)), this.$http.get("".concat("http://gerbzilla.test/api", "/workouts"))]).then(this.$http.spread(function (today, week, all) {
       _this.todaysWorkout = today.data.workout;
       _this.sets = today.data.sets;
       _this.weeksWorkouts = week.data;
@@ -4938,7 +4938,7 @@ __webpack_require__.r(__webpack_exports__);
 
     var id = this.$route.params.id;
     this.loading = true;
-    this.$http.get("".concat("http://localhost:8000/api", "/blocks/").concat(id)).then(function (res) {
+    this.$http.get("".concat("http://gerbzilla.test/api", "/blocks/").concat(id)).then(function (res) {
       console.log(res);
       _this.block = res.data;
       _this.type = res.data.type;
@@ -5017,7 +5017,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     var _this = this;
 
     this.loading = true;
-    this.$http.get("".concat("http://localhost:8000/api", "/blocks")).then(function (res) {
+    this.$http.get("".concat("http://gerbzilla.test/api", "/blocks")).then(function (res) {
       _this.blocks = res.data.sort(function (a, b) {
         return a.start_date < b.start_date ? 1 : b.start_date < a.start_date ? -1 : 0;
       });
@@ -5103,7 +5103,7 @@ __webpack_require__.r(__webpack_exports__);
   mounted: function mounted() {
     var _this = this;
 
-    this.$http.get("".concat("http://localhost:8000/api", "/workouts/").concat(this.$route.params.id)).then(function (res) {
+    this.$http.get("".concat("http://gerbzilla.test/api", "/workouts/").concat(this.$route.params.id)).then(function (res) {
       _this.workout = res.data.workout;
       _this.sets = res.data.sets;
       _this.loading = false;
@@ -5227,7 +5227,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     var weekEnd = this.$moment(today).endOf("week").add(1, "days");
     this.weekStart = weekStart;
     this.loading = true;
-    this.$http.get("".concat("http://localhost:8000/api", "/workouts/date/").concat(weekStart.format("YYYY-MM-DD"), "/").concat(weekEnd.format("YYYY-MM-DD"))).then(function (res) {
+    this.$http.get("".concat("http://gerbzilla.test/api", "/workouts/date/").concat(weekStart.format("YYYY-MM-DD"), "/").concat(weekEnd.format("YYYY-MM-DD"))).then(function (res) {
       _this.workouts = res.data;
       _this.loading = false;
     });
@@ -5318,6 +5318,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -5337,7 +5342,7 @@ __webpack_require__.r(__webpack_exports__);
           user_id = _this$$route$params.user_id,
           block_id = _this$$route$params.block_id;
       this.loading = true;
-      this.$http.get("".concat("http://localhost:8000/api", "/trainer/users/").concat(user_id, "/blocks/").concat(block_id)).then(function (res) {
+      this.$http.get("".concat("http://gerbzilla.test/api", "/trainer/users/").concat(user_id, "/blocks/").concat(block_id)).then(function (res) {
         _this.workouts = res.data.workouts;
         _this.loading = false;
       })["catch"](function (err) {
@@ -5359,7 +5364,7 @@ __webpack_require__.r(__webpack_exports__);
         user_id = _this$$route$params2.user_id,
         block_id = _this$$route$params2.block_id;
     this.loading = true;
-    this.$http.get("".concat("http://localhost:8000/api", "/trainer/users/").concat(user_id, "/blocks/").concat(block_id)).then(function (res) {
+    this.$http.get("".concat("http://gerbzilla.test/api", "/trainer/users/").concat(user_id, "/blocks/").concat(block_id)).then(function (res) {
       _this2.block = res.data.block;
       _this2.type = res.data.type;
       _this2.workouts = res.data.workouts.sort(function (a, b) {
@@ -5374,6 +5379,151 @@ __webpack_require__.r(__webpack_exports__);
     userId: function userId() {
       return this.$route.params.user_id;
     }
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/trainer/DuplicateBlock.vue?vue&type=script&lang=js&":
+/*!****************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/pages/trainer/DuplicateBlock.vue?vue&type=script&lang=js& ***!
+  \****************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      block: {},
+      type: {},
+      workout: {},
+      start_date: "",
+      name: "",
+      showModal: false,
+      loading: true
+    };
+  },
+  methods: {
+    submit: function submit() {
+      var _this = this;
+
+      var _this$$route$params = this.$route.params,
+          user_id = _this$$route$params.user_id,
+          block_id = _this$$route$params.block_id;
+      this.$http.post("".concat("http://gerbzilla.test/api", "/trainer/users/").concat(user_id, "/blocks/duplicate/").concat(block_id), {
+        start_date: this.start_date,
+        name: this.name
+      }).then(function (res) {
+        _this.start_date = "";
+        _this.name = "";
+
+        _this.$store.dispatch("add", {
+          type: "success",
+          message: "Duplicated block.",
+          show: true
+        });
+
+        _this.$router.push({
+          name: "user",
+          params: {
+            id: user_id
+          }
+        });
+      })["catch"](function (err) {
+        _this.$store.dispatch("add", {
+          type: "error",
+          message: err.message,
+          show: true
+        });
+      });
+    },
+    closeWindow: function closeWindow() {
+      this.$router.go(-1);
+    }
+  },
+  mounted: function mounted() {
+    var _this2 = this;
+
+    var _this$$route$params2 = this.$route.params,
+        user_id = _this$$route$params2.user_id,
+        block_id = _this$$route$params2.block_id;
+    this.loading = true;
+    this.$http.get("".concat("http://gerbzilla.test/api", "/trainer/users/").concat(user_id, "/blocks/").concat(block_id)).then(function (res) {
+      _this2.workout = res.data.workout;
+      _this2.block = res.data.block;
+      _this2.type = res.data.type;
+      _this2.start_date = res.data.block.start_date;
+      _this2.name = res.data.block.name;
+      _this2.loading = false;
+    })["catch"](function (err) {
+      console.log(err);
+    });
   }
 });
 
@@ -5472,7 +5622,7 @@ __webpack_require__.r(__webpack_exports__);
           user_id = _this$$route$params.user_id,
           block_id = _this$$route$params.block_id,
           workout_id = _this$$route$params.workout_id;
-      this.$http.post("".concat("http://localhost:8000/api", "/trainer/users/").concat(user_id, "/workouts/duplicate/").concat(workout_id), {
+      this.$http.post("".concat("http://gerbzilla.test/api", "/trainer/users/").concat(user_id, "/workouts/duplicate/").concat(workout_id), {
         date: this.date,
         name: this.name
       }).then(function (res) {
@@ -5512,7 +5662,7 @@ __webpack_require__.r(__webpack_exports__);
         block_id = _this$$route$params2.block_id,
         workout_id = _this$$route$params2.workout_id;
     this.loading = true;
-    this.$http.get("".concat("http://localhost:8000/api", "/trainer/users/").concat(user_id, "/blocks/").concat(block_id, "/workouts/").concat(workout_id)).then(function (res) {
+    this.$http.get("".concat("http://gerbzilla.test/api", "/trainer/users/").concat(user_id, "/blocks/").concat(block_id, "/workouts/").concat(workout_id)).then(function (res) {
       _this2.workout = res.data.workout;
       _this2.block = res.data.block;
       _this2.type = res.data.type;
@@ -5576,7 +5726,7 @@ __webpack_require__.r(__webpack_exports__);
         block_id = _this$$route$params.block_id,
         workout_id = _this$$route$params.workout_id;
     this.loading = true;
-    this.$http.get("".concat("http://localhost:8000/api", "/trainer/users/").concat(user_id, "/blocks/").concat(block_id, "/workouts/").concat(workout_id, "/sets")).then(function (res) {
+    this.$http.get("".concat("http://gerbzilla.test/api", "/trainer/users/").concat(user_id, "/blocks/").concat(block_id, "/workouts/").concat(workout_id, "/sets")).then(function (res) {
       _this.block = res.data.block;
       _this.type = res.data.type;
       _this.workout = res.data.workout;
@@ -5651,7 +5801,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       this.loading = true;
-      this.$http.get("".concat("http://localhost:8000/api", "/trainer/exercises")).then(function (res) {
+      this.$http.get("".concat("http://gerbzilla.test/api", "/trainer/exercises")).then(function (res) {
         _this.exercises = res.data;
         _this.loading = false;
       })["catch"](function (err) {
@@ -5666,7 +5816,7 @@ __webpack_require__.r(__webpack_exports__);
     var _this2 = this;
 
     this.loading = true;
-    this.$http.all([this.$http.get("".concat("http://localhost:8000/api", "/trainer/exercises")), this.$http.get("".concat("http://localhost:8000/api", "/trainer/categories"))]).then(this.$http.spread(function (exercises, categories) {
+    this.$http.all([this.$http.get("".concat("http://gerbzilla.test/api", "/trainer/exercises")), this.$http.get("".concat("http://gerbzilla.test/api", "/trainer/categories"))]).then(this.$http.spread(function (exercises, categories) {
       _this2.exercises = exercises.data;
       _this2.categories = categories.data;
       _this2.loading = false;
@@ -5759,7 +5909,7 @@ __webpack_require__.r(__webpack_exports__);
   mounted: function mounted() {
     var _this = this;
 
-    this.$http.all([this.$http.get("".concat("http://localhost:8000/api", "/trainer/users/").concat(this.$route.params.id)), this.$http.get("".concat("http://localhost:8000/api", "/trainer/users/").concat(this.$route.params.id, "/blocks"))]).then(this.$http.spread(function (user, blocks) {
+    this.$http.all([this.$http.get("".concat("http://gerbzilla.test/api", "/trainer/users/").concat(this.$route.params.id)), this.$http.get("".concat("http://gerbzilla.test/api", "/trainer/users/").concat(this.$route.params.id, "/blocks"))]).then(this.$http.spread(function (user, blocks) {
       _this.user = user.data;
       _this.isActive = user.data.is_active === 1 ? true : false;
       _this.blocks = blocks.data.sort(function (a, b) {
@@ -5775,7 +5925,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this2 = this;
 
       this.loading = true;
-      this.$http.get("".concat("http://localhost:8000/api", "/trainer/users/").concat(this.$route.params.id, "/blocks")).then(function (res) {
+      this.$http.get("".concat("http://gerbzilla.test/api", "/trainer/users/").concat(this.$route.params.id, "/blocks")).then(function (res) {
         _this2.blocks = res.data.sort(function (a, b) {
           return a.start_date < b.start_date ? 1 : b.start_date < a.start_date ? -1 : 0;
         });
@@ -5857,7 +6007,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       this.loading = true;
-      this.$http.get("".concat("http://localhost:8000/api", "/trainer/users")).then(function (res) {
+      this.$http.get("".concat("http://gerbzilla.test/api", "/trainer/users")).then(function (res) {
         _this.users = res.data;
         _this.loading = false;
       })["catch"](function (err) {});
@@ -5869,7 +6019,7 @@ __webpack_require__.r(__webpack_exports__);
   mounted: function mounted() {
     var _this2 = this;
 
-    this.$http.all([this.$http.get("".concat("http://localhost:8000/api", "/trainer/expiring")), this.$http.get("".concat("http://localhost:8000/api", "/trainer/users"))]).then(this.$http.spread(function (expiring, all) {
+    this.$http.all([this.$http.get("".concat("http://gerbzilla.test/api", "/trainer/expiring")), this.$http.get("".concat("http://gerbzilla.test/api", "/trainer/users"))]).then(this.$http.spread(function (expiring, all) {
       _this2.users = all.data;
       _this2.expiring = expiring.data;
       _this2.loading = false;
@@ -5980,7 +6130,7 @@ __webpack_require__.r(__webpack_exports__);
           block_id = _this$$route$params.block_id,
           workout_id = _this$$route$params.workout_id;
       this.loading = true;
-      this.$http.get("".concat("http://localhost:8000/api", "/trainer/users/").concat(user_id, "/blocks/").concat(block_id, "/workouts/").concat(workout_id, "/sets")).then(function (res) {
+      this.$http.get("".concat("http://gerbzilla.test/api", "/trainer/users/").concat(user_id, "/blocks/").concat(block_id, "/workouts/").concat(workout_id, "/sets")).then(function (res) {
         _this.sets = res.data.sets;
         _this.loading = false;
       })["catch"](function (err) {
@@ -6012,7 +6162,7 @@ __webpack_require__.r(__webpack_exports__);
         block_id = _this$$route$params2.block_id,
         workout_id = _this$$route$params2.workout_id;
     this.loading = true;
-    this.$http.get("".concat("http://localhost:8000/api", "/trainer/users/").concat(user_id, "/blocks/").concat(block_id, "/workouts/").concat(workout_id, "/sets")).then(function (res) {
+    this.$http.get("".concat("http://gerbzilla.test/api", "/trainer/users/").concat(user_id, "/blocks/").concat(block_id, "/workouts/").concat(workout_id, "/sets")).then(function (res) {
       _this2.block = res.data.block;
       _this2.type = res.data.type;
       _this2.workout = res.data.workout;
@@ -30763,7 +30913,15 @@ var render = function() {
                   attrs: {
                     block: _vm.block,
                     type: _vm.type,
-                    loading: _vm.loading
+                    loading: _vm.loading,
+                    action: {
+                      text: "Duplicate",
+                      name: "duplicate-block",
+                      params: {
+                        user_id: _vm.$route.params.user_id,
+                        block_id: _vm.block.id
+                      }
+                    }
                   }
                 }),
                 _vm._v(" "),
@@ -30824,6 +30982,207 @@ var render = function() {
                     1
                   )
                 ])
+              ],
+              1
+            )
+          : _vm._e()
+      ])
+    ],
+    1
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/trainer/DuplicateBlock.vue?vue&type=template&id=b7fd44b6&":
+/*!********************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/pages/trainer/DuplicateBlock.vue?vue&type=template&id=b7fd44b6& ***!
+  \********************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    [
+      _c("page-header"),
+      _vm._v(" "),
+      _c("navigation"),
+      _vm._v(" "),
+      _c("side-navigation"),
+      _vm._v(" "),
+      _vm.loading ? _c("loader") : _vm._e(),
+      _vm._v(" "),
+      _c("transition", { attrs: { name: "fade" } }, [
+        !_vm.loading
+          ? _c(
+              "section",
+              [
+                _c("block-header", {
+                  attrs: { block: _vm.block, type: _vm.type }
+                }),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  { staticClass: "container mx-auto px-8 py-20 relative" },
+                  [
+                    _c(
+                      "div",
+                      {
+                        staticClass:
+                          "w-8 h-8 p-2 flex absolute pin-r pin-t border border-grey-dark justify-center items-center rounded-full mr-4 mt-4 cursor-pointer",
+                        on: { click: _vm.closeWindow }
+                      },
+                      [
+                        _c(
+                          "svg",
+                          {
+                            staticClass: "fill-current text-grey-dark",
+                            attrs: {
+                              xmlns: "http://www.w3.org/2000/svg",
+                              width: "24",
+                              height: "24",
+                              viewBox: "0 0 24 24"
+                            }
+                          },
+                          [
+                            _c("path", {
+                              attrs: {
+                                d:
+                                  "M19.293 3.293L12 10.586 4.707 3.293 3.293 4.707 10.586 12 3.293 19.293 4.707 20.707 12 13.414 19.293 20.707 20.707 19.293 13.414 12 20.707 4.707z"
+                              }
+                            })
+                          ]
+                        )
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "h1",
+                      {
+                        staticClass:
+                          "text-grey-darkest font-normal text-2xl mb-10"
+                      },
+                      [_vm._v("Duplicate Workout")]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "form",
+                      {
+                        staticClass: "max-w-md",
+                        on: {
+                          submit: function($event) {
+                            $event.preventDefault()
+                            return _vm.submit($event)
+                          }
+                        }
+                      },
+                      [
+                        _c("div", { staticClass: "mb-6" }, [
+                          _c(
+                            "label",
+                            {
+                              staticClass:
+                                "block text-grey-darker text-sm font-normal mb-4",
+                              attrs: { for: "sets" }
+                            },
+                            [_vm._v("Name")]
+                          ),
+                          _vm._v(" "),
+                          _c("input", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.name,
+                                expression: "name"
+                              }
+                            ],
+                            staticClass:
+                              "appearance-none border-b w-full py-2 text-grey-darker leading-tight focus:outline-none",
+                            attrs: { id: "name", type: "name" },
+                            domProps: { value: _vm.name },
+                            on: {
+                              input: function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.name = $event.target.value
+                              }
+                            }
+                          })
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "mb-6" }, [
+                          _c(
+                            "label",
+                            {
+                              staticClass:
+                                "block text-grey-darker text-sm font-normal mb-4",
+                              attrs: { for: "sets" }
+                            },
+                            [_vm._v("Start Date")]
+                          ),
+                          _vm._v(" "),
+                          _c("input", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.start_date,
+                                expression: "start_date"
+                              }
+                            ],
+                            staticClass:
+                              "appearance-none border-b w-full py-2 text-grey-darker leading-tight focus:outline-none",
+                            attrs: { id: "start_date", type: "date" },
+                            domProps: { value: _vm.start_date },
+                            on: {
+                              input: function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.start_date = $event.target.value
+                              }
+                            }
+                          })
+                        ]),
+                        _vm._v(" "),
+                        _c(
+                          "button",
+                          {
+                            staticClass:
+                              "bg-blue hover:bg-blue-dark text-white font-normal text-sm py-2 px-6 rounded-full focus:outline-none uppercase mt-12",
+                            attrs: { type: "submit" }
+                          },
+                          [_vm._v("Duplicate")]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "button",
+                          {
+                            staticClass:
+                              "text-grey-darker font-normal text-sm py-2 px-6 rounded-full focus:outline-none uppercase",
+                            attrs: { type: "button" },
+                            on: { click: _vm.closeWindow }
+                          },
+                          [_vm._v("Cancel")]
+                        )
+                      ]
+                    )
+                  ]
+                )
               ],
               1
             )
@@ -47795,7 +48154,7 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
       var laravelToken = $cookies.get("laravel_token");
       var token = "Bearer ".concat(laravelToken);
       this.$http.defaults.headers.common["Authorization"] = token;
-      this.$http.get("".concat("http://localhost:8000/api", "/user")).then(function (res) {
+      this.$http.get("".concat("http://gerbzilla.test/api", "/user")).then(function (res) {
         localStorage.setItem("user", JSON.stringify(res.data.user));
         localStorage.setItem("role", JSON.stringify(res.data.role));
       })["catch"](function (err) {
@@ -50291,6 +50650,75 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/pages/trainer/DuplicateBlock.vue":
+/*!*******************************************************!*\
+  !*** ./resources/js/pages/trainer/DuplicateBlock.vue ***!
+  \*******************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _DuplicateBlock_vue_vue_type_template_id_b7fd44b6___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./DuplicateBlock.vue?vue&type=template&id=b7fd44b6& */ "./resources/js/pages/trainer/DuplicateBlock.vue?vue&type=template&id=b7fd44b6&");
+/* harmony import */ var _DuplicateBlock_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./DuplicateBlock.vue?vue&type=script&lang=js& */ "./resources/js/pages/trainer/DuplicateBlock.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _DuplicateBlock_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _DuplicateBlock_vue_vue_type_template_id_b7fd44b6___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _DuplicateBlock_vue_vue_type_template_id_b7fd44b6___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/pages/trainer/DuplicateBlock.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/pages/trainer/DuplicateBlock.vue?vue&type=script&lang=js&":
+/*!********************************************************************************!*\
+  !*** ./resources/js/pages/trainer/DuplicateBlock.vue?vue&type=script&lang=js& ***!
+  \********************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_DuplicateBlock_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./DuplicateBlock.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/trainer/DuplicateBlock.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_DuplicateBlock_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/pages/trainer/DuplicateBlock.vue?vue&type=template&id=b7fd44b6&":
+/*!**************************************************************************************!*\
+  !*** ./resources/js/pages/trainer/DuplicateBlock.vue?vue&type=template&id=b7fd44b6& ***!
+  \**************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_DuplicateBlock_vue_vue_type_template_id_b7fd44b6___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./DuplicateBlock.vue?vue&type=template&id=b7fd44b6& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/trainer/DuplicateBlock.vue?vue&type=template&id=b7fd44b6&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_DuplicateBlock_vue_vue_type_template_id_b7fd44b6___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_DuplicateBlock_vue_vue_type_template_id_b7fd44b6___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
 /***/ "./resources/js/pages/trainer/DuplicateWorkout.vue":
 /*!*********************************************************!*\
   !*** ./resources/js/pages/trainer/DuplicateWorkout.vue ***!
@@ -50729,7 +51157,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _pages_trainer_EditSet__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./pages/trainer/EditSet */ "./resources/js/pages/trainer/EditSet.vue");
 /* harmony import */ var _pages_UserWorkout__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./pages/UserWorkout */ "./resources/js/pages/UserWorkout.vue");
 /* harmony import */ var _pages_trainer_DuplicateWorkout__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./pages/trainer/DuplicateWorkout */ "./resources/js/pages/trainer/DuplicateWorkout.vue");
-/* harmony import */ var _components_NotFound__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./components/NotFound */ "./resources/js/components/NotFound.vue");
+/* harmony import */ var _pages_trainer_DuplicateBlock__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./pages/trainer/DuplicateBlock */ "./resources/js/pages/trainer/DuplicateBlock.vue");
+/* harmony import */ var _components_NotFound__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./components/NotFound */ "./resources/js/components/NotFound.vue");
+
 
 
 
@@ -50757,7 +51187,7 @@ __webpack_require__.r(__webpack_exports__);
   routes: [{
     path: "*",
     name: "NotFound",
-    component: _components_NotFound__WEBPACK_IMPORTED_MODULE_15__["default"]
+    component: _components_NotFound__WEBPACK_IMPORTED_MODULE_16__["default"]
   }, {
     path: "/",
     name: "Home",
@@ -50849,6 +51279,14 @@ __webpack_require__.r(__webpack_exports__);
     path: "/t/users/:user_id/blocks/:block_id",
     name: "block",
     component: _pages_trainer_Blocks__WEBPACK_IMPORTED_MODULE_10__["default"],
+    meta: {
+      requiresAuth: true,
+      is_trainer: true
+    }
+  }, {
+    path: "/t/users/:user_id/blocks/duplicate/:block_id",
+    name: "duplicate-block",
+    component: _pages_trainer_DuplicateBlock__WEBPACK_IMPORTED_MODULE_15__["default"],
     meta: {
       requiresAuth: true,
       is_trainer: true
@@ -50950,7 +51388,7 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vuex__WEBPACK_IMPORTED_MODULE_1__
       return new Promise(function (resolve, reject) {
         commit("auth_request");
         axios__WEBPACK_IMPORTED_MODULE_2___default()({
-          url: "".concat("http://localhost:8000/api", "/login"),
+          url: "".concat("http://gerbzilla.test/api", "/login"),
           data: user,
           method: "POST"
         }).then(function (res) {
@@ -50958,7 +51396,7 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vuex__WEBPACK_IMPORTED_MODULE_1__
           $cookies.set("laravel_token", token);
           axios__WEBPACK_IMPORTED_MODULE_2___default.a.defaults.headers.common["Authorization"] = "Bearer ".concat(token);
           axios__WEBPACK_IMPORTED_MODULE_2___default()({
-            url: "".concat("http://localhost:8000/api", "/user"),
+            url: "".concat("http://gerbzilla.test/api", "/user"),
             method: "GET"
           }).then(function (resp) {
             var user = resp.data.user;
@@ -51061,8 +51499,8 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vuex__WEBPACK_IMPORTED_MODULE_1__
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /Users/jsams/projects/gerbzilla/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /Users/jsams/projects/gerbzilla/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /Users/joe.mac/projects/gerbzilla/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /Users/joe.mac/projects/gerbzilla/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

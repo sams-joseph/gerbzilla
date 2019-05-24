@@ -13,7 +13,12 @@
     </transition>
     <transition name="fade">
       <section v-if="!loading">
-        <block-header v-bind:block="block" v-bind:type="type" v-bind:loading="loading"></block-header>
+        <block-header
+          v-bind:block="block"
+          v-bind:type="type"
+          v-bind:loading="loading"
+          v-bind:action="{ text: 'Duplicate', name:'duplicate-block', params: { user_id: $route.params.user_id, block_id: block.id }}"
+        ></block-header>
         <div
           @click="toggleModal"
           class="z-50 w-12 h-12 bg-red shadow-lg rounded-full fixed pin-r pin-b mr-8 mb-8 flex items-center justify-center cursor-pointer"
