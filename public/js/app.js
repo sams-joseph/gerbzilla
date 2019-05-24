@@ -4010,7 +4010,7 @@ __webpack_require__.r(__webpack_exports__);
 
       return this.users.filter(function (user) {
         var name = "".concat(user.first_name, " ").concat(user.last_name);
-        return name.includes(_this2.query);
+        return name.toLowerCase().includes(_this2.query.toLowerCase());
       });
     },
     showLastWeek: function showLastWeek() {

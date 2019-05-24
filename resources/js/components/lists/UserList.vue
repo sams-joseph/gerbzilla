@@ -174,7 +174,7 @@ export default {
     searchResults() {
       return this.users.filter(user => {
         const name = `${user.first_name} ${user.last_name}`;
-        return name.includes(this.query);
+        return name.toLowerCase().includes(this.query.toLowerCase());
       });
     },
 
