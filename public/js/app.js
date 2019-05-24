@@ -3958,7 +3958,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       if (this.activity.length) {
-        return this.users.filter(function (user) {
+        return this.searchResults.filter(function (user) {
           var _iteratorNormalCompletion = true;
           var _didIteratorError = false;
           var _iteratorError = undefined;
@@ -3989,8 +3989,16 @@ __webpack_require__.r(__webpack_exports__);
           return false;
         });
       } else {
-        return this.users;
+        return this.searchResults;
       }
+    },
+    searchResults: function searchResults() {
+      var _this2 = this;
+
+      return this.users.filter(function (user) {
+        var name = "".concat(user.first_name, " ").concat(user.last_name);
+        return name.includes(_this2.query);
+      });
     },
     showLastWeek: function showLastWeek() {
       return !!this.expiring.length;
@@ -27447,19 +27455,28 @@ var render = function() {
     { staticClass: "flex px-0 md:px-8 mt-20" },
     [
       _c("aside", { staticClass: "w-1/4 hidden md:block" }, [
-        _c(
-          "input",
-          _vm._b(
+        _c("input", {
+          directives: [
             {
-              staticClass:
-                "w-full border border-grey-light bg-grey-lighter rounded-full px-4 py-2 focus:outline-none mb-8",
-              attrs: { type: "text", name: "search", placeholder: "Search" }
-            },
-            "input",
-            _vm.query,
-            false
-          )
-        ),
+              name: "model",
+              rawName: "v-model",
+              value: _vm.query,
+              expression: "query"
+            }
+          ],
+          staticClass:
+            "w-full border border-grey-light bg-grey-lighter rounded-full px-4 py-2 focus:outline-none mb-8",
+          attrs: { type: "text", name: "search", placeholder: "Search" },
+          domProps: { value: _vm.query },
+          on: {
+            input: function($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.query = $event.target.value
+            }
+          }
+        }),
         _vm._v(" "),
         _c(
           "h1",

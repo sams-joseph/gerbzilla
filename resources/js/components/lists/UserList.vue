@@ -5,7 +5,7 @@
         class="w-full border border-grey-light bg-grey-lighter rounded-full px-4 py-2 focus:outline-none mb-8"
         type="text"
         name="search"
-        v-bind="query"
+        v-model="query"
         placeholder="Search"
       >
       <h1 class="text-grey-darkest font-normal text-2xl mb-10 mx-2">Status</h1>
@@ -149,7 +149,7 @@ export default {
   computed: {
     filteredUsers() {
       if (this.activity.length) {
-        return this.users.filter(user => {
+        return this.searchResults.filter(user => {
           for (const status of this.activity) {
             if (user.is_active === parseInt(status)) {
               return true;
@@ -158,8 +158,15 @@ export default {
           return false;
         });
       } else {
-        return this.users;
+        return this.searchResults;
       }
+    },
+
+    searchResults() {
+      return this.users.filter(user => {
+        const name = `${user.first_name} ${user.last_name}`;
+        return name.includes(this.query);
+      });
     },
 
     showLastWeek() {
