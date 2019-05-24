@@ -3971,6 +3971,61 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -4420,7 +4475,6 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-//
 //
 //
 //
@@ -27511,28 +27565,55 @@ var render = function() {
     { staticClass: "flex px-0 md:px-8 mt-20" },
     [
       _c("aside", { staticClass: "w-1/4 hidden md:block" }, [
-        _c("input", {
-          directives: [
-            {
-              name: "model",
-              rawName: "v-model",
-              value: _vm.query,
-              expression: "query"
-            }
-          ],
-          staticClass:
-            "w-full border border-grey-light bg-grey-lighter rounded-full px-4 py-2 focus:outline-none mb-8",
-          attrs: { type: "text", name: "search", placeholder: "Search" },
-          domProps: { value: _vm.query },
-          on: {
-            input: function($event) {
-              if ($event.target.composing) {
-                return
+        _c("div", { staticClass: "relative" }, [
+          _c("div", { staticClass: "absolute pin-r py-1 pr-2" }, [
+            _c(
+              "svg",
+              {
+                staticClass: "fill-current text-grey-darkest",
+                attrs: { width: "24", height: "28", viewBox: "0 0 24 24" }
+              },
+              [
+                _c("path", {
+                  attrs: {
+                    d:
+                      "M10,18c1.846,0,3.543-0.635,4.897-1.688l4.396,4.396l1.414-1.414l-4.396-4.396C17.365,13.543,18,11.846,18,10 c0-4.411-3.589-8-8-8s-8,3.589-8,8S5.589,18,10,18z M10,4c3.309,0,6,2.691,6,6s-2.691,6-6,6s-6-2.691-6-6S6.691,4,10,4z"
+                  }
+                }),
+                _vm._v(" "),
+                _c("path", {
+                  attrs: {
+                    d:
+                      "M11.412,8.586C11.791,8.966,12,9.468,12,10h2c0-1.065-0.416-2.069-1.174-2.828c-1.514-1.512-4.139-1.512-5.652,0 l1.412,1.416C9.346,7.83,10.656,7.832,11.412,8.586z"
+                  }
+                })
+              ]
+            )
+          ]),
+          _vm._v(" "),
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.query,
+                expression: "query"
               }
-              _vm.query = $event.target.value
+            ],
+            staticClass:
+              "w-full border border-grey-light text-grey-darkest bg-grey-lighter rounded-full px-4 py-2 focus:outline-none mb-8",
+            attrs: { type: "text", name: "search", placeholder: "Search" },
+            domProps: { value: _vm.query },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.query = $event.target.value
+              }
             }
-          }
-        }),
+          })
+        ]),
         _vm._v(" "),
         _c(
           "h1",
@@ -27676,28 +27757,55 @@ var render = function() {
       _c("div", { staticClass: "flex-1" }, [
         _c("div", { staticClass: "px-4" }, [
           _c("div", { staticClass: "px-4" }, [
-            _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.query,
-                  expression: "query"
-                }
-              ],
-              staticClass:
-                "w-full md:hidden border border-grey-light bg-grey-lighter rounded-full px-4 py-2 focus:outline-none mb-8",
-              attrs: { type: "text", name: "search", placeholder: "Search" },
-              domProps: { value: _vm.query },
-              on: {
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
+            _c("div", { staticClass: "relative md:hidden" }, [
+              _c("div", { staticClass: "absolute pin-r py-1 pr-2" }, [
+                _c(
+                  "svg",
+                  {
+                    staticClass: "fill-current text-grey-darkest",
+                    attrs: { width: "24", height: "28", viewBox: "0 0 24 24" }
+                  },
+                  [
+                    _c("path", {
+                      attrs: {
+                        d:
+                          "M10,18c1.846,0,3.543-0.635,4.897-1.688l4.396,4.396l1.414-1.414l-4.396-4.396C17.365,13.543,18,11.846,18,10 c0-4.411-3.589-8-8-8s-8,3.589-8,8S5.589,18,10,18z M10,4c3.309,0,6,2.691,6,6s-2.691,6-6,6s-6-2.691-6-6S6.691,4,10,4z"
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c("path", {
+                      attrs: {
+                        d:
+                          "M11.412,8.586C11.791,8.966,12,9.468,12,10h2c0-1.065-0.416-2.069-1.174-2.828c-1.514-1.512-4.139-1.512-5.652,0 l1.412,1.416C9.346,7.83,10.656,7.832,11.412,8.586z"
+                      }
+                    })
+                  ]
+                )
+              ]),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.query,
+                    expression: "query"
                   }
-                  _vm.query = $event.target.value
+                ],
+                staticClass:
+                  "w-full border border-grey-light bg-grey-lighter rounded-full px-4 py-2 focus:outline-none mb-8",
+                attrs: { type: "text", name: "search", placeholder: "Search" },
+                domProps: { value: _vm.query },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.query = $event.target.value
+                  }
                 }
-              }
-            })
+              })
+            ])
           ]),
           _vm._v(" "),
           _vm.showLastWeek
@@ -27753,7 +27861,10 @@ var render = function() {
                           _c("div", { staticClass: "flex-1" }, [
                             _c(
                               "span",
-                              { staticClass: "block text-grey-darkest mr-6" },
+                              {
+                                staticClass:
+                                  "block text-grey-darkest mr-6 font-medium"
+                              },
                               [
                                 _vm._v(
                                   _vm._s(user.first_name + " " + user.last_name)
@@ -27774,6 +27885,32 @@ var render = function() {
                                       : "Past expiration"
                                   )
                                 )
+                              ]
+                            )
+                          ]),
+                          _vm._v(" "),
+                          _c("div", [
+                            _c(
+                              "svg",
+                              {
+                                staticClass: "fill-current",
+                                class: {
+                                  "text-green": user.is_active === 1,
+                                  "text-grey-dark": user.is_active === 2
+                                },
+                                attrs: {
+                                  width: "20",
+                                  height: "20",
+                                  viewBox: "0 0 34 34"
+                                }
+                              },
+                              [
+                                _c("path", {
+                                  attrs: {
+                                    d:
+                                      "M16.9999 31.1667C9.17588 31.1667 2.83325 24.824 2.83325 17C2.83325 9.17598 9.17588 2.83334 16.9999 2.83334C24.824 2.83334 31.1666 9.17598 31.1666 17C31.1666 24.824 24.824 31.1667 16.9999 31.1667ZM11.3333 14.1667L8.49992 17L15.5833 24.0833L25.4999 14.1667L22.6666 11.3333L15.5833 18.4167L11.3333 14.1667Z"
+                                  }
+                                })
                               ]
                             )
                           ])
@@ -27834,7 +27971,10 @@ var render = function() {
                       _c("div", { staticClass: "flex-1" }, [
                         _c(
                           "span",
-                          { staticClass: "block text-grey-darkest mr-6" },
+                          {
+                            staticClass:
+                              "block text-grey-darkest font-medium mr-6"
+                          },
                           [
                             _vm._v(
                               _vm._s(user.first_name + " " + user.last_name)
@@ -27853,6 +27993,32 @@ var render = function() {
                             )
                           )
                         ])
+                      ]),
+                      _vm._v(" "),
+                      _c("div", [
+                        _c(
+                          "svg",
+                          {
+                            staticClass: "fill-current",
+                            class: {
+                              "text-green": user.is_active === 1,
+                              "text-grey-dark": user.is_active === 2
+                            },
+                            attrs: {
+                              width: "20",
+                              height: "20",
+                              viewBox: "0 0 34 34"
+                            }
+                          },
+                          [
+                            _c("path", {
+                              attrs: {
+                                d:
+                                  "M16.9999 31.1667C9.17588 31.1667 2.83325 24.824 2.83325 17C2.83325 9.17598 9.17588 2.83334 16.9999 2.83334C24.824 2.83334 31.1666 9.17598 31.1666 17C31.1666 24.824 24.824 31.1667 16.9999 31.1667ZM11.3333 14.1667L8.49992 17L15.5833 24.0833L25.4999 14.1667L22.6666 11.3333L15.5833 18.4167L11.3333 14.1667Z"
+                              }
+                            })
+                          ]
+                        )
                       ])
                     ]
                   )
@@ -29047,7 +29213,15 @@ var render = function() {
               staticClass:
                 "text-center text-grey-darkest font-normal text-base mb-12 px-8"
             },
-            [_vm._v(_vm._s(_vm.todaysWorkout.name))]
+            [
+              _vm._v(
+                _vm._s(
+                  _vm.todaysWorkout.name
+                    ? _vm.todaysWorkout.name
+                    : "No workout today"
+                )
+              )
+            ]
           ),
           _vm._v(" "),
           _c("section", { staticClass: "px-4" }, [
@@ -29226,13 +29400,7 @@ var staticRenderFns = [
           _c("img", {
             staticClass: "w-32 h-32 opacity-75",
             attrs: { src: "/images/empty_weight_icon.svg", alt: "Empty" }
-          }),
-          _vm._v(" "),
-          _c(
-            "h6",
-            { staticClass: "font-thin text-grey-dark text-xl mt-4 uppercase" },
-            [_vm._v("No workout today")]
-          )
+          })
         ]
       )
     ])

@@ -1,13 +1,25 @@
 <template>
   <div class="flex px-0 md:px-8 mt-20">
     <aside class="w-1/4 hidden md:block">
-      <input
-        class="w-full border border-grey-light bg-grey-lighter rounded-full px-4 py-2 focus:outline-none mb-8"
-        type="text"
-        name="search"
-        v-model="query"
-        placeholder="Search"
-      >
+      <div class="relative">
+        <div class="absolute pin-r py-1 pr-2">
+          <svg class="fill-current text-grey-darkest" width="24" height="28" viewBox="0 0 24 24">
+            <path
+              d="M10,18c1.846,0,3.543-0.635,4.897-1.688l4.396,4.396l1.414-1.414l-4.396-4.396C17.365,13.543,18,11.846,18,10 c0-4.411-3.589-8-8-8s-8,3.589-8,8S5.589,18,10,18z M10,4c3.309,0,6,2.691,6,6s-2.691,6-6,6s-6-2.691-6-6S6.691,4,10,4z"
+            ></path>
+            <path
+              d="M11.412,8.586C11.791,8.966,12,9.468,12,10h2c0-1.065-0.416-2.069-1.174-2.828c-1.514-1.512-4.139-1.512-5.652,0 l1.412,1.416C9.346,7.83,10.656,7.832,11.412,8.586z"
+            ></path>
+          </svg>
+        </div>
+        <input
+          class="w-full border border-grey-light text-grey-darkest bg-grey-lighter rounded-full px-4 py-2 focus:outline-none mb-8"
+          type="text"
+          name="search"
+          v-model="query"
+          placeholder="Search"
+        >
+      </div>
       <h1 class="text-grey-darkest font-normal text-2xl mb-10 mx-2">Status</h1>
       <ul class="list-reset">
         <li class="hover:bg-grey-lighter p-2 rounded flex items-center">
@@ -41,13 +53,30 @@
     <div class="flex-1">
       <div class="px-4">
         <div class="px-4">
-          <input
-            class="w-full md:hidden border border-grey-light bg-grey-lighter rounded-full px-4 py-2 focus:outline-none mb-8"
-            type="text"
-            name="search"
-            v-model="query"
-            placeholder="Search"
-          >
+          <div class="relative md:hidden">
+            <div class="absolute pin-r py-1 pr-2">
+              <svg
+                class="fill-current text-grey-darkest"
+                width="24"
+                height="28"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M10,18c1.846,0,3.543-0.635,4.897-1.688l4.396,4.396l1.414-1.414l-4.396-4.396C17.365,13.543,18,11.846,18,10 c0-4.411-3.589-8-8-8s-8,3.589-8,8S5.589,18,10,18z M10,4c3.309,0,6,2.691,6,6s-2.691,6-6,6s-6-2.691-6-6S6.691,4,10,4z"
+                ></path>
+                <path
+                  d="M11.412,8.586C11.791,8.966,12,9.468,12,10h2c0-1.065-0.416-2.069-1.174-2.828c-1.514-1.512-4.139-1.512-5.652,0 l1.412,1.416C9.346,7.83,10.656,7.832,11.412,8.586z"
+                ></path>
+              </svg>
+            </div>
+            <input
+              class="w-full border border-grey-light bg-grey-lighter rounded-full px-4 py-2 focus:outline-none mb-8"
+              type="text"
+              name="search"
+              v-model="query"
+              placeholder="Search"
+            >
+          </div>
         </div>
         <h1 v-if="showLastWeek" class="text-grey-darkest font-normal text-2xl mb-10 px-4">Expiring</h1>
         <ul v-if="showLastWeek" class="list-reset px-4 md:px-0 mb-10 flex flex-wrap">
@@ -65,11 +94,24 @@
               </span>
               <div class="flex-1">
                 <span
-                  class="block text-grey-darkest mr-6"
+                  class="block text-grey-darkest mr-6 font-medium"
                 >{{ `${user.first_name} ${user.last_name}` }}</span>
                 <span
                   class="text-blue text-sm mr-6"
                 >{{ user.block_expiration ? $moment(user.block_expiration).format('MMMM Do YYYY') : 'Past expiration' }}</span>
+              </div>
+              <div>
+                <svg
+                  class="fill-current"
+                  :class="{'text-green': user.is_active === 1, 'text-grey-dark': user.is_active === 2}"
+                  width="20"
+                  height="20"
+                  viewBox="0 0 34 34"
+                >
+                  <path
+                    d="M16.9999 31.1667C9.17588 31.1667 2.83325 24.824 2.83325 17C2.83325 9.17598 9.17588 2.83334 16.9999 2.83334C24.824 2.83334 31.1666 9.17598 31.1666 17C31.1666 24.824 24.824 31.1667 16.9999 31.1667ZM11.3333 14.1667L8.49992 17L15.5833 24.0833L25.4999 14.1667L22.6666 11.3333L15.5833 18.4167L11.3333 14.1667Z"
+                  ></path>
+                </svg>
               </div>
             </router-link>
           </li>
@@ -90,11 +132,24 @@
               </span>
               <div class="flex-1">
                 <span
-                  class="block text-grey-darkest mr-6"
+                  class="block text-grey-darkest font-medium mr-6"
                 >{{ `${user.first_name} ${user.last_name}` }}</span>
                 <span
                   class="text-blue text-sm mr-6"
                 >{{ user.block_expiration ? $moment(user.block_expiration).format('MMMM Do YYYY') : 'Past expiration' }}</span>
+              </div>
+              <div>
+                <svg
+                  class="fill-current"
+                  :class="{'text-green': user.is_active === 1, 'text-grey-dark': user.is_active === 2}"
+                  width="20"
+                  height="20"
+                  viewBox="0 0 34 34"
+                >
+                  <path
+                    d="M16.9999 31.1667C9.17588 31.1667 2.83325 24.824 2.83325 17C2.83325 9.17598 9.17588 2.83334 16.9999 2.83334C24.824 2.83334 31.1666 9.17598 31.1666 17C31.1666 24.824 24.824 31.1667 16.9999 31.1667ZM11.3333 14.1667L8.49992 17L15.5833 24.0833L25.4999 14.1667L22.6666 11.3333L15.5833 18.4167L11.3333 14.1667Z"
+                  ></path>
+                </svg>
               </div>
             </router-link>
           </li>

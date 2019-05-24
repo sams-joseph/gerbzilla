@@ -73,7 +73,7 @@
         >{{ $moment(new Date()).format('dddd MMM Do') }}</h2>
         <h2
           class="text-center text-grey-darkest font-normal text-base mb-12 px-8"
-        >{{ todaysWorkout.name }}</h2>
+        >{{ todaysWorkout.name ? todaysWorkout.name : 'No workout today' }}</h2>
         <section class="px-4">
           <ul v-if="!!sets.length" class="list-reset flex flex-wrap px-4 md:px-0">
             <li v-for="(set, index) in sets" :key="set.id" class="w-full md:w-1/2 lg:w-1/3 mb-4">
@@ -99,7 +99,6 @@
             <div class="w-full">
               <div class="container mx-auto px-8 flex flex-col items-center">
                 <img class="w-32 h-32 opacity-75" src="/images/empty_weight_icon.svg" alt="Empty">
-                <h6 class="font-thin text-grey-dark text-xl mt-4 uppercase">No workout today</h6>
               </div>
             </div>
           </div>
