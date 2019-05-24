@@ -9,6 +9,7 @@ use Carbon\Carbon;
 use App\User;
 use App\Block;
 use App\Workout;
+use App\Set;
 
 class BlockController extends Controller
 {
