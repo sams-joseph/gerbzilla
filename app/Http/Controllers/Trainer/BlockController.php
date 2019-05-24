@@ -78,9 +78,7 @@ class BlockController extends Controller
             foreach ($workout->sets()->get() as $set) {
                 $set = Set::where('id', $set->id)->first();
                 $new_set = $set->replicate();
-                $date = new Carbon($new_set->date);
                 $new_set->workout_id = $new_workout->id;
-                $new_set->date = $date->addDays($day_gap);
                 $new_set->save();
             }
         }
