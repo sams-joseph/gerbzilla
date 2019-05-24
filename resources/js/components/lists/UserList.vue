@@ -10,15 +10,17 @@
       >
       <h1 class="text-grey-darkest font-normal text-2xl mb-10 mx-2">Status</h1>
       <ul class="list-reset">
-        <li class="hover:bg-grey-lightest p-2 rounded flex items-center">
+        <li class="hover:bg-grey-lighter p-2 rounded flex items-center">
           <label class="checkbox-container flex-1">
             Active
             <input type="checkbox" id="active" name="active" value="1" v-model="activity">
             <span class="checkbox-checkmark"></span>
           </label>
-          <span class="bg-grey-lighter rounded-full float-right px-2 py-1">{{ getNumUsers(1) }}</span>
+          <span
+            class="bg-grey-light text-grey-darkest rounded-full float-right px-2 py-1"
+          >{{ getNumUsers(1) }}</span>
         </li>
-        <li class="hover:bg-grey-lightest p-2 rounded flex items-center">
+        <li class="hover:bg-grey-lighter p-2 rounded flex items-center">
           <label class="checkbox-container flex-1">
             Inactive
             <input
@@ -30,24 +32,45 @@
             >
             <span class="checkbox-checkmark"></span>
           </label>
-          <span class="bg-grey-lighter rounded-full float-right px-2 py-1">{{ getNumUsers(2) }}</span>
+          <span
+            class="bg-grey-light text-grey-darkest rounded-full float-right px-2 py-1"
+          >{{ getNumUsers(2) }}</span>
         </li>
       </ul>
     </aside>
     <div class="flex-1">
       <div class="px-4">
+        <div class="px-4">
+          <input
+            class="w-full md:hidden border border-grey-light bg-grey-lighter rounded-full px-4 py-2 focus:outline-none mb-8"
+            type="text"
+            name="search"
+            v-model="query"
+            placeholder="Search"
+          >
+        </div>
         <h1 v-if="showLastWeek" class="text-grey-darkest font-normal text-2xl mb-10 px-4">Expiring</h1>
         <ul v-if="showLastWeek" class="list-reset px-4 md:px-0 mb-10 flex flex-wrap">
           <li
             v-for="user in expiring"
             v-bind:key="user.id"
-            class="w-full md:w-1/2 lg:w-1/3 py-4 md:hover:bg-grey-lighter rounded-lg px-4 flex items-center shadow-lg md:shadow-none mb-4 md:mb-0 bg-white"
+            class="w-full lg:w-1/2 py-4 md:hover:bg-grey-lighter rounded-lg px-4 flex items-center shadow-lg md:shadow-none mb-4 md:mb-0 bg-white"
           >
-            <router-link :to="{ name: 'user', params: { id: user.id }}" class="flex items-center">
-              <span class="rounded-full mr-6 h-12 w-12">
-                <img src="/images/profile-icon.svg" alt="Profile Icon">
+            <router-link
+              :to="{ name: 'user', params: { id: user.id }}"
+              class="w-full flex items-center"
+            >
+              <span class="rounded-full mr-6 h-18 w-18 md:h-12 md:w-12">
+                <img class="w-full md:w-auto" src="/images/profile-icon.svg" alt="Profile Icon">
               </span>
-              <span class="text-grey-darkest mr-6">{{ `${user.first_name} ${user.last_name}` }}</span>
+              <div class="flex-1">
+                <span
+                  class="block text-grey-darkest mr-6"
+                >{{ `${user.first_name} ${user.last_name}` }}</span>
+                <span
+                  class="text-blue text-sm mr-6"
+                >{{ user.block_expiration ? $moment(user.block_expiration).format('MMMM Do YYYY') : 'Past expiration' }}</span>
+              </div>
             </router-link>
           </li>
         </ul>
@@ -56,13 +79,23 @@
           <li
             v-for="user in filteredUsers"
             v-bind:key="user.id"
-            class="w-full md:w-1/2 lg:w-1/3 py-4 md:hover:bg-grey-lighter rounded-lg px-4 flex items-center shadow-lg md:shadow-none mb-4 md:mb-0 bg-white"
+            class="w-full lg:w-1/2 py-4 md:hover:bg-grey-lighter rounded-lg px-4 flex items-center shadow-lg md:shadow-none mb-4 md:mb-0 bg-white"
           >
-            <router-link :to="{ name: 'user', params: { id: user.id }}" class="flex items-center">
-              <span class="rounded-full mr-6 h-12 w-12">
-                <img src="/images/profile-icon.svg" alt="Profile Icon">
+            <router-link
+              :to="{ name: 'user', params: { id: user.id }}"
+              class="flex items-center w-full"
+            >
+              <span class="rounded-full mr-6 h-18 w-18 md:h-12 md:w-12">
+                <img class="w-full md:w-auto" src="/images/profile-icon.svg" alt="Profile Icon">
               </span>
-              <span class="text-grey-darkest mr-6">{{ `${user.first_name} ${user.last_name}` }}</span>
+              <div class="flex-1">
+                <span
+                  class="block text-grey-darkest mr-6"
+                >{{ `${user.first_name} ${user.last_name}` }}</span>
+                <span
+                  class="text-blue text-sm mr-6"
+                >{{ user.block_expiration ? $moment(user.block_expiration).format('MMMM Do YYYY') : 'Past expiration' }}</span>
+              </div>
             </router-link>
           </li>
         </ul>
@@ -78,13 +111,6 @@
           handler: 'toggleFilterMenu'
         }"
       >
-        <input
-          class="w-full border border-grey-light bg-grey-lighter rounded-full px-4 py-2 focus:outline-none mb-8"
-          type="text"
-          name="search"
-          v-model="query"
-          placeholder="Search"
-        >
         <h1 class="text-grey-darkest font-normal text-2xl mb-10">Status</h1>
         <ul class="list-reset">
           <li class="hover:bg-grey-lightest p-2 rounded flex items-center">
