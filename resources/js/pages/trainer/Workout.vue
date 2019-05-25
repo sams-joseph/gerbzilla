@@ -7,8 +7,9 @@
     <transition name="fade">
       <section v-if="!loading">
         <block-header
-          v-bind:block="block"
-          v-bind:type="type"
+          v-bind:heading="workout.name"
+          v-bind:subheading="$moment(workout.date).format('MMMM Do YYYY')"
+          v-bind:type="type.name"
           v-bind:action="{ text: 'Duplicate', name:'duplicate-workout', params: { user_id: $route.params.user_id, workout_id: workout.id }}"
         ></block-header>
 
@@ -36,10 +37,7 @@
               v-bind:show="showModal"
             ></create-set-form>
           </transition>
-          <h1 class="text-grey-darkest font-normal text-2xl mb-2 px-4">{{ workout.name }}</h1>
-          <h4
-            class="text-grey-dark font-normal text-base px-4 mb-10"
-          >{{ $moment(block.start_date).format('MMMM Do YYYY') }}</h4>
+          <h1 class="text-grey-darkest font-normal text-2xl mb-10 px-4">Exercises</h1>
           <ul class="list-reset flex flex-wrap px-4 md:px-0">
             <li v-for="set in sets" :key="set.id" class="w-full md:w-1/2 lg:w-1/3 mb-4">
               <router-link

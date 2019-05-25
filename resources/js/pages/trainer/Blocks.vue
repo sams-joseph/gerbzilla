@@ -14,8 +14,9 @@
     <transition name="fade">
       <section v-if="!loading">
         <block-header
-          v-bind:block="block"
-          v-bind:type="type"
+          v-bind:heading="block.name"
+          v-bind:subheading="$moment(block.start_date).format('MMMM Do YYYY')"
+          v-bind:type="type.name"
           v-bind:loading="loading"
           v-bind:action="{ text: 'Duplicate', name:'duplicate-block', params: { user_id: $route.params.user_id, block_id: block.id }}"
         ></block-header>
@@ -118,7 +119,7 @@ export default {
 
   computed: {
     userId() {
-      return this.$route.params.user_id;
+      return parseInt(this.$route.params.user_id);
     }
   }
 };

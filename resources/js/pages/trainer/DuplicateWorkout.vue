@@ -6,7 +6,11 @@
     <loader v-if="loading"></loader>
     <transition name="fade">
       <section v-if="!loading">
-        <block-header v-bind:block="block" v-bind:type="type"></block-header>
+        <block-header
+          v-bind:heading="workout.name"
+          v-bind:subheading="$moment(workout.date).format('MMMM Do YYYY')"
+          v-bind:type="type.name"
+        ></block-header>
         <div class="container mx-auto px-8 py-20 relative">
           <div
             @click="closeWindow"

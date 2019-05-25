@@ -1952,13 +1952,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
-    block: Object,
-    action: Object,
-    type: Object
+    heading: String,
+    subheading: String,
+    type: String,
+    action: Object
   }
 });
 
@@ -2610,39 +2609,6 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -5323,6 +5289,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -5377,7 +5344,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   computed: {
     userId: function userId() {
-      return this.$route.params.user_id;
+      return parseInt(this.$route.params.user_id);
     }
   }
 });
@@ -5393,6 +5360,10 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
 //
 //
 //
@@ -5602,6 +5573,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -5686,6 +5661,10 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
 //
 //
 //
@@ -6040,8 +6019,6 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-//
-//
 //
 //
 //
@@ -24772,15 +24749,15 @@ var render = function() {
       {
         staticClass: "w-full py-20",
         class: {
-          "bg-red-gradient": _vm.type.name === "strength",
-          "bg-blue-gradient": _vm.type.name === "hypertrophy",
-          "bg-green-gradient": _vm.type.name === "fitness"
+          "bg-red-gradient": _vm.type === "strength",
+          "bg-blue-gradient": _vm.type === "hypertrophy",
+          "bg-green-gradient": _vm.type === "fitness"
         }
       },
       [
         _c("div", { staticClass: "container mx-auto px-0" }, [
           _c("h1", { staticClass: "text-white font-bold text-2xl mb-2 px-8" }, [
-            _vm._v(_vm._s(_vm.block.name))
+            _vm._v(_vm._s(_vm.heading))
           ]),
           _vm._v(" "),
           _c(
@@ -24789,11 +24766,7 @@ var render = function() {
               staticClass:
                 "text-white font-normal text-base opacity-75 px-8 mb-4"
             },
-            [
-              _vm._v(
-                _vm._s(_vm.$moment(_vm.block.start_date).format("MMMM Do YYYY"))
-              )
-            ]
+            [_vm._v(_vm._s(_vm.subheading))]
           ),
           _vm._v(" "),
           _c(
@@ -24802,7 +24775,7 @@ var render = function() {
               staticClass:
                 "text-center inline-block w-auto mx-8 py-1 px-4 rounded-full text-xs text-white font-medium uppercase description-pill"
             },
-            [_vm._v(_vm._s(_vm.type.name))]
+            [_vm._v(_vm._s(_vm.type))]
           )
         ])
       ]
@@ -26012,75 +25985,52 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("li", { staticClass: "w-full md:w-1/2 lg:w-1/3 mb-4" }, [
-    _c(
-      "div",
-      {
-        staticClass:
-          "relative w-full bg-white shadow-lg md:shadow-none md:hover:bg-grey-lighter rounded-lg p-4 flex justify-between items-start"
-      },
-      [
-        _c("div", { staticClass: "flex items-center" }, [
-          _c("div", [
-            _c(
-              "h2",
-              { staticClass: "text-lg text-grey-darkest font-bold mb-1" },
-              [_vm._v(_vm._s(_vm.workout.name))]
-            ),
-            _vm._v(" "),
-            _c("h3", { staticClass: "text-base text-blue font-normal" }, [
-              _vm._v(
-                _vm._s(_vm.$moment(_vm.workout.date).format("dddd, MMM Do"))
-              )
-            ])
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "items-center flex cursor-pointer" }, [
-          _c("div", { ref: "button", on: { click: _vm.togglePopover } }, [
-            _c(
-              "svg",
-              {
-                staticClass: "fill-current text-grey-darker",
-                attrs: {
-                  xmlns: "http://www.w3.org/2000/svg",
-                  width: "24",
-                  height: "24",
-                  viewBox: "0 0 24 24"
-                }
-              },
-              [
-                _c("path", {
-                  attrs: {
-                    d:
-                      "M12 10c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2S13.1 10 12 10zM12 4c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2S13.1 4 12 4zM12 16c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2S13.1 16 12 16z"
-                  }
-                })
-              ]
-            )
-          ])
-        ]),
-        _vm._v(" "),
-        _vm.showPopover
-          ? _c(
-              "div",
-              {
-                directives: [
-                  {
-                    name: "closable",
-                    rawName: "v-closable",
-                    value: {
-                      exclude: ["button"],
-                      handler: "closePopover"
-                    },
-                    expression:
-                      "{\n        exclude: ['button'],\n        handler: 'closePopover'\n      }"
-                  }
-                ],
-                staticClass:
-                  "items-center absolute flex bg-white shadow-lg rounded-lg p-4 pin-r pin-out-top"
-              },
-              [
+  return _c(
+    "li",
+    { staticClass: "w-full md:w-1/2 lg:w-1/3 mb-4" },
+    [
+      _c(
+        "router-link",
+        {
+          attrs: {
+            to: {
+              name: "workout",
+              params: {
+                user_id: _vm.userId,
+                block_id: _vm.blockId,
+                workout_id: _vm.workout.id
+              }
+            },
+            "active-class": "none"
+          }
+        },
+        [
+          _c(
+            "div",
+            {
+              staticClass:
+                "relative w-full bg-white shadow-lg md:shadow-none md:hover:bg-grey-lighter rounded-lg p-4 flex justify-between items-center"
+            },
+            [
+              _c("div", { staticClass: "flex items-center" }, [
+                _c("div", [
+                  _c(
+                    "h2",
+                    { staticClass: "text-lg text-grey-darkest font-bold mb-1" },
+                    [_vm._v(_vm._s(_vm.workout.name))]
+                  ),
+                  _vm._v(" "),
+                  _c("h3", { staticClass: "text-base text-blue font-normal" }, [
+                    _vm._v(
+                      _vm._s(
+                        _vm.$moment(_vm.workout.date).format("dddd, MMM Do")
+                      )
+                    )
+                  ])
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "items-center flex cursor-pointer" }, [
                 _c(
                   "div",
                   [
@@ -26129,61 +26079,15 @@ var render = function() {
                     )
                   ],
                   1
-                ),
-                _vm._v(" "),
-                _c(
-                  "router-link",
-                  {
-                    staticClass: "ml-2",
-                    attrs: {
-                      to: {
-                        name: "workout",
-                        params: {
-                          user_id: _vm.userId,
-                          block_id: _vm.blockId,
-                          workout_id: _vm.workout.id
-                        }
-                      },
-                      "active-class": "none"
-                    }
-                  },
-                  [
-                    _c(
-                      "svg",
-                      {
-                        staticClass: "fill-current text-grey-darker",
-                        attrs: {
-                          xmlns: "http://www.w3.org/2000/svg",
-                          width: "24",
-                          height: "24",
-                          viewBox: "0 0 24 24"
-                        }
-                      },
-                      [
-                        _c("path", {
-                          attrs: {
-                            transform: "rotate(45.001 16.357 4.656)",
-                            d: "M14.235 3.039H18.478V6.273H14.235z"
-                          }
-                        }),
-                        _vm._v(" "),
-                        _c("path", {
-                          attrs: {
-                            d:
-                              "M4 14L4 17 7 17 15.299 8.713 12.299 5.713zM4 20H20V22H4z"
-                          }
-                        })
-                      ]
-                    )
-                  ]
                 )
-              ],
-              1
-            )
-          : _vm._e()
-      ]
-    )
-  ])
+              ])
+            ]
+          )
+        ]
+      )
+    ],
+    1
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -30911,8 +30815,11 @@ var render = function() {
               [
                 _c("block-header", {
                   attrs: {
-                    block: _vm.block,
-                    type: _vm.type,
+                    heading: _vm.block.name,
+                    subheading: _vm
+                      .$moment(_vm.block.start_date)
+                      .format("MMMM Do YYYY"),
+                    type: _vm.type.name,
                     loading: _vm.loading,
                     action: {
                       text: "Duplicate",
@@ -31030,7 +30937,13 @@ var render = function() {
               "section",
               [
                 _c("block-header", {
-                  attrs: { block: _vm.block, type: _vm.type }
+                  attrs: {
+                    heading: _vm.block.name,
+                    subheading: _vm
+                      .$moment(_vm.block.start_date)
+                      .format("MMMM Do YYYY"),
+                    type: _vm.type.name
+                  }
                 }),
                 _vm._v(" "),
                 _c(
@@ -31231,7 +31144,13 @@ var render = function() {
               "section",
               [
                 _c("block-header", {
-                  attrs: { block: _vm.block, type: _vm.type }
+                  attrs: {
+                    heading: _vm.workout.name,
+                    subheading: _vm
+                      .$moment(_vm.workout.date)
+                      .format("MMMM Do YYYY"),
+                    type: _vm.type.name
+                  }
                 }),
                 _vm._v(" "),
                 _c(
@@ -31432,7 +31351,13 @@ var render = function() {
               "section",
               [
                 _c("block-header", {
-                  attrs: { block: _vm.block, type: _vm.type }
+                  attrs: {
+                    heading: _vm.block.name,
+                    subheading: _vm
+                      .$moment(_vm.block.start_date)
+                      .format("MMMM Do YYYY"),
+                    type: _vm.type.name
+                  }
                 }),
                 _vm._v(" "),
                 _c(
@@ -31886,8 +31811,11 @@ var render = function() {
               [
                 _c("block-header", {
                   attrs: {
-                    block: _vm.block,
-                    type: _vm.type,
+                    heading: _vm.workout.name,
+                    subheading: _vm
+                      .$moment(_vm.workout.date)
+                      .format("MMMM Do YYYY"),
+                    type: _vm.type.name,
                     action: {
                       text: "Duplicate",
                       name: "duplicate-workout",
@@ -31955,26 +31883,9 @@ var render = function() {
                       "h1",
                       {
                         staticClass:
-                          "text-grey-darkest font-normal text-2xl mb-2 px-4"
+                          "text-grey-darkest font-normal text-2xl mb-10 px-4"
                       },
-                      [_vm._v(_vm._s(_vm.workout.name))]
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "h4",
-                      {
-                        staticClass:
-                          "text-grey-dark font-normal text-base px-4 mb-10"
-                      },
-                      [
-                        _vm._v(
-                          _vm._s(
-                            _vm
-                              .$moment(_vm.block.start_date)
-                              .format("MMMM Do YYYY")
-                          )
-                        )
-                      ]
+                      [_vm._v("Exercises")]
                     ),
                     _vm._v(" "),
                     _c(

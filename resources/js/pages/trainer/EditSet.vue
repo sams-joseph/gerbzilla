@@ -6,7 +6,11 @@
     <loader v-if="loading"></loader>
     <transition name="fade">
       <section v-if="!loading">
-        <block-header v-bind:block="block" v-bind:type="type"></block-header>
+        <block-header
+          v-bind:heading="block.name"
+          v-bind:subheading="$moment(block.start_date).format('MMMM Do YYYY')"
+          v-bind:type="type.name"
+        ></block-header>
 
         <div class="container mx-auto px-4 py-20 relative">
           <edit-set-form></edit-set-form>
