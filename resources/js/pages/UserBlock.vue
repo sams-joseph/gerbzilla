@@ -101,7 +101,6 @@ export default {
     this.$http
       .get(`${process.env.MIX_BASE_URL}/blocks/${id}`)
       .then(res => {
-        console.log(res);
         this.block = res.data;
         this.type = res.data.type;
         this.workouts = res.data.workouts;
