@@ -19,6 +19,10 @@
           v-bind:type="type.name"
           v-bind:loading="loading"
           v-bind:action="{ text: 'Duplicate', name:'duplicate-block', params: { user_id: $route.params.user_id, block_id: block.id }}"
+          v-bind:deleteBlock="{
+            url: `/trainer/users/${$route.params.user_id}/blocks/${$route.params.block_id}`,
+            redirect: { name: 'user', params: { id: $route.params.user_id }}
+          }"
         ></block-header>
         <div
           @click="toggleModal"

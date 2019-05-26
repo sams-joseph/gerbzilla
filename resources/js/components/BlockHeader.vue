@@ -46,6 +46,13 @@
             class="text-grey-dark hover:text-red text-xs font-semibold uppercase mx-4"
           >{{ action.text }}</router-link>
         </div>
+        <div
+          v-if="deleteBlock"
+          @click="onDelete"
+          class="inline-block flex items-center border-r border-grey-light py-6"
+        >
+          <button class="text-grey-dark hover:text-red text-xs font-semibold uppercase mx-4">Delete</button>
+        </div>
       </div>
     </div>
   </div>
@@ -53,11 +60,35 @@
 
 <script>
 export default {
+  methods: {
+    onDelete() {
+      this.$http
+        .delete(`${process.env.MIX_BASE_URL}${this.deleteBlock.url}`)
+        .then(res => {
+          this.$store.dispatch("add", {
+            type: "success",
+            message: res.data.message,
+            show: true
+          });
+
+          this.$router.push(this.deleteBlock.redirect);
+        })
+        .catch(err => {
+          this.$store.dispatch("add", {
+            type: "error",
+            message: err,
+            show: true
+          });
+        });
+    }
+  },
+
   props: {
     heading: String,
     subheading: String,
     type: String,
-    action: Object
+    action: Object,
+    deleteBlock: Object
   }
 };
 </script>

@@ -198,12 +198,41 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
+  methods: {
+    onDelete: function onDelete() {
+      var _this = this;
+
+      this.$http["delete"]("".concat("http://gerbzilla.test/api").concat(this.deleteBlock.url)).then(function (res) {
+        _this.$store.dispatch("add", {
+          type: "success",
+          message: res.data.message,
+          show: true
+        });
+
+        _this.$router.push(_this.deleteBlock.redirect);
+      })["catch"](function (err) {
+        _this.$store.dispatch("add", {
+          type: "error",
+          message: err,
+          show: true
+        });
+      });
+    }
+  },
   props: {
     heading: String,
     subheading: String,
     type: String,
-    action: Object
+    action: Object,
+    deleteBlock: Object
   }
 });
 
@@ -3544,6 +3573,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -5023,6 +5056,27 @@ var render = function() {
                   )
                 ],
                 1
+              )
+            : _vm._e(),
+          _vm._v(" "),
+          _vm.deleteBlock
+            ? _c(
+                "div",
+                {
+                  staticClass:
+                    "inline-block flex items-center border-r border-grey-light py-6",
+                  on: { click: _vm.onDelete }
+                },
+                [
+                  _c(
+                    "button",
+                    {
+                      staticClass:
+                        "text-grey-dark hover:text-red text-xs font-semibold uppercase mx-4"
+                    },
+                    [_vm._v("Delete")]
+                  )
+                ]
               )
             : _vm._e()
         ])
@@ -11057,6 +11111,17 @@ var render = function() {
                       params: {
                         user_id: _vm.$route.params.user_id,
                         block_id: _vm.block.id
+                      }
+                    },
+                    deleteBlock: {
+                      url:
+                        "/trainer/users/" +
+                        _vm.$route.params.user_id +
+                        "/blocks/" +
+                        _vm.$route.params.block_id,
+                      redirect: {
+                        name: "user",
+                        params: { id: _vm.$route.params.user_id }
                       }
                     }
                   }

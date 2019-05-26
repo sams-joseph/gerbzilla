@@ -54,6 +54,18 @@ class BlockController extends Controller
         return response()->json($block);
     }
 
+    public function destroy(Request $request, User $user, Block $block)
+    {
+        $trainer_id = $request->user()->id;
+        if ($user->trainer_id !== $trainer_id) {
+            return response()->json(['message' => 'You are not authorized to delete this record.'], 401);
+        }
+
+        $block->delete();
+
+        return response()->json(['message' => 'Record deleted successfully.'], 200);
+    }
+
     public function duplicate(Request $request, User $user, Block $block)
     {
         $new_block = $block->replicate();

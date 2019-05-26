@@ -60,6 +60,7 @@ Route::middleware('auth:api', 'roles:admin|trainer')
         Route::post('/users/{user}/blocks', 'BlockController@store');
         Route::get('/users/{user}/blocks/{block}', 'BlockController@show');
         Route::post('/users/{user}/blocks/duplicate/{block}', 'BlockController@duplicate');
+        Route::delete('/users/{user}/blocks/{block}', 'BlockController@destroy');
 
         Route::get('/types', 'TypeController@index');
 
