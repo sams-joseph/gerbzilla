@@ -14,12 +14,14 @@ require("laravel-mix-tailwind");
  */
 
 mix.js("resources/js/app.js", "public/js")
+    .extract()
     .sass("resources/sass/app.scss", "public/css")
     .tailwind()
     .options({
         autoprefixer: {
             options: {
-                browsers: ['last 6 versions'],
-            },
-        },
-    });
+                browsers: ["last 6 versions"]
+            }
+        }
+    })
+    .version();

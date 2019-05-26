@@ -7,7 +7,7 @@
 
     <title>Gerbzilla Powerlifting</title>
     <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700,800,900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/css/app.css">
+    <link rel="stylesheet" href="{{ mix('css/app.css') }}">
 </head>
 
 <body class="font-sans">
@@ -16,7 +16,9 @@
         <router-view></router-view>
     </div>
 
-    <script src="/js/app.js"></script>
+    <script src="{{ mix('js/manifest.js') }}"></script>
+    <script src="{{ mix('js/vendor.js') }}"></script>
+    <script src="{{ mix('js/app.js') }}"></script>
 </body>
 
 </html>
