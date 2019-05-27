@@ -4373,6 +4373,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -12117,6 +12121,17 @@ var render = function() {
                       params: {
                         user_id: _vm.$route.params.user_id,
                         workout_id: _vm.workout.id
+                      }
+                    },
+                    deleteBlock: {
+                      url:
+                        "/trainer/users/" +
+                        _vm.$route.params.user_id +
+                        "/workouts/" +
+                        _vm.$route.params.workout_id,
+                      redirect: {
+                        name: "block",
+                        params: { id: _vm.$route.params.block_id }
                       }
                     }
                   }

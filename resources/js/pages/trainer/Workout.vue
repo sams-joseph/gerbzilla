@@ -11,6 +11,10 @@
           v-bind:subheading="$moment(workout.date).format('MMMM Do YYYY')"
           v-bind:type="type.name"
           v-bind:action="{ text: 'Duplicate', name:'duplicate-workout', params: { user_id: $route.params.user_id, workout_id: workout.id }}"
+          v-bind:deleteBlock="{
+            url: `/trainer/users/${$route.params.user_id}/workouts/${$route.params.workout_id}`,
+            redirect: { name: 'block', params: { id: $route.params.block_id }}
+          }"
         ></block-header>
 
         <div

@@ -39,6 +39,18 @@ class WorkoutController extends Controller
         return response()->json($workout);
     }
 
+    public function destroy(Request $request, User $user, Workout $workout)
+    {
+        $trainer_id = $request->user()->id;
+        if ($user->trainer_id !== $trainer_id) {
+            return response()->json(['message' => 'You are not authorized to delete this record.'], 401);
+        }
+
+        $workout->delete();
+
+        return response()->json(['message' => 'Workout deleted successfully.'], 200);
+    }
+
     public function duplicate(Request $request, User $user, Workout $workout)
     {
         $new_workout = $workout->replicate();
@@ -46,9 +58,8 @@ class WorkoutController extends Controller
         $new_workout->date = $request->date;
         $new_workout->save();
 
-        foreach($workout->sets()->get() as $set)
-        {
-            $set = Set::where('id',$set->id)->first();
+        foreach ($workout->sets()->get() as $set) {
+            $set = Set::where('id', $set->id)->first();
             $new_set = $set->replicate();
             $new_set->workout_id = $new_workout->id;
             $new_set->save();

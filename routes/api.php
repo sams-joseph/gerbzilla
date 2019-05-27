@@ -67,6 +67,7 @@ Route::middleware('auth:api', 'roles:admin|trainer')
         Route::post('/users/{user}/blocks/{block}/workouts', 'WorkoutController@store');
         Route::post('/users/{user}/workouts/duplicate/{workout}', 'WorkoutController@duplicate');
         Route::get('/users/{user}/blocks/{block}/workouts/{workout}', 'WorkoutController@show');
+        Route::delete('/users/{user}/workouts/{workout}', 'WorkoutController@destroy');
 
         Route::get('/users/{user}/blocks/{block}/workouts/{workout}/sets', 'SetController@index');
         Route::post('/users/{user}/blocks/{block}/workouts/{workout}/sets', 'SetController@store');

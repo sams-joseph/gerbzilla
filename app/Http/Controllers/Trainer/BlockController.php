@@ -63,7 +63,7 @@ class BlockController extends Controller
 
         $block->delete();
 
-        return response()->json(['message' => 'Record deleted successfully.'], 200);
+        return response()->json(['message' => 'Block deleted successfully.'], 200);
     }
 
     public function duplicate(Request $request, User $user, Block $block)
