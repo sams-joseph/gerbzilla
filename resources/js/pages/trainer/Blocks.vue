@@ -26,7 +26,7 @@
         ></block-header>
         <div
           @click="toggleModal"
-          class="z-50 w-12 h-12 bg-red shadow-lg rounded-full fixed pin-r pin-b mr-8 mb-8 flex items-center justify-center cursor-pointer"
+          class="z-10 w-12 h-12 bg-red shadow-lg rounded-full fixed pin-r pin-b mr-8 mb-8 flex items-center justify-center cursor-pointer"
         >
           <svg
             class="fill-current text-white"
@@ -64,6 +64,7 @@ export default {
       workouts: [],
       showModal: false,
       showPopover: false,
+      showDeleteConfirm: false,
       loading: true
     };
   },

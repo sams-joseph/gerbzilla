@@ -48,10 +48,13 @@
         </div>
         <div
           v-if="deleteBlock"
-          @click="onDelete"
           class="inline-block flex items-center border-r border-grey-light py-6"
         >
-          <button class="text-grey-dark hover:text-red text-xs font-semibold uppercase mx-4">Delete</button>
+          <delete-modal @accept-delete-modal="onDelete">
+            <button
+              class="text-grey-dark hover:text-red text-xs font-semibold uppercase mx-4 focus:outline-none"
+            >Delete</button>
+          </delete-modal>
         </div>
       </div>
     </div>

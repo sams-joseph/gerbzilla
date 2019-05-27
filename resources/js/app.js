@@ -16,7 +16,7 @@ import CreateUserForm from "./components/forms/CreateUserForm";
 import CreateExerciseForm from "./components/forms/CreateExerciseForm";
 import CreateBlockForm from "./components/forms/CreateBlockForm";
 import CreateWorkoutForm from "./components/forms/CreateWorkoutForm";
-import DuplicateWorkoutForm from './components/forms/DuplicateWorkoutForm';
+import DuplicateWorkoutForm from "./components/forms/DuplicateWorkoutForm";
 import CreateSetForm from "./components/forms/CreateSetForm";
 import EditSetForm from "./components/forms/EditSetForm";
 import Tabs from "./components/Tabs";
@@ -30,8 +30,9 @@ import BlockHeader from "./components/BlockHeader";
 import WorkoutItem from "./components/WorkoutItem";
 import WorkoutCard from "./components/WorkoutCard";
 import Snackbar from "./components/Snackbar";
-import Instagram from './components/Instagram';
-import Announcement from './components/Announcement';
+import Instagram from "./components/Instagram";
+import Announcement from "./components/Announcement";
+import DeleteModal from "./components/DeleteModal";
 
 import Loader from "./components/Loader";
 
@@ -71,6 +72,7 @@ Vue.component("workout-card", WorkoutCard);
 Vue.component("snackbar", Snackbar);
 Vue.component("instagram", Instagram);
 Vue.component("announcement", Announcement);
+Vue.component("delete-modal", DeleteModal);
 
 Vue.component("loader", Loader);
 
