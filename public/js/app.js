@@ -57,7 +57,7 @@ __webpack_require__.r(__webpack_exports__);
   mounted: function mounted() {
     var _this = this;
 
-    this.$http.get("".concat("http://gerbzilla.test/api", "/trainer/expiring")).then(function (res) {
+    this.$http.get("".concat("http://localhost:8000/api", "/trainer/expiring")).then(function (res) {
       _this.expiring = res.data;
     })["catch"](function (err) {
       console.log(err);
@@ -213,7 +213,7 @@ __webpack_require__.r(__webpack_exports__);
     onDelete: function onDelete() {
       var _this = this;
 
-      this.$http["delete"]("".concat("http://gerbzilla.test/api").concat(this.deleteBlock.url)).then(function (res) {
+      this.$http["delete"]("".concat("http://localhost:8000/api").concat(this.deleteBlock.url)).then(function (res) {
         _this.$store.dispatch("add", {
           type: "success",
           message: res.data.message,
@@ -1020,6 +1020,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _classes_Form__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../classes/Form */ "./resources/js/classes/Form.js");
 //
 //
 //
@@ -1097,70 +1098,42 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       types: [],
-      type: 1,
-      name: "",
-      date: "",
-      loading: true,
-      success: false
+      form: new _classes_Form__WEBPACK_IMPORTED_MODULE_0__["default"]({
+        name: "",
+        start_date: "",
+        type_id: 1
+      })
     };
-  },
-  props: {
-    show: Boolean
   },
   mounted: function mounted() {
     var _this = this;
 
-    this.$http.get("".concat("http://gerbzilla.test/api", "/trainer/types")).then(function (res) {
-      _this.loading = false;
+    this.$http.get("".concat("http://localhost:8000/api", "/trainer/types")).then(function (res) {
       _this.types = res.data;
     })["catch"](function (err) {
       console.log(err);
     });
   },
   methods: {
-    closeWindow: function closeWindow() {
-      this.$emit("cancel-block-create");
-    },
-    createBlock: function createBlock(e) {
+    onSubmit: function onSubmit() {
       var _this2 = this;
 
-      e.preventDefault();
-      this.loading = true;
-      var user = JSON.parse(localStorage.getItem("user"));
-      this.$http.post("".concat("http://gerbzilla.test/api", "/trainer/users/").concat(this.$route.params.id, "/blocks"), {
-        name: this.name,
-        start_date: this.date,
-        type_id: this.type
-      }).then(function (res) {
-        _this2.name = "";
-        _this2.date = "";
-        _this2.type = 1;
-        console.log(res);
-        _this2.loading = false;
-        _this2.success = true;
-
+      var userId = this.$route.params.id;
+      this.form.post("".concat("http://localhost:8000/api", "/trainer/users/").concat(userId, "/blocks")).then(function (res) {
         _this2.$store.dispatch("add", {
           type: "success",
-          message: "Added block successfully.",
+          message: "Added block",
           show: true
         });
 
         _this2.$emit("create-block-success");
-
-        _this2.$emit("cancel-block-create");
       })["catch"](function (err) {
-        _this2.$store.dispatch("add", {
-          type: "error",
-          message: err.message,
-          show: true
-        });
+        console.log(err);
       });
     }
   }
@@ -1268,7 +1241,7 @@ __webpack_require__.r(__webpack_exports__);
   mounted: function mounted() {
     var _this = this;
 
-    this.$http.get("".concat("http://gerbzilla.test/api", "/trainer/categories")).then(function (res) {
+    this.$http.get("".concat("http://localhost:8000/api", "/trainer/categories")).then(function (res) {
       _this.loading = false;
       _this.categories = res.data;
     })["catch"](function (err) {
@@ -1285,7 +1258,7 @@ __webpack_require__.r(__webpack_exports__);
       e.preventDefault();
       this.loading = true;
       var user = JSON.parse(localStorage.getItem("user"));
-      this.$http.post("".concat("http://gerbzilla.test/api", "/trainer/exercises"), {
+      this.$http.post("".concat("http://localhost:8000/api", "/trainer/exercises"), {
         name: this.name,
         category_id: this.category
       }).then(function (res) {
@@ -1434,7 +1407,7 @@ __webpack_require__.r(__webpack_exports__);
   mounted: function mounted() {
     var _this = this;
 
-    this.$http.get("".concat("http://gerbzilla.test/api", "/trainer/exercises")).then(function (res) {
+    this.$http.get("".concat("http://localhost:8000/api", "/trainer/exercises")).then(function (res) {
       _this.loading = false;
       _this.exercises = res.data;
     })["catch"](function (err) {
@@ -1455,7 +1428,7 @@ __webpack_require__.r(__webpack_exports__);
           user_id = _this$$route$params.user_id,
           block_id = _this$$route$params.block_id,
           workout_id = _this$$route$params.workout_id;
-      this.$http.post("".concat("http://gerbzilla.test/api", "/trainer/users/").concat(user_id, "/blocks/").concat(block_id, "/workouts/").concat(workout_id, "/sets"), {
+      this.$http.post("".concat("http://localhost:8000/api", "/trainer/users/").concat(user_id, "/blocks/").concat(block_id, "/workouts/").concat(workout_id, "/sets"), {
         num_sets: this.sets,
         notes: this.notes,
         exercise_id: this.exercise
@@ -1604,7 +1577,7 @@ __webpack_require__.r(__webpack_exports__);
 
       e.preventDefault();
       this.loading = true;
-      this.$http.post("".concat("http://gerbzilla.test/api", "/trainer/users"), {
+      this.$http.post("".concat("http://localhost:8000/api", "/trainer/users"), {
         first_name: this.firstName,
         last_name: this.lastName,
         email: this.email,
@@ -1652,6 +1625,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _classes_Form__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../classes/Form */ "./resources/js/classes/Form.js");
 //
 //
 //
@@ -1699,57 +1673,38 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      name: "",
-      date: "",
-      loading: false
+      form: new _classes_Form__WEBPACK_IMPORTED_MODULE_0__["default"]({
+        name: "",
+        date: ""
+      })
     };
   },
-  props: {
-    show: Boolean
-  },
   methods: {
-    closeWindow: function closeWindow() {
-      this.$emit("cancel-workout-create");
-    },
-    createWorkout: function createWorkout(e) {
+    onSubmit: function onSubmit() {
       var _this = this;
 
-      e.preventDefault();
-      this.loading = true;
       var _this$$route$params = this.$route.params,
           user_id = _this$$route$params.user_id,
           block_id = _this$$route$params.block_id;
-      this.$http.post("".concat("http://gerbzilla.test/api", "/trainer/users/").concat(user_id, "/blocks/").concat(block_id, "/workouts"), {
-        name: this.name,
-        date: this.date
-      }).then(function (res) {
-        _this.name = "";
-        _this.date = "";
-        _this.loading = false;
-
+      this.form.post("".concat("http://localhost:8000/api", "/trainer/users/").concat(user_id, "/blocks/").concat(block_id, "/workouts")).then(function (res) {
         _this.$store.dispatch("add", {
           type: "success",
-          message: "Added workout successfully.",
+          message: "Added workout",
           show: true
         });
 
         _this.$emit("create-workout-success");
-
-        _this.$emit("cancel-workout-create");
       })["catch"](function (err) {
-        _this.$store.dispatch("add", {
-          type: "error",
-          message: err.message,
-          show: true
-        });
-
-        _this.$emit("create-workout-error", err);
-
-        _this.$emit("cancel-workout-create");
+        console.log(err);
       });
+    },
+    closeForm: function closeForm() {
+      this.form.errors.clear();
+      this.$emit("close-workout-create");
     }
   }
 });
@@ -1824,7 +1779,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this$$route$params = this.$route.params,
           user_id = _this$$route$params.user_id,
           workout_id = _this$$route$params.workout_id;
-      this.$http.post("".concat("http://gerbzilla.test/api", "/trainer/users/").concat(user_id, "/workouts/").concat(workout_id), {
+      this.$http.post("".concat("http://localhost:8000/api", "/trainer/users/").concat(user_id, "/workouts/").concat(workout_id), {
         date: this.date
       }).then(function (res) {
         _this.date = "";
@@ -1960,7 +1915,7 @@ __webpack_require__.r(__webpack_exports__);
         block_id = _this$$route$params.block_id,
         workout_id = _this$$route$params.workout_id,
         set_id = _this$$route$params.set_id;
-    this.$http.all([this.$http.get("".concat("http://gerbzilla.test/api", "/trainer/users/").concat(user_id, "/blocks/").concat(block_id, "/workouts/").concat(workout_id, "/sets/").concat(set_id)), this.$http.get("".concat("http://gerbzilla.test/api", "/trainer/exercises"))]).then(this.$http.spread(function (set, exercises) {
+    this.$http.all([this.$http.get("".concat("http://localhost:8000/api", "/trainer/users/").concat(user_id, "/blocks/").concat(block_id, "/workouts/").concat(workout_id, "/sets/").concat(set_id)), this.$http.get("".concat("http://localhost:8000/api", "/trainer/exercises"))]).then(this.$http.spread(function (set, exercises) {
       _this.exercises = exercises.data;
       _this.exercise = set.data.set.exercise_id;
       _this.sets = set.data.set.num_sets;
@@ -1988,7 +1943,7 @@ __webpack_require__.r(__webpack_exports__);
           block_id = _this$$route$params2.block_id,
           workout_id = _this$$route$params2.workout_id,
           set_id = _this$$route$params2.set_id;
-      this.$http.put("".concat("http://gerbzilla.test/api", "/trainer/users/").concat(user_id, "/blocks/").concat(block_id, "/workouts/").concat(workout_id, "/sets/").concat(set_id), {
+      this.$http.put("".concat("http://localhost:8000/api", "/trainer/users/").concat(user_id, "/blocks/").concat(block_id, "/workouts/").concat(workout_id, "/sets/").concat(set_id), {
         num_sets: this.sets,
         notes: this.notes,
         exercise_id: this.exercise
@@ -3099,7 +3054,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     var startDate = this.$moment().add(1, "d").format("YYYY-MM-DD");
     var endDate = this.$moment().add(3, "d").format("YYYY-MM-DD");
     this.loading = true;
-    this.$http.all([this.$http.get("".concat("http://gerbzilla.test/api", "/workouts/date/").concat(todaysDate)), this.$http.get("".concat("http://gerbzilla.test/api", "/workouts/date/").concat(startDate, "/").concat(endDate)), this.$http.get("".concat("http://gerbzilla.test/api", "/workouts"))]).then(this.$http.spread(function (today, week, all) {
+    this.$http.all([this.$http.get("".concat("http://localhost:8000/api", "/workouts/date/").concat(todaysDate)), this.$http.get("".concat("http://localhost:8000/api", "/workouts/date/").concat(startDate, "/").concat(endDate)), this.$http.get("".concat("http://localhost:8000/api", "/workouts"))]).then(this.$http.spread(function (today, week, all) {
       _this.todaysWorkout = today.data.workout;
       _this.sets = today.data.sets;
       _this.weeksWorkouts = week.data;
@@ -3249,7 +3204,7 @@ __webpack_require__.r(__webpack_exports__);
 
     var id = this.$route.params.id;
     this.loading = true;
-    this.$http.get("".concat("http://gerbzilla.test/api", "/blocks/").concat(id)).then(function (res) {
+    this.$http.get("".concat("http://localhost:8000/api", "/blocks/").concat(id)).then(function (res) {
       _this.block = res.data;
       _this.type = res.data.type;
       _this.workouts = res.data.workouts;
@@ -3327,7 +3282,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     var _this = this;
 
     this.loading = true;
-    this.$http.get("".concat("http://gerbzilla.test/api", "/blocks")).then(function (res) {
+    this.$http.get("".concat("http://localhost:8000/api", "/blocks")).then(function (res) {
       _this.blocks = res.data.sort(function (a, b) {
         return a.start_date < b.start_date ? 1 : b.start_date < a.start_date ? -1 : 0;
       });
@@ -3413,7 +3368,7 @@ __webpack_require__.r(__webpack_exports__);
   mounted: function mounted() {
     var _this = this;
 
-    this.$http.get("".concat("http://gerbzilla.test/api", "/workouts/").concat(this.$route.params.id)).then(function (res) {
+    this.$http.get("".concat("http://localhost:8000/api", "/workouts/").concat(this.$route.params.id)).then(function (res) {
       _this.workout = res.data.workout;
       _this.sets = res.data.sets;
       _this.loading = false;
@@ -3537,7 +3492,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     var weekEnd = this.$moment(today).endOf("week").add(1, "days");
     this.weekStart = weekStart;
     this.loading = true;
-    this.$http.get("".concat("http://gerbzilla.test/api", "/workouts/date/").concat(weekStart.format("YYYY-MM-DD"), "/").concat(weekEnd.format("YYYY-MM-DD"))).then(function (res) {
+    this.$http.get("".concat("http://localhost:8000/api", "/workouts/date/").concat(weekStart.format("YYYY-MM-DD"), "/").concat(weekEnd.format("YYYY-MM-DD"))).then(function (res) {
       _this.workouts = res.data;
       _this.loading = false;
     });
@@ -3637,14 +3592,13 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       block: {},
       type: {},
       workouts: [],
-      showModal: false,
+      showCreateWorkoutform: false,
       showPopover: false,
       showDeleteConfirm: false,
       loading: true
@@ -3658,7 +3612,7 @@ __webpack_require__.r(__webpack_exports__);
           user_id = _this$$route$params.user_id,
           block_id = _this$$route$params.block_id;
       this.loading = true;
-      this.$http.get("".concat("http://gerbzilla.test/api", "/trainer/users/").concat(user_id, "/blocks/").concat(block_id)).then(function (res) {
+      this.$http.get("".concat("http://localhost:8000/api", "/trainer/users/").concat(user_id, "/blocks/").concat(block_id)).then(function (res) {
         _this.workouts = res.data.workouts;
         _this.loading = false;
       })["catch"](function (err) {
@@ -3666,7 +3620,7 @@ __webpack_require__.r(__webpack_exports__);
       });
     },
     toggleModal: function toggleModal() {
-      this.showModal = !this.showModal;
+      this.showCreateWorkoutform = !this.showCreateWorkoutform;
     },
     getDay: function getDay(date) {
       var d = new Date(date);
@@ -3680,7 +3634,7 @@ __webpack_require__.r(__webpack_exports__);
         user_id = _this$$route$params2.user_id,
         block_id = _this$$route$params2.block_id;
     this.loading = true;
-    this.$http.get("".concat("http://gerbzilla.test/api", "/trainer/users/").concat(user_id, "/blocks/").concat(block_id)).then(function (res) {
+    this.$http.get("".concat("http://localhost:8000/api", "/trainer/users/").concat(user_id, "/blocks/").concat(block_id)).then(function (res) {
       _this2.block = res.data.block;
       _this2.type = res.data.type;
       _this2.workouts = res.data.workouts.sort(function (a, b) {
@@ -3796,7 +3750,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this$$route$params = this.$route.params,
           user_id = _this$$route$params.user_id,
           block_id = _this$$route$params.block_id;
-      this.$http.post("".concat("http://gerbzilla.test/api", "/trainer/users/").concat(user_id, "/blocks/duplicate/").concat(block_id), {
+      this.$http.post("".concat("http://localhost:8000/api", "/trainer/users/").concat(user_id, "/blocks/duplicate/").concat(block_id), {
         start_date: this.start_date,
         name: this.name
       }).then(function (res) {
@@ -3834,7 +3788,7 @@ __webpack_require__.r(__webpack_exports__);
         user_id = _this$$route$params2.user_id,
         block_id = _this$$route$params2.block_id;
     this.loading = true;
-    this.$http.get("".concat("http://gerbzilla.test/api", "/trainer/users/").concat(user_id, "/blocks/").concat(block_id)).then(function (res) {
+    this.$http.get("".concat("http://localhost:8000/api", "/trainer/users/").concat(user_id, "/blocks/").concat(block_id)).then(function (res) {
       _this2.workout = res.data.workout;
       _this2.block = res.data.block;
       _this2.type = res.data.type;
@@ -3946,7 +3900,7 @@ __webpack_require__.r(__webpack_exports__);
           user_id = _this$$route$params.user_id,
           block_id = _this$$route$params.block_id,
           workout_id = _this$$route$params.workout_id;
-      this.$http.post("".concat("http://gerbzilla.test/api", "/trainer/users/").concat(user_id, "/workouts/duplicate/").concat(workout_id), {
+      this.$http.post("".concat("http://localhost:8000/api", "/trainer/users/").concat(user_id, "/workouts/duplicate/").concat(workout_id), {
         date: this.date,
         name: this.name
       }).then(function (res) {
@@ -3986,7 +3940,7 @@ __webpack_require__.r(__webpack_exports__);
         block_id = _this$$route$params2.block_id,
         workout_id = _this$$route$params2.workout_id;
     this.loading = true;
-    this.$http.get("".concat("http://gerbzilla.test/api", "/trainer/users/").concat(user_id, "/blocks/").concat(block_id, "/workouts/").concat(workout_id)).then(function (res) {
+    this.$http.get("".concat("http://localhost:8000/api", "/trainer/users/").concat(user_id, "/blocks/").concat(block_id, "/workouts/").concat(workout_id)).then(function (res) {
       _this2.workout = res.data.workout;
       _this2.block = res.data.block;
       _this2.type = res.data.type;
@@ -4054,7 +4008,7 @@ __webpack_require__.r(__webpack_exports__);
         block_id = _this$$route$params.block_id,
         workout_id = _this$$route$params.workout_id;
     this.loading = true;
-    this.$http.get("".concat("http://gerbzilla.test/api", "/trainer/users/").concat(user_id, "/blocks/").concat(block_id, "/workouts/").concat(workout_id, "/sets")).then(function (res) {
+    this.$http.get("".concat("http://localhost:8000/api", "/trainer/users/").concat(user_id, "/blocks/").concat(block_id, "/workouts/").concat(workout_id, "/sets")).then(function (res) {
       _this.block = res.data.block;
       _this.type = res.data.type;
       _this.workout = res.data.workout;
@@ -4129,7 +4083,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       this.loading = true;
-      this.$http.get("".concat("http://gerbzilla.test/api", "/trainer/exercises")).then(function (res) {
+      this.$http.get("".concat("http://localhost:8000/api", "/trainer/exercises")).then(function (res) {
         _this.exercises = res.data;
         _this.loading = false;
       })["catch"](function (err) {
@@ -4144,7 +4098,7 @@ __webpack_require__.r(__webpack_exports__);
     var _this2 = this;
 
     this.loading = true;
-    this.$http.all([this.$http.get("".concat("http://gerbzilla.test/api", "/trainer/exercises")), this.$http.get("".concat("http://gerbzilla.test/api", "/trainer/categories"))]).then(this.$http.spread(function (exercises, categories) {
+    this.$http.all([this.$http.get("".concat("http://localhost:8000/api", "/trainer/exercises")), this.$http.get("".concat("http://localhost:8000/api", "/trainer/categories"))]).then(this.$http.spread(function (exercises, categories) {
       _this2.exercises = exercises.data;
       _this2.categories = categories.data;
       _this2.loading = false;
@@ -4224,6 +4178,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -4237,7 +4193,7 @@ __webpack_require__.r(__webpack_exports__);
   mounted: function mounted() {
     var _this = this;
 
-    this.$http.all([this.$http.get("".concat("http://gerbzilla.test/api", "/trainer/users/").concat(this.$route.params.id)), this.$http.get("".concat("http://gerbzilla.test/api", "/trainer/users/").concat(this.$route.params.id, "/blocks"))]).then(this.$http.spread(function (user, blocks) {
+    this.$http.all([this.$http.get("".concat("http://localhost:8000/api", "/trainer/users/").concat(this.$route.params.id)), this.$http.get("".concat("http://localhost:8000/api", "/trainer/users/").concat(this.$route.params.id, "/blocks"))]).then(this.$http.spread(function (user, blocks) {
       _this.user = user.data;
       _this.isActive = user.data.is_active === 1 ? true : false;
       _this.blocks = blocks.data.sort(function (a, b) {
@@ -4253,7 +4209,8 @@ __webpack_require__.r(__webpack_exports__);
       var _this2 = this;
 
       this.loading = true;
-      this.$http.get("".concat("http://gerbzilla.test/api", "/trainer/users/").concat(this.$route.params.id, "/blocks")).then(function (res) {
+      this.toggleAddBlockForm();
+      this.$http.get("".concat("http://localhost:8000/api", "/trainer/users/").concat(this.$route.params.id, "/blocks")).then(function (res) {
         _this2.blocks = res.data.sort(function (a, b) {
           return a.start_date < b.start_date ? 1 : b.start_date < a.start_date ? -1 : 0;
         });
@@ -4335,7 +4292,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       this.loading = true;
-      this.$http.get("".concat("http://gerbzilla.test/api", "/trainer/users")).then(function (res) {
+      this.$http.get("".concat("http://localhost:8000/api", "/trainer/users")).then(function (res) {
         _this.users = res.data;
         _this.loading = false;
       })["catch"](function (err) {});
@@ -4347,7 +4304,7 @@ __webpack_require__.r(__webpack_exports__);
   mounted: function mounted() {
     var _this2 = this;
 
-    this.$http.all([this.$http.get("".concat("http://gerbzilla.test/api", "/trainer/expiring")), this.$http.get("".concat("http://gerbzilla.test/api", "/trainer/users"))]).then(this.$http.spread(function (expiring, all) {
+    this.$http.all([this.$http.get("".concat("http://localhost:8000/api", "/trainer/expiring")), this.$http.get("".concat("http://localhost:8000/api", "/trainer/users"))]).then(this.$http.spread(function (expiring, all) {
       _this2.users = all.data;
       _this2.expiring = expiring.data;
       _this2.loading = false;
@@ -4460,7 +4417,7 @@ __webpack_require__.r(__webpack_exports__);
           block_id = _this$$route$params.block_id,
           workout_id = _this$$route$params.workout_id;
       this.loading = true;
-      this.$http.get("".concat("http://gerbzilla.test/api", "/trainer/users/").concat(user_id, "/blocks/").concat(block_id, "/workouts/").concat(workout_id, "/sets")).then(function (res) {
+      this.$http.get("".concat("http://localhost:8000/api", "/trainer/users/").concat(user_id, "/blocks/").concat(block_id, "/workouts/").concat(workout_id, "/sets")).then(function (res) {
         _this.sets = res.data.sets;
         _this.loading = false;
       })["catch"](function (err) {
@@ -4492,7 +4449,7 @@ __webpack_require__.r(__webpack_exports__);
         block_id = _this$$route$params2.block_id,
         workout_id = _this$$route$params2.workout_id;
     this.loading = true;
-    this.$http.get("".concat("http://gerbzilla.test/api", "/trainer/users/").concat(user_id, "/blocks/").concat(block_id, "/workouts/").concat(workout_id, "/sets")).then(function (res) {
+    this.$http.get("".concat("http://localhost:8000/api", "/trainer/users/").concat(user_id, "/blocks/").concat(block_id, "/workouts/").concat(workout_id, "/sets")).then(function (res) {
       _this2.block = res.data.block;
       _this2.type = res.data.type;
       _this2.workout = res.data.workout;
@@ -6536,252 +6493,228 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm.show
-    ? _c(
-        "div",
-        {
-          directives: [
-            {
-              name: "scroll-lock",
-              rawName: "v-scroll-lock",
-              value: _vm.show,
-              expression: "show"
-            }
-          ],
-          staticClass:
-            "fixed pin-t pin-l pin-r pin-b z-50 flex justify-center items-center px-2 bg-grey-translucent"
-        },
-        [
+  return _c("div", { staticClass: "w-full max-w-md px-8" }, [
+    _c("h1", { staticClass: "text-grey-darkest font-normal text-2xl mb-10" }, [
+      _vm._v("Create Block")
+    ]),
+    _vm._v(" "),
+    _c(
+      "form",
+      {
+        on: {
+          submit: function($event) {
+            $event.preventDefault()
+            return _vm.onSubmit($event)
+          },
+          keydown: function($event) {
+            return _vm.form.errors.clear()
+          }
+        }
+      },
+      [
+        _c("div", { staticClass: "mb-6" }, [
           _c(
-            "div",
+            "label",
             {
-              staticClass:
-                "mx-8 w-full bg-white relative max-w-md p-8 rounded-lg shadow-lg"
+              staticClass: "block text-grey-darker text-sm font-normal mb-4",
+              attrs: { for: "name" }
             },
-            [
-              _c(
-                "h1",
-                { staticClass: "text-grey-darkest font-normal text-2xl mb-10" },
-                [_vm._v("Create Block")]
-              ),
-              _vm._v(" "),
-              _c("transition", { attrs: { name: "fade" } }, [
-                _vm.loading
-                  ? _c(
-                      "div",
-                      {
-                        staticClass:
-                          "absolute pin-t pin-l pin-b w-full bg-white-translucent flex justify-center pt-12"
-                      },
-                      [
-                        _c(
-                          "div",
-                          { staticClass: "pl-6 flex flex-col items-center" },
-                          [
-                            _c("div", { staticClass: "mb-4" }, [
-                              _c("img", {
-                                attrs: {
-                                  src: "/images/puff.svg",
-                                  alt: "Loading"
-                                }
-                              })
-                            ]),
-                            _vm._v(" "),
-                            _c(
-                              "h6",
-                              {
-                                staticClass:
-                                  "text-grey-darkest font-bold text-lg"
-                              },
-                              [_vm._v("Loading")]
-                            )
-                          ]
-                        )
-                      ]
-                    )
-                  : _vm._e()
-              ]),
-              _vm._v(" "),
-              _c("form", { on: { submit: _vm.createBlock } }, [
-                _c("div", { staticClass: "mb-6" }, [
-                  _c(
-                    "label",
-                    {
-                      staticClass:
-                        "block text-grey-darker text-sm font-normal mb-4",
-                      attrs: { for: "name" }
-                    },
-                    [_vm._v("Name")]
-                  ),
-                  _vm._v(" "),
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.name,
-                        expression: "name"
-                      }
-                    ],
-                    staticClass:
-                      "appearance-none border-b w-full py-2 text-grey-darker leading-tight focus:outline-none",
-                    attrs: { id: "name", type: "text" },
-                    domProps: { value: _vm.name },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.name = $event.target.value
-                      }
-                    }
-                  })
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "mb-6" }, [
-                  _c(
-                    "label",
-                    {
-                      staticClass:
-                        "block text-grey-darker text-sm font-normal mb-4",
-                      attrs: { for: "date" }
-                    },
-                    [_vm._v("Start Date")]
-                  ),
-                  _vm._v(" "),
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.date,
-                        expression: "date"
-                      }
-                    ],
-                    staticClass:
-                      "appearance-none border-b w-full py-2 text-grey-darker leading-tight focus:outline-none",
-                    attrs: { id: "date", type: "date" },
-                    domProps: { value: _vm.date },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.date = $event.target.value
-                      }
-                    }
-                  })
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "mb-12" }, [
-                  _c(
-                    "label",
-                    {
-                      staticClass:
-                        "block text-grey-darker text-sm font-normal mb-4",
-                      attrs: { for: "category" }
-                    },
-                    [_vm._v("Category")]
-                  ),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "relative" }, [
-                    _c(
-                      "select",
-                      {
-                        directives: [
-                          {
-                            name: "model",
-                            rawName: "v-model",
-                            value: _vm.type,
-                            expression: "type"
-                          }
-                        ],
-                        staticClass:
-                          "block appearance-none border-b rounded-none bg-white text-grey-darker w-full py-2 leading-tight focus:outline-none capitalize",
-                        attrs: { id: "category" },
-                        on: {
-                          change: function($event) {
-                            var $$selectedVal = Array.prototype.filter
-                              .call($event.target.options, function(o) {
-                                return o.selected
-                              })
-                              .map(function(o) {
-                                var val = "_value" in o ? o._value : o.value
-                                return val
-                              })
-                            _vm.type = $event.target.multiple
-                              ? $$selectedVal
-                              : $$selectedVal[0]
-                          }
-                        }
-                      },
-                      _vm._l(_vm.types, function(type) {
-                        return _c(
-                          "option",
-                          { key: type.id, domProps: { value: type.id } },
-                          [_vm._v(_vm._s(type.name))]
-                        )
-                      }),
-                      0
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "div",
-                      {
-                        staticClass:
-                          "pointer-events-none absolute pin-y pin-r flex items-center px-2 text-grey-darker"
-                      },
-                      [
-                        _c(
-                          "svg",
-                          {
-                            staticClass: "fill-current h-4 w-4",
-                            attrs: {
-                              xmlns: "http://www.w3.org/2000/svg",
-                              viewBox: "0 0 20 20"
-                            }
-                          },
-                          [
-                            _c("path", {
-                              attrs: {
-                                d:
-                                  "M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"
-                              }
-                            })
-                          ]
-                        )
-                      ]
-                    )
-                  ])
-                ]),
-                _vm._v(" "),
-                _c(
-                  "button",
-                  {
-                    staticClass:
-                      "bg-blue hover:bg-blue-dark text-white font-normal text-sm py-2 px-6 rounded-full focus:outline-none uppercase",
-                    attrs: { type: "submit" }
-                  },
-                  [_vm._v("Create Block")]
-                ),
-                _vm._v(" "),
-                _c(
-                  "button",
-                  {
-                    staticClass:
-                      "text-grey-darker font-normal text-sm py-2 px-6 rounded-full focus:outline-none uppercase",
-                    attrs: { type: "button" },
-                    on: { click: _vm.closeWindow }
-                  },
-                  [_vm._v("Cancel")]
-                )
-              ])
+            [_vm._v("Name")]
+          ),
+          _vm._v(" "),
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.form.name,
+                expression: "form.name"
+              }
             ],
-            1
-          )
-        ]
-      )
-    : _vm._e()
+            staticClass:
+              "appearance-none border-b w-full py-2 text-grey-darker leading-tight focus:outline-none",
+            attrs: { id: "name", type: "text", name: "name" },
+            domProps: { value: _vm.form.name },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.$set(_vm.form, "name", $event.target.value)
+              }
+            }
+          }),
+          _vm._v(" "),
+          _vm.form.errors.has("name")
+            ? _c("span", {
+                staticClass: "text-red text-xs pt-2",
+                domProps: { textContent: _vm._s(_vm.form.errors.get("name")) }
+              })
+            : _vm._e()
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "mb-6" }, [
+          _c(
+            "label",
+            {
+              staticClass: "block text-grey-darker text-sm font-normal mb-4",
+              attrs: { for: "start_date" }
+            },
+            [_vm._v("Start Date")]
+          ),
+          _vm._v(" "),
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.form.start_date,
+                expression: "form.start_date"
+              }
+            ],
+            staticClass:
+              "appearance-none border-b w-full py-2 text-grey-darker leading-tight focus:outline-none",
+            attrs: { id: "date", type: "date", name: "start_date" },
+            domProps: { value: _vm.form.start_date },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.$set(_vm.form, "start_date", $event.target.value)
+              }
+            }
+          }),
+          _vm._v(" "),
+          _vm.form.errors.has("start_date")
+            ? _c("span", {
+                staticClass: "text-red text-xs pt-2",
+                domProps: {
+                  textContent: _vm._s(_vm.form.errors.get("start_date"))
+                }
+              })
+            : _vm._e()
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "mb-12" }, [
+          _c(
+            "label",
+            {
+              staticClass: "block text-grey-darker text-sm font-normal mb-4",
+              attrs: { for: "type_id" }
+            },
+            [_vm._v("Category")]
+          ),
+          _vm._v(" "),
+          _c("div", { staticClass: "relative" }, [
+            _c(
+              "select",
+              {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.form.type_id,
+                    expression: "form.type_id"
+                  }
+                ],
+                staticClass:
+                  "block appearance-none border-b rounded-none bg-white text-grey-darker w-full py-2 leading-tight focus:outline-none capitalize",
+                attrs: { id: "category", name: "type_id" },
+                on: {
+                  change: function($event) {
+                    var $$selectedVal = Array.prototype.filter
+                      .call($event.target.options, function(o) {
+                        return o.selected
+                      })
+                      .map(function(o) {
+                        var val = "_value" in o ? o._value : o.value
+                        return val
+                      })
+                    _vm.$set(
+                      _vm.form,
+                      "type_id",
+                      $event.target.multiple ? $$selectedVal : $$selectedVal[0]
+                    )
+                  }
+                }
+              },
+              _vm._l(_vm.types, function(type) {
+                return _c(
+                  "option",
+                  { key: type.id, domProps: { value: type.id } },
+                  [_vm._v(_vm._s(type.name))]
+                )
+              }),
+              0
+            ),
+            _vm._v(" "),
+            _c(
+              "div",
+              {
+                staticClass:
+                  "pointer-events-none absolute pin-y pin-r flex items-center px-2 text-grey-darker"
+              },
+              [
+                _c(
+                  "svg",
+                  {
+                    staticClass: "fill-current h-4 w-4",
+                    attrs: {
+                      xmlns: "http://www.w3.org/2000/svg",
+                      viewBox: "0 0 20 20"
+                    }
+                  },
+                  [
+                    _c("path", {
+                      attrs: {
+                        d:
+                          "M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"
+                      }
+                    })
+                  ]
+                )
+              ]
+            )
+          ]),
+          _vm._v(" "),
+          _vm.form.errors.has("type_id")
+            ? _c("span", {
+                staticClass: "text-red text-xs pt-2",
+                domProps: {
+                  textContent: _vm._s(_vm.form.errors.get("type_id"))
+                }
+              })
+            : _vm._e()
+        ]),
+        _vm._v(" "),
+        _c(
+          "button",
+          {
+            staticClass:
+              "bg-blue hover:bg-blue-dark text-white font-normal text-sm py-2 px-6 rounded-full focus:outline-none uppercase",
+            attrs: { type: "submit" }
+          },
+          [_vm._v("Create Block")]
+        ),
+        _vm._v(" "),
+        _c(
+          "button",
+          {
+            staticClass:
+              "text-grey-darker font-normal text-sm py-2 px-6 rounded-full focus:outline-none uppercase",
+            attrs: { type: "button" },
+            on: {
+              click: function($event) {
+                return _vm.$emit("cancel-block-create")
+              }
+            }
+          },
+          [_vm._v("Cancel")]
+        )
+      ]
+    )
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -7606,147 +7539,130 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm.show
-    ? _c(
-        "div",
-        {
-          directives: [
-            {
-              name: "scroll-lock",
-              rawName: "v-scroll-lock",
-              value: _vm.show,
-              expression: "show"
-            }
-          ],
-          staticClass:
-            "fixed pin-t pin-l pin-r pin-b z-50 flex justify-center items-center px-2 bg-grey-translucent"
-        },
-        [
+  return _c("div", { staticClass: "max-w-md w-full bg-white" }, [
+    _c("h1", { staticClass: "text-grey-darkest font-normal text-2xl mb-10" }, [
+      _vm._v("Create Workout")
+    ]),
+    _vm._v(" "),
+    _c(
+      "form",
+      {
+        on: {
+          submit: function($event) {
+            $event.preventDefault()
+            return _vm.onSubmit($event)
+          },
+          keydown: function($event) {
+            return _vm.form.errors.clear()
+          }
+        }
+      },
+      [
+        _c("div", { staticClass: "mb-6" }, [
           _c(
-            "div",
+            "label",
             {
-              staticClass:
-                "relative max-w-md w-full bg-white p-8 shadow-lg rounded-lg"
+              staticClass: "block text-grey-darker text-sm font-normal mb-4",
+              attrs: { for: "name" }
             },
-            [
-              _c(
-                "h1",
-                { staticClass: "text-grey-darkest font-normal text-2xl mb-10" },
-                [_vm._v("Create Workout")]
-              ),
-              _vm._v(" "),
-              _vm.loading
-                ? _c(
-                    "div",
-                    {
-                      staticClass:
-                        "absolute pin-t pin-l pin-b w-full bg-white-translucent flex justify-center items-center"
-                    },
-                    [
-                      _c("img", {
-                        attrs: { src: "/images/puff.svg", alt: "Loading" }
-                      })
-                    ]
-                  )
-                : _vm._e(),
-              _vm._v(" "),
-              _c("form", { on: { submit: _vm.createWorkout } }, [
-                _c("div", { staticClass: "mb-6" }, [
-                  _c(
-                    "label",
-                    {
-                      staticClass:
-                        "block text-grey-darker text-sm font-normal mb-4",
-                      attrs: { for: "name" }
-                    },
-                    [_vm._v("Name")]
-                  ),
-                  _vm._v(" "),
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.name,
-                        expression: "name"
-                      }
-                    ],
-                    staticClass:
-                      "appearance-none border-b w-full py-2 text-grey-darker leading-tight focus:outline-none",
-                    attrs: { id: "name", type: "text" },
-                    domProps: { value: _vm.name },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.name = $event.target.value
-                      }
-                    }
-                  })
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "mb-6" }, [
-                  _c(
-                    "label",
-                    {
-                      staticClass:
-                        "block text-grey-darker text-sm font-normal mb-4",
-                      attrs: { for: "date" }
-                    },
-                    [_vm._v("Date")]
-                  ),
-                  _vm._v(" "),
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.date,
-                        expression: "date"
-                      }
-                    ],
-                    staticClass:
-                      "appearance-none border-b w-full py-2 text-grey-darker leading-tight focus:outline-none",
-                    attrs: { id: "date", type: "date" },
-                    domProps: { value: _vm.date },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.date = $event.target.value
-                      }
-                    }
-                  })
-                ]),
-                _vm._v(" "),
-                _c(
-                  "button",
-                  {
-                    staticClass:
-                      "mr-4 bg-blue hover:bg-blue-dark text-white font-normal text-sm py-2 px-6 rounded-full focus:outline-none uppercase",
-                    attrs: { type: "submit" }
-                  },
-                  [_vm._v("Create Workout")]
-                ),
-                _vm._v(" "),
-                _c(
-                  "button",
-                  {
-                    staticClass:
-                      "text-grey-darker font-normal text-sm py-2 px-6 rounded-full focus:outline-none uppercase",
-                    attrs: { type: "button" },
-                    on: { click: _vm.closeWindow }
-                  },
-                  [_vm._v("Cancel")]
-                )
-              ])
-            ]
-          )
-        ]
-      )
-    : _vm._e()
+            [_vm._v("Name")]
+          ),
+          _vm._v(" "),
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.form.name,
+                expression: "form.name"
+              }
+            ],
+            staticClass:
+              "appearance-none border-b w-full py-2 text-grey-darker leading-tight focus:outline-none",
+            attrs: { id: "name", name: "name", type: "text" },
+            domProps: { value: _vm.form.name },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.$set(_vm.form, "name", $event.target.value)
+              }
+            }
+          }),
+          _vm._v(" "),
+          _vm.form.errors.has("name")
+            ? _c("span", {
+                staticClass: "text-red text-xs pt-2",
+                domProps: { textContent: _vm._s(_vm.form.errors.get("name")) }
+              })
+            : _vm._e()
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "mb-6" }, [
+          _c(
+            "label",
+            {
+              staticClass: "block text-grey-darker text-sm font-normal mb-4",
+              attrs: { for: "date" }
+            },
+            [_vm._v("Date")]
+          ),
+          _vm._v(" "),
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.form.date,
+                expression: "form.date"
+              }
+            ],
+            staticClass:
+              "appearance-none border-b w-full py-2 text-grey-darker leading-tight focus:outline-none",
+            attrs: { id: "date", name: "date", type: "date" },
+            domProps: { value: _vm.form.date },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.$set(_vm.form, "date", $event.target.value)
+              }
+            }
+          }),
+          _vm._v(" "),
+          _vm.form.errors.has("date")
+            ? _c("span", {
+                staticClass: "text-red text-xs pt-2",
+                domProps: { textContent: _vm._s(_vm.form.errors.get("date")) }
+              })
+            : _vm._e()
+        ]),
+        _vm._v(" "),
+        _c(
+          "button",
+          {
+            staticClass:
+              "mr-4 bg-blue hover:bg-blue-dark text-white font-normal text-sm py-2 px-6 rounded-full focus:outline-none uppercase",
+            attrs: { type: "submit" }
+          },
+          [_vm._v("Create Workout")]
+        ),
+        _vm._v(" "),
+        _c(
+          "button",
+          {
+            staticClass:
+              "text-grey-darker font-normal text-sm py-2 px-6 rounded-full focus:outline-none uppercase",
+            attrs: { type: "button" },
+            on: { click: _vm.closeForm }
+          },
+          [_vm._v("Cancel")]
+        )
+      ]
+    )
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -11280,21 +11196,6 @@ var render = function() {
       _vm._v(" "),
       _vm.loading ? _c("loader") : _vm._e(),
       _vm._v(" "),
-      _c(
-        "transition",
-        { attrs: { name: "fade" } },
-        [
-          _c("create-workout-form", {
-            attrs: { show: _vm.showModal },
-            on: {
-              "cancel-workout-create": _vm.toggleModal,
-              "create-workout-success": _vm.refreshData
-            }
-          })
-        ],
-        1
-      ),
-      _vm._v(" "),
       _c("transition", { attrs: { name: "fade" } }, [
         !_vm.loading
           ? _c(
@@ -11361,32 +11262,70 @@ var render = function() {
                   ]
                 ),
                 _vm._v(" "),
-                _c("div", { staticClass: "container mx-auto px-4 py-20" }, [
-                  _c(
-                    "h1",
-                    {
-                      staticClass:
-                        "text-grey-darkest font-normal text-2xl mb-10 px-4"
-                    },
-                    [_vm._v("Workouts")]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "ul",
-                    { staticClass: "list-reset flex flex-wrap px-4 md:px-0" },
-                    _vm._l(_vm.workouts, function(workout) {
-                      return _c("workout-item", {
-                        key: workout.id,
-                        attrs: {
-                          workout: workout,
-                          userId: _vm.userId,
-                          blockId: _vm.block.id
-                        }
-                      })
-                    }),
-                    1
-                  )
-                ])
+                _c(
+                  "div",
+                  {
+                    directives: [
+                      {
+                        name: "show",
+                        rawName: "v-show",
+                        value: _vm.showCreateWorkoutform,
+                        expression: "showCreateWorkoutform"
+                      }
+                    ],
+                    staticClass: "container mx-auto px-8 py-20"
+                  },
+                  [
+                    _c("create-workout-form", {
+                      on: {
+                        "close-workout-create": _vm.toggleModal,
+                        "create-workout-success": _vm.refreshData
+                      }
+                    })
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    directives: [
+                      {
+                        name: "show",
+                        rawName: "v-show",
+                        value: !_vm.showCreateWorkoutform,
+                        expression: "!showCreateWorkoutform"
+                      }
+                    ],
+                    staticClass: "container mx-auto px-4 py-20"
+                  },
+                  [
+                    _c(
+                      "h1",
+                      {
+                        staticClass:
+                          "text-grey-darkest font-normal text-2xl mb-10 px-4"
+                      },
+                      [_vm._v("Workouts")]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "ul",
+                      { staticClass: "list-reset flex flex-wrap px-4 md:px-0" },
+                      _vm._l(_vm.workouts, function(workout) {
+                        return _c("workout-item", {
+                          key: workout.id,
+                          attrs: {
+                            workout: workout,
+                            userId: _vm.userId,
+                            blockId: _vm.block.id
+                          }
+                        })
+                      }),
+                      1
+                    )
+                  ]
+                )
               ],
               1
             )
@@ -12003,14 +11942,6 @@ var render = function() {
       _vm._v(" "),
       _c("side-navigation"),
       _vm._v(" "),
-      _c("create-block-form", {
-        attrs: { show: _vm.showAddBlockForm },
-        on: {
-          "cancel-block-create": _vm.toggleAddBlockForm,
-          "create-block-success": _vm.refreshData
-        }
-      }),
-      _vm._v(" "),
       _vm.loading ? _c("loader") : _vm._e(),
       _vm._v(" "),
       _c("transition", { attrs: { name: "fade" } }, [
@@ -12053,46 +11984,83 @@ var render = function() {
                   "tabs",
                   { staticClass: "flex-1" },
                   [
-                    _c("tab", { attrs: { name: "Workouts", selected: true } }, [
-                      _c(
-                        "h1",
-                        {
-                          staticClass:
-                            "text-grey-darkest font-normal text-2xl mb-8 px-8"
-                        },
-                        [
-                          _vm._v("\n            Training Blocks\n            "),
-                          _c(
-                            "span",
+                    _c(
+                      "tab",
+                      { attrs: { name: "Workouts", selected: true } },
+                      [
+                        _c("create-block-form", {
+                          directives: [
                             {
-                              staticClass:
-                                "float-right uppercase text-grey-dark text-xs font-semibold py-2 px-4 rounded hover:bg-grey-lighter hover:text-red cursor-pointer",
-                              on: { click: _vm.toggleAddBlockForm }
-                            },
-                            [_vm._v("Add Block")]
-                          )
-                        ]
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "div",
-                        { staticClass: "flex w-full flex-wrap px-6" },
-                        _vm._l(_vm.blocks, function(block) {
-                          return _c("block", {
-                            key: block.id,
-                            attrs: {
-                              block: block,
-                              name: "block",
-                              params: {
-                                user_id: _vm.$route.params.id,
-                                block_id: block.id
-                              }
+                              name: "show",
+                              rawName: "v-show",
+                              value: _vm.showAddBlockForm,
+                              expression: "showAddBlockForm"
                             }
-                          })
+                          ],
+                          on: {
+                            "cancel-block-create": _vm.toggleAddBlockForm,
+                            "create-block-success": _vm.refreshData
+                          }
                         }),
-                        1
-                      )
-                    ]),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          {
+                            directives: [
+                              {
+                                name: "show",
+                                rawName: "v-show",
+                                value: !_vm.showAddBlockForm,
+                                expression: "!showAddBlockForm"
+                              }
+                            ]
+                          },
+                          [
+                            _c(
+                              "h1",
+                              {
+                                staticClass:
+                                  "text-grey-darkest font-normal text-2xl mb-8 px-8"
+                              },
+                              [
+                                _vm._v(
+                                  "\n              Training Blocks\n              "
+                                ),
+                                _c(
+                                  "span",
+                                  {
+                                    staticClass:
+                                      "float-right uppercase text-grey-dark text-xs font-semibold py-2 px-4 rounded hover:bg-grey-lighter hover:text-red cursor-pointer",
+                                    on: { click: _vm.toggleAddBlockForm }
+                                  },
+                                  [_vm._v("Add Block")]
+                                )
+                              ]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "div",
+                              { staticClass: "flex w-full flex-wrap px-6" },
+                              _vm._l(_vm.blocks, function(block) {
+                                return _c("block", {
+                                  key: block.id,
+                                  attrs: {
+                                    block: block,
+                                    name: "block",
+                                    params: {
+                                      user_id: _vm.$route.params.id,
+                                      block_id: block.id
+                                    }
+                                  }
+                                })
+                              }),
+                              1
+                            )
+                          ]
+                        )
+                      ],
+                      1
+                    ),
                     _vm._v(" "),
                     _c("tab", { attrs: { name: "Profile" } }, [
                       _c(
@@ -12726,7 +12694,7 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
       var laravelToken = $cookies.get("laravel_token");
       var token = "Bearer ".concat(laravelToken);
       this.$http.defaults.headers.common["Authorization"] = token;
-      this.$http.get("".concat("http://gerbzilla.test/api", "/user")).then(function (res) {
+      this.$http.get("".concat("http://localhost:8000/api", "/user")).then(function (res) {
         localStorage.setItem("user", JSON.stringify(res.data.user));
         localStorage.setItem("role", JSON.stringify(res.data.role));
       })["catch"](function (err) {
@@ -12735,6 +12703,185 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
     }
   }
 });
+
+/***/ }),
+
+/***/ "./resources/js/classes/Errors.js":
+/*!****************************************!*\
+  !*** ./resources/js/classes/Errors.js ***!
+  \****************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Errors; });
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+var Errors =
+/*#__PURE__*/
+function () {
+  function Errors() {
+    _classCallCheck(this, Errors);
+
+    this.errors = {};
+  }
+
+  _createClass(Errors, [{
+    key: "has",
+    value: function has(field) {
+      return this.errors.hasOwnProperty(field);
+    }
+  }, {
+    key: "any",
+    value: function any() {
+      return Object.keys(this.errors).length > 0;
+    }
+  }, {
+    key: "get",
+    value: function get(field) {
+      if (this.errors[field]) {
+        return this.errors[field][0];
+      }
+    }
+  }, {
+    key: "record",
+    value: function record(errors) {
+      this.errors = errors;
+    }
+  }, {
+    key: "clear",
+    value: function clear(field) {
+      if (field) {
+        delete this.errors[field];
+        return;
+      }
+
+      this.errors = {};
+    }
+  }]);
+
+  return Errors;
+}();
+
+
+
+/***/ }),
+
+/***/ "./resources/js/classes/Form.js":
+/*!**************************************!*\
+  !*** ./resources/js/classes/Form.js ***!
+  \**************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Form; });
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _Errors__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Errors */ "./resources/js/classes/Errors.js");
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+
+
+
+var Form =
+/*#__PURE__*/
+function () {
+  function Form(data) {
+    _classCallCheck(this, Form);
+
+    this.originalData = data;
+
+    for (var field in data) {
+      this[field] = data[field];
+    }
+
+    this.errors = new _Errors__WEBPACK_IMPORTED_MODULE_1__["default"]();
+  }
+
+  _createClass(Form, [{
+    key: "data",
+    value: function data() {
+      var data = {};
+
+      for (var property in this.originalData) {
+        data[property] = this[property];
+      }
+
+      return data;
+    }
+  }, {
+    key: "reset",
+    value: function reset() {
+      for (var field in this.originalData) {
+        this[field] = '';
+      }
+
+      this.errors.clear();
+    }
+  }, {
+    key: "post",
+    value: function post(url) {
+      return this.submit('post', url);
+    }
+  }, {
+    key: "put",
+    value: function put(url) {
+      return this.submit('put', url);
+    }
+  }, {
+    key: "patch",
+    value: function patch(url) {
+      return this.submit('patch', url);
+    }
+  }, {
+    key: "delete",
+    value: function _delete(url) {
+      return this.submit('delete', url);
+    }
+  }, {
+    key: "submit",
+    value: function submit(requestType, url) {
+      var _this = this;
+
+      return new Promise(function (resolve, reject) {
+        axios__WEBPACK_IMPORTED_MODULE_0___default.a[requestType](url, _this.data()).then(function (response) {
+          _this.onSuccess();
+
+          resolve(response.data);
+        })["catch"](function (error) {
+          _this.onFail(error.response.data.errors);
+
+          reject(error.response.data.errors);
+        });
+      });
+    }
+  }, {
+    key: "onSuccess",
+    value: function onSuccess() {
+      this.reset();
+    }
+  }, {
+    key: "onFail",
+    value: function onFail(errors) {
+      this.errors.record(errors);
+    }
+  }]);
+
+  return Form;
+}();
+
+
 
 /***/ }),
 
@@ -16029,7 +16176,7 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vuex__WEBPACK_IMPORTED_MODULE_1__
       return new Promise(function (resolve, reject) {
         commit("auth_request");
         axios__WEBPACK_IMPORTED_MODULE_2___default()({
-          url: "".concat("http://gerbzilla.test/api", "/login"),
+          url: "".concat("http://localhost:8000/api", "/login"),
           data: user,
           method: "POST"
         }).then(function (res) {
@@ -16037,7 +16184,7 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vuex__WEBPACK_IMPORTED_MODULE_1__
           $cookies.set("laravel_token", token);
           axios__WEBPACK_IMPORTED_MODULE_2___default.a.defaults.headers.common["Authorization"] = "Bearer ".concat(token);
           axios__WEBPACK_IMPORTED_MODULE_2___default()({
-            url: "".concat("http://gerbzilla.test/api", "/user"),
+            url: "".concat("http://localhost:8000/api", "/user"),
             method: "GET"
           }).then(function (resp) {
             var user = resp.data.user;
@@ -16140,8 +16287,8 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vuex__WEBPACK_IMPORTED_MODULE_1__
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /Users/joe.mac/projects/gerbzilla/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /Users/joe.mac/projects/gerbzilla/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /Users/jsams/projects/gerbzilla/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /Users/jsams/projects/gerbzilla/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

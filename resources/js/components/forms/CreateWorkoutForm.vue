@@ -1,108 +1,90 @@
 <template>
-  <div
-    v-if="show"
-    v-scroll-lock="show"
-    class="fixed pin-t pin-l pin-r pin-b z-50 flex justify-center items-center px-2 bg-grey-translucent"
-  >
-    <div class="relative max-w-md w-full bg-white p-8 shadow-lg rounded-lg">
-      <h1 class="text-grey-darkest font-normal text-2xl mb-10">Create Workout</h1>
-      <div
-        v-if="loading"
-        class="absolute pin-t pin-l pin-b w-full bg-white-translucent flex justify-center items-center"
-      >
-        <img src="/images/puff.svg" alt="Loading">
+  <div class="max-w-md w-full bg-white">
+    <h1 class="text-grey-darkest font-normal text-2xl mb-10">Create Workout</h1>
+    <form @submit.prevent="onSubmit" @keydown="form.errors.clear()">
+      <div class="mb-6">
+        <label class="block text-grey-darker text-sm font-normal mb-4" for="name">Name</label>
+        <input
+          class="appearance-none border-b w-full py-2 text-grey-darker leading-tight focus:outline-none"
+          id="name"
+          name="name"
+          type="text"
+          v-model="form.name"
+        >
+        <span
+          class="text-red text-xs pt-2"
+          v-if="form.errors.has('name')"
+          v-text="form.errors.get('name')"
+        ></span>
       </div>
-      <form @submit="createWorkout">
-        <div class="mb-6">
-          <label class="block text-grey-darker text-sm font-normal mb-4" for="name">Name</label>
-          <input
-            class="appearance-none border-b w-full py-2 text-grey-darker leading-tight focus:outline-none"
-            id="name"
-            type="text"
-            v-model="name"
-          >
-        </div>
-        <div class="mb-6">
-          <label class="block text-grey-darker text-sm font-normal mb-4" for="date">Date</label>
-          <input
-            class="appearance-none border-b w-full py-2 text-grey-darker leading-tight focus:outline-none"
-            id="date"
-            type="date"
-            v-model="date"
-          >
-        </div>
-        <button
-          class="mr-4 bg-blue hover:bg-blue-dark text-white font-normal text-sm py-2 px-6 rounded-full focus:outline-none uppercase"
-          type="submit"
-        >Create Workout</button>
-        <button
-          @click="closeWindow"
-          class="text-grey-darker font-normal text-sm py-2 px-6 rounded-full focus:outline-none uppercase"
-          type="button"
-        >Cancel</button>
-      </form>
-    </div>
+      <div class="mb-6">
+        <label class="block text-grey-darker text-sm font-normal mb-4" for="date">Date</label>
+        <input
+          class="appearance-none border-b w-full py-2 text-grey-darker leading-tight focus:outline-none"
+          id="date"
+          name="date"
+          type="date"
+          v-model="form.date"
+        >
+        <span
+          class="text-red text-xs pt-2"
+          v-if="form.errors.has('date')"
+          v-text="form.errors.get('date')"
+        ></span>
+      </div>
+      <button
+        class="mr-4 bg-blue hover:bg-blue-dark text-white font-normal text-sm py-2 px-6 rounded-full focus:outline-none uppercase"
+        type="submit"
+      >Create Workout</button>
+      <button
+        @click="closeForm"
+        class="text-grey-darker font-normal text-sm py-2 px-6 rounded-full focus:outline-none uppercase"
+        type="button"
+      >Cancel</button>
+    </form>
   </div>
 </template>
 
 <script>
+import Form from "../../classes/Form";
+
 export default {
   data() {
     return {
-      name: "",
-      date: "",
-      loading: false
+      form: new Form({
+        name: "",
+        date: ""
+      })
     };
   },
 
-  props: {
-    show: Boolean
-  },
-
   methods: {
-    closeWindow() {
-      this.$emit("cancel-workout-create");
-    },
-
-    createWorkout(e) {
-      e.preventDefault();
-      this.loading = true;
+    onSubmit() {
       const { user_id, block_id } = this.$route.params;
 
-      this.$http
+      this.form
         .post(
           `${
             process.env.MIX_BASE_URL
-          }/trainer/users/${user_id}/blocks/${block_id}/workouts`,
-          {
-            name: this.name,
-            date: this.date
-          }
+          }/trainer/users/${user_id}/blocks/${block_id}/workouts`
         )
         .then(res => {
-          this.name = "";
-          this.date = "";
-
-          this.loading = false;
-
           this.$store.dispatch("add", {
             type: "success",
-            message: "Added workout successfully.",
+            message: "Added workout",
             show: true
           });
 
           this.$emit("create-workout-success");
-          this.$emit("cancel-workout-create");
         })
         .catch(err => {
-          this.$store.dispatch("add", {
-            type: "error",
-            message: err.message,
-            show: true
-          });
-          this.$emit("create-workout-error", err);
-          this.$emit("cancel-workout-create");
+          console.log(err);
         });
+    },
+
+    closeForm() {
+      this.form.errors.clear();
+      this.$emit("close-workout-create");
     }
   }
 };

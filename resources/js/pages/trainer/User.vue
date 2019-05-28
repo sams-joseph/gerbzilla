@@ -3,11 +3,6 @@
     <page-header></page-header>
     <navigation></navigation>
     <side-navigation></side-navigation>
-    <create-block-form
-      v-bind:show="showAddBlockForm"
-      @cancel-block-create="toggleAddBlockForm"
-      @create-block-success="refreshData"
-    ></create-block-form>
     <loader v-if="loading"></loader>
     <transition name="fade">
       <div v-if="!loading" class="container mx-auto px-0">
@@ -20,21 +15,28 @@
         >{{ user.is_active === 1 ? 'Active' : 'Inactive' }}</h4>
         <tabs class="flex-1">
           <tab name="Workouts" :selected="true">
-            <h1 class="text-grey-darkest font-normal text-2xl mb-8 px-8">
-              Training Blocks
-              <span
-                class="float-right uppercase text-grey-dark text-xs font-semibold py-2 px-4 rounded hover:bg-grey-lighter hover:text-red cursor-pointer"
-                @click="toggleAddBlockForm"
-              >Add Block</span>
-            </h1>
-            <div class="flex w-full flex-wrap px-6">
-              <block
-                v-for="block in blocks"
-                v-bind:key="block.id"
-                v-bind:block="block"
-                v-bind:name="'block'"
-                v-bind:params="{ user_id: $route.params.id, block_id: block.id }"
-              ></block>
+            <create-block-form
+              v-show="showAddBlockForm"
+              @cancel-block-create="toggleAddBlockForm"
+              @create-block-success="refreshData"
+            ></create-block-form>
+            <div v-show="!showAddBlockForm">
+              <h1 class="text-grey-darkest font-normal text-2xl mb-8 px-8">
+                Training Blocks
+                <span
+                  class="float-right uppercase text-grey-dark text-xs font-semibold py-2 px-4 rounded hover:bg-grey-lighter hover:text-red cursor-pointer"
+                  @click="toggleAddBlockForm"
+                >Add Block</span>
+              </h1>
+              <div class="flex w-full flex-wrap px-6">
+                <block
+                  v-for="block in blocks"
+                  v-bind:key="block.id"
+                  v-bind:block="block"
+                  v-bind:name="'block'"
+                  v-bind:params="{ user_id: $route.params.id, block_id: block.id }"
+                ></block>
+              </div>
             </div>
           </tab>
           <tab name="Profile">
@@ -103,6 +105,7 @@ export default {
   methods: {
     refreshData() {
       this.loading = true;
+      this.toggleAddBlockForm();
 
       this.$http
         .get(

@@ -1,105 +1,99 @@
 <template>
-  <div
-    v-if="show"
-    v-scroll-lock="show"
-    class="fixed pin-t pin-l pin-r pin-b z-50 flex justify-center items-center px-2 bg-grey-translucent"
-  >
-    <div class="mx-8 w-full bg-white relative max-w-md p-8 rounded-lg shadow-lg">
-      <h1 class="text-grey-darkest font-normal text-2xl mb-10">Create Block</h1>
-      <transition name="fade">
-        <div
-          v-if="loading"
-          class="absolute pin-t pin-l pin-b w-full bg-white-translucent flex justify-center pt-12"
+  <div class="w-full max-w-md px-8">
+    <h1 class="text-grey-darkest font-normal text-2xl mb-10">Create Block</h1>
+    <form @submit.prevent="onSubmit" @keydown="form.errors.clear()">
+      <div class="mb-6">
+        <label class="block text-grey-darker text-sm font-normal mb-4" for="name">Name</label>
+        <input
+          class="appearance-none border-b w-full py-2 text-grey-darker leading-tight focus:outline-none"
+          id="name"
+          type="text"
+          name="name"
+          v-model="form.name"
         >
-          <div class="pl-6 flex flex-col items-center">
-            <div class="mb-4">
-              <img src="/images/puff.svg" alt="Loading">
-            </div>
-            <h6 class="text-grey-darkest font-bold text-lg">Loading</h6>
+        <span
+          class="text-red text-xs pt-2"
+          v-if="form.errors.has('name')"
+          v-text="form.errors.get('name')"
+        ></span>
+      </div>
+      <div class="mb-6">
+        <label class="block text-grey-darker text-sm font-normal mb-4" for="start_date">Start Date</label>
+        <input
+          class="appearance-none border-b w-full py-2 text-grey-darker leading-tight focus:outline-none"
+          id="date"
+          type="date"
+          name="start_date"
+          v-model="form.start_date"
+        >
+        <span
+          class="text-red text-xs pt-2"
+          v-if="form.errors.has('start_date')"
+          v-text="form.errors.get('start_date')"
+        ></span>
+      </div>
+      <div class="mb-12">
+        <label class="block text-grey-darker text-sm font-normal mb-4" for="type_id">Category</label>
+        <div class="relative">
+          <select
+            class="block appearance-none border-b rounded-none bg-white text-grey-darker w-full py-2 leading-tight focus:outline-none capitalize"
+            id="category"
+            name="type_id"
+            v-model="form.type_id"
+          >
+            <option v-for="type in types" v-bind:key="type.id" :value="type.id">{{ type.name }}</option>
+          </select>
+          <div
+            class="pointer-events-none absolute pin-y pin-r flex items-center px-2 text-grey-darker"
+          >
+            <svg
+              class="fill-current h-4 w-4"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 20 20"
+            >
+              <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"></path>
+            </svg>
           </div>
         </div>
-      </transition>
-      <form @submit="createBlock">
-        <div class="mb-6">
-          <label class="block text-grey-darker text-sm font-normal mb-4" for="name">Name</label>
-          <input
-            class="appearance-none border-b w-full py-2 text-grey-darker leading-tight focus:outline-none"
-            id="name"
-            type="text"
-            v-model="name"
-          >
-        </div>
-        <div class="mb-6">
-          <label class="block text-grey-darker text-sm font-normal mb-4" for="date">Start Date</label>
-          <input
-            class="appearance-none border-b w-full py-2 text-grey-darker leading-tight focus:outline-none"
-            id="date"
-            type="date"
-            v-model="date"
-          >
-        </div>
-        <div class="mb-12">
-          <label class="block text-grey-darker text-sm font-normal mb-4" for="category">Category</label>
-          <div class="relative">
-            <select
-              class="block appearance-none border-b rounded-none bg-white text-grey-darker w-full py-2 leading-tight focus:outline-none capitalize"
-              id="category"
-              v-model="type"
-            >
-              <option v-for="type in types" v-bind:key="type.id" :value="type.id">{{ type.name }}</option>
-            </select>
-            <div
-              class="pointer-events-none absolute pin-y pin-r flex items-center px-2 text-grey-darker"
-            >
-              <svg
-                class="fill-current h-4 w-4"
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 20 20"
-              >
-                <path
-                  d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"
-                ></path>
-              </svg>
-            </div>
-          </div>
-        </div>
+        <span
+          class="text-red text-xs pt-2"
+          v-if="form.errors.has('type_id')"
+          v-text="form.errors.get('type_id')"
+        ></span>
+      </div>
 
-        <button
-          class="bg-blue hover:bg-blue-dark text-white font-normal text-sm py-2 px-6 rounded-full focus:outline-none uppercase"
-          type="submit"
-        >Create Block</button>
-        <button
-          @click="closeWindow"
-          class="text-grey-darker font-normal text-sm py-2 px-6 rounded-full focus:outline-none uppercase"
-          type="button"
-        >Cancel</button>
-      </form>
-    </div>
+      <button
+        class="bg-blue hover:bg-blue-dark text-white font-normal text-sm py-2 px-6 rounded-full focus:outline-none uppercase"
+        type="submit"
+      >Create Block</button>
+      <button
+        @click="$emit('cancel-block-create')"
+        class="text-grey-darker font-normal text-sm py-2 px-6 rounded-full focus:outline-none uppercase"
+        type="button"
+      >Cancel</button>
+    </form>
   </div>
 </template>
 
 <script>
+import Form from "../../classes/Form";
+
 export default {
   data() {
     return {
       types: [],
-      type: 1,
-      name: "",
-      date: "",
-      loading: true,
-      success: false
+      form: new Form({
+        name: "",
+        start_date: "",
+        type_id: 1
+      })
     };
-  },
-
-  props: {
-    show: Boolean
   },
 
   mounted() {
     this.$http
       .get(`${process.env.MIX_BASE_URL}/trainer/types`)
       .then(res => {
-        this.loading = false;
         this.types = res.data;
       })
       .catch(err => {
@@ -108,51 +102,20 @@ export default {
   },
 
   methods: {
-    closeWindow() {
-      this.$emit("cancel-block-create");
-    },
-
-    createBlock(e) {
-      e.preventDefault();
-      this.loading = true;
-      const user = JSON.parse(localStorage.getItem("user"));
-
-      this.$http
-        .post(
-          `${process.env.MIX_BASE_URL}/trainer/users/${
-            this.$route.params.id
-          }/blocks`,
-          {
-            name: this.name,
-            start_date: this.date,
-            type_id: this.type
-          }
-        )
+    onSubmit() {
+      const userId = this.$route.params.id;
+      this.form
+        .post(`${process.env.MIX_BASE_URL}/trainer/users/${userId}/blocks`)
         .then(res => {
-          this.name = "";
-          this.date = "";
-          this.type = 1;
-
-          console.log(res);
-
-          this.loading = false;
-          this.success = true;
-
           this.$store.dispatch("add", {
             type: "success",
-            message: "Added block successfully.",
+            message: "Added block",
             show: true
           });
-
           this.$emit("create-block-success");
-          this.$emit("cancel-block-create");
         })
         .catch(err => {
-          this.$store.dispatch("add", {
-            type: "error",
-            message: err.message,
-            show: true
-          });
+          console.log(err);
         });
     }
   }

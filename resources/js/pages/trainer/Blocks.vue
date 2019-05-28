@@ -5,13 +5,6 @@
     <side-navigation></side-navigation>
     <loader v-if="loading"></loader>
     <transition name="fade">
-      <create-workout-form
-        @cancel-workout-create="toggleModal"
-        @create-workout-success="refreshData"
-        v-bind:show="showModal"
-      ></create-workout-form>
-    </transition>
-    <transition name="fade">
       <section v-if="!loading">
         <block-header
           v-bind:heading="block.name"
@@ -38,7 +31,13 @@
             <path d="M11 3L11 11 3 11 3 13 11 13 11 21 13 21 13 13 21 13 21 11 13 11 13 3z"></path>
           </svg>
         </div>
-        <div class="container mx-auto px-4 py-20">
+        <div v-show="showCreateWorkoutform" class="container mx-auto px-8 py-20">
+          <create-workout-form
+            @close-workout-create="toggleModal"
+            @create-workout-success="refreshData"
+          ></create-workout-form>
+        </div>
+        <div v-show="!showCreateWorkoutform" class="container mx-auto px-4 py-20">
           <h1 class="text-grey-darkest font-normal text-2xl mb-10 px-4">Workouts</h1>
           <ul class="list-reset flex flex-wrap px-4 md:px-0">
             <workout-item
@@ -62,7 +61,7 @@ export default {
       block: {},
       type: {},
       workouts: [],
-      showModal: false,
+      showCreateWorkoutform: false,
       showPopover: false,
       showDeleteConfirm: false,
       loading: true
@@ -90,7 +89,7 @@ export default {
     },
 
     toggleModal() {
-      this.showModal = !this.showModal;
+      this.showCreateWorkoutform = !this.showCreateWorkoutform;
     },
 
     getDay(date) {
