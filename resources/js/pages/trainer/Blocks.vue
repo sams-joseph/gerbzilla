@@ -71,6 +71,7 @@ export default {
   methods: {
     refreshData() {
       const { user_id, block_id } = this.$route.params;
+      this.toggleModal();
       this.loading = true;
 
       this.$http
