@@ -10007,12 +10007,12 @@ var render = function() {
                               "div",
                               {
                                 staticClass:
-                                  "rounded-full mb-8 md:mb-0 md:mr-8 w-full md:w-auto overflow-hidden"
+                                  "rounded-full mb-8 md:mb-0 md:mr-8 w-full md:w-auto"
                               },
                               [
                                 _c("img", {
                                   staticClass:
-                                    "w-32 h-32 mx-auto block rounded-full overflow-hidden",
+                                    "w-32 h-32 mx-auto block rounded-full overflow-hidden shadow-lg",
                                   attrs: {
                                     src: "/images/profile-icon.jpg",
                                     alt: "Profile"
