@@ -743,6 +743,17 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({});
 
 /***/ }),
@@ -6103,10 +6114,19 @@ var render = function() {
               "w-full max-w-xs bg-white rounded-lg shadow-lg p-4 z-50 fixed pin-t pin-center mt-4 flex items-center"
           },
           [
-            _c("img", {
-              staticClass: "mr-4",
-              attrs: { src: "/images/check-circle.svg", alt: "Success" }
-            }),
+            _vm.$store.getters.getMsg.type === "success"
+              ? _c("img", {
+                  staticClass: "mr-4",
+                  attrs: { src: "/images/check-circle.svg", alt: "Success" }
+                })
+              : _vm._e(),
+            _vm._v(" "),
+            _vm.$store.getters.getMsg.type === "error"
+              ? _c("img", {
+                  staticClass: "mr-4 fill-current text-red",
+                  attrs: { src: "/images/bxs-error-alt.svg", alt: "Error" }
+                })
+              : _vm._e(),
             _vm._v(" "),
             _c("span", { staticClass: "text-grey-darkest" }, [
               _vm._v(_vm._s(_vm.$store.getters.getMsg.message))
