@@ -89,8 +89,8 @@
               :to="{ name: 'user', params: { id: user.id }}"
               class="w-full flex items-center"
             >
-              <span class="rounded-full mr-6 h-18 w-18 md:h-12 md:w-12">
-                <img class="w-full md:w-auto" src="/images/profile-icon.svg" alt="Profile Icon">
+              <span class="rounded-full mr-6 h-18 w-18 md:h-12 md:w-12 overflow-hidden">
+                <img class="w-full md:w-auto" src="/images/profile-icon.jpg" alt="Profile Icon">
               </span>
               <div class="flex-1">
                 <span
@@ -127,8 +127,8 @@
               :to="{ name: 'user', params: { id: user.id }}"
               class="flex items-center w-full"
             >
-              <span class="rounded-full mr-6 h-18 w-18 md:h-12 md:w-12">
-                <img class="w-full md:w-auto" src="/images/profile-icon.svg" alt="Profile Icon">
+              <span class="rounded-full mr-6 h-18 w-18 md:h-12 md:w-12 overflow-hidden">
+                <img class="w-full md:w-auto" src="/images/profile-icon.jpg" alt="Profile Icon">
               </span>
               <div class="flex-1">
                 <span

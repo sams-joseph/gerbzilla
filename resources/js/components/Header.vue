@@ -162,8 +162,12 @@
           <path d="M4 6H20V8H4zM8 11H20V13H8zM13 16H20V18H13z"></path>
         </svg>
       </div>
-      <div v-if="authorized" @click="openDrawer" class="w-8 h-8 rounded-full cursor-pointer">
-        <img src="/images/profile-icon.svg" alt="Profile">
+      <div
+        v-if="authorized"
+        @click="openDrawer"
+        class="w-8 h-8 rounded-full cursor-pointer overflow-hidden"
+      >
+        <img src="/images/profile-icon.jpg" alt="Profile">
       </div>
     </div>
   </header>

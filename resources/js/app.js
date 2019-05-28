@@ -34,6 +34,7 @@ import Instagram from "./components/Instagram";
 import Announcement from "./components/Announcement";
 import DeleteModal from "./components/DeleteModal";
 
+import UserSkeletonLoader from './components/UserSkeletonLoader';
 import Loader from "./components/Loader";
 
 import Construction from "./components/Construction";
@@ -74,6 +75,7 @@ Vue.component("instagram", Instagram);
 Vue.component("announcement", Announcement);
 Vue.component("delete-modal", DeleteModal);
 
+Vue.component("user-skeleton-loader", UserSkeletonLoader);
 Vue.component("loader", Loader);
 
 Vue.component("construction", Construction);

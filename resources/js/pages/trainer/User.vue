@@ -39,20 +39,7 @@
               </div>
             </div>
           </tab>
-          <tab name="Profile">
-            <div class="rounded-full mb-8 md:mr-4 w-full md:w-auto">
-              <img class="w-32 h-32 mx-auto block" src="/images/profile-icon.svg" alt="Profile">
-            </div>
-            <h1
-              class="text-grey-darkest font-normal text-2xl mb-4 text-center"
-            >{{ `${user.first_name} ${user.last_name}` }}</h1>
-            <div class="flex justify-center">
-              <h4
-                class="text-white font-normal text-xs font-bold mb-12 uppercase inline-block py-1 px-4 bg-red border border-red-dark rounded-full"
-                :class="{ 'bg-green': isActive, 'border-green-dark': isActive }"
-              >{{ user.is_active === 1 ? 'Active' : 'Inactive' }}</h4>
-            </div>
-          </tab>
+          <tab name="Profile"></tab>
         </tabs>
       </div>
     </transition>
