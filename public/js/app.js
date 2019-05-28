@@ -3057,6 +3057,10 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -10113,7 +10117,8 @@ var render = function() {
                               },
                               [
                                 _c("img", {
-                                  staticClass: "w-32 h-32 mx-auto block",
+                                  staticClass:
+                                    "w-32 h-32 mx-auto block rounded-full overflow-hidden",
                                   attrs: {
                                     src: "/images/profile-icon.jpg",
                                     alt: "Profile"

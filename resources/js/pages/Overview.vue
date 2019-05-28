@@ -11,7 +11,11 @@
               class="flex flex-column md:flex-row justify-center md:items-center flex-wrap md:flex-no-wrap w-full md:w-auto"
             >
               <div class="rounded-full mb-8 md:mb-0 md:mr-8 w-full md:w-auto overflow-hidden">
-                <img class="w-32 h-32 mx-auto block" src="/images/profile-icon.jpg" alt="Profile">
+                <img
+                  class="w-32 h-32 mx-auto block rounded-full overflow-hidden"
+                  src="/images/profile-icon.jpg"
+                  alt="Profile"
+                >
               </div>
               <div class="flex flex-col">
                 <h1
