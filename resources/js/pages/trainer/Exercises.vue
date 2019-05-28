@@ -4,20 +4,18 @@
     <navigation></navigation>
     <side-navigation></side-navigation>
     <loader v-if="loading"></loader>
+    <create-exercise-form
+      @close-exercise-create="toggleModal"
+      @create-exercise-success="refreshData"
+      v-show="showModal"
+    ></create-exercise-form>
     <transition name="fade">
       <exercise-list
-        v-if="!loading"
+        v-if="!loading && !showModal"
         heading="Exercises"
         v-bind:exercises="exercises"
         v-bind:categories="categories"
       ></exercise-list>
-    </transition>
-    <transition name="fade">
-      <create-exercise-form
-        @cancel-user-create="toggleModal"
-        @create-exercise-success="refreshData"
-        v-bind:show="showModal"
-      ></create-exercise-form>
     </transition>
     <div
       @click="toggleModal"

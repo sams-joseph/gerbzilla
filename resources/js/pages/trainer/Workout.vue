@@ -34,35 +34,35 @@
         </div>
 
         <div class="container mx-auto px-4 py-20 relative">
-          <transition name="fade">
-            <create-set-form
-              @cancel-set-create="toggleModal"
-              @create-set-success="refreshData"
-              v-bind:show="showModal"
-            ></create-set-form>
-          </transition>
-          <h1 class="text-grey-darkest font-normal text-2xl mb-10 px-4">Exercises</h1>
-          <ul class="list-reset flex flex-wrap px-4 md:px-0">
-            <li v-for="set in sets" :key="set.id" class="w-full md:w-1/2 lg:w-1/3 mb-4">
-              <router-link
-                active-class="none"
-                :to="{ name: 'edit-set', params: { user_id: $route.params.user_id, block_id: $route.params.block_id, workout_id: $route.params.workout_id, set_id: set.id }}"
-                class="cursor-pointer"
-              >
-                <div
-                  class="relative w-full bg-white shadow-lg md:shadow-none md:hover:bg-grey-lighter rounded-lg p-4 flex justify-between"
+          <create-set-form
+            @close-set-create="toggleModal"
+            @create-set-success="refreshData"
+            v-show="showModal"
+          ></create-set-form>
+          <div v-show="!showModal">
+            <h1 class="text-grey-darkest font-normal text-2xl mb-10 px-4">Exercises</h1>
+            <ul class="list-reset flex flex-wrap px-4 md:px-0">
+              <li v-for="set in sets" :key="set.id" class="w-full md:w-1/2 lg:w-1/3 mb-4">
+                <router-link
+                  active-class="none"
+                  :to="{ name: 'edit-set', params: { user_id: $route.params.user_id, block_id: $route.params.block_id, workout_id: $route.params.workout_id, set_id: set.id }}"
+                  class="cursor-pointer"
                 >
-                  <div class="w-full flex justify-between items-start relative">
-                    <div class="flex-1">
-                      <h2 class="text-lg text-grey-darkest font-bold mb-1">{{ set.exercise.name }}</h2>
-                      <h3 class="text-base text-blue font-medium">Sets: {{ set.num_sets }}</h3>
-                      <p class="text-base text-grey-dark font-base text-sm mt-4">{{ set.notes }}</p>
+                  <div
+                    class="relative w-full bg-white shadow-lg md:shadow-none md:hover:bg-grey-lighter rounded-lg p-4 flex justify-between"
+                  >
+                    <div class="w-full flex justify-between items-start relative">
+                      <div class="flex-1">
+                        <h2 class="text-lg text-grey-darkest font-bold mb-1">{{ set.exercise.name }}</h2>
+                        <h3 class="text-base text-blue font-medium">Sets: {{ set.num_sets }}</h3>
+                        <p class="text-base text-grey-dark font-base text-sm mt-4">{{ set.notes }}</p>
+                      </div>
                     </div>
                   </div>
-                </div>
-              </router-link>
-            </li>
-          </ul>
+                </router-link>
+              </li>
+            </ul>
+          </div>
         </div>
       </section>
     </transition>

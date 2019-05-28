@@ -1,33 +1,22 @@
 <template>
-  <div
-    v-if="show"
-    v-scroll-lock="show"
-    class="fixed pin-t pin-l pin-r pin-b z-50 flex justify-center items-center px-2 bg-grey-translucent"
-  >
-    <div class="mx-8 w-full bg-white relative max-w-md p-8 rounded-lg shadow-lg">
+  <div class="container mx-auto px-8 py-20">
+    <div class="w-full max-w-md">
       <h1 class="text-grey-darkest font-normal text-2xl mb-10">Create Exercise</h1>
-      <transition name="fade">
-        <div
-          v-if="loading"
-          class="absolute pin-t pin-l pin-b w-full bg-white-translucent flex justify-center pt-12"
-        >
-          <div class="pl-6 flex flex-col items-center">
-            <div class="mb-4">
-              <img src="/images/puff.svg" alt="Loading">
-            </div>
-            <h6 class="text-grey-darkest font-bold text-lg">Loading</h6>
-          </div>
-        </div>
-      </transition>
-      <form @submit="createExercise">
+      <form @submit.prevent="onSubmit" @keydown="form.errors.clear($event.target.name)">
         <div class="mb-6">
           <label class="block text-grey-darker text-sm font-normal mb-4" for="name">Name</label>
           <input
             class="appearance-none border-b w-full py-2 text-grey-darker leading-tight focus:outline-none"
             id="name"
             type="text"
-            v-model="name"
+            name="name"
+            v-model="form.name"
           >
+          <span
+            class="text-red text-xs pt-2"
+            v-if="form.errors.has('name')"
+            v-text="form.errors.get('name')"
+          ></span>
         </div>
         <div class="mb-12">
           <label class="block text-grey-darker text-sm font-normal mb-4" for="category">Category</label>
@@ -35,7 +24,8 @@
             <select
               class="block appearance-none border-b rounded-none bg-white text-grey-darker w-full py-2 leading-tight focus:outline-none"
               id="category"
-              v-model="category"
+              name="category_id"
+              v-model="form.category_id"
             >
               <option
                 v-for="category in categories"
@@ -56,6 +46,11 @@
                 ></path>
               </svg>
             </div>
+            <span
+              class="text-red text-xs pt-2"
+              v-if="form.errors.has('category_id')"
+              v-text="form.errors.get('category_id')"
+            ></span>
           </div>
         </div>
 
@@ -74,19 +69,17 @@
 </template>
 
 <script>
+import Form from "../../classes/Form";
+
 export default {
   data() {
     return {
       categories: [],
-      category: 1,
-      name: "",
-      loading: true,
-      success: false
+      form: new Form({
+        category_id: 1,
+        name: ""
+      })
     };
-  },
-
-  props: {
-    show: Boolean
   },
 
   mounted() {
@@ -103,27 +96,15 @@ export default {
 
   methods: {
     closeWindow() {
-      this.$emit("cancel-user-create");
+      this.form.errors.clear();
+      this.$emit("close-exercise-create");
     },
 
-    createExercise(e) {
-      e.preventDefault();
-      this.loading = true;
-      const user = JSON.parse(localStorage.getItem("user"));
-
-      this.$http
-        .post(`${process.env.MIX_BASE_URL}/trainer/exercises`, {
-          name: this.name,
-          category_id: this.category
-        })
+    onSubmit() {
+      this.form
+        .post(`${process.env.MIX_BASE_URL}/trainer/exercises`)
         .then(res => {
-          this.name = "";
-          this.category = 1;
-
           console.log(res);
-
-          this.loading = false;
-          this.success = true;
 
           this.$store.dispatch("add", {
             type: "success",
@@ -132,14 +113,10 @@ export default {
           });
 
           this.$emit("create-exercise-success");
-          this.$emit("cancel-user-create");
+          this.$emit("close-exercise-create");
         })
         .catch(err => {
-          this.$store.dispatch("add", {
-            type: "error",
-            message: err.message,
-            show: true
-          });
+          console.log(err);
         });
     }
   }

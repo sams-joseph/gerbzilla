@@ -5,16 +5,14 @@
     <side-navigation></side-navigation>
     <loader v-if="loading"></loader>
     <div class="relative container mx-auto mb-20">
-      <transition name="fade">
-        <create-user-form
-          @cancel-user-create="toggleModal"
-          @create-user-success="refreshData"
-          v-bind:show="showModal"
-        ></create-user-form>
-      </transition>
+      <create-user-form
+        @close-user-create="toggleModal"
+        @create-user-success="refreshData"
+        v-show="showModal"
+      ></create-user-form>
       <transition name="fade">
         <user-list
-          v-if="!loading"
+          v-if="!loading && !showModal"
           heading="Users"
           v-bind:users="users"
           v-bind:show="showModal"

@@ -32,16 +32,13 @@ class UserController extends Controller
 
     public function store(Request $request)
     {
+        $attributes = request()->validate(['first_name' => 'required', 'last_name' => 'required', 'email' => 'email|required', 'password' => 'required|confirmed|min:6']);
         $trainer_id = $request->user()->id;
 
+        $attributes['trainer_id'] = $trainer_id;
+
         try {
-            $user = User::create([
-                'first_name' => $request->input('first_name'),
-                'last_name' => $request->input('last_name'),
-                'email' => $request->input('email'),
-                'password' => Hash::make($request->input('password')),
-                'trainer_id' => $trainer_id,
-            ]);
+            $user = User::create($attributes);
 
             $user
                 ->roles()
@@ -49,7 +46,7 @@ class UserController extends Controller
 
             return response()->json($user);
         } catch (\Illuminate\Database\QueryException $e) {
-            return response()->json('Email address already exists', 400);
+            return response()->json(['errors' => ['email' => ['Email address already exists']]], 400);
         }
     }
 
