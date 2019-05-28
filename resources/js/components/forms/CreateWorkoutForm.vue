@@ -37,7 +37,7 @@
         type="submit"
       >Create Workout</button>
       <button
-        @click="closeForm"
+        @click="$emit('close-workout-create')"
         class="text-grey-darker font-normal text-sm py-2 px-6 rounded-full focus:outline-none uppercase"
         type="button"
       >Cancel</button>
@@ -80,11 +80,6 @@ export default {
         .catch(err => {
           console.log(err);
         });
-    },
-
-    closeForm() {
-      this.form.errors.clear();
-      this.$emit("close-workout-create");
     }
   }
 };

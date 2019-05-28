@@ -74,7 +74,7 @@
         type="submit"
       >Create Exercise</button>
       <button
-        @click="closeWindow"
+        @click="$emit('close-set-create')"
         class="text-grey-darker font-normal text-sm py-2 px-6 rounded-full focus:outline-none uppercase"
         type="button"
       >Cancel</button>
@@ -110,11 +110,6 @@ export default {
   },
 
   methods: {
-    closeWindow() {
-      this.form.errors.clear();
-      this.$emit("close-set-create");
-    },
-
     onSubmit() {
       const { user_id, block_id, workout_id } = this.$route.params;
 

@@ -1275,10 +1275,6 @@ __webpack_require__.r(__webpack_exports__);
     });
   },
   methods: {
-    closeWindow: function closeWindow() {
-      this.form.errors.clear();
-      this.$emit("close-exercise-create");
-    },
     onSubmit: function onSubmit() {
       var _this2 = this;
 
@@ -1420,10 +1416,6 @@ __webpack_require__.r(__webpack_exports__);
     });
   },
   methods: {
-    closeWindow: function closeWindow() {
-      this.form.errors.clear();
-      this.$emit("close-set-create");
-    },
     onSubmit: function onSubmit() {
       var _this2 = this;
 
@@ -1588,10 +1580,6 @@ __webpack_require__.r(__webpack_exports__);
       })["catch"](function (err) {
         console.log(err);
       });
-    },
-    closeForm: function closeForm() {
-      this.form.erorrs.clear();
-      this.$emit("close-user-create");
     }
   }
 });
@@ -1683,10 +1671,6 @@ __webpack_require__.r(__webpack_exports__);
       })["catch"](function (err) {
         console.log(err);
       });
-    },
-    closeForm: function closeForm() {
-      this.form.errors.clear();
-      this.$emit("close-workout-create");
     }
   }
 });
@@ -6915,7 +6899,11 @@ var render = function() {
               staticClass:
                 "text-grey-darker font-normal text-sm py-2 px-6 rounded-full focus:outline-none uppercase",
               attrs: { type: "button" },
-              on: { click: _vm.closeWindow }
+              on: {
+                click: function($event) {
+                  return _vm.$emit("close-exercise-create")
+                }
+              }
             },
             [_vm._v("Cancel")]
           )
@@ -7158,7 +7146,11 @@ var render = function() {
             staticClass:
               "text-grey-darker font-normal text-sm py-2 px-6 rounded-full focus:outline-none uppercase",
             attrs: { type: "button" },
-            on: { click: _vm.closeWindow }
+            on: {
+              click: function($event) {
+                return _vm.$emit("close-set-create")
+              }
+            }
           },
           [_vm._v("Cancel")]
         )
@@ -7441,7 +7433,11 @@ var render = function() {
             staticClass:
               "text-grey-darker font-normal text-sm py-2 px-6 rounded-full focus:outline-none uppercase",
             attrs: { type: "button" },
-            on: { click: _vm.closeForm }
+            on: {
+              click: function($event) {
+                return _vm.$emit("close-user-create")
+              }
+            }
           },
           [_vm._v("Cancel")]
         )
@@ -7588,7 +7584,11 @@ var render = function() {
             staticClass:
               "text-grey-darker font-normal text-sm py-2 px-6 rounded-full focus:outline-none uppercase",
             attrs: { type: "button" },
-            on: { click: _vm.closeForm }
+            on: {
+              click: function($event) {
+                return _vm.$emit("close-workout-create")
+              }
+            }
           },
           [_vm._v("Cancel")]
         )

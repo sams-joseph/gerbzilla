@@ -88,7 +88,7 @@
         type="submit"
       >Create User</button>
       <button
-        @click="closeForm"
+        @click="$emit('close-user-create')"
         class="text-grey-darker font-normal text-sm py-2 px-6 rounded-full focus:outline-none uppercase"
         type="button"
       >Cancel</button>
@@ -129,11 +129,6 @@ export default {
         .catch(err => {
           console.log(err);
         });
-    },
-
-    closeForm() {
-      this.form.erorrs.clear();
-      this.$emit("close-user-create");
     }
   }
 };
