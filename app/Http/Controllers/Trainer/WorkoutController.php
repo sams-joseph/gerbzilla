@@ -69,6 +69,8 @@ class WorkoutController extends Controller
             $new_set = $set->replicate();
             $new_set->workout_id = $new_workout->id;
             $new_set->save();
+
+            $new_set->exercises()->attach($set->exercises()->get());
         }
 
         return response()->json($new_workout);
