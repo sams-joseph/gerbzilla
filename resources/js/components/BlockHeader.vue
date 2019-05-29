@@ -1,13 +1,6 @@
 <template>
   <div>
-    <div
-      class="w-full py-20"
-      v-bind:class="{
-        'bg-red-gradient': type === 'strength',
-        'bg-blue-gradient': type === 'hypertrophy',
-        'bg-green-gradient': type === 'fitness'
-        }"
-    >
+    <div class="w-full py-20" v-bind:class="type">
       <div class="container mx-auto px-0">
         <h1 class="text-white font-bold text-2xl mb-2 px-8">{{ heading }}</h1>
         <h4 class="text-white font-normal text-base opacity-75 px-8 mb-4">{{ subheading }}</h4>
@@ -38,7 +31,7 @@
         </div>
         <div
           v-if="action"
-          class="inline-block flex items-center border-r border-l border-grey-light py-6"
+          class="inline-block flex items-center border-r border-l border-grey-lighter py-6"
         >
           <router-link
             :to="{ name: action.name, params: action.params}"
@@ -48,7 +41,7 @@
         </div>
         <div
           v-if="deleteBlock"
-          class="inline-block flex items-center border-r border-grey-light py-6"
+          class="inline-block flex items-center border-r border-grey-lighter py-6"
         >
           <delete-modal @accept-delete-modal="onDelete">
             <button
@@ -95,3 +88,41 @@ export default {
   }
 };
 </script>
+
+<style>
+.strength {
+  background-image: linear-gradient(
+      to bottom right,
+      rgba(229, 45, 39, 1),
+      rgba(179, 18, 23, 0.5)
+    ),
+    url("/images/strength.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.hypertrophy {
+  background-image: linear-gradient(
+      to bottom right,
+      rgba(68, 129, 235, 1),
+      rgba(4, 190, 254, 0.5)
+    ),
+    url("/images/hypertrophy.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.fitness {
+  background-image: linear-gradient(
+      to bottom right,
+      rgba(43, 170, 96, 1) 2.3%,
+      rgba(129, 204, 104, 0.5) 98.3%
+    ),
+    url("/images/fitness.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+</style>

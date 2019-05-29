@@ -20,7 +20,7 @@
           </div>
           <div class="flex justify-end">
             <button
-              @click.prevent="$emit('accept-delete-modal')"
+              @click.prevent="onSubmit"
               class="bg-blue hover:bg-blue-dark text-white font-normal text-sm py-2 px-6 rounded-full focus:outline-none uppercase"
               type="button"
             >Delete</button>
@@ -44,6 +44,11 @@ export default {
     };
   },
 
-  methods: {}
+  methods: {
+    onSubmit() {
+      this.isVisible = false;
+      this.$emit("accept-delete-modal");
+    }
+  }
 };
 </script>

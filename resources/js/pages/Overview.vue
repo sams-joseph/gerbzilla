@@ -23,7 +23,7 @@
                 >{{ `${this.user.first_name} ${this.user.last_name}` }}</h1>
                 <h3
                   v-bind:class="{'text-green': isActive, 'text-red': !isActive}"
-                  class="text-base font-normal uppercase mb-4 text-center md:text-left"
+                  class="text-sm font-medium uppercase mb-4 text-center md:text-left"
                 >{{ this.isActive ? 'Active' : 'Inactive' }}</h3>
                 <div class="mx-auto mb-12 md:mb-0 md:mx-0">
                   <button

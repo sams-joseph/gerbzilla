@@ -63,7 +63,6 @@ export default {
       workouts: [],
       showCreateWorkoutform: false,
       showPopover: false,
-      showDeleteConfirm: false,
       loading: true
     };
   },

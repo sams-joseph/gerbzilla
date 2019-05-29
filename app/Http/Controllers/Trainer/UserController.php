@@ -52,11 +52,8 @@ class UserController extends Controller
 
     public function expiring(Request $request)
     {
-        Carbon::setWeekStartsAt(Carbon::MONDAY);
-        Carbon::setWeekEndsAt(Carbon::SUNDAY);
-
         $users = User::where(['trainer_id' => $request->user()->id, 'is_active' => 1])
-            ->whereBetween('block_expiration', [Carbon::now()->startOfWeek(), Carbon::now()->endOfWeek()])
+            ->where('block_expiration', '<', Carbon::now()->addDays(7))
             ->get();
 
         return response()->json($users);

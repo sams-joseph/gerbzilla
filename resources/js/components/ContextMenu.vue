@@ -7,7 +7,7 @@
     <transition name="pop-out-quick">
       <ul
         v-show="isOpen"
-        class="context-menu flex list-reset absolute bg-white mt-2 py-2 px-4 rounded shadow-lg text-white z-10 pin-r"
+        class="context-menu flex list-reset absolute bg-white mt-2 py-2 px-2 rounded shadow-lg text-white z-10 pin-r"
       >
         <slot></slot>
       </ul>
