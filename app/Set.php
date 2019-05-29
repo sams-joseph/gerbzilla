@@ -12,8 +12,13 @@ class Set extends Model
         'num_sets', 'notes', 'exercise_id', 'workout_id',
     ];
 
-    public function exercise()
+    // public function exercise()
+    // {
+    //     return $this->belongsTo(Exercise::class);
+    // }
+
+    public function exercises()
     {
-        return $this->belongsTo(Exercise::class);
+        return $this->belongsToMany(Exercise::class);
     }
 }

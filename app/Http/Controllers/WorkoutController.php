@@ -25,7 +25,14 @@ class WorkoutController extends Controller
 
     if (Workout::where(['user_id' => $user->id, 'id' => $workout->id])->with('Block.Type')) {
       $workout = Workout::where(['user_id' => $user->id, 'id' => $workout->id])->with('Block.Type')->first();
-      $sets = Set::where('workout_id', $workout->id)->with('Exercise')->get();
+      $sets = Set::where('workout_id', $workout->id)->get();
+
+      $sets_with_exercises = [];
+
+      foreach( $sets as $set) {
+          $set['exercises'] = $set->exercises()->get();
+          array_push($sets_with_exercises, $set);
+      }
 
       return response()->json(['workout' => $workout, 'sets' => $sets]);
     } else {
@@ -39,7 +46,14 @@ class WorkoutController extends Controller
 
     if (Workout::where(['user_id' => $user->id, 'date' => $date])->with('Block.Type')->exists()) {
       $workout = Workout::where(['user_id' => $user->id, 'date' => $date])->with('Block.Type')->first();
-      $sets = Set::where('workout_id', $workout->id)->with('Exercise')->get();
+      $sets = Set::where('workout_id', $workout->id)->get();
+
+      $sets_with_exercises = [];
+
+      foreach( $sets as $set) {
+          $set['exercises'] = $set->exercises()->get();
+          array_push($sets_with_exercises, $set);
+      }
 
       return response()->json(['workout' => $workout, 'sets' => $sets]);
     } else {

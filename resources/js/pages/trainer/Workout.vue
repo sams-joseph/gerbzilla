@@ -45,7 +45,7 @@
               <li v-for="set in sets" :key="set.id" class="w-full md:w-1/2 lg:w-1/3 mb-4">
                 <router-link
                   active-class="none"
-                  :to="{ name: 'edit-set', params: { user_id: $route.params.user_id, block_id: $route.params.block_id, workout_id: $route.params.workout_id, set_id: set.id }}"
+                  :to="{ name: 'edit-set', params: { user_id: $route.params.user_id, block_id: $route.params.block_id, workout_id: $route.params.workout_id, set_id: set.set.id }}"
                   class="cursor-pointer"
                 >
                   <div
@@ -53,9 +53,15 @@
                   >
                     <div class="w-full flex justify-between items-start relative">
                       <div class="flex-1">
-                        <h2 class="text-lg text-grey-darkest font-bold mb-1">{{ set.exercise.name }}</h2>
-                        <h3 class="text-base text-blue font-medium">Sets: {{ set.num_sets }}</h3>
-                        <p class="text-base text-grey-dark font-base text-sm mt-4">{{ set.notes }}</p>
+                        <h2
+                          v-for="exercise in set.exercises"
+                          class="text-lg text-grey-darkest font-bold mb-1"
+                          v-bind:key="exercise.id"
+                        >{{ exercise.name }}</h2>
+                        <h3 class="text-base text-blue font-medium">Sets: {{ set.set.num_sets }}</h3>
+                        <p
+                          class="text-base text-grey-dark font-base text-sm mt-4"
+                        >{{ set.set.notes }}</p>
                       </div>
                     </div>
                   </div>

@@ -20,7 +20,16 @@
             >
               <div class="w-full flex justify-between items-start relative">
                 <div class="flex-1">
-                  <h2 class="text-lg text-grey-darkest font-bold mb-1">{{ set.exercise.name }}</h2>
+                  <div v-if="set.exercises.length > 1" class="mb-4">
+                    <span
+                      class="bg-green inline-block py-1 px-4 rounded-full border border-green-dark text-white uppercase font-medium text-xs"
+                    >Superset</span>
+                  </div>
+                  <h2
+                    v-for="exercise in set.exercises"
+                    v-bind:key="exercise.id"
+                    class="text-lg text-grey-darkest font-bold mb-1"
+                  >{{ exercise.name }}</h2>
                   <h3 class="text-base text-blue font-medium">Sets: {{ set.num_sets }}</h3>
                   <p class="text-base text-grey-dark font-base text-sm mt-4">{{ set.notes }}</p>
                 </div>

@@ -1454,23 +1454,13 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       exercises: [],
       form: new _classes_Form__WEBPACK_IMPORTED_MODULE_0__["default"]({
-        exercise_id: 1,
+        exercise_id: [],
         num_sets: "",
         notes: ""
       })
@@ -1925,21 +1915,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       exercises: [],
-      exercise: "",
+      exercise: [],
       sets: "",
       notes: ""
     };
@@ -1954,9 +1934,11 @@ __webpack_require__.r(__webpack_exports__);
         set_id = _this$$route$params.set_id;
     this.$http.all([this.$http.get("".concat("http://localhost:8000/api", "/trainer/users/").concat(user_id, "/blocks/").concat(block_id, "/workouts/").concat(workout_id, "/sets/").concat(set_id)), this.$http.get("".concat("http://localhost:8000/api", "/trainer/exercises"))]).then(this.$http.spread(function (set, exercises) {
       _this.exercises = exercises.data;
-      _this.exercise = set.data.set.exercise_id;
-      _this.sets = set.data.set.num_sets;
-      _this.notes = set.data.set.notes;
+      set.data.set.exercises.forEach(function (exercise) {
+        _this.exercise.push(exercise.id);
+      });
+      _this.sets = set.data.set.set.num_sets;
+      _this.notes = set.data.set.set.notes;
     }))["catch"](function (err) {
       console.log(err);
     });
@@ -3769,6 +3751,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -3871,6 +3859,15 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -4384,6 +4381,15 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -7291,7 +7297,7 @@ var render = function() {
                 ],
                 staticClass:
                   "block appearance-none border-b rounded-none bg-white text-grey-darker w-full py-2 leading-tight focus:outline-none",
-                attrs: { id: "exercise", name: "exercise_id" },
+                attrs: { id: "exercise", name: "exercise_id", multiple: "" },
                 on: {
                   change: function($event) {
                     var $$selectedVal = Array.prototype.filter
@@ -7318,34 +7324,6 @@ var render = function() {
                 )
               }),
               0
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              {
-                staticClass:
-                  "pointer-events-none absolute pin-y pin-r flex items-center px-2 text-grey-darker"
-              },
-              [
-                _c(
-                  "svg",
-                  {
-                    staticClass: "fill-current h-4 w-4",
-                    attrs: {
-                      xmlns: "http://www.w3.org/2000/svg",
-                      viewBox: "0 0 20 20"
-                    }
-                  },
-                  [
-                    _c("path", {
-                      attrs: {
-                        d:
-                          "M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"
-                      }
-                    })
-                  ]
-                )
-              ]
             )
           ]),
           _vm._v(" "),
@@ -8124,7 +8102,7 @@ var render = function() {
                   ],
                   staticClass:
                     "block appearance-none border-b rounded-none bg-white text-grey-darker w-full py-2 leading-tight focus:outline-none",
-                  attrs: { id: "exercise" },
+                  attrs: { id: "exercise", multiple: "" },
                   on: {
                     change: function($event) {
                       var $$selectedVal = Array.prototype.filter
@@ -8149,34 +8127,6 @@ var render = function() {
                   )
                 }),
                 0
-              ),
-              _vm._v(" "),
-              _c(
-                "div",
-                {
-                  staticClass:
-                    "pointer-events-none absolute pin-y pin-r flex items-center px-2 text-grey-darker"
-                },
-                [
-                  _c(
-                    "svg",
-                    {
-                      staticClass: "fill-current h-4 w-4",
-                      attrs: {
-                        xmlns: "http://www.w3.org/2000/svg",
-                        viewBox: "0 0 20 20"
-                      }
-                    },
-                    [
-                      _c("path", {
-                        attrs: {
-                          d:
-                            "M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"
-                        }
-                      })
-                    ]
-                  )
-                ]
               )
             ])
           ]),
@@ -11330,7 +11280,7 @@ var render = function() {
                                           block_id: _vm.$route.params.block_id,
                                           workout_id:
                                             _vm.$route.params.workout_id,
-                                          set_id: set.id
+                                          set_id: set.set.id
                                         }
                                       }
                                     }
@@ -11354,18 +11304,23 @@ var render = function() {
                                               "div",
                                               { staticClass: "flex-1" },
                                               [
-                                                _c(
-                                                  "h2",
-                                                  {
-                                                    staticClass:
-                                                      "text-lg text-grey-darkest font-bold mb-1"
-                                                  },
-                                                  [
-                                                    _vm._v(
-                                                      _vm._s(set.exercise.name)
-                                                    )
-                                                  ]
-                                                ),
+                                                _vm._l(set.exercises, function(
+                                                  exercise
+                                                ) {
+                                                  return _c(
+                                                    "h2",
+                                                    {
+                                                      key: exercise.id,
+                                                      staticClass:
+                                                        "text-lg text-grey-darkest font-bold mb-1"
+                                                    },
+                                                    [
+                                                      _vm._v(
+                                                        _vm._s(exercise.name)
+                                                      )
+                                                    ]
+                                                  )
+                                                }),
                                                 _vm._v(" "),
                                                 _c(
                                                   "h3",
@@ -11376,7 +11331,7 @@ var render = function() {
                                                   [
                                                     _vm._v(
                                                       "Sets: " +
-                                                        _vm._s(set.num_sets)
+                                                        _vm._s(set.set.num_sets)
                                                     )
                                                   ]
                                                 ),
@@ -11387,9 +11342,14 @@ var render = function() {
                                                     staticClass:
                                                       "text-base text-grey-dark font-base text-sm mt-4"
                                                   },
-                                                  [_vm._v(_vm._s(set.notes))]
+                                                  [
+                                                    _vm._v(
+                                                      _vm._s(set.set.notes)
+                                                    )
+                                                  ]
                                                 )
-                                              ]
+                                              ],
+                                              2
                                             )
                                           ]
                                         )
@@ -11796,43 +11756,70 @@ var render = function() {
                                             "w-full flex justify-between items-start relative"
                                         },
                                         [
-                                          _c("div", { staticClass: "flex-1" }, [
-                                            _c(
-                                              "h2",
-                                              {
-                                                staticClass:
-                                                  "text-lg text-grey-darkest font-bold mb-1"
-                                              },
-                                              [
-                                                _vm._v(
-                                                  _vm._s(set.exercise.name)
+                                          _c(
+                                            "div",
+                                            { staticClass: "flex-1" },
+                                            [
+                                              set.exercises.length > 1
+                                                ? _c(
+                                                    "div",
+                                                    { staticClass: "mb-4" },
+                                                    [
+                                                      _c(
+                                                        "span",
+                                                        {
+                                                          staticClass:
+                                                            "bg-green py-1 px-4 rounded-full border border-green-dark text-white uppercase font-medium text-xs"
+                                                        },
+                                                        [_vm._v("Superset")]
+                                                      )
+                                                    ]
+                                                  )
+                                                : _vm._e(),
+                                              _vm._v(" "),
+                                              _vm._l(set.exercises, function(
+                                                exercise
+                                              ) {
+                                                return _c(
+                                                  "h2",
+                                                  {
+                                                    key: exercise.id,
+                                                    staticClass:
+                                                      "text-lg text-grey-darkest font-bold mb-1"
+                                                  },
+                                                  [
+                                                    _vm._v(
+                                                      _vm._s(exercise.name)
+                                                    )
+                                                  ]
                                                 )
-                                              ]
-                                            ),
-                                            _vm._v(" "),
-                                            _c(
-                                              "h3",
-                                              {
-                                                staticClass:
-                                                  "text-base text-blue font-medium"
-                                              },
-                                              [
-                                                _vm._v(
-                                                  "Sets: " +
-                                                    _vm._s(set.num_sets)
-                                                )
-                                              ]
-                                            ),
-                                            _vm._v(" "),
-                                            _c(
-                                              "p",
-                                              {
-                                                staticClass:
-                                                  "text-base text-grey-dark font-base text-sm mt-4"
-                                              },
-                                              [_vm._v(_vm._s(set.notes))]
-                                            )
-                                          ]),
+                                              }),
+                                              _vm._v(" "),
+                                              _c(
+                                                "h3",
+                                                {
+                                                  staticClass:
+                                                    "text-base text-blue font-medium"
+                                                },
+                                                [
+                                                  _vm._v(
+                                                    "Sets: " +
+                                                      _vm._s(set.num_sets)
+                                                  )
+                                                ]
+                                              ),
+                                              _vm._v(" "),
+                                              _c(
+                                                "p",
+                                                {
+                                                  staticClass:
+                                                    "text-base text-grey-dark font-base text-sm mt-4"
+                                                },
+                                                [_vm._v(_vm._s(set.notes))]
+                                              )
+                                            ],
+                                            2
+                                          ),
                                           _vm._v(" "),
                                           _c("div", [
                                             _c(
@@ -12439,34 +12426,59 @@ var render = function() {
                                     "w-full flex justify-between items-start relative"
                                 },
                                 [
-                                  _c("div", { staticClass: "flex-1" }, [
-                                    _c(
-                                      "h2",
-                                      {
-                                        staticClass:
-                                          "text-lg text-grey-darkest font-bold mb-1"
-                                      },
-                                      [_vm._v(_vm._s(set.exercise.name))]
-                                    ),
-                                    _vm._v(" "),
-                                    _c(
-                                      "h3",
-                                      {
-                                        staticClass:
-                                          "text-base text-blue font-medium"
-                                      },
-                                      [_vm._v("Sets: " + _vm._s(set.num_sets))]
-                                    ),
-                                    _vm._v(" "),
-                                    _c(
-                                      "p",
-                                      {
-                                        staticClass:
-                                          "text-base text-grey-dark font-base text-sm mt-4"
-                                      },
-                                      [_vm._v(_vm._s(set.notes))]
-                                    )
-                                  ]),
+                                  _c(
+                                    "div",
+                                    { staticClass: "flex-1" },
+                                    [
+                                      set.exercises.length > 1
+                                        ? _c("div", { staticClass: "mb-4" }, [
+                                            _c(
+                                              "span",
+                                              {
+                                                staticClass:
+                                                  "bg-green inline-block py-1 px-4 rounded-full border border-green-dark text-white uppercase font-medium text-xs"
+                                              },
+                                              [_vm._v("Superset")]
+                                            )
+                                          ])
+                                        : _vm._e(),
+                                      _vm._v(" "),
+                                      _vm._l(set.exercises, function(exercise) {
+                                        return _c(
+                                          "h2",
+                                          {
+                                            key: exercise.id,
+                                            staticClass:
+                                              "text-lg text-grey-darkest font-bold mb-1"
+                                          },
+                                          [_vm._v(_vm._s(exercise.name))]
+                                        )
+                                      }),
+                                      _vm._v(" "),
+                                      _c(
+                                        "h3",
+                                        {
+                                          staticClass:
+                                            "text-base text-blue font-medium"
+                                        },
+                                        [
+                                          _vm._v(
+                                            "Sets: " + _vm._s(set.num_sets)
+                                          )
+                                        ]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "p",
+                                        {
+                                          staticClass:
+                                            "text-base text-grey-dark font-base text-sm mt-4"
+                                        },
+                                        [_vm._v(_vm._s(set.notes))]
+                                      )
+                                    ],
+                                    2
+                                  ),
                                   _vm._v(" "),
                                   _c("div", [
                                     _c(

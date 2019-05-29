@@ -46,6 +46,12 @@ class WorkoutController extends Controller
             return response()->json(['message' => 'You are not authorized to delete this record.'], 401);
         }
 
+        foreach($workout->sets()->get() as $set) {
+            foreach($set->exercises()->get() as $exercise) {
+                $set->exercises()->detach($exercise);
+            }
+        }
+
         $workout->delete();
 
         return response()->json(['message' => 'Workout deleted successfully.'], 200);

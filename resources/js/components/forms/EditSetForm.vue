@@ -42,6 +42,7 @@
             class="block appearance-none border-b rounded-none bg-white text-grey-darker w-full py-2 leading-tight focus:outline-none"
             id="exercise"
             v-model="exercise"
+            multiple
           >
             <option
               v-for="exercise in exercises"
@@ -49,17 +50,6 @@
               :value="exercise.id"
             >{{ exercise.name }}</option>
           </select>
-          <div
-            class="pointer-events-none absolute pin-y pin-r flex items-center px-2 text-grey-darker"
-          >
-            <svg
-              class="fill-current h-4 w-4"
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 20 20"
-            >
-              <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"></path>
-            </svg>
-          </div>
         </div>
       </div>
 
@@ -81,7 +71,7 @@ export default {
   data() {
     return {
       exercises: [],
-      exercise: "",
+      exercise: [],
       sets: "",
       notes: ""
     };
@@ -102,9 +92,13 @@ export default {
       .then(
         this.$http.spread((set, exercises) => {
           this.exercises = exercises.data;
-          this.exercise = set.data.set.exercise_id;
-          this.sets = set.data.set.num_sets;
-          this.notes = set.data.set.notes;
+
+          set.data.set.exercises.forEach(exercise => {
+            this.exercise.push(exercise.id);
+          });
+
+          this.sets = set.data.set.set.num_sets;
+          this.notes = set.data.set.set.notes;
         })
       )
       .catch(err => {
