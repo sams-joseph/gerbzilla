@@ -4338,7 +4338,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     this.weekStart = weekStart;
     this.loading = true;
     this.$http.get("".concat("http://localhost:8000/api", "/workouts/date/").concat(weekStart.format("YYYY-MM-DD"), "/").concat(weekEnd.format("YYYY-MM-DD"))).then(function (res) {
-      _this.workouts = res.data;
+      _this.workouts = res.data.sort(function (a, b) {
+        return a.date > b.date ? 1 : b.date > a.date ? -1 : 0;
+      });
       _this.loading = false;
     });
   },

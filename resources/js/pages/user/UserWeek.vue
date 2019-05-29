@@ -95,7 +95,9 @@ export default {
         )}/${weekEnd.format("YYYY-MM-DD")}`
       )
       .then(res => {
-        this.workouts = res.data;
+        this.workouts = res.data.sort((a, b) =>
+          a.date > b.date ? 1 : b.date > a.date ? -1 : 0
+        );
         this.loading = false;
       });
   },
