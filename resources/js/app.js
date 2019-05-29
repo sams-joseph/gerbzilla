@@ -33,8 +33,9 @@ import Snackbar from "./components/Snackbar";
 import Instagram from "./components/Instagram";
 import Announcement from "./components/Announcement";
 import DeleteModal from "./components/DeleteModal";
+import ContextMenu from "./components/ContextMenu";
 
-import UserSkeletonLoader from './components/UserSkeletonLoader';
+import UserSkeletonLoader from "./components/UserSkeletonLoader";
 import Loader from "./components/Loader";
 
 import Construction from "./components/Construction";
@@ -74,6 +75,7 @@ Vue.component("snackbar", Snackbar);
 Vue.component("instagram", Instagram);
 Vue.component("announcement", Announcement);
 Vue.component("delete-modal", DeleteModal);
+Vue.component("context-menu", ContextMenu);
 
 Vue.component("user-skeleton-loader", UserSkeletonLoader);
 Vue.component("loader", Loader);
