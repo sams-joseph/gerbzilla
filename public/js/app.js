@@ -4150,7 +4150,9 @@ __webpack_require__.r(__webpack_exports__);
     this.$http.get("".concat("http://localhost:8000/api", "/blocks/").concat(id)).then(function (res) {
       _this.block = res.data;
       _this.type = res.data.type;
-      _this.workouts = res.data.workouts;
+      _this.workouts = res.data.workouts.sort(function (a, b) {
+        return a.date > b.date ? 1 : b.date > a.date ? -1 : 0;
+      });
       _this.loading = false;
     })["catch"](function (err) {
       console.log(err);
