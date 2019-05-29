@@ -3,7 +3,7 @@ import Login from "./pages/Login";
 import Overview from "./pages/Overview";
 import UserBlocks from "./pages/UserBlocks";
 import UserBlock from "./pages/UserBlock";
-import Week from "./pages/Week";
+import UserWeek from "./pages/UserWeek";
 import Goals from "./pages/Goals";
 import Users from "./pages/trainer/Users";
 import User from "./pages/trainer/User";
@@ -67,7 +67,7 @@ export default {
         {
             path: "/u/workouts/week",
             name: "user-workouts-week",
-            component: Week,
+            component: UserWeek,
             meta: {
                 requiresAuth: true
             }

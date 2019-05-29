@@ -9,7 +9,7 @@
         >{{ type }}</span>
       </div>
     </div>
-    <div class="w-full bg-grey-lightest border-b border-grey-lighter">
+    <div v-if="isTrainer" class="w-full bg-grey-lightest border-b border-grey-lighter">
       <div class="container mx-auto px-8 flex">
         <div class="inline-block flex items-center py-6">
           <svg
@@ -55,6 +55,8 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex";
+
 export default {
   methods: {
     onDelete() {
@@ -85,6 +87,10 @@ export default {
     type: String,
     action: Object,
     deleteBlock: Object
+  },
+
+  computed: {
+    ...mapGetters(["isTrainer"])
   }
 };
 </script>

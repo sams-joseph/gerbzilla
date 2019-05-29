@@ -5,24 +5,12 @@
     <sub-navigation></sub-navigation>
     <loader v-if="loading"></loader>
     <div v-if="!loading">
-      <div
-        class="w-full py-20"
-        v-bind:class="{
-          'bg-red-gradient': workout.block.type.name === 'strength',
-          'bg-blue-gradient': workout.block.type.name === 'hypertrophy',
-          'bg-green-gradient': workout.block.type.name === 'fitness'
-        }"
-      >
-        <div class="container mx-auto px-0">
-          <h1 class="text-white font-bold text-2xl mb-2 px-8">{{ workout.name }}</h1>
-          <h4
-            class="text-white font-normal text-base opacity-75 px-8 mb-4"
-          >{{ $moment(workout.date).format('dddd MMM Do') }}</h4>
-          <span
-            class="text-center inline-block w-auto mx-8 py-1 px-4 rounded-full text-xs text-white font-thin uppercase description-pill"
-          >{{ workout.block.type.name }}</span>
-        </div>
-      </div>
+      <block-header
+        v-bind:heading="workout.name"
+        v-bind:subheading="$moment(workout.date).format('MMMM Do YYYY')"
+        v-bind:type="workout.block.type.name"
+        v-bind:loading="loading"
+      ></block-header>
 
       <div class="container mx-auto px-4 py-20 relative">
         <ul class="list-reset flex flex-wrap px-4 md:px-0">
