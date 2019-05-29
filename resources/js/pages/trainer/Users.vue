@@ -4,7 +4,7 @@
     <navigation></navigation>
     <side-navigation></side-navigation>
     <loader v-if="loading"></loader>
-    <div class="relative container mx-auto mb-20">
+    <div class="relative mb-20">
       <create-user-form
         @close-user-create="toggleModal"
         @create-user-success="refreshData"

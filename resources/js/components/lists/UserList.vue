@@ -1,6 +1,6 @@
 <template>
   <div class="flex px-0 md:px-8 mt-20">
-    <aside class="w-1/4 hidden md:block">
+    <aside class="filter-sidebar hidden md:block">
       <div class="relative">
         <div class="absolute pin-r py-1 pr-2">
           <svg class="fill-current text-grey-darkest" width="24" height="28" viewBox="0 0 24 24">
@@ -79,7 +79,7 @@
           </div>
         </div>
         <h1 v-if="showLastWeek" class="text-grey-darkest font-normal text-2xl mb-10 px-4">Expiring</h1>
-        <ul v-if="showLastWeek" class="list-reset px-4 md:px-0 mb-10 flex flex-wrap">
+        <ul v-if="showLastWeek" class="list-reset px-4 md:px-0 mb-10 flex flex-wrap max-w-xl">
           <li
             v-for="user in expiring"
             v-bind:key="user.id"
@@ -117,7 +117,7 @@
           </li>
         </ul>
         <h1 class="text-grey-darkest font-normal text-2xl mb-10 px-4">{{ heading }}</h1>
-        <ul class="list-reset px-4 md:px-0 flex flex-wrap">
+        <ul class="list-reset px-4 md:px-0 flex flex-wrap max-w-xl">
           <li
             v-for="user in filteredUsers"
             v-bind:key="user.id"
@@ -272,3 +272,9 @@ export default {
   }
 };
 </script>
+
+<style>
+.filter-sidebar {
+  width: 300px;
+}
+</style>
