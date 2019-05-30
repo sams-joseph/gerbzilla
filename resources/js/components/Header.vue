@@ -177,7 +177,7 @@
         @click="openDrawer"
         class="w-8 h-8 rounded-full cursor-pointer overflow-hidden"
       >
-        <img src="/images/profile-icon.jpg" alt="Profile">
+        <img src="/images/avatars/Artboard3-600.svg" alt="Profile">
       </div>
     </div>
   </header>

@@ -14,8 +14,8 @@
                 <div class="rounded-full bg-grey p-2">
                   <div class="rounded-full p-1 bg-grey-lighter">
                     <img
-                      class="mx-auto block rounded-full overflow-hidden"
-                      src="/images/profile-icon.jpg"
+                      class="avatar mx-auto block rounded-full overflow-hidden"
+                      src="/images/avatars/Artboard3-600.svg"
                       alt="Profile"
                     >
                   </div>
@@ -229,3 +229,9 @@ export default {
   }
 };
 </script>
+
+<style lang="sass" scoped>
+.avatar
+  width: 150px
+  height: 150px
+</style>
