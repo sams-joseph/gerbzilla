@@ -33,9 +33,7 @@ export default {
         {
             path: "/",
             name: "Home",
-            redirect: {
-                name: "overview"
-            }
+            component: Home
         },
         {
             path: "/login",
