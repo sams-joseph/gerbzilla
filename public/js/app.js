@@ -17145,7 +17145,9 @@ __webpack_require__.r(__webpack_exports__);
   }, {
     path: "/",
     name: "Home",
-    component: _pages_Home__WEBPACK_IMPORTED_MODULE_0__["default"]
+    redirect: {
+      name: "overview"
+    }
   }, {
     path: "/login",
     name: "login",
