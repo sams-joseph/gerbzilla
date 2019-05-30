@@ -10,14 +10,18 @@
             <div
               class="flex flex-column md:flex-row justify-center md:items-center flex-wrap md:flex-no-wrap w-full md:w-auto"
             >
-              <div class="rounded-full mb-8 md:mb-0 md:mr-8 w-full md:w-auto">
-                <img
-                  class="w-32 h-32 mx-auto block rounded-full overflow-hidden shadow-lg"
-                  src="/images/profile-icon.jpg"
-                  alt="Profile"
-                >
+              <div class="mb-8 md:mb-0 md:mr-8">
+                <div class="rounded-full bg-grey p-2">
+                  <div class="rounded-full p-1 bg-grey-lighter">
+                    <img
+                      class="mx-auto block rounded-full overflow-hidden"
+                      src="/images/profile-icon.jpg"
+                      alt="Profile"
+                    >
+                  </div>
+                </div>
               </div>
-              <div class="flex flex-col">
+              <div class="flex flex-col w-full md:w-auto">
                 <h1
                   class="text-grey-darkest text-xl mb-2 text-center md:text-left"
                 >{{ `${this.user.first_name} ${this.user.last_name}` }}</h1>

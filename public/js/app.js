@@ -4010,6 +4010,10 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -4087,6 +4091,12 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -11832,80 +11842,92 @@ var render = function() {
                               "flex flex-column md:flex-row justify-center md:items-center flex-wrap md:flex-no-wrap w-full md:w-auto"
                           },
                           [
-                            _c(
-                              "div",
-                              {
-                                staticClass:
-                                  "rounded-full mb-8 md:mb-0 md:mr-8 w-full md:w-auto"
-                              },
-                              [
-                                _c("img", {
-                                  staticClass:
-                                    "w-32 h-32 mx-auto block rounded-full overflow-hidden shadow-lg",
-                                  attrs: {
-                                    src: "/images/profile-icon.jpg",
-                                    alt: "Profile"
-                                  }
-                                })
-                              ]
-                            ),
-                            _vm._v(" "),
-                            _c("div", { staticClass: "flex flex-col" }, [
-                              _c(
-                                "h1",
-                                {
-                                  staticClass:
-                                    "text-grey-darkest text-xl mb-2 text-center md:text-left"
-                                },
-                                [
-                                  _vm._v(
-                                    _vm._s(
-                                      this.user.first_name +
-                                        " " +
-                                        this.user.last_name
-                                    )
-                                  )
-                                ]
-                              ),
-                              _vm._v(" "),
-                              _c(
-                                "h3",
-                                {
-                                  staticClass:
-                                    "text-sm font-medium uppercase mb-4 text-center md:text-left",
-                                  class: {
-                                    "text-green": _vm.isActive,
-                                    "text-red": !_vm.isActive
-                                  }
-                                },
-                                [
-                                  _vm._v(
-                                    _vm._s(
-                                      this.isActive ? "Active" : "Inactive"
-                                    )
-                                  )
-                                ]
-                              ),
-                              _vm._v(" "),
+                            _c("div", { staticClass: "mb-8 md:mb-0 md:mr-8" }, [
                               _c(
                                 "div",
-                                {
-                                  staticClass: "mx-auto mb-12 md:mb-0 md:mx-0"
-                                },
+                                { staticClass: "rounded-full bg-grey p-2" },
                                 [
                                   _c(
-                                    "router-link",
+                                    "div",
                                     {
                                       staticClass:
-                                        "cursor-pointer text-xs font-semibold rounded-full px-4 py-1 leading-normal bg-grey-lighter border border-red text-red hover:bg-red hover:text-white uppercase focus:outline-none",
-                                      attrs: { to: "/u/profile" }
+                                        "rounded-full p-1 bg-grey-lighter"
                                     },
-                                    [_vm._v("Edit Profile")]
+                                    [
+                                      _c("img", {
+                                        staticClass:
+                                          "mx-auto block rounded-full overflow-hidden",
+                                        attrs: {
+                                          src: "/images/profile-icon.jpg",
+                                          alt: "Profile"
+                                        }
+                                      })
+                                    ]
                                   )
-                                ],
-                                1
+                                ]
                               )
-                            ])
+                            ]),
+                            _vm._v(" "),
+                            _c(
+                              "div",
+                              { staticClass: "flex flex-col w-full md:w-auto" },
+                              [
+                                _c(
+                                  "h1",
+                                  {
+                                    staticClass:
+                                      "text-grey-darkest text-xl mb-2 text-center md:text-left"
+                                  },
+                                  [
+                                    _vm._v(
+                                      _vm._s(
+                                        this.user.first_name +
+                                          " " +
+                                          this.user.last_name
+                                      )
+                                    )
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "h3",
+                                  {
+                                    staticClass:
+                                      "text-sm font-medium uppercase mb-4 text-center md:text-left",
+                                    class: {
+                                      "text-green": _vm.isActive,
+                                      "text-red": !_vm.isActive
+                                    }
+                                  },
+                                  [
+                                    _vm._v(
+                                      _vm._s(
+                                        this.isActive ? "Active" : "Inactive"
+                                      )
+                                    )
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "div",
+                                  {
+                                    staticClass: "mx-auto mb-12 md:mb-0 md:mx-0"
+                                  },
+                                  [
+                                    _c(
+                                      "router-link",
+                                      {
+                                        staticClass:
+                                          "cursor-pointer text-xs font-semibold rounded-full px-4 py-1 leading-normal bg-grey-lighter border border-red text-red hover:bg-red hover:text-white uppercase focus:outline-none",
+                                        attrs: { to: "/u/profile" }
+                                      },
+                                      [_vm._v("Edit Profile")]
+                                    )
+                                  ],
+                                  1
+                                )
+                              ]
+                            )
                           ]
                         ),
                         _vm._v(" "),
@@ -12292,27 +12314,41 @@ var render = function() {
                     "flex items-center justify-center md:justify-start flex-wrap"
                 },
                 [
-                  _c(
-                    "svg",
-                    {
-                      staticClass:
-                        "profile-icon fill-current opacity-10 md:mr-8 mb-8 md:mb-0",
-                      attrs: {
-                        xmlns: "http://www.w3.org/2000/svg",
-                        width: "24",
-                        height: "24",
-                        viewBox: "0 0 24 24"
-                      }
-                    },
-                    [
-                      _c("path", {
-                        attrs: {
-                          d:
-                            "M2.344,15.271l2,3.46c0.276,0.478,0.888,0.642,1.366,0.365l1.396-0.806c0.58,0.457,1.221,0.832,1.895,1.112V21 c0,0.552,0.447,1,1,1h4c0.553,0,1-0.448,1-1v-1.598c0.674-0.28,1.314-0.655,1.895-1.112l1.396,0.806 c0.477,0.275,1.091,0.11,1.366-0.365l2-3.46c0.275-0.476,0.11-1.091-0.365-1.366l-1.372-0.793C19.973,12.743,20,12.371,20,12 s-0.027-0.743-0.081-1.112l1.372-0.793c0.476-0.275,0.641-0.89,0.365-1.366l-2-3.46c-0.276-0.478-0.888-0.642-1.366-0.365 l-1.396,0.806C16.314,5.253,15.674,4.877,15,4.598V3c0-0.552-0.447-1-1-1h-4C9.447,2,9,2.448,9,3v1.598 c-0.674,0.28-1.314,0.655-1.895,1.112L5.71,4.904C5.231,4.627,4.62,4.791,4.344,5.269l-2,3.46c-0.275,0.476-0.11,1.091,0.365,1.366 l1.372,0.793C4.027,11.257,4,11.629,4,12s0.027,0.743,0.081,1.112l-1.372,0.793C2.233,14.18,2.068,14.795,2.344,15.271z M12,8 c2.206,0,4,1.794,4,4s-1.794,4-4,4s-4-1.794-4-4S9.794,8,12,8z"
-                        }
-                      })
-                    ]
-                  ),
+                  _c("div", { staticClass: "mb-8 md:mb-0 md:mr-8" }, [
+                    _c(
+                      "div",
+                      { staticClass: "rounded-full bg-grey-light p-2" },
+                      [
+                        _c(
+                          "div",
+                          { staticClass: "rounded-full p-1 bg-grey-lighter" },
+                          [
+                            _c(
+                              "svg",
+                              {
+                                staticClass:
+                                  "profile-icon text-grey-light fill-current",
+                                attrs: {
+                                  xmlns: "http://www.w3.org/2000/svg",
+                                  width: "24",
+                                  height: "24",
+                                  viewBox: "0 0 24 24"
+                                }
+                              },
+                              [
+                                _c("path", {
+                                  attrs: {
+                                    d:
+                                      "M2.344,15.271l2,3.46c0.276,0.478,0.888,0.642,1.366,0.365l1.396-0.806c0.58,0.457,1.221,0.832,1.895,1.112V21 c0,0.552,0.447,1,1,1h4c0.553,0,1-0.448,1-1v-1.598c0.674-0.28,1.314-0.655,1.895-1.112l1.396,0.806 c0.477,0.275,1.091,0.11,1.366-0.365l2-3.46c0.275-0.476,0.11-1.091-0.365-1.366l-1.372-0.793C19.973,12.743,20,12.371,20,12 s-0.027-0.743-0.081-1.112l1.372-0.793c0.476-0.275,0.641-0.89,0.365-1.366l-2-3.46c-0.276-0.478-0.888-0.642-1.366-0.365 l-1.396,0.806C16.314,5.253,15.674,4.877,15,4.598V3c0-0.552-0.447-1-1-1h-4C9.447,2,9,2.448,9,3v1.598 c-0.674,0.28-1.314,0.655-1.895,1.112L5.71,4.904C5.231,4.627,4.62,4.791,4.344,5.269l-2,3.46c-0.275,0.476-0.11,1.091,0.365,1.366 l1.372,0.793C4.027,11.257,4,11.629,4,12s0.027,0.743,0.081,1.112l-1.372,0.793C2.233,14.18,2.068,14.795,2.344,15.271z M12,8 c2.206,0,4,1.794,4,4s-1.794,4-4,4s-4-1.794-4-4S9.794,8,12,8z"
+                                  }
+                                })
+                              ]
+                            )
+                          ]
+                        )
+                      ]
+                    )
+                  ]),
                   _vm._v(" "),
                   _c("div", { staticClass: "w-full md:w-auto" }, [
                     _c("h1", {
@@ -12363,11 +12399,10 @@ var render = function() {
                         "span",
                         {
                           staticClass:
-                            "block text-xs font-medium uppercase text-center md:text-left",
+                            "block text-xs font-medium uppercase text-white py-2 px-4 rounded-full",
                           class: {
-                            "text-white bg-green p-2 rounded-full":
-                              _vm.isActive,
-                            "text-white bg-red p-2 rounded-full": !_vm.isActive
+                            "bg-blue": _vm.isActive,
+                            "bg-grey": !_vm.isActive
                           }
                         },
                         [
