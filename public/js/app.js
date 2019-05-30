@@ -4231,7 +4231,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -4270,6 +4269,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
           _this.loading = false;
           console.log(err);
         });
+      })["catch"](function (err) {
+        _this.loading = false;
+        console.log(err);
       });
     },
     setUserInformation: function setUserInformation() {
@@ -12396,10 +12398,6 @@ var render = function() {
                       }
                     },
                     [
-                      _vm.loading
-                        ? _c("loader", { attrs: { translucent: true } })
-                        : _vm._e(),
-                      _vm._v(" "),
                       _c("div", { staticClass: "mb-6" }, [
                         _c(
                           "label",
@@ -12667,8 +12665,7 @@ var render = function() {
                         },
                         [_vm._v("Update Profile")]
                       )
-                    ],
-                    1
+                    ]
                   )
                 ]),
                 _vm._v(" "),

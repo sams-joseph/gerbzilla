@@ -43,7 +43,6 @@
               class="max-w-md px-8 relative"
               @keydown="form.errors.clear($event.target.name)"
             >
-              <loader v-if="loading" :translucent="true"></loader>
               <div class="mb-6">
                 <label
                   class="block text-grey-darker text-sm font-normal mb-4"
@@ -168,23 +167,30 @@ export default {
   methods: {
     onSubmit() {
       this.loading = true;
-      this.form.post(`${process.env.MIX_BASE_URL}/user/update`).then(res => {
-        this.$store
-          .dispatch("updateUser")
-          .then(res => {
-            this.setUserInformation();
-            this.$store.dispatch("add", {
-              type: "success",
-              message: "Updated profile",
-              show: true
+      this.form
+        .post(`${process.env.MIX_BASE_URL}/user/update`)
+        .then(res => {
+          this.$store
+            .dispatch("updateUser")
+            .then(res => {
+              this.setUserInformation();
+              this.$store.dispatch("add", {
+                type: "success",
+                message: "Updated profile",
+                show: true
+              });
+
+              this.loading = false;
+            })
+            .catch(err => {
+              this.loading = false;
+              console.log(err);
             });
-            this.loading = false;
-          })
-          .catch(err => {
-            this.loading = false;
-            console.log(err);
-          });
-      });
+        })
+        .catch(err => {
+          this.loading = false;
+          console.log(err);
+        });
     },
 
     setUserInformation() {
