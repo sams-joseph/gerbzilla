@@ -5,7 +5,7 @@
     <loader v-if="loading"></loader>
     <transition name="fade">
       <div v-if="!loading">
-        <section class="w-full bg-grey-lighter border-b border-t border-grey-light py-8">
+        <section class="w-full bg-grey-lighter border-b border-grey-light py-8">
           <div class="container mx-auto px-8 flex justify-between flex-wrap">
             <div
               class="flex flex-column md:flex-row justify-center md:items-center flex-wrap md:flex-no-wrap w-full md:w-auto"
@@ -26,9 +26,10 @@
                   class="text-sm font-medium uppercase mb-4 text-center md:text-left"
                 >{{ this.isActive ? 'Active' : 'Inactive' }}</h3>
                 <div class="mx-auto mb-12 md:mb-0 md:mx-0">
-                  <button
+                  <router-link
+                    to="/u/profile"
                     class="cursor-pointer text-xs font-semibold rounded-full px-4 py-1 leading-normal bg-grey-lighter border border-red text-red hover:bg-red hover:text-white uppercase focus:outline-none"
-                  >Edit Profile</button>
+                  >Edit Profile</router-link>
                 </div>
               </div>
             </div>
@@ -90,7 +91,7 @@
                   >
                     <div class="w-full flex justify-between items-start relative">
                       <div class="flex-1">
-                        <div v-if="set.exercises.length > 1" class="mb-4">
+                        <div v-if="set.exercises.length > 1" class="mb-10">
                           <span
                             class="bg-green py-1 px-4 rounded-full border border-green-dark text-white uppercase font-medium text-xs"
                           >Superset</span>

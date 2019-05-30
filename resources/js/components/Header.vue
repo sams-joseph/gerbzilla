@@ -65,6 +65,16 @@
         </div>
         <ul class="list-reset">
           <li
+            class="block px-8 py-2 hover:bg-grey-lighter text-grey-darkest cursor-pointer text-center"
+          >
+            <router-link
+              class="text-grey-darkest"
+              active-class="blank"
+              exact-active-class="blank"
+              to="/u/profile"
+            >Settings</router-link>
+          </li>
+          <li
             @click="logout"
             class="block px-8 py-2 hover:bg-grey-lighter text-grey-darkest cursor-pointer text-center"
           >Logout</li>

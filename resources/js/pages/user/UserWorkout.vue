@@ -20,7 +20,7 @@
             >
               <div class="w-full flex justify-between items-start relative">
                 <div class="flex-1">
-                  <div v-if="set.exercises.length > 1" class="mb-4">
+                  <div v-if="set.exercises.length > 1" class="mb-10">
                     <span
                       class="bg-green inline-block py-1 px-4 rounded-full border border-green-dark text-white uppercase font-medium text-xs"
                     >Superset</span>

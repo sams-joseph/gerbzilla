@@ -1,5 +1,5 @@
 <template>
-  <nav class="w-full py-4 bg-grey-lighter border-b border-t border-grey-light">
+  <nav class="w-full py-4 bg-grey-lighter border-b border-grey-light">
     <div class="container mx-auto px-8">
       <ul class="list-reset">
         <li class="inline-block">

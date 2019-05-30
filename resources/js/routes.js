@@ -1,6 +1,7 @@
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Overview from "./pages/user/Overview";
+import Profile from './pages/user/Profile';
 import UserBlocks from "./pages/user/UserBlocks";
 import UserBlock from "./pages/user/UserBlock";
 import UserWeek from "./pages/user/UserWeek";
@@ -46,6 +47,14 @@ export default {
             path: "/u/overview",
             name: "overview",
             component: Overview,
+            meta: {
+                requiresAuth: true
+            }
+        },
+        {
+            path: "/u/profile",
+            name: "profile",
+            component: Profile,
             meta: {
                 requiresAuth: true
             }

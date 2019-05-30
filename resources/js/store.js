@@ -31,6 +31,17 @@ export default new Vuex.Store({
             state.user = {};
             state.role = {};
         },
+        update_request(state) {
+            state.status = "loading";
+        },
+        update_success(state, payload) {
+            state.status = "success";
+            state.user = payload.user;
+            state.role = payload.role;
+        },
+        update_error(state) {
+            state.status = "error";
+        },
         add_message(state, payload) {
             state.status = "add-message";
             state.msg = payload;
@@ -100,6 +111,37 @@ export default new Vuex.Store({
                 localStorage.removeItem("role");
                 delete axios.defaults.headers.common["Authorization"];
                 resolve();
+            });
+        },
+
+        updateUser({ commit }) {
+            return new Promise((resolve, reject) => {
+                commit("update_request");
+                axios({
+                    url: `${process.env.MIX_BASE_URL}/user`,
+                    method: "GET"
+                })
+                    .then(resp => {
+                        const user = resp.data.user;
+                        const role = resp.data.role;
+                        localStorage.setItem(
+                            "user",
+                            JSON.stringify(user)
+                        );
+                        localStorage.setItem(
+                            "role",
+                            JSON.stringify(role)
+                        );
+                        commit("update_success", { user, role });
+                        resolve(resp);
+                    })
+                    .catch(err => {
+                        commit("update_error");
+                        $cookies.remove("laravel_token");
+                        localStorage.removeItem("user");
+                        localStorage.removeItem("role");
+                        reject(err);
+                    });
             });
         },
 
