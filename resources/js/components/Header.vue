@@ -172,13 +172,12 @@
           <path d="M4 6H20V8H4zM8 11H20V13H8zM13 16H20V18H13z"></path>
         </svg>
       </div>
-      <div
-        v-if="authorized"
-        @click="openDrawer"
-        class="w-8 h-8 rounded-full cursor-pointer overflow-hidden"
-      >
+      <div v-if="authorized" @click="openDrawer" class="flex items-center cursor-pointer">
+        <span
+          class="text-sm font-medium text-grey-darker mr-4 hidden md:block"
+          v-text="user.first_name"
+        ></span>
         <avatar v-bind:first="user.first_name" v-bind:last="user.last_name"></avatar>
-        <img src="/images/avatars/Artboard3-600.svg" alt="Profile">
       </div>
     </div>
   </header>

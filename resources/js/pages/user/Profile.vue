@@ -6,7 +6,7 @@
       <div class="container mx-auto px-8 text-grey-darkest">
         <div class="flex items-center justify-center md:justify-start flex-wrap">
           <div class="mb-8 md:mb-0 md:mr-8">
-            <div class="rounded-full bg-grey-light p-2">
+            <div class="rounded-full bg-grey p-2">
               <div class="rounded-full p-1 bg-grey-lighter">
                 <svg
                   class="profile-icon text-grey-light fill-current"

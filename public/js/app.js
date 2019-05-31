@@ -663,7 +663,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -6566,22 +6565,20 @@ var render = function() {
             ? _c(
                 "div",
                 {
-                  staticClass:
-                    "w-8 h-8 rounded-full cursor-pointer overflow-hidden",
+                  staticClass: "flex items-center cursor-pointer",
                   on: { click: _vm.openDrawer }
                 },
                 [
+                  _c("span", {
+                    staticClass:
+                      "text-sm font-medium text-grey-darker mr-4 hidden md:block",
+                    domProps: { textContent: _vm._s(_vm.user.first_name) }
+                  }),
+                  _vm._v(" "),
                   _c("avatar", {
                     attrs: {
                       first: _vm.user.first_name,
                       last: _vm.user.last_name
-                    }
-                  }),
-                  _vm._v(" "),
-                  _c("img", {
-                    attrs: {
-                      src: "/images/avatars/Artboard3-600.svg",
-                      alt: "Profile"
                     }
                   })
                 ],
@@ -12734,38 +12731,34 @@ var render = function() {
                 },
                 [
                   _c("div", { staticClass: "mb-8 md:mb-0 md:mr-8" }, [
-                    _c(
-                      "div",
-                      { staticClass: "rounded-full bg-grey-light p-2" },
-                      [
-                        _c(
-                          "div",
-                          { staticClass: "rounded-full p-1 bg-grey-lighter" },
-                          [
-                            _c(
-                              "svg",
-                              {
-                                staticClass:
-                                  "profile-icon text-grey-light fill-current",
+                    _c("div", { staticClass: "rounded-full bg-grey p-2" }, [
+                      _c(
+                        "div",
+                        { staticClass: "rounded-full p-1 bg-grey-lighter" },
+                        [
+                          _c(
+                            "svg",
+                            {
+                              staticClass:
+                                "profile-icon text-grey-light fill-current",
+                              attrs: {
+                                x: "0px",
+                                y: "0px",
+                                viewBox: "0 0 24 24"
+                              }
+                            },
+                            [
+                              _c("path", {
                                 attrs: {
-                                  x: "0px",
-                                  y: "0px",
-                                  viewBox: "0 0 24 24"
+                                  d:
+                                    "M0.39,15.93l2.4,4.16c0.33,0.57,1.07,0.77,1.64,0.44l1.68-0.97c0.7,0.55,1.47,1,2.28,1.34v1.92c0,0.66,0.54,1.2,1.2,1.2\n\th4.81c0.66,0,1.2-0.54,1.2-1.2V20.9c0.81-0.34,1.58-0.79,2.28-1.34l1.68,0.97c0.57,0.33,1.31,0.13,1.64-0.44l2.4-4.16\n\tc0.33-0.57,0.13-1.31-0.44-1.64l-1.65-0.95c0.06-0.44,0.09-0.89,0.09-1.34c0-0.45-0.03-0.89-0.1-1.34l1.65-0.95\n\tc0.57-0.33,0.77-1.07,0.44-1.64l-2.4-4.16c-0.33-0.57-1.07-0.77-1.64-0.44l-1.68,0.97c-0.7-0.55-1.47-1-2.28-1.34V1.18\n\tc0-0.66-0.54-1.2-1.2-1.2H9.59c-0.66,0-1.2,0.54-1.2,1.2V3.1C7.58,3.44,6.81,3.89,6.11,4.44L4.44,3.47\n\tC3.86,3.13,3.13,3.33,2.79,3.91l-2.4,4.16C0.06,8.64,0.26,9.38,0.83,9.71l1.65,0.95c-0.06,0.44-0.1,0.89-0.1,1.34\n\tc0,0.45,0.03,0.89,0.1,1.34l-1.65,0.95C0.26,14.62,0.06,15.36,0.39,15.93z M12,7.19c2.65,0,4.81,2.16,4.81,4.81\n\ts-2.16,4.81-4.81,4.81S7.19,14.65,7.19,12S9.35,7.19,12,7.19z"
                                 }
-                              },
-                              [
-                                _c("path", {
-                                  attrs: {
-                                    d:
-                                      "M0.39,15.93l2.4,4.16c0.33,0.57,1.07,0.77,1.64,0.44l1.68-0.97c0.7,0.55,1.47,1,2.28,1.34v1.92c0,0.66,0.54,1.2,1.2,1.2\n\th4.81c0.66,0,1.2-0.54,1.2-1.2V20.9c0.81-0.34,1.58-0.79,2.28-1.34l1.68,0.97c0.57,0.33,1.31,0.13,1.64-0.44l2.4-4.16\n\tc0.33-0.57,0.13-1.31-0.44-1.64l-1.65-0.95c0.06-0.44,0.09-0.89,0.09-1.34c0-0.45-0.03-0.89-0.1-1.34l1.65-0.95\n\tc0.57-0.33,0.77-1.07,0.44-1.64l-2.4-4.16c-0.33-0.57-1.07-0.77-1.64-0.44l-1.68,0.97c-0.7-0.55-1.47-1-2.28-1.34V1.18\n\tc0-0.66-0.54-1.2-1.2-1.2H9.59c-0.66,0-1.2,0.54-1.2,1.2V3.1C7.58,3.44,6.81,3.89,6.11,4.44L4.44,3.47\n\tC3.86,3.13,3.13,3.33,2.79,3.91l-2.4,4.16C0.06,8.64,0.26,9.38,0.83,9.71l1.65,0.95c-0.06,0.44-0.1,0.89-0.1,1.34\n\tc0,0.45,0.03,0.89,0.1,1.34l-1.65,0.95C0.26,14.62,0.06,15.36,0.39,15.93z M12,7.19c2.65,0,4.81,2.16,4.81,4.81\n\ts-2.16,4.81-4.81,4.81S7.19,14.65,7.19,12S9.35,7.19,12,7.19z"
-                                  }
-                                })
-                              ]
-                            )
-                          ]
-                        )
-                      ]
-                    )
+                              })
+                            ]
+                          )
+                        ]
+                      )
+                    ])
                   ]),
                   _vm._v(" "),
                   _c("div", { staticClass: "w-full md:w-auto" }, [
