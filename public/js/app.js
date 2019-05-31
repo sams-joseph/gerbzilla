@@ -7231,22 +7231,16 @@ var render = function() {
         _c("div", { staticClass: "flex-1" }),
         _vm._v(" "),
         _c("div", { staticClass: "flex items-center p-6" }, [
-          _vm.type !== "rest"
-            ? _c("div", { staticClass: "mr-4" }, [
-                _c(
-                  "div",
-                  {
-                    staticClass:
-                      "w-18 h-18 px-4 bg-white rounded-full flex items-center justify-center"
-                  },
-                  [
-                    _c("img", {
-                      attrs: { src: _vm.icon.url, alt: _vm.icon.alt }
-                    })
-                  ]
-                )
-              ])
-            : _vm._e(),
+          _c("div", { staticClass: "mr-4" }, [
+            _c(
+              "div",
+              {
+                staticClass:
+                  "w-18 h-18 px-4 bg-white rounded-full flex items-center justify-center"
+              },
+              [_c("img", { attrs: { src: _vm.icon.url, alt: _vm.icon.alt } })]
+            )
+          ]),
           _vm._v(" "),
           _c("div", { staticClass: "flex flex-col" }, [
             _c("h3", {

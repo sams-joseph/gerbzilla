@@ -8,7 +8,7 @@
     >
       <div class="flex-1"></div>
       <div class="flex items-center p-6">
-        <div v-if="type !== 'rest'" class="mr-4">
+        <div class="mr-4">
           <div class="w-18 h-18 px-4 bg-white rounded-full flex items-center justify-center">
             <img :src="icon.url" :alt="icon.alt">
           </div>
