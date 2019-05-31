@@ -12214,6 +12214,120 @@ var render = function() {
       _vm._v(" "),
       _c("navigation"),
       _vm._v(" "),
+      _c(
+        "section",
+        {
+          staticClass: "w-full bg-grey-lighter border-b border-grey-light py-8"
+        },
+        [
+          _c(
+            "div",
+            {
+              staticClass:
+                "container mx-auto px-8 flex justify-between flex-wrap"
+            },
+            [
+              _c(
+                "div",
+                {
+                  staticClass:
+                    "flex flex-column md:flex-row justify-center md:items-center flex-wrap md:flex-no-wrap w-full md:w-auto"
+                },
+                [
+                  _vm._m(0),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "flex flex-col w-full md:w-auto" }, [
+                    _c(
+                      "h1",
+                      {
+                        staticClass:
+                          "text-grey-darkest text-xl mb-2 text-center md:text-left"
+                      },
+                      [
+                        _vm._v(
+                          _vm._s(
+                            this.user.first_name + " " + this.user.last_name
+                          )
+                        )
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "h3",
+                      {
+                        staticClass:
+                          "text-sm font-medium uppercase mb-4 text-center md:text-left",
+                        class: {
+                          "text-green": _vm.isActive,
+                          "text-red": !_vm.isActive
+                        }
+                      },
+                      [_vm._v(_vm._s(this.isActive ? "Active" : "Inactive"))]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "mx-auto mb-12 md:mb-0 md:mx-0" },
+                      [
+                        _c(
+                          "router-link",
+                          {
+                            staticClass:
+                              "cursor-pointer text-xs font-semibold rounded-full px-4 py-1 leading-normal bg-grey-lighter border border-red text-red hover:bg-red hover:text-white uppercase focus:outline-none",
+                            attrs: { to: "/u/profile" }
+                          },
+                          [_vm._v("Edit Profile")]
+                        )
+                      ],
+                      1
+                    )
+                  ])
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                {
+                  staticClass:
+                    "flex justify-center md:justify-start w-full md:w-auto"
+                },
+                [
+                  _c(
+                    "div",
+                    {
+                      staticClass:
+                        "h-48 w-32 bg-grey-light rounded p-4 text-center"
+                    },
+                    [
+                      _vm._m(1),
+                      _vm._v(" "),
+                      _c(
+                        "h2",
+                        {
+                          staticClass:
+                            "text-grey-darkest text-xl font-bold mb-2"
+                        },
+                        [_vm._v(_vm._s(_vm.numWorkouts))]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "h3",
+                        {
+                          staticClass: "text-grey-darkest text-base font-medium"
+                        },
+                        [_vm._v("Total Workouts")]
+                      )
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _vm._m(2)
+                ]
+              )
+            ]
+          )
+        ]
+      ),
+      _vm._v(" "),
       _vm.loading ? _c("loader") : _vm._e(),
       _vm._v(" "),
       _c("transition", { attrs: { name: "fade" } }, [
@@ -12221,232 +12335,6 @@ var render = function() {
           ? _c(
               "div",
               [
-                _c(
-                  "section",
-                  {
-                    staticClass:
-                      "w-full bg-grey-lighter border-b border-grey-light py-8"
-                  },
-                  [
-                    _c(
-                      "div",
-                      {
-                        staticClass:
-                          "container mx-auto px-8 flex justify-between flex-wrap"
-                      },
-                      [
-                        _c(
-                          "div",
-                          {
-                            staticClass:
-                              "flex flex-column md:flex-row justify-center md:items-center flex-wrap md:flex-no-wrap w-full md:w-auto"
-                          },
-                          [
-                            _c("div", { staticClass: "mb-8 md:mb-0 md:mr-8" }, [
-                              _c(
-                                "div",
-                                { staticClass: "rounded-full bg-grey p-2" },
-                                [
-                                  _c(
-                                    "div",
-                                    {
-                                      staticClass:
-                                        "rounded-full p-1 bg-grey-lighter"
-                                    },
-                                    [
-                                      _c("img", {
-                                        staticClass: "avatar block",
-                                        attrs: {
-                                          src: "/images/bxs-user-circle.svg",
-                                          alt: "Profile"
-                                        }
-                                      })
-                                    ]
-                                  )
-                                ]
-                              )
-                            ]),
-                            _vm._v(" "),
-                            _c(
-                              "div",
-                              { staticClass: "flex flex-col w-full md:w-auto" },
-                              [
-                                _c(
-                                  "h1",
-                                  {
-                                    staticClass:
-                                      "text-grey-darkest text-xl mb-2 text-center md:text-left"
-                                  },
-                                  [
-                                    _vm._v(
-                                      _vm._s(
-                                        this.user.first_name +
-                                          " " +
-                                          this.user.last_name
-                                      )
-                                    )
-                                  ]
-                                ),
-                                _vm._v(" "),
-                                _c(
-                                  "h3",
-                                  {
-                                    staticClass:
-                                      "text-sm font-medium uppercase mb-4 text-center md:text-left",
-                                    class: {
-                                      "text-green": _vm.isActive,
-                                      "text-red": !_vm.isActive
-                                    }
-                                  },
-                                  [
-                                    _vm._v(
-                                      _vm._s(
-                                        this.isActive ? "Active" : "Inactive"
-                                      )
-                                    )
-                                  ]
-                                ),
-                                _vm._v(" "),
-                                _c(
-                                  "div",
-                                  {
-                                    staticClass: "mx-auto mb-12 md:mb-0 md:mx-0"
-                                  },
-                                  [
-                                    _c(
-                                      "router-link",
-                                      {
-                                        staticClass:
-                                          "cursor-pointer text-xs font-semibold rounded-full px-4 py-1 leading-normal bg-grey-lighter border border-red text-red hover:bg-red hover:text-white uppercase focus:outline-none",
-                                        attrs: { to: "/u/profile" }
-                                      },
-                                      [_vm._v("Edit Profile")]
-                                    )
-                                  ],
-                                  1
-                                )
-                              ]
-                            )
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "div",
-                          {
-                            staticClass:
-                              "flex justify-center md:justify-start w-full md:w-auto"
-                          },
-                          [
-                            _c(
-                              "div",
-                              {
-                                staticClass:
-                                  "h-48 w-32 bg-grey-light rounded p-4 text-center"
-                              },
-                              [
-                                _c(
-                                  "div",
-                                  {
-                                    staticClass:
-                                      "w-full h-18 mb-4 flex justify-center"
-                                  },
-                                  [
-                                    _c(
-                                      "div",
-                                      {
-                                        staticClass:
-                                          "h-18 w-18 rounded-full bg-white p-3 shadow-lg"
-                                      },
-                                      [
-                                        _c("img", {
-                                          attrs: {
-                                            src: "/images/weight.svg",
-                                            alt: "Workouts"
-                                          }
-                                        })
-                                      ]
-                                    )
-                                  ]
-                                ),
-                                _vm._v(" "),
-                                _c(
-                                  "h2",
-                                  {
-                                    staticClass:
-                                      "text-grey-darkest text-xl font-bold mb-2"
-                                  },
-                                  [_vm._v(_vm._s(_vm.numWorkouts))]
-                                ),
-                                _vm._v(" "),
-                                _c(
-                                  "h3",
-                                  {
-                                    staticClass:
-                                      "text-grey-darkest text-base font-medium"
-                                  },
-                                  [_vm._v("Total Workouts")]
-                                )
-                              ]
-                            ),
-                            _vm._v(" "),
-                            _c(
-                              "div",
-                              {
-                                staticClass:
-                                  "h-48 w-32 bg-grey-light rounded p-4 text-center ml-2"
-                              },
-                              [
-                                _c(
-                                  "div",
-                                  {
-                                    staticClass:
-                                      "w-full h-18 mb-4 flex justify-center"
-                                  },
-                                  [
-                                    _c(
-                                      "div",
-                                      {
-                                        staticClass:
-                                          "h-18 w-18 rounded-full bg-white p-4 shadow-lg"
-                                      },
-                                      [
-                                        _c("img", {
-                                          attrs: {
-                                            src: "/images/award.svg",
-                                            alt: "Workouts"
-                                          }
-                                        })
-                                      ]
-                                    )
-                                  ]
-                                ),
-                                _vm._v(" "),
-                                _c(
-                                  "h2",
-                                  {
-                                    staticClass:
-                                      "text-grey-darkest text-xl font-bold mb-2"
-                                  },
-                                  [_vm._v("3")]
-                                ),
-                                _vm._v(" "),
-                                _c(
-                                  "h3",
-                                  {
-                                    staticClass:
-                                      "text-grey-darkest text-base font-medium"
-                                  },
-                                  [_vm._v("Goals In Progress")]
-                                )
-                              ]
-                            )
-                          ]
-                        )
-                      ]
-                    )
-                  ]
-                ),
-                _vm._v(" "),
                 _vm.isTrainer ? _c("announcement") : _vm._e(),
                 _vm._v(" "),
                 _c("div", { staticClass: "container mx-auto mt-20" }, [
@@ -12686,7 +12574,65 @@ var render = function() {
     1
   )
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "mb-8 md:mb-0 md:mr-8" }, [
+      _c("div", { staticClass: "rounded-full bg-grey p-2" }, [
+        _c("div", { staticClass: "rounded-full p-1 bg-grey-lighter" }, [
+          _c("img", {
+            staticClass: "avatar block",
+            attrs: { src: "/images/bxs-user-circle.svg", alt: "Profile" }
+          })
+        ])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "w-full h-18 mb-4 flex justify-center" }, [
+      _c(
+        "div",
+        { staticClass: "h-18 w-18 rounded-full bg-white p-3 shadow-lg" },
+        [_c("img", { attrs: { src: "/images/weight.svg", alt: "Workouts" } })]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      { staticClass: "h-48 w-32 bg-grey-light rounded p-4 text-center ml-2" },
+      [
+        _c("div", { staticClass: "w-full h-18 mb-4 flex justify-center" }, [
+          _c(
+            "div",
+            { staticClass: "h-18 w-18 rounded-full bg-white p-4 shadow-lg" },
+            [
+              _c("img", {
+                attrs: { src: "/images/award.svg", alt: "Workouts" }
+              })
+            ]
+          )
+        ]),
+        _vm._v(" "),
+        _c("h2", { staticClass: "text-grey-darkest text-xl font-bold mb-2" }, [
+          _vm._v("3")
+        ]),
+        _vm._v(" "),
+        _c("h3", { staticClass: "text-grey-darkest text-base font-medium" }, [
+          _vm._v("Goals In Progress")
+        ])
+      ]
+    )
+  }
+]
 render._withStripped = true
 
 

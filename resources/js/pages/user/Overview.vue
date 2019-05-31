@@ -2,60 +2,60 @@
   <div>
     <page-header></page-header>
     <navigation></navigation>
-    <loader v-if="loading"></loader>
-    <transition name="fade">
-      <div v-if="!loading">
-        <section class="w-full bg-grey-lighter border-b border-grey-light py-8">
-          <div class="container mx-auto px-8 flex justify-between flex-wrap">
-            <div
-              class="flex flex-column md:flex-row justify-center md:items-center flex-wrap md:flex-no-wrap w-full md:w-auto"
-            >
-              <div class="mb-8 md:mb-0 md:mr-8">
-                <div class="rounded-full bg-grey p-2">
-                  <div class="rounded-full p-1 bg-grey-lighter">
-                    <img class="avatar block" src="/images/bxs-user-circle.svg" alt="Profile">
-                  </div>
-                </div>
-              </div>
-              <div class="flex flex-col w-full md:w-auto">
-                <h1
-                  class="text-grey-darkest text-xl mb-2 text-center md:text-left"
-                >{{ `${this.user.first_name} ${this.user.last_name}` }}</h1>
-                <h3
-                  v-bind:class="{'text-green': isActive, 'text-red': !isActive}"
-                  class="text-sm font-medium uppercase mb-4 text-center md:text-left"
-                >{{ this.isActive ? 'Active' : 'Inactive' }}</h3>
-                <div class="mx-auto mb-12 md:mb-0 md:mx-0">
-                  <router-link
-                    to="/u/profile"
-                    class="cursor-pointer text-xs font-semibold rounded-full px-4 py-1 leading-normal bg-grey-lighter border border-red text-red hover:bg-red hover:text-white uppercase focus:outline-none"
-                  >Edit Profile</router-link>
-                </div>
-              </div>
-            </div>
-            <div class="flex justify-center md:justify-start w-full md:w-auto">
-              <div class="h-48 w-32 bg-grey-light rounded p-4 text-center">
-                <div class="w-full h-18 mb-4 flex justify-center">
-                  <div class="h-18 w-18 rounded-full bg-white p-3 shadow-lg">
-                    <img src="/images/weight.svg" alt="Workouts">
-                  </div>
-                </div>
-                <h2 class="text-grey-darkest text-xl font-bold mb-2">{{ numWorkouts }}</h2>
-                <h3 class="text-grey-darkest text-base font-medium">Total Workouts</h3>
-              </div>
-
-              <div class="h-48 w-32 bg-grey-light rounded p-4 text-center ml-2">
-                <div class="w-full h-18 mb-4 flex justify-center">
-                  <div class="h-18 w-18 rounded-full bg-white p-4 shadow-lg">
-                    <img src="/images/award.svg" alt="Workouts">
-                  </div>
-                </div>
-                <h2 class="text-grey-darkest text-xl font-bold mb-2">3</h2>
-                <h3 class="text-grey-darkest text-base font-medium">Goals In Progress</h3>
+    <section class="w-full bg-grey-lighter border-b border-grey-light py-8">
+      <div class="container mx-auto px-8 flex justify-between flex-wrap">
+        <div
+          class="flex flex-column md:flex-row justify-center md:items-center flex-wrap md:flex-no-wrap w-full md:w-auto"
+        >
+          <div class="mb-8 md:mb-0 md:mr-8">
+            <div class="rounded-full bg-grey p-2">
+              <div class="rounded-full p-1 bg-grey-lighter">
+                <img class="avatar block" src="/images/bxs-user-circle.svg" alt="Profile">
               </div>
             </div>
           </div>
-        </section>
+          <div class="flex flex-col w-full md:w-auto">
+            <h1
+              class="text-grey-darkest text-xl mb-2 text-center md:text-left"
+            >{{ `${this.user.first_name} ${this.user.last_name}` }}</h1>
+            <h3
+              v-bind:class="{'text-green': isActive, 'text-red': !isActive}"
+              class="text-sm font-medium uppercase mb-4 text-center md:text-left"
+            >{{ this.isActive ? 'Active' : 'Inactive' }}</h3>
+            <div class="mx-auto mb-12 md:mb-0 md:mx-0">
+              <router-link
+                to="/u/profile"
+                class="cursor-pointer text-xs font-semibold rounded-full px-4 py-1 leading-normal bg-grey-lighter border border-red text-red hover:bg-red hover:text-white uppercase focus:outline-none"
+              >Edit Profile</router-link>
+            </div>
+          </div>
+        </div>
+        <div class="flex justify-center md:justify-start w-full md:w-auto">
+          <div class="h-48 w-32 bg-grey-light rounded p-4 text-center">
+            <div class="w-full h-18 mb-4 flex justify-center">
+              <div class="h-18 w-18 rounded-full bg-white p-3 shadow-lg">
+                <img src="/images/weight.svg" alt="Workouts">
+              </div>
+            </div>
+            <h2 class="text-grey-darkest text-xl font-bold mb-2">{{ numWorkouts }}</h2>
+            <h3 class="text-grey-darkest text-base font-medium">Total Workouts</h3>
+          </div>
+
+          <div class="h-48 w-32 bg-grey-light rounded p-4 text-center ml-2">
+            <div class="w-full h-18 mb-4 flex justify-center">
+              <div class="h-18 w-18 rounded-full bg-white p-4 shadow-lg">
+                <img src="/images/award.svg" alt="Workouts">
+              </div>
+            </div>
+            <h2 class="text-grey-darkest text-xl font-bold mb-2">3</h2>
+            <h3 class="text-grey-darkest text-base font-medium">Goals In Progress</h3>
+          </div>
+        </div>
+      </div>
+    </section>
+    <loader v-if="loading"></loader>
+    <transition name="fade">
+      <div v-if="!loading">
         <announcement v-if="isTrainer"></announcement>
         <div class="container mx-auto mt-20">
           <main>
