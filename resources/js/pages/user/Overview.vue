@@ -1,6 +1,5 @@
 <template>
   <div>
-    <page-header></page-header>
     <navigation></navigation>
     <section class="w-full bg-grey-lighter border-b border-grey-light py-8">
       <div class="container mx-auto px-8 flex justify-between flex-wrap">

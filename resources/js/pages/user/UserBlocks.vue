@@ -1,6 +1,5 @@
 <template>
   <div>
-    <page-header></page-header>
     <navigation></navigation>
     <sub-navigation></sub-navigation>
     <loader v-if="loading"></loader>

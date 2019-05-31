@@ -1,6 +1,5 @@
 <template>
   <div>
-    <page-header></page-header>
     <navigation></navigation>
     <div class="bg-grey-lighter py-10 border-b border-grey-light">
       <div class="container mx-auto px-8 text-grey-darkest">

@@ -13,6 +13,7 @@
 <body class="font-sans">
     <div id="app">
         <snackbar></snackbar>
+        <page-header></page-header>
         <router-view></router-view>
     </div>
 
