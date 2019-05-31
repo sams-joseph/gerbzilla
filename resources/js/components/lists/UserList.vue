@@ -127,8 +127,8 @@
               :to="{ name: 'user', params: { id: user.id }}"
               class="flex items-center w-full"
             >
-              <span class="rounded-full mr-6 h-18 w-18 md:h-12 md:w-12 overflow-hidden">
-                <img class="w-full md:w-auto" src="/images/profile-icon.jpg" alt="Profile Icon">
+              <span class="rounded-full mr-6 overflow-hidden">
+                <avatar :first="user.first_name" :last="user.last_name" :size="48"></avatar>
               </span>
               <div class="flex-1">
                 <span
@@ -213,7 +213,13 @@
 </template>
 
 <script>
+import Avatar from "../Avatar";
+
 export default {
+  components: {
+    avatar: Avatar
+  },
+
   data() {
     return {
       showFilterMenu: false,

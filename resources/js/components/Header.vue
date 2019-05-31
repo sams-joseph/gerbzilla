@@ -177,6 +177,7 @@
         @click="openDrawer"
         class="w-8 h-8 rounded-full cursor-pointer overflow-hidden"
       >
+        <avatar v-bind:first="user.first_name" v-bind:last="user.last_name"></avatar>
         <img src="/images/avatars/Artboard3-600.svg" alt="Profile">
       </div>
     </div>
@@ -185,8 +186,13 @@
 
 <script>
 import { mapGetters } from "vuex";
+import Avatar from "./Avatar";
 
 export default {
+  components: {
+    avatar: Avatar
+  },
+
   data() {
     return {
       showLogin: false,

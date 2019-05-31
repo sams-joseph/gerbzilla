@@ -13,11 +13,12 @@
               <div class="mb-8 md:mb-0 md:mr-8">
                 <div class="rounded-full bg-grey p-2">
                   <div class="rounded-full p-1 bg-grey-lighter">
-                    <img
-                      class="avatar mx-auto block rounded-full overflow-hidden"
-                      src="/images/avatars/Artboard3-600.svg"
-                      alt="Profile"
-                    >
+                    <avatar
+                      :first="user.first_name"
+                      :last="user.last_name"
+                      :supersize="true"
+                      :size="150"
+                    ></avatar>
                   </div>
                 </div>
               </div>
@@ -67,13 +68,15 @@
               <h2 class="text-grey-darkest text-center font-normal text-2xl px-2 mb-1">Week Ahead</h2>
               <h2
                 class="text-grey-darkest text-center font-normal text-base mb-12 px-8"
-              >Upcoming workouts over the next three days.</h2>
-              <div class="flex flex-wrap w-full mb-20">
-                <workout-card
-                  v-for="workout in weekAhead"
-                  v-bind:key="workout.id"
-                  v-bind:workout="workout"
-                ></workout-card>
+              >Upcoming workouts over the next seven days.</h2>
+              <div class="w-full mb-20">
+                <carousel>
+                  <workout-card
+                    v-for="workout in weekAhead"
+                    v-bind:key="workout.id"
+                    v-bind:workout="workout"
+                  ></workout-card>
+                </carousel>
               </div>
             </section>
 
@@ -139,8 +142,15 @@
 
 <script>
 import { mapGetters } from "vuex";
+import Avatar from "../../components/Avatar";
+import Carousel from "../../components/Carousel";
 
 export default {
+  components: {
+    avatar: Avatar,
+    carousel: Carousel
+  },
+
   data() {
     return {
       todaysWorkout: {},
@@ -157,7 +167,7 @@ export default {
       .add(1, "d")
       .format("YYYY-MM-DD");
     const endDate = this.$moment()
-      .add(3, "d")
+      .add(7, "d")
       .format("YYYY-MM-DD");
 
     this.loading = true;
@@ -202,8 +212,20 @@ export default {
       const third = this.$moment()
         .add(3, "d")
         .format("YYYY-MM-DD");
+      const fourth = this.$moment()
+        .add(4, "d")
+        .format("YYYY-MM-DD");
+      const fifth = this.$moment()
+        .add(5, "d")
+        .format("YYYY-MM-DD");
+      const sixth = this.$moment()
+        .add(6, "d")
+        .format("YYYY-MM-DD");
+      const seventh = this.$moment()
+        .add(7, "d")
+        .format("YYYY-MM-DD");
 
-      const days = [first, second, third];
+      const days = [first, second, third, fourth, fifth, sixth, seventh];
 
       const nextWorkouts = [];
 
