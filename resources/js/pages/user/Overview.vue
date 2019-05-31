@@ -31,25 +31,18 @@
           </div>
         </div>
         <div class="flex justify-center md:justify-start w-full md:w-auto">
-          <div class="h-48 w-32 bg-grey-light rounded p-4 text-center">
-            <div class="w-full h-18 mb-4 flex justify-center">
-              <div class="h-18 w-18 rounded-full bg-white p-3 shadow-lg">
-                <img src="/images/weight.svg" alt="Workouts">
-              </div>
-            </div>
-            <h2 class="text-grey-darkest text-xl font-bold mb-2">{{ numWorkouts }}</h2>
-            <h3 class="text-grey-darkest text-base font-medium">Total Workouts</h3>
-          </div>
-
-          <div class="h-48 w-32 bg-grey-light rounded p-4 text-center ml-2">
-            <div class="w-full h-18 mb-4 flex justify-center">
-              <div class="h-18 w-18 rounded-full bg-white p-4 shadow-lg">
-                <img src="/images/award.svg" alt="Workouts">
-              </div>
-            </div>
-            <h2 class="text-grey-darkest text-xl font-bold mb-2">3</h2>
-            <h3 class="text-grey-darkest text-base font-medium">Goals In Progress</h3>
-          </div>
+          <goal-card
+            :loading="loading"
+            :icon="'/images/weight.svg'"
+            :count="numWorkouts"
+            :text="'Total Workouts'"
+          ></goal-card>
+          <goal-card
+            :loading="loading"
+            :icon="'/images/award.svg'"
+            :count="3"
+            :text="'Goals In Progress'"
+          ></goal-card>
         </div>
       </div>
     </section>
@@ -63,22 +56,19 @@
               <h2 class="text-grey-darkest text-center font-normal text-2xl px-2 mb-1">Week Ahead</h2>
               <h2
                 class="text-grey-darkest text-center font-normal text-base mb-12 px-8"
-              >Upcoming workouts over the next seven days.</h2>
-              <div class="w-full mb-20">
-                <carousel>
-                  <workout-card
-                    v-for="workout in weekAhead"
-                    v-bind:key="workout.id"
-                    v-bind:workout="workout"
-                    v-bind:name="workout.name"
-                    v-bind:type="workout.block.type.name"
-                    v-bind:date="$moment(workout.date).format('dddd')"
-                    v-bind:linkparams="{
+              >Upcoming workouts over the next three days.</h2>
+              <div class="w-full flex flex-wrap mb-20">
+                <workout-card
+                  v-for="workout in weekAhead"
+                  v-bind:key="workout.id"
+                  v-bind:name="workout.name"
+                  v-bind:type="workout.block.type.name"
+                  v-bind:date="$moment(workout.date).format('dddd')"
+                  v-bind:linkparams="{
                       name: 'user-workout',
                       params: { id: workout.id }
                     }"
-                  ></workout-card>
-                </carousel>
+                ></workout-card>
               </div>
             </section>
 
@@ -145,12 +135,12 @@
 <script>
 import { mapGetters } from "vuex";
 import Avatar from "../../components/Avatar";
-import Carousel from "../../components/Carousel";
+import GoalCard from "../../components/GoalCard";
 
 export default {
   components: {
     avatar: Avatar,
-    carousel: Carousel
+    "goal-card": GoalCard
   },
 
   data() {
@@ -169,7 +159,7 @@ export default {
       .add(1, "d")
       .format("YYYY-MM-DD");
     const endDate = this.$moment()
-      .add(7, "d")
+      .add(3, "d")
       .format("YYYY-MM-DD");
 
     this.loading = true;
@@ -214,20 +204,8 @@ export default {
       const third = this.$moment()
         .add(3, "d")
         .format("YYYY-MM-DD");
-      const fourth = this.$moment()
-        .add(4, "d")
-        .format("YYYY-MM-DD");
-      const fifth = this.$moment()
-        .add(5, "d")
-        .format("YYYY-MM-DD");
-      const sixth = this.$moment()
-        .add(6, "d")
-        .format("YYYY-MM-DD");
-      const seventh = this.$moment()
-        .add(7, "d")
-        .format("YYYY-MM-DD");
 
-      const days = [first, second, third, fourth, fifth, sixth, seventh];
+      const days = [first, second, third];
 
       const nextWorkouts = [];
 

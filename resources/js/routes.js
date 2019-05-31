@@ -33,7 +33,10 @@ export default {
         {
             path: "/",
             name: "Home",
-            component: Home
+            component: Login,
+            meta: {
+                guest: true
+            }
         },
         {
             path: "/login",

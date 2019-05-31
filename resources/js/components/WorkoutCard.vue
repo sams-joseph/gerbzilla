@@ -1,7 +1,8 @@
 <template>
   <div class="w-full xl:w-1/4 lg:w-1/3 md:w-1/2 p-1">
     <div
-      class="card flex flex-col justify-end relative overflow-hidden cursor-pointer"
+      class="card flex flex-col justify-end relative rounded shadow overflow-hidden"
+      :class="{ 'cursor-pointer': type !== 'rest' }"
       @click.prevent="onClick"
       :style="{ background: gradient.default }"
     >
@@ -17,7 +18,7 @@
           <h4 class="text-white text-base font-normal opacity-75" v-text="name"></h4>
         </div>
       </div>
-      <div class="card-slug flex pb-6 px-6 justify-between items-center">
+      <div class="card-slug flex pb-6 px-6 justify-start items-center">
         <span
           class="text-center block w-auto py-1 px-2 rounded-full text-xs text-white font-medium description-pill uppercase"
           v-text="type"

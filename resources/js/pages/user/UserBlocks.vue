@@ -14,17 +14,21 @@
       </div>
     </transition>
     <transition name="fade">
-      <div v-if="!loading && blocks.length" class="container mx-auto px-0">
+      <div v-if="!loading && blocks.length" class="container mx-auto px-0 pb-20">
         <div class="flex-1">
           <h1 class="text-grey-darkest font-normal text-2xl mb-8 px-8 pt-20">Training Blocks</h1>
           <div class="flex w-full flex-wrap px-6">
-            <block
+            <workout-card
               v-for="block in blocks"
               v-bind:key="block.id"
-              v-bind:block="block"
-              v-bind:name="'user-workouts-block'"
-              v-bind:params="{ id: block.id }"
-            ></block>
+              v-bind:name="block.name"
+              v-bind:type="block.type.name"
+              v-bind:date="$moment(block.start_date).format('dddd')"
+              v-bind:linkparams="{
+                  name: 'user-workouts-block',
+                  params: { id: block.id }
+                }"
+            ></workout-card>
           </div>
         </div>
       </div>
