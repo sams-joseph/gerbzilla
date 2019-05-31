@@ -23,7 +23,7 @@
               v-bind:key="block.id"
               v-bind:name="block.name"
               v-bind:type="block.type.name"
-              v-bind:date="$moment(block.start_date).format('dddd')"
+              v-bind:date="$moment(block.start_date).format('MMMM Do YYYY')"
               v-bind:linkparams="{
                   name: 'user-workouts-block',
                   params: { id: block.id }

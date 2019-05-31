@@ -13346,7 +13346,9 @@ var render = function() {
                       attrs: {
                         name: block.name,
                         type: block.type.name,
-                        date: _vm.$moment(block.start_date).format("dddd"),
+                        date: _vm
+                          .$moment(block.start_date)
+                          .format("MMMM Do YYYY"),
                         linkparams: {
                           name: "user-workouts-block",
                           params: { id: block.id }
