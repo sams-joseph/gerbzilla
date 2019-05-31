@@ -25,7 +25,6 @@ export default {
 
     backgroundColor() {
       const color = randomColor();
-
       return color.rgbString();
     }
   }

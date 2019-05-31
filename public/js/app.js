@@ -57,7 +57,7 @@ __webpack_require__.r(__webpack_exports__);
   mounted: function mounted() {
     var _this = this;
 
-    this.$http.get("".concat("http://gerbzilla.test/api", "/trainer/expiring")).then(function (res) {
+    this.$http.get("".concat("http://localhost:8000/api", "/trainer/expiring")).then(function (res) {
       _this.expiring = res.data;
     })["catch"](function (err) {
       console.log(err);
@@ -265,7 +265,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     onDelete: function onDelete() {
       var _this = this;
 
-      this.$http["delete"]("".concat("http://gerbzilla.test/api").concat(this.deleteBlock.url)).then(function (res) {
+      this.$http["delete"]("".concat("http://localhost:8000/api").concat(this.deleteBlock.url)).then(function (res) {
         _this.$store.dispatch("add", {
           type: "success",
           message: res.data.message,
@@ -1085,6 +1085,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../utils */ "./resources/js/utils.js");
 //
 //
 //
@@ -1114,6 +1115,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -1122,61 +1125,41 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     onClick: function onClick() {
-      if (this.workout.block.type.name !== "rest") {
-        this.$router.push(this.linkParams);
+      if (this.type !== "rest") {
+        this.$router.push(this.linkparams);
       }
     }
   },
   computed: {
-    icon: function icon() {
-      return {
-        url: "/images/".concat(this.workout.block.type.name, ".svg"),
-        alt: this.workout.block.type.name
-      };
-    },
     backgroundImage: function backgroundImage() {
-      return "url(/images/".concat(this.workout.block.type.name, "-card.jpg)");
+      return "url(/images/".concat(this.type, "-card.jpg)");
     },
     gradient: function gradient() {
-      var type = this.workout.block.type.name;
-
-      switch (type) {
-        case "strength":
-          return {
-            "default": "linear-gradient(to top, rgba(229, 45, 39, 1), rgba(179, 18, 23, 0))",
-            hover: "linear-gradient(to top, rgba(229, 45, 39, 1), rgba(179, 18, 23, 0.5))"
-          };
-
-        case "hypertrophy":
-          return {
-            "default": "linear-gradient(to top, rgba(68, 129, 235, 1), rgba(4, 190, 254, 0))",
-            hover: "linear-gradient(to top, rgba(68, 129, 235, 1), rgba(4, 190, 254, 0.5))"
-          };
-
-        case "fitness":
-          return {
-            "default": "linear-gradient(to top,rgba(43, 170, 96, 1), rgba(129, 204, 104, 0))",
-            hover: "linear-gradient(to top,rgba(43, 170, 96, 1), rgba(129, 204, 104, 0.5))"
-          };
-
-        default:
-          return {
-            "default": "linear-gradient(to top, rgba(134, 143, 150, 1), rgba(89, 97, 100, 0))",
-            hover: "linear-gradient(to top, rgba(134, 143, 150, 1), rgba(89, 97, 100, 0.5))"
-          };
-      }
+      return _utils__WEBPACK_IMPORTED_MODULE_0__["gradients"][this.type];
     },
-    linkParams: function linkParams() {
+    icon: function icon() {
       return {
-        name: "user-workout",
-        params: {
-          id: this.workout.id
-        }
+        url: "/images/".concat(this.type, ".svg"),
+        alt: this.type
       };
     }
   },
   props: {
-    workout: Object
+    linkparams: Object,
+    name: String,
+    id: {
+      type: [String, Number]
+    },
+    type: String,
+    date: String,
+    subtext: {
+      type: String,
+      "default": ""
+    },
+    shadow: {
+      type: Boolean,
+      "default": false
+    }
   }
 });
 
@@ -1374,7 +1357,7 @@ __webpack_require__.r(__webpack_exports__);
   mounted: function mounted() {
     var _this = this;
 
-    this.$http.get("".concat("http://gerbzilla.test/api", "/trainer/types")).then(function (res) {
+    this.$http.get("".concat("http://localhost:8000/api", "/trainer/types")).then(function (res) {
       _this.types = res.data;
     })["catch"](function (err) {
       console.log(err);
@@ -1385,7 +1368,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this2 = this;
 
       var userId = this.$route.params.id;
-      this.form.post("".concat("http://gerbzilla.test/api", "/trainer/users/").concat(userId, "/blocks")).then(function (res) {
+      this.form.post("".concat("http://localhost:8000/api", "/trainer/users/").concat(userId, "/blocks")).then(function (res) {
         _this2.$store.dispatch("add", {
           type: "success",
           message: "Added block",
@@ -1496,7 +1479,7 @@ __webpack_require__.r(__webpack_exports__);
   mounted: function mounted() {
     var _this = this;
 
-    this.$http.get("".concat("http://gerbzilla.test/api", "/trainer/categories")).then(function (res) {
+    this.$http.get("".concat("http://localhost:8000/api", "/trainer/categories")).then(function (res) {
       _this.loading = false;
       _this.categories = res.data;
     })["catch"](function (err) {
@@ -1507,7 +1490,7 @@ __webpack_require__.r(__webpack_exports__);
     onSubmit: function onSubmit() {
       var _this2 = this;
 
-      this.form.post("".concat("http://gerbzilla.test/api", "/trainer/exercises")).then(function (res) {
+      this.form.post("".concat("http://localhost:8000/api", "/trainer/exercises")).then(function (res) {
         console.log(res);
 
         _this2.$store.dispatch("add", {
@@ -1627,7 +1610,7 @@ __webpack_require__.r(__webpack_exports__);
   mounted: function mounted() {
     var _this = this;
 
-    this.$http.get("".concat("http://gerbzilla.test/api", "/trainer/exercises")).then(function (res) {
+    this.$http.get("".concat("http://localhost:8000/api", "/trainer/exercises")).then(function (res) {
       _this.loading = false;
       _this.exercises = res.data;
     })["catch"](function (err) {
@@ -1642,7 +1625,7 @@ __webpack_require__.r(__webpack_exports__);
           user_id = _this$$route$params.user_id,
           block_id = _this$$route$params.block_id,
           workout_id = _this$$route$params.workout_id;
-      this.form.post("".concat("http://gerbzilla.test/api", "/trainer/users/").concat(user_id, "/blocks/").concat(block_id, "/workouts/").concat(workout_id, "/sets")).then(function (res) {
+      this.form.post("".concat("http://localhost:8000/api", "/trainer/users/").concat(user_id, "/blocks/").concat(block_id, "/workouts/").concat(workout_id, "/sets")).then(function (res) {
         _this2.$store.dispatch("add", {
           type: "success",
           message: "Added exercise",
@@ -1786,7 +1769,7 @@ __webpack_require__.r(__webpack_exports__);
     onSubmit: function onSubmit() {
       var _this = this;
 
-      this.form.post("".concat("http://gerbzilla.test/api", "/trainer/users")).then(function (res) {
+      this.form.post("".concat("http://localhost:8000/api", "/trainer/users")).then(function (res) {
         _this.$store.dispatch("add", {
           type: "success",
           message: "Added user successfully.",
@@ -1879,7 +1862,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this$$route$params = this.$route.params,
           user_id = _this$$route$params.user_id,
           block_id = _this$$route$params.block_id;
-      this.form.post("".concat("http://gerbzilla.test/api", "/trainer/users/").concat(user_id, "/blocks/").concat(block_id, "/workouts")).then(function (res) {
+      this.form.post("".concat("http://localhost:8000/api", "/trainer/users/").concat(user_id, "/blocks/").concat(block_id, "/workouts")).then(function (res) {
         _this.$store.dispatch("add", {
           type: "success",
           message: "Added workout",
@@ -1964,7 +1947,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this$$route$params = this.$route.params,
           user_id = _this$$route$params.user_id,
           workout_id = _this$$route$params.workout_id;
-      this.$http.post("".concat("http://gerbzilla.test/api", "/trainer/users/").concat(user_id, "/workouts/").concat(workout_id), {
+      this.$http.post("".concat("http://localhost:8000/api", "/trainer/users/").concat(user_id, "/workouts/").concat(workout_id), {
         date: this.date
       }).then(function (res) {
         _this.date = "";
@@ -2090,7 +2073,7 @@ __webpack_require__.r(__webpack_exports__);
         block_id = _this$$route$params.block_id,
         workout_id = _this$$route$params.workout_id,
         set_id = _this$$route$params.set_id;
-    this.$http.all([this.$http.get("".concat("http://gerbzilla.test/api", "/trainer/users/").concat(user_id, "/blocks/").concat(block_id, "/workouts/").concat(workout_id, "/sets/").concat(set_id)), this.$http.get("".concat("http://gerbzilla.test/api", "/trainer/exercises"))]).then(this.$http.spread(function (set, exercises) {
+    this.$http.all([this.$http.get("".concat("http://localhost:8000/api", "/trainer/users/").concat(user_id, "/blocks/").concat(block_id, "/workouts/").concat(workout_id, "/sets/").concat(set_id)), this.$http.get("".concat("http://localhost:8000/api", "/trainer/exercises"))]).then(this.$http.spread(function (set, exercises) {
       _this.exercises = exercises.data;
       set.data.set.exercises.forEach(function (exercise) {
         _this.exercise.push(exercise.id);
@@ -2120,7 +2103,7 @@ __webpack_require__.r(__webpack_exports__);
           block_id = _this$$route$params2.block_id,
           workout_id = _this$$route$params2.workout_id,
           set_id = _this$$route$params2.set_id;
-      this.$http.put("".concat("http://gerbzilla.test/api", "/trainer/users/").concat(user_id, "/blocks/").concat(block_id, "/workouts/").concat(workout_id, "/sets/").concat(set_id), {
+      this.$http.put("".concat("http://localhost:8000/api", "/trainer/users/").concat(user_id, "/blocks/").concat(block_id, "/workouts/").concat(workout_id, "/sets/").concat(set_id), {
         num_sets: this.sets,
         notes: this.notes,
         exercise_id: this.exercise
@@ -2430,6 +2413,8 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Avatar__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../Avatar */ "./resources/js/components/Avatar.vue");
+//
+//
 //
 //
 //
@@ -3147,7 +3132,7 @@ __webpack_require__.r(__webpack_exports__);
           block_id = _this$$route$params.block_id;
       this.toggleModal();
       this.loading = true;
-      this.$http.get("".concat("http://gerbzilla.test/api", "/trainer/users/").concat(user_id, "/blocks/").concat(block_id)).then(function (res) {
+      this.$http.get("".concat("http://localhost:8000/api", "/trainer/users/").concat(user_id, "/blocks/").concat(block_id)).then(function (res) {
         _this.workouts = res.data.workouts;
         _this.loading = false;
       })["catch"](function (err) {
@@ -3169,7 +3154,7 @@ __webpack_require__.r(__webpack_exports__);
         user_id = _this$$route$params2.user_id,
         block_id = _this$$route$params2.block_id;
     this.loading = true;
-    this.$http.get("".concat("http://gerbzilla.test/api", "/trainer/users/").concat(user_id, "/blocks/").concat(block_id)).then(function (res) {
+    this.$http.get("".concat("http://localhost:8000/api", "/trainer/users/").concat(user_id, "/blocks/").concat(block_id)).then(function (res) {
       _this2.block = res.data.block;
       _this2.type = res.data.type;
       _this2.workouts = res.data.workouts.sort(function (a, b) {
@@ -3285,7 +3270,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this$$route$params = this.$route.params,
           user_id = _this$$route$params.user_id,
           block_id = _this$$route$params.block_id;
-      this.$http.post("".concat("http://gerbzilla.test/api", "/trainer/users/").concat(user_id, "/blocks/duplicate/").concat(block_id), {
+      this.$http.post("".concat("http://localhost:8000/api", "/trainer/users/").concat(user_id, "/blocks/duplicate/").concat(block_id), {
         start_date: this.start_date,
         name: this.name
       }).then(function (res) {
@@ -3323,7 +3308,7 @@ __webpack_require__.r(__webpack_exports__);
         user_id = _this$$route$params2.user_id,
         block_id = _this$$route$params2.block_id;
     this.loading = true;
-    this.$http.get("".concat("http://gerbzilla.test/api", "/trainer/users/").concat(user_id, "/blocks/").concat(block_id)).then(function (res) {
+    this.$http.get("".concat("http://localhost:8000/api", "/trainer/users/").concat(user_id, "/blocks/").concat(block_id)).then(function (res) {
       _this2.workout = res.data.workout;
       _this2.block = res.data.block;
       _this2.type = res.data.type;
@@ -3435,7 +3420,7 @@ __webpack_require__.r(__webpack_exports__);
           user_id = _this$$route$params.user_id,
           block_id = _this$$route$params.block_id,
           workout_id = _this$$route$params.workout_id;
-      this.$http.post("".concat("http://gerbzilla.test/api", "/trainer/users/").concat(user_id, "/workouts/duplicate/").concat(workout_id), {
+      this.$http.post("".concat("http://localhost:8000/api", "/trainer/users/").concat(user_id, "/workouts/duplicate/").concat(workout_id), {
         date: this.date,
         name: this.name
       }).then(function (res) {
@@ -3475,7 +3460,7 @@ __webpack_require__.r(__webpack_exports__);
         block_id = _this$$route$params2.block_id,
         workout_id = _this$$route$params2.workout_id;
     this.loading = true;
-    this.$http.get("".concat("http://gerbzilla.test/api", "/trainer/users/").concat(user_id, "/blocks/").concat(block_id, "/workouts/").concat(workout_id)).then(function (res) {
+    this.$http.get("".concat("http://localhost:8000/api", "/trainer/users/").concat(user_id, "/blocks/").concat(block_id, "/workouts/").concat(workout_id)).then(function (res) {
       _this2.workout = res.data.workout;
       _this2.block = res.data.block;
       _this2.type = res.data.type;
@@ -3543,7 +3528,7 @@ __webpack_require__.r(__webpack_exports__);
         block_id = _this$$route$params.block_id,
         workout_id = _this$$route$params.workout_id;
     this.loading = true;
-    this.$http.get("".concat("http://gerbzilla.test/api", "/trainer/users/").concat(user_id, "/blocks/").concat(block_id, "/workouts/").concat(workout_id, "/sets")).then(function (res) {
+    this.$http.get("".concat("http://localhost:8000/api", "/trainer/users/").concat(user_id, "/blocks/").concat(block_id, "/workouts/").concat(workout_id, "/sets")).then(function (res) {
       _this.block = res.data.block;
       _this.type = res.data.type;
       _this.workout = res.data.workout;
@@ -3616,7 +3601,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       this.loading = true;
-      this.$http.get("".concat("http://gerbzilla.test/api", "/trainer/exercises")).then(function (res) {
+      this.$http.get("".concat("http://localhost:8000/api", "/trainer/exercises")).then(function (res) {
         _this.exercises = res.data;
         _this.loading = false;
       })["catch"](function (err) {
@@ -3631,7 +3616,7 @@ __webpack_require__.r(__webpack_exports__);
     var _this2 = this;
 
     this.loading = true;
-    this.$http.all([this.$http.get("".concat("http://gerbzilla.test/api", "/trainer/exercises")), this.$http.get("".concat("http://gerbzilla.test/api", "/trainer/categories"))]).then(this.$http.spread(function (exercises, categories) {
+    this.$http.all([this.$http.get("".concat("http://localhost:8000/api", "/trainer/exercises")), this.$http.get("".concat("http://localhost:8000/api", "/trainer/categories"))]).then(this.$http.spread(function (exercises, categories) {
       _this2.exercises = exercises.data;
       _this2.categories = categories.data;
       _this2.loading = false;
@@ -3700,6 +3685,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -3713,7 +3703,7 @@ __webpack_require__.r(__webpack_exports__);
   mounted: function mounted() {
     var _this = this;
 
-    this.$http.all([this.$http.get("".concat("http://gerbzilla.test/api", "/trainer/users/").concat(this.$route.params.id)), this.$http.get("".concat("http://gerbzilla.test/api", "/trainer/users/").concat(this.$route.params.id, "/blocks"))]).then(this.$http.spread(function (user, blocks) {
+    this.$http.all([this.$http.get("".concat("http://localhost:8000/api", "/trainer/users/").concat(this.$route.params.id)), this.$http.get("".concat("http://localhost:8000/api", "/trainer/users/").concat(this.$route.params.id, "/blocks"))]).then(this.$http.spread(function (user, blocks) {
       _this.user = user.data;
       _this.isActive = user.data.is_active === 1 ? true : false;
       _this.blocks = blocks.data.sort(function (a, b) {
@@ -3730,7 +3720,7 @@ __webpack_require__.r(__webpack_exports__);
 
       this.loading = true;
       this.toggleAddBlockForm();
-      this.$http.get("".concat("http://gerbzilla.test/api", "/trainer/users/").concat(this.$route.params.id, "/blocks")).then(function (res) {
+      this.$http.get("".concat("http://localhost:8000/api", "/trainer/users/").concat(this.$route.params.id, "/blocks")).then(function (res) {
         _this2.blocks = res.data.sort(function (a, b) {
           return a.start_date < b.start_date ? 1 : b.start_date < a.start_date ? -1 : 0;
         });
@@ -3810,7 +3800,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       this.loading = true;
-      this.$http.get("".concat("http://gerbzilla.test/api", "/trainer/users")).then(function (res) {
+      this.$http.get("".concat("http://localhost:8000/api", "/trainer/users")).then(function (res) {
         _this.users = res.data;
         _this.loading = false;
       })["catch"](function (err) {});
@@ -3822,7 +3812,7 @@ __webpack_require__.r(__webpack_exports__);
   mounted: function mounted() {
     var _this2 = this;
 
-    this.$http.all([this.$http.get("".concat("http://gerbzilla.test/api", "/trainer/expiring")), this.$http.get("".concat("http://gerbzilla.test/api", "/trainer/users"))]).then(this.$http.spread(function (expiring, all) {
+    this.$http.all([this.$http.get("".concat("http://localhost:8000/api", "/trainer/expiring")), this.$http.get("".concat("http://localhost:8000/api", "/trainer/users"))]).then(this.$http.spread(function (expiring, all) {
       _this2.users = all.data;
       _this2.expiring = expiring.data;
       _this2.loading = false;
@@ -3941,7 +3931,7 @@ __webpack_require__.r(__webpack_exports__);
           block_id = _this$$route$params.block_id,
           workout_id = _this$$route$params.workout_id;
       this.loading = true;
-      this.$http.get("".concat("http://gerbzilla.test/api", "/trainer/users/").concat(user_id, "/blocks/").concat(block_id, "/workouts/").concat(workout_id, "/sets")).then(function (res) {
+      this.$http.get("".concat("http://localhost:8000/api", "/trainer/users/").concat(user_id, "/blocks/").concat(block_id, "/workouts/").concat(workout_id, "/sets")).then(function (res) {
         _this.sets = res.data.sets;
         _this.loading = false;
       })["catch"](function (err) {
@@ -3973,7 +3963,7 @@ __webpack_require__.r(__webpack_exports__);
         block_id = _this$$route$params2.block_id,
         workout_id = _this$$route$params2.workout_id;
     this.loading = true;
-    this.$http.get("".concat("http://gerbzilla.test/api", "/trainer/users/").concat(user_id, "/blocks/").concat(block_id, "/workouts/").concat(workout_id, "/sets")).then(function (res) {
+    this.$http.get("".concat("http://localhost:8000/api", "/trainer/users/").concat(user_id, "/blocks/").concat(block_id, "/workouts/").concat(workout_id, "/sets")).then(function (res) {
       _this2.block = res.data.block;
       _this2.type = res.data.type;
       _this2.workout = res.data.workout;
@@ -4166,6 +4156,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
 
 
 
@@ -4190,7 +4182,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     var startDate = this.$moment().add(1, "d").format("YYYY-MM-DD");
     var endDate = this.$moment().add(7, "d").format("YYYY-MM-DD");
     this.loading = true;
-    this.$http.all([this.$http.get("".concat("http://gerbzilla.test/api", "/workouts/date/").concat(todaysDate)), this.$http.get("".concat("http://gerbzilla.test/api", "/workouts/date/").concat(startDate, "/").concat(endDate)), this.$http.get("".concat("http://gerbzilla.test/api", "/workouts"))]).then(this.$http.spread(function (today, week, all) {
+    this.$http.all([this.$http.get("".concat("http://localhost:8000/api", "/workouts/date/").concat(todaysDate)), this.$http.get("".concat("http://localhost:8000/api", "/workouts/date/").concat(startDate, "/").concat(endDate)), this.$http.get("".concat("http://localhost:8000/api", "/workouts"))]).then(this.$http.spread(function (today, week, all) {
       _this.todaysWorkout = today.data.workout;
       _this.sets = today.data.sets;
       _this.weeksWorkouts = week.data;
@@ -4403,6 +4395,12 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -4426,7 +4424,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       var _this = this;
 
       this.loading = true;
-      this.form.post("".concat("http://gerbzilla.test/api", "/user/update")).then(function (res) {
+      this.form.post("".concat("http://localhost:8000/api", "/user/update")).then(function (res) {
         _this.$store.dispatch("updateUser").then(function (res) {
           _this.setUserInformation();
 
@@ -4557,7 +4555,7 @@ __webpack_require__.r(__webpack_exports__);
 
     var id = this.$route.params.id;
     this.loading = true;
-    this.$http.get("".concat("http://gerbzilla.test/api", "/blocks/").concat(id)).then(function (res) {
+    this.$http.get("".concat("http://localhost:8000/api", "/blocks/").concat(id)).then(function (res) {
       _this.block = res.data;
       _this.type = res.data.type;
       _this.workouts = res.data.workouts.sort(function (a, b) {
@@ -4637,7 +4635,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     var _this = this;
 
     this.loading = true;
-    this.$http.get("".concat("http://gerbzilla.test/api", "/blocks")).then(function (res) {
+    this.$http.get("".concat("http://localhost:8000/api", "/blocks")).then(function (res) {
       _this.blocks = res.data.sort(function (a, b) {
         return a.start_date < b.start_date ? 1 : b.start_date < a.start_date ? -1 : 0;
       });
@@ -4749,7 +4747,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     var weekEnd = this.$moment(today).endOf("week").add(1, "days");
     this.weekStart = weekStart;
     this.loading = true;
-    this.$http.get("".concat("http://gerbzilla.test/api", "/workouts/date/").concat(weekStart.format("YYYY-MM-DD"), "/").concat(weekEnd.format("YYYY-MM-DD"))).then(function (res) {
+    this.$http.get("".concat("http://localhost:8000/api", "/workouts/date/").concat(weekStart.format("YYYY-MM-DD"), "/").concat(weekEnd.format("YYYY-MM-DD"))).then(function (res) {
       _this.workouts = res.data.sort(function (a, b) {
         return a.date > b.date ? 1 : b.date > a.date ? -1 : 0;
       });
@@ -4855,7 +4853,7 @@ __webpack_require__.r(__webpack_exports__);
   mounted: function mounted() {
     var _this = this;
 
-    this.$http.get("".concat("http://gerbzilla.test/api", "/workouts/").concat(this.$route.params.id)).then(function (res) {
+    this.$http.get("".concat("http://localhost:8000/api", "/workouts/").concat(this.$route.params.id)).then(function (res) {
       _this.workout = res.data.workout;
       _this.sets = res.data.sets;
       _this.loading = false;
@@ -4898,7 +4896,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".card[data-v-737627b2] {\n  height: 400px;\n  background-position: center;\n  background-size: cover;\n}\n.card-content[data-v-737627b2] {\n  height: 100%;\n  -webkit-transition: all .25s;\n  -o-transition: all .25s;\n  transition: all .25s;\n}\n.card-slug[data-v-737627b2] {\n  -webkit-transition: margin .25s;\n  -o-transition: margin .25s;\n  transition: margin .25s;\n}\n", ""]);
+exports.push([module.i, ".card[data-v-737627b2] {\n  background-position: center;\n  background-size: cover;\n}\n.card-content[data-v-737627b2] {\n  height: 100%;\n  -webkit-transition: all .25s;\n  -o-transition: all .25s;\n  transition: all .25s;\n}\n.card-slug[data-v-737627b2] {\n  -webkit-transition: margin .25s;\n  -o-transition: margin .25s;\n  transition: margin .25s;\n}\n", ""]);
 
 // exports
 
@@ -4917,7 +4915,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, ".avatar[data-v-0d864e44] {\n  width: 150px;\n  height: 150px;\n}\n", ""]);
+exports.push([module.i, ".avatar[data-v-0d864e44] {\n  width: 150px;\n  height: 150px;\n  border-radius: 100%;\n}\n", ""]);
 
 // exports
 
@@ -4993,7 +4991,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, ".filter-sidebar {\n  width: 300px;\n}\n", ""]);
+exports.push([module.i, ".filter-sidebar {\n  width: 275px;\n}\n", ""]);
 
 // exports
 
@@ -6907,7 +6905,7 @@ var render = function() {
         "w-full py-4 bg-grey-lighter border-b border-t border-grey-light"
     },
     [
-      _c("div", { staticClass: "px-8" }, [
+      _c("div", { staticClass: "px-8 container mx-auto" }, [
         _c("ul", { staticClass: "list-reset" }, [
           _c(
             "li",
@@ -7214,97 +7212,71 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    {
-      staticClass: "w-full lg:w-1/3 md:w-1/2 p-1 cursor-pointer",
-      on: {
-        click: function($event) {
-          $event.preventDefault()
-          return _vm.onClick($event)
-        }
-      }
-    },
-    [
-      _c(
-        "div",
-        {
-          staticClass:
-            "card flex flex-col justify-end relative rounded overflow-hidden",
-          style: { backgroundImage: _vm.backgroundImage },
-          on: {
-            mouseenter: function($event) {
-              _vm.hover = true
-            },
-            mouseleave: function($event) {
-              _vm.hover = false
-            }
+  return _c("div", { staticClass: "w-full xl:w-1/4 lg:w-1/3 md:w-1/2 p-2" }, [
+    _c(
+      "div",
+      {
+        staticClass:
+          "card flex flex-col justify-end relative rounded overflow-hidden cursor-pointer",
+        class: { "shadow-lg": _vm.shadow },
+        style: { background: _vm.gradient.default },
+        on: {
+          click: function($event) {
+            $event.preventDefault()
+            return _vm.onClick($event)
           }
-        },
-        [
-          _c(
-            "div",
-            {
-              staticClass: "card-content flex flex-col",
-              style: {
-                maxHeight:
-                  _vm.hover && _vm.workout.block.type.name !== "rest"
-                    ? "100%"
-                    : "75%",
-                background:
-                  _vm.hover && _vm.workout.block.type.name !== "rest"
-                    ? _vm.gradient.hover
-                    : _vm.gradient.default
-              }
-            },
-            [
-              _c("div", { staticClass: "flex-1" }),
-              _vm._v(" "),
-              _c("div", { staticClass: "flex items-center p-6" }, [
-                _c("div", { staticClass: "flex flex-col" }, [
-                  _c(
-                    "h3",
-                    { staticClass: "text-white text-lg font-bold mb-2" },
-                    [
-                      _vm._v(
-                        _vm._s(_vm.$moment(_vm.workout.date).format("dddd"))
-                      )
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "h4",
-                    {
-                      staticClass: "text-white text-base font-normal opacity-75"
-                    },
-                    [_vm._v(_vm._s(_vm.workout.name))]
-                  )
-                ])
-              ]),
-              _vm._v(" "),
-              _c(
-                "div",
-                {
-                  staticClass:
-                    "card-slug flex pb-6 px-6 justify-between items-center"
-                },
-                [
-                  _c(
-                    "span",
-                    {
-                      staticClass:
-                        "text-center block w-auto py-1 px-2 rounded-full text-xs text-white font-medium description-pill uppercase"
-                    },
-                    [_vm._v(_vm._s(_vm.workout.block.type.name))]
-                  )
-                ]
-              )
-            ]
-          )
-        ]
-      )
-    ]
-  )
+        }
+      },
+      [
+        _c("div", { staticClass: "flex-1" }),
+        _vm._v(" "),
+        _c("div", { staticClass: "flex items-center p-6" }, [
+          _vm.type !== "rest"
+            ? _c("div", { staticClass: "mr-4" }, [
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "w-18 h-18 px-4 bg-white rounded-full flex items-center justify-center"
+                  },
+                  [
+                    _c("img", {
+                      attrs: { src: _vm.icon.url, alt: _vm.icon.alt }
+                    })
+                  ]
+                )
+              ])
+            : _vm._e(),
+          _vm._v(" "),
+          _c("div", { staticClass: "flex flex-col" }, [
+            _c("h3", {
+              staticClass: "text-white text-lg font-bold mb-2",
+              domProps: { textContent: _vm._s(_vm.date) }
+            }),
+            _vm._v(" "),
+            _c("h4", {
+              staticClass: "text-white text-base font-normal opacity-75",
+              domProps: { textContent: _vm._s(_vm.name) }
+            })
+          ])
+        ]),
+        _vm._v(" "),
+        _c(
+          "div",
+          {
+            staticClass: "card-slug flex pb-6 px-6 justify-between items-center"
+          },
+          [
+            _c("span", {
+              staticClass:
+                "text-center block w-auto py-1 px-2 rounded-full text-xs text-white font-medium description-pill uppercase",
+              domProps: { textContent: _vm._s(_vm.type) }
+            })
+          ]
+        )
+      ]
+    )
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -9443,688 +9415,707 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    { staticClass: "flex px-0 md:px-8 mt-20" },
-    [
-      _c("aside", { staticClass: "filter-sidebar hidden md:block" }, [
-        _c("div", { staticClass: "relative" }, [
-          _c("div", { staticClass: "absolute pin-r py-1 pr-2" }, [
-            _c(
-              "svg",
-              {
-                staticClass: "fill-current text-grey-darkest",
-                attrs: { width: "24", height: "28", viewBox: "0 0 24 24" }
-              },
-              [
-                _c("path", {
-                  attrs: {
-                    d:
-                      "M10,18c1.846,0,3.543-0.635,4.897-1.688l4.396,4.396l1.414-1.414l-4.396-4.396C17.365,13.543,18,11.846,18,10 c0-4.411-3.589-8-8-8s-8,3.589-8,8S5.589,18,10,18z M10,4c3.309,0,6,2.691,6,6s-2.691,6-6,6s-6-2.691-6-6S6.691,4,10,4z"
-                  }
-                }),
-                _vm._v(" "),
-                _c("path", {
-                  attrs: {
-                    d:
-                      "M11.412,8.586C11.791,8.966,12,9.468,12,10h2c0-1.065-0.416-2.069-1.174-2.828c-1.514-1.512-4.139-1.512-5.652,0 l1.412,1.416C9.346,7.83,10.656,7.832,11.412,8.586z"
-                  }
-                })
-              ]
-            )
-          ]),
-          _vm._v(" "),
-          _c("input", {
-            directives: [
-              {
-                name: "model",
-                rawName: "v-model",
-                value: _vm.query,
-                expression: "query"
-              }
-            ],
-            staticClass:
-              "w-full border border-grey-light text-grey-darkest bg-grey-lighter rounded-full px-4 py-2 focus:outline-none mb-8",
-            attrs: { type: "text", name: "search", placeholder: "Search" },
-            domProps: { value: _vm.query },
-            on: {
-              input: function($event) {
-                if ($event.target.composing) {
-                  return
-                }
-                _vm.query = $event.target.value
-              }
-            }
-          })
-        ]),
-        _vm._v(" "),
-        _c(
-          "h1",
-          { staticClass: "text-grey-darkest font-normal text-2xl mb-10 mx-2" },
-          [_vm._v("Status")]
-        ),
-        _vm._v(" "),
-        _c("ul", { staticClass: "list-reset" }, [
-          _c(
-            "li",
-            {
-              staticClass: "hover:bg-grey-lighter p-2 rounded flex items-center"
-            },
-            [
-              _c("label", { staticClass: "checkbox-container flex-1" }, [
-                _vm._v("\n          Active\n          "),
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.activity,
-                      expression: "activity"
-                    }
-                  ],
-                  attrs: {
-                    type: "checkbox",
-                    id: "active",
-                    name: "active",
-                    value: "1"
-                  },
-                  domProps: {
-                    checked: Array.isArray(_vm.activity)
-                      ? _vm._i(_vm.activity, "1") > -1
-                      : _vm.activity
-                  },
-                  on: {
-                    change: function($event) {
-                      var $$a = _vm.activity,
-                        $$el = $event.target,
-                        $$c = $$el.checked ? true : false
-                      if (Array.isArray($$a)) {
-                        var $$v = "1",
-                          $$i = _vm._i($$a, $$v)
-                        if ($$el.checked) {
-                          $$i < 0 && (_vm.activity = $$a.concat([$$v]))
-                        } else {
-                          $$i > -1 &&
-                            (_vm.activity = $$a
-                              .slice(0, $$i)
-                              .concat($$a.slice($$i + 1)))
-                        }
-                      } else {
-                        _vm.activity = $$c
-                      }
-                    }
-                  }
-                }),
-                _vm._v(" "),
-                _c("span", { staticClass: "checkbox-checkmark" })
-              ]),
-              _vm._v(" "),
-              _c(
-                "span",
-                {
-                  staticClass:
-                    "bg-grey-light text-grey-darkest rounded-full float-right px-2 py-1"
-                },
-                [_vm._v(_vm._s(_vm.getNumUsers(1)))]
-              )
-            ]
-          ),
-          _vm._v(" "),
-          _c(
-            "li",
-            {
-              staticClass: "hover:bg-grey-lighter p-2 rounded flex items-center"
-            },
-            [
-              _c("label", { staticClass: "checkbox-container flex-1" }, [
-                _vm._v("\n          Inactive\n          "),
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.activity,
-                      expression: "activity"
-                    }
-                  ],
-                  attrs: {
-                    type: "checkbox",
-                    id: "inactive",
-                    name: "inactive",
-                    value: "2"
-                  },
-                  domProps: {
-                    checked: Array.isArray(_vm.activity)
-                      ? _vm._i(_vm.activity, "2") > -1
-                      : _vm.activity
-                  },
-                  on: {
-                    change: function($event) {
-                      var $$a = _vm.activity,
-                        $$el = $event.target,
-                        $$c = $$el.checked ? true : false
-                      if (Array.isArray($$a)) {
-                        var $$v = "2",
-                          $$i = _vm._i($$a, $$v)
-                        if ($$el.checked) {
-                          $$i < 0 && (_vm.activity = $$a.concat([$$v]))
-                        } else {
-                          $$i > -1 &&
-                            (_vm.activity = $$a
-                              .slice(0, $$i)
-                              .concat($$a.slice($$i + 1)))
-                        }
-                      } else {
-                        _vm.activity = $$c
-                      }
-                    }
-                  }
-                }),
-                _vm._v(" "),
-                _c("span", { staticClass: "checkbox-checkmark" })
-              ]),
-              _vm._v(" "),
-              _c(
-                "span",
-                {
-                  staticClass:
-                    "bg-grey-light text-grey-darkest rounded-full float-right px-2 py-1"
-                },
-                [_vm._v(_vm._s(_vm.getNumUsers(2)))]
-              )
-            ]
-          )
-        ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "flex-1" }, [
-        _c("div", { staticClass: "px-4" }, [
-          _c("div", { staticClass: "px-4" }, [
-            _c("div", { staticClass: "relative md:hidden" }, [
-              _c("div", { staticClass: "absolute pin-r py-1 pr-2" }, [
-                _c(
-                  "svg",
-                  {
-                    staticClass: "fill-current text-grey-darkest",
-                    attrs: { width: "24", height: "28", viewBox: "0 0 24 24" }
-                  },
-                  [
-                    _c("path", {
-                      attrs: {
-                        d:
-                          "M10,18c1.846,0,3.543-0.635,4.897-1.688l4.396,4.396l1.414-1.414l-4.396-4.396C17.365,13.543,18,11.846,18,10 c0-4.411-3.589-8-8-8s-8,3.589-8,8S5.589,18,10,18z M10,4c3.309,0,6,2.691,6,6s-2.691,6-6,6s-6-2.691-6-6S6.691,4,10,4z"
-                      }
-                    }),
-                    _vm._v(" "),
-                    _c("path", {
-                      attrs: {
-                        d:
-                          "M11.412,8.586C11.791,8.966,12,9.468,12,10h2c0-1.065-0.416-2.069-1.174-2.828c-1.514-1.512-4.139-1.512-5.652,0 l1.412,1.416C9.346,7.83,10.656,7.832,11.412,8.586z"
-                      }
-                    })
-                  ]
-                )
-              ]),
-              _vm._v(" "),
-              _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.query,
-                    expression: "query"
-                  }
-                ],
-                staticClass:
-                  "w-full border border-grey-light bg-grey-lighter rounded-full px-4 py-2 focus:outline-none mb-8",
-                attrs: { type: "text", name: "search", placeholder: "Search" },
-                domProps: { value: _vm.query },
-                on: {
-                  input: function($event) {
-                    if ($event.target.composing) {
-                      return
-                    }
-                    _vm.query = $event.target.value
-                  }
-                }
-              })
-            ])
-          ]),
-          _vm._v(" "),
-          _vm.showLastWeek
-            ? _c(
-                "h1",
-                {
-                  staticClass:
-                    "text-grey-darkest font-normal text-2xl mb-10 px-4"
-                },
-                [_vm._v("Expiring")]
-              )
-            : _vm._e(),
-          _vm._v(" "),
-          _vm.showLastWeek
-            ? _c(
-                "ul",
-                {
-                  staticClass:
-                    "list-reset px-4 md:px-0 mb-10 flex flex-wrap max-w-xl"
-                },
-                _vm._l(_vm.expiring, function(user) {
-                  return _c(
-                    "li",
-                    {
-                      key: user.id,
-                      staticClass:
-                        "w-full lg:w-1/2 py-4 md:hover:bg-grey-lighter rounded-lg px-4 flex items-center shadow-lg md:shadow-none mb-4 md:mb-0 bg-white"
-                    },
-                    [
-                      _c(
-                        "router-link",
-                        {
-                          staticClass: "w-full flex items-center",
-                          attrs: {
-                            to: { name: "user", params: { id: user.id } }
-                          }
-                        },
-                        [
-                          _c(
-                            "span",
-                            {
-                              staticClass:
-                                "rounded-full mr-6 h-18 w-18 md:h-12 md:w-12 overflow-hidden"
-                            },
-                            [
-                              _c("img", {
-                                staticClass: "w-full md:w-auto",
-                                attrs: {
-                                  src: "/images/profile-icon.jpg",
-                                  alt: "Profile Icon"
-                                }
-                              })
-                            ]
-                          ),
-                          _vm._v(" "),
-                          _c("div", { staticClass: "flex-1" }, [
-                            _c(
-                              "span",
-                              {
-                                staticClass:
-                                  "block text-grey-darkest mr-6 font-medium"
-                              },
-                              [
-                                _vm._v(
-                                  _vm._s(user.first_name + " " + user.last_name)
-                                )
-                              ]
-                            ),
-                            _vm._v(" "),
-                            _c(
-                              "span",
-                              { staticClass: "text-blue text-sm mr-6" },
-                              [
-                                _vm._v(
-                                  _vm._s(
-                                    user.block_expiration
-                                      ? _vm
-                                          .$moment(user.block_expiration)
-                                          .format("MMMM Do YYYY")
-                                      : "Past expiration"
-                                  )
-                                )
-                              ]
-                            )
-                          ]),
-                          _vm._v(" "),
-                          _c("div", [
-                            _c(
-                              "svg",
-                              {
-                                staticClass: "fill-current",
-                                class: {
-                                  "text-green": user.is_active === 1,
-                                  "text-grey-dark": user.is_active === 2
-                                },
-                                attrs: {
-                                  width: "20",
-                                  height: "20",
-                                  viewBox: "0 0 34 34"
-                                }
-                              },
-                              [
-                                _c("path", {
-                                  attrs: {
-                                    d:
-                                      "M16.9999 31.1667C9.17588 31.1667 2.83325 24.824 2.83325 17C2.83325 9.17598 9.17588 2.83334 16.9999 2.83334C24.824 2.83334 31.1666 9.17598 31.1666 17C31.1666 24.824 24.824 31.1667 16.9999 31.1667ZM11.3333 14.1667L8.49992 17L15.5833 24.0833L25.4999 14.1667L22.6666 11.3333L15.5833 18.4167L11.3333 14.1667Z"
-                                  }
-                                })
-                              ]
-                            )
-                          ])
-                        ]
-                      )
-                    ],
-                    1
-                  )
-                }),
-                0
-              )
-            : _vm._e(),
-          _vm._v(" "),
-          _c(
-            "h1",
-            {
-              staticClass: "text-grey-darkest font-normal text-2xl mb-10 px-4"
-            },
-            [_vm._v(_vm._s(_vm.heading))]
-          ),
-          _vm._v(" "),
-          _c(
-            "ul",
-            { staticClass: "list-reset px-4 md:px-0 flex flex-wrap max-w-xl" },
-            _vm._l(_vm.filteredUsers, function(user) {
-              return _c(
-                "li",
-                {
-                  key: user.id,
-                  staticClass:
-                    "w-full lg:w-1/2 py-4 md:hover:bg-grey-lighter rounded-lg px-4 flex items-center shadow-lg md:shadow-none mb-4 md:mb-0 bg-white"
-                },
-                [
-                  _c(
-                    "router-link",
-                    {
-                      staticClass: "flex items-center w-full",
-                      attrs: { to: { name: "user", params: { id: user.id } } }
-                    },
-                    [
-                      _c(
-                        "span",
-                        { staticClass: "rounded-full mr-6 overflow-hidden" },
-                        [
-                          _c("avatar", {
-                            attrs: {
-                              first: user.first_name,
-                              last: user.last_name,
-                              size: 48
-                            }
-                          })
-                        ],
-                        1
-                      ),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "flex-1" }, [
-                        _c(
-                          "span",
-                          {
-                            staticClass:
-                              "block text-grey-darkest font-medium mr-6"
-                          },
-                          [
-                            _vm._v(
-                              _vm._s(user.first_name + " " + user.last_name)
-                            )
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _c("span", { staticClass: "text-blue text-sm mr-6" }, [
-                          _vm._v(
-                            _vm._s(
-                              user.block_expiration
-                                ? _vm
-                                    .$moment(user.block_expiration)
-                                    .format("MMMM Do YYYY")
-                                : "Past expiration"
-                            )
-                          )
-                        ])
-                      ]),
-                      _vm._v(" "),
-                      _c("div", [
-                        _c(
-                          "svg",
-                          {
-                            staticClass: "fill-current",
-                            class: {
-                              "text-green": user.is_active === 1,
-                              "text-grey-dark": user.is_active === 2
-                            },
-                            attrs: {
-                              width: "20",
-                              height: "20",
-                              viewBox: "0 0 34 34"
-                            }
-                          },
-                          [
-                            _c("path", {
-                              attrs: {
-                                d:
-                                  "M16.9999 31.1667C9.17588 31.1667 2.83325 24.824 2.83325 17C2.83325 9.17598 9.17588 2.83334 16.9999 2.83334C24.824 2.83334 31.1666 9.17598 31.1666 17C31.1666 24.824 24.824 31.1667 16.9999 31.1667ZM11.3333 14.1667L8.49992 17L15.5833 24.0833L25.4999 14.1667L22.6666 11.3333L15.5833 18.4167L11.3333 14.1667Z"
-                              }
-                            })
-                          ]
-                        )
-                      ])
-                    ]
-                  )
-                ],
-                1
-              )
-            }),
-            0
-          )
-        ])
-      ]),
-      _vm._v(" "),
-      _c("transition", { attrs: { name: "fade" } }, [
-        _vm.showFilterMenu
-          ? _c(
-              "div",
-              {
-                directives: [
-                  {
-                    name: "closable",
-                    rawName: "v-closable",
-                    value: {
-                      exclude: ["button"],
-                      handler: "toggleFilterMenu"
-                    },
-                    expression:
-                      "{\n        exclude: ['button'],\n        handler: 'toggleFilterMenu'\n      }"
-                  }
-                ],
-                staticClass:
-                  "fixed bg-white shadow-lg p-8 pin-b pin-l pin-r ml-8 mr-8 mb-32 rounded-lg md:hidden"
-              },
-              [
-                _c(
-                  "h1",
-                  {
-                    staticClass: "text-grey-darkest font-normal text-2xl mb-10"
-                  },
-                  [_vm._v("Status")]
-                ),
-                _vm._v(" "),
-                _c("ul", { staticClass: "list-reset" }, [
-                  _c(
-                    "li",
-                    {
-                      staticClass:
-                        "hover:bg-grey-lightest p-2 rounded flex items-center"
-                    },
-                    [
-                      _c(
-                        "label",
-                        { staticClass: "checkbox-container flex-1" },
-                        [
-                          _vm._v("\n            Active\n            "),
-                          _c("input", {
-                            directives: [
-                              {
-                                name: "model",
-                                rawName: "v-model",
-                                value: _vm.activity,
-                                expression: "activity"
-                              }
-                            ],
-                            attrs: {
-                              type: "checkbox",
-                              id: "active",
-                              name: "active",
-                              value: "1"
-                            },
-                            domProps: {
-                              checked: Array.isArray(_vm.activity)
-                                ? _vm._i(_vm.activity, "1") > -1
-                                : _vm.activity
-                            },
-                            on: {
-                              change: function($event) {
-                                var $$a = _vm.activity,
-                                  $$el = $event.target,
-                                  $$c = $$el.checked ? true : false
-                                if (Array.isArray($$a)) {
-                                  var $$v = "1",
-                                    $$i = _vm._i($$a, $$v)
-                                  if ($$el.checked) {
-                                    $$i < 0 &&
-                                      (_vm.activity = $$a.concat([$$v]))
-                                  } else {
-                                    $$i > -1 &&
-                                      (_vm.activity = $$a
-                                        .slice(0, $$i)
-                                        .concat($$a.slice($$i + 1)))
-                                  }
-                                } else {
-                                  _vm.activity = $$c
-                                }
-                              }
-                            }
-                          }),
-                          _vm._v(" "),
-                          _c("span", { staticClass: "checkbox-checkmark" })
-                        ]
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "span",
-                        {
-                          staticClass:
-                            "bg-grey-lighter rounded-full float-right px-2 py-1"
-                        },
-                        [_vm._v(_vm._s(_vm.getNumUsers(1)))]
-                      )
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "li",
-                    {
-                      staticClass:
-                        "hover:bg-grey-lightest p-2 rounded flex items-center"
-                    },
-                    [
-                      _c(
-                        "label",
-                        { staticClass: "checkbox-container flex-1" },
-                        [
-                          _vm._v("\n            Inactive\n            "),
-                          _c("input", {
-                            directives: [
-                              {
-                                name: "model",
-                                rawName: "v-model",
-                                value: _vm.activity,
-                                expression: "activity"
-                              }
-                            ],
-                            attrs: {
-                              type: "checkbox",
-                              id: "inactive",
-                              name: "inactive",
-                              value: "2"
-                            },
-                            domProps: {
-                              checked: Array.isArray(_vm.activity)
-                                ? _vm._i(_vm.activity, "2") > -1
-                                : _vm.activity
-                            },
-                            on: {
-                              change: function($event) {
-                                var $$a = _vm.activity,
-                                  $$el = $event.target,
-                                  $$c = $$el.checked ? true : false
-                                if (Array.isArray($$a)) {
-                                  var $$v = "2",
-                                    $$i = _vm._i($$a, $$v)
-                                  if ($$el.checked) {
-                                    $$i < 0 &&
-                                      (_vm.activity = $$a.concat([$$v]))
-                                  } else {
-                                    $$i > -1 &&
-                                      (_vm.activity = $$a
-                                        .slice(0, $$i)
-                                        .concat($$a.slice($$i + 1)))
-                                  }
-                                } else {
-                                  _vm.activity = $$c
-                                }
-                              }
-                            }
-                          }),
-                          _vm._v(" "),
-                          _c("span", { staticClass: "checkbox-checkmark" })
-                        ]
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "span",
-                        {
-                          staticClass:
-                            "bg-grey-lighter rounded-full float-right px-2 py-1"
-                        },
-                        [_vm._v(_vm._s(_vm.getNumUsers(2)))]
-                      )
-                    ]
-                  )
-                ])
-              ]
-            )
-          : _vm._e()
-      ]),
-      _vm._v(" "),
-      !_vm.show
-        ? _c(
-            "div",
-            {
-              ref: "button",
-              staticClass:
-                "cursor-pointer fixed pin-b pin-l w-12 h-12 bg-white shadow-lg rounded-full ml-8 mb-8 flex items-center justify-center md:hidden",
-              on: { click: _vm.toggleFilterMenu }
-            },
-            [
+  return _c("div", { staticClass: "container mx-auto" }, [
+    _c(
+      "div",
+      { staticClass: "flex px-0 md:px-8 mt-20" },
+      [
+        _c("aside", { staticClass: "filter-sidebar hidden md:block" }, [
+          _c("div", { staticClass: "relative" }, [
+            _c("div", { staticClass: "absolute pin-r py-1 pr-2" }, [
               _c(
                 "svg",
                 {
                   staticClass: "fill-current text-grey-darkest",
-                  attrs: {
-                    xmlns: "http://www.w3.org/2000/svg",
-                    width: "30",
-                    height: "30",
-                    viewBox: "0 0 24 24"
-                  }
+                  attrs: { width: "24", height: "28", viewBox: "0 0 24 24" }
                 },
                 [
                   _c("path", {
-                    attrs: { d: "M7 11H17V13H7zM4 7H20V9H4zM10 15H14V17H10z" }
+                    attrs: {
+                      d:
+                        "M10,18c1.846,0,3.543-0.635,4.897-1.688l4.396,4.396l1.414-1.414l-4.396-4.396C17.365,13.543,18,11.846,18,10 c0-4.411-3.589-8-8-8s-8,3.589-8,8S5.589,18,10,18z M10,4c3.309,0,6,2.691,6,6s-2.691,6-6,6s-6-2.691-6-6S6.691,4,10,4z"
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c("path", {
+                    attrs: {
+                      d:
+                        "M11.412,8.586C11.791,8.966,12,9.468,12,10h2c0-1.065-0.416-2.069-1.174-2.828c-1.514-1.512-4.139-1.512-5.652,0 l1.412,1.416C9.346,7.83,10.656,7.832,11.412,8.586z"
+                    }
                   })
                 ]
               )
-            ]
-          )
-        : _vm._e()
-    ],
-    1
-  )
+            ]),
+            _vm._v(" "),
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.query,
+                  expression: "query"
+                }
+              ],
+              staticClass:
+                "w-full border border-grey-light text-grey-darkest bg-grey-lighter rounded-full px-4 py-2 focus:outline-none mb-8",
+              attrs: { type: "text", name: "search", placeholder: "Search" },
+              domProps: { value: _vm.query },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.query = $event.target.value
+                }
+              }
+            })
+          ]),
+          _vm._v(" "),
+          _c(
+            "h1",
+            {
+              staticClass: "text-grey-darkest font-normal text-2xl mb-10 mx-2"
+            },
+            [_vm._v("Status")]
+          ),
+          _vm._v(" "),
+          _c("ul", { staticClass: "list-reset" }, [
+            _c(
+              "li",
+              {
+                staticClass:
+                  "hover:bg-grey-lighter p-2 rounded flex items-center"
+              },
+              [
+                _c("label", { staticClass: "checkbox-container flex-1" }, [
+                  _vm._v("\n            Active\n            "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.activity,
+                        expression: "activity"
+                      }
+                    ],
+                    attrs: {
+                      type: "checkbox",
+                      id: "active",
+                      name: "active",
+                      value: "1"
+                    },
+                    domProps: {
+                      checked: Array.isArray(_vm.activity)
+                        ? _vm._i(_vm.activity, "1") > -1
+                        : _vm.activity
+                    },
+                    on: {
+                      change: function($event) {
+                        var $$a = _vm.activity,
+                          $$el = $event.target,
+                          $$c = $$el.checked ? true : false
+                        if (Array.isArray($$a)) {
+                          var $$v = "1",
+                            $$i = _vm._i($$a, $$v)
+                          if ($$el.checked) {
+                            $$i < 0 && (_vm.activity = $$a.concat([$$v]))
+                          } else {
+                            $$i > -1 &&
+                              (_vm.activity = $$a
+                                .slice(0, $$i)
+                                .concat($$a.slice($$i + 1)))
+                          }
+                        } else {
+                          _vm.activity = $$c
+                        }
+                      }
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c("span", { staticClass: "checkbox-checkmark" })
+                ]),
+                _vm._v(" "),
+                _c(
+                  "span",
+                  {
+                    staticClass:
+                      "bg-grey-light text-grey-darkest rounded-full float-right px-2 py-1"
+                  },
+                  [_vm._v(_vm._s(_vm.getNumUsers(1)))]
+                )
+              ]
+            ),
+            _vm._v(" "),
+            _c(
+              "li",
+              {
+                staticClass:
+                  "hover:bg-grey-lighter p-2 rounded flex items-center"
+              },
+              [
+                _c("label", { staticClass: "checkbox-container flex-1" }, [
+                  _vm._v("\n            Inactive\n            "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.activity,
+                        expression: "activity"
+                      }
+                    ],
+                    attrs: {
+                      type: "checkbox",
+                      id: "inactive",
+                      name: "inactive",
+                      value: "2"
+                    },
+                    domProps: {
+                      checked: Array.isArray(_vm.activity)
+                        ? _vm._i(_vm.activity, "2") > -1
+                        : _vm.activity
+                    },
+                    on: {
+                      change: function($event) {
+                        var $$a = _vm.activity,
+                          $$el = $event.target,
+                          $$c = $$el.checked ? true : false
+                        if (Array.isArray($$a)) {
+                          var $$v = "2",
+                            $$i = _vm._i($$a, $$v)
+                          if ($$el.checked) {
+                            $$i < 0 && (_vm.activity = $$a.concat([$$v]))
+                          } else {
+                            $$i > -1 &&
+                              (_vm.activity = $$a
+                                .slice(0, $$i)
+                                .concat($$a.slice($$i + 1)))
+                          }
+                        } else {
+                          _vm.activity = $$c
+                        }
+                      }
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c("span", { staticClass: "checkbox-checkmark" })
+                ]),
+                _vm._v(" "),
+                _c(
+                  "span",
+                  {
+                    staticClass:
+                      "bg-grey-light text-grey-darkest rounded-full float-right px-2 py-1"
+                  },
+                  [_vm._v(_vm._s(_vm.getNumUsers(2)))]
+                )
+              ]
+            )
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "flex-1" }, [
+          _c("div", { staticClass: "px-4" }, [
+            _c("div", { staticClass: "px-4" }, [
+              _c("div", { staticClass: "relative md:hidden" }, [
+                _c("div", { staticClass: "absolute pin-r py-1 pr-2" }, [
+                  _c(
+                    "svg",
+                    {
+                      staticClass: "fill-current text-grey-darkest",
+                      attrs: { width: "24", height: "28", viewBox: "0 0 24 24" }
+                    },
+                    [
+                      _c("path", {
+                        attrs: {
+                          d:
+                            "M10,18c1.846,0,3.543-0.635,4.897-1.688l4.396,4.396l1.414-1.414l-4.396-4.396C17.365,13.543,18,11.846,18,10 c0-4.411-3.589-8-8-8s-8,3.589-8,8S5.589,18,10,18z M10,4c3.309,0,6,2.691,6,6s-2.691,6-6,6s-6-2.691-6-6S6.691,4,10,4z"
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c("path", {
+                        attrs: {
+                          d:
+                            "M11.412,8.586C11.791,8.966,12,9.468,12,10h2c0-1.065-0.416-2.069-1.174-2.828c-1.514-1.512-4.139-1.512-5.652,0 l1.412,1.416C9.346,7.83,10.656,7.832,11.412,8.586z"
+                        }
+                      })
+                    ]
+                  )
+                ]),
+                _vm._v(" "),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.query,
+                      expression: "query"
+                    }
+                  ],
+                  staticClass:
+                    "w-full border border-grey-light bg-grey-lighter rounded-full px-4 py-2 focus:outline-none mb-8",
+                  attrs: {
+                    type: "text",
+                    name: "search",
+                    placeholder: "Search"
+                  },
+                  domProps: { value: _vm.query },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.query = $event.target.value
+                    }
+                  }
+                })
+              ])
+            ]),
+            _vm._v(" "),
+            _vm.showLastWeek
+              ? _c(
+                  "h1",
+                  {
+                    staticClass:
+                      "text-grey-darkest font-normal text-2xl mb-10 px-4"
+                  },
+                  [_vm._v("Expiring")]
+                )
+              : _vm._e(),
+            _vm._v(" "),
+            _vm.showLastWeek
+              ? _c(
+                  "ul",
+                  {
+                    staticClass:
+                      "list-reset px-4 md:px-0 mb-10 flex flex-wrap max-w-xl"
+                  },
+                  _vm._l(_vm.expiring, function(user) {
+                    return _c(
+                      "li",
+                      {
+                        key: user.id,
+                        staticClass:
+                          "w-full lg:w-1/2 py-4 md:hover:bg-grey-lighter rounded-lg px-4 flex items-center shadow-lg md:shadow-none mb-4 md:mb-0 bg-white"
+                      },
+                      [
+                        _c(
+                          "router-link",
+                          {
+                            staticClass: "w-full flex items-center",
+                            attrs: {
+                              to: { name: "user", params: { id: user.id } }
+                            }
+                          },
+                          [
+                            _c(
+                              "span",
+                              {
+                                staticClass: "rounded-full mr-6 overflow-hidden"
+                              },
+                              [
+                                _c("avatar", {
+                                  attrs: {
+                                    first: user.first_name,
+                                    last: user.last_name,
+                                    size: 48
+                                  }
+                                })
+                              ],
+                              1
+                            ),
+                            _vm._v(" "),
+                            _c("div", { staticClass: "flex-1" }, [
+                              _c(
+                                "span",
+                                {
+                                  staticClass:
+                                    "block text-grey-darkest mr-6 font-medium"
+                                },
+                                [
+                                  _vm._v(
+                                    _vm._s(
+                                      user.first_name + " " + user.last_name
+                                    )
+                                  )
+                                ]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "span",
+                                { staticClass: "text-blue text-sm mr-6" },
+                                [
+                                  _vm._v(
+                                    _vm._s(
+                                      user.block_expiration
+                                        ? _vm
+                                            .$moment(user.block_expiration)
+                                            .format("MMMM Do YYYY")
+                                        : "Past expiration"
+                                    )
+                                  )
+                                ]
+                              )
+                            ]),
+                            _vm._v(" "),
+                            _c("div", [
+                              _c(
+                                "svg",
+                                {
+                                  staticClass: "fill-current",
+                                  class: {
+                                    "text-green": user.is_active === 1,
+                                    "text-grey-dark": user.is_active === 2
+                                  },
+                                  attrs: {
+                                    width: "20",
+                                    height: "20",
+                                    viewBox: "0 0 34 34"
+                                  }
+                                },
+                                [
+                                  _c("path", {
+                                    attrs: {
+                                      d:
+                                        "M16.9999 31.1667C9.17588 31.1667 2.83325 24.824 2.83325 17C2.83325 9.17598 9.17588 2.83334 16.9999 2.83334C24.824 2.83334 31.1666 9.17598 31.1666 17C31.1666 24.824 24.824 31.1667 16.9999 31.1667ZM11.3333 14.1667L8.49992 17L15.5833 24.0833L25.4999 14.1667L22.6666 11.3333L15.5833 18.4167L11.3333 14.1667Z"
+                                    }
+                                  })
+                                ]
+                              )
+                            ])
+                          ]
+                        )
+                      ],
+                      1
+                    )
+                  }),
+                  0
+                )
+              : _vm._e(),
+            _vm._v(" "),
+            _c(
+              "h1",
+              {
+                staticClass: "text-grey-darkest font-normal text-2xl mb-10 px-4"
+              },
+              [_vm._v(_vm._s(_vm.heading))]
+            ),
+            _vm._v(" "),
+            _c(
+              "ul",
+              {
+                staticClass: "list-reset px-4 md:px-0 flex flex-wrap max-w-xl"
+              },
+              _vm._l(_vm.filteredUsers, function(user) {
+                return _c(
+                  "li",
+                  {
+                    key: user.id,
+                    staticClass:
+                      "w-full lg:w-1/2 py-4 md:hover:bg-grey-lighter rounded-lg px-4 flex items-center shadow-lg md:shadow-none mb-4 md:mb-0 bg-white"
+                  },
+                  [
+                    _c(
+                      "router-link",
+                      {
+                        staticClass: "flex items-center w-full",
+                        attrs: { to: { name: "user", params: { id: user.id } } }
+                      },
+                      [
+                        _c(
+                          "span",
+                          { staticClass: "rounded-full mr-6 overflow-hidden" },
+                          [
+                            _c("avatar", {
+                              attrs: {
+                                first: user.first_name,
+                                last: user.last_name,
+                                size: 48
+                              }
+                            })
+                          ],
+                          1
+                        ),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "flex-1" }, [
+                          _c(
+                            "span",
+                            {
+                              staticClass:
+                                "block text-grey-darkest font-medium mr-6"
+                            },
+                            [
+                              _vm._v(
+                                _vm._s(user.first_name + " " + user.last_name)
+                              )
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "span",
+                            { staticClass: "text-blue text-sm mr-6" },
+                            [
+                              _vm._v(
+                                _vm._s(
+                                  user.block_expiration
+                                    ? _vm
+                                        .$moment(user.block_expiration)
+                                        .format("MMMM Do YYYY")
+                                    : "Past expiration"
+                                )
+                              )
+                            ]
+                          )
+                        ]),
+                        _vm._v(" "),
+                        _c("div", [
+                          _c(
+                            "svg",
+                            {
+                              staticClass: "fill-current",
+                              class: {
+                                "text-green": user.is_active === 1,
+                                "text-grey-dark": user.is_active === 2
+                              },
+                              attrs: {
+                                width: "20",
+                                height: "20",
+                                viewBox: "0 0 34 34"
+                              }
+                            },
+                            [
+                              _c("path", {
+                                attrs: {
+                                  d:
+                                    "M16.9999 31.1667C9.17588 31.1667 2.83325 24.824 2.83325 17C2.83325 9.17598 9.17588 2.83334 16.9999 2.83334C24.824 2.83334 31.1666 9.17598 31.1666 17C31.1666 24.824 24.824 31.1667 16.9999 31.1667ZM11.3333 14.1667L8.49992 17L15.5833 24.0833L25.4999 14.1667L22.6666 11.3333L15.5833 18.4167L11.3333 14.1667Z"
+                                }
+                              })
+                            ]
+                          )
+                        ])
+                      ]
+                    )
+                  ],
+                  1
+                )
+              }),
+              0
+            )
+          ])
+        ]),
+        _vm._v(" "),
+        _c("transition", { attrs: { name: "fade" } }, [
+          _vm.showFilterMenu
+            ? _c(
+                "div",
+                {
+                  directives: [
+                    {
+                      name: "closable",
+                      rawName: "v-closable",
+                      value: {
+                        exclude: ["button"],
+                        handler: "toggleFilterMenu"
+                      },
+                      expression:
+                        "{\n        exclude: ['button'],\n        handler: 'toggleFilterMenu'\n      }"
+                    }
+                  ],
+                  staticClass:
+                    "fixed bg-white shadow-lg p-8 pin-b pin-l pin-r ml-8 mr-8 mb-32 rounded-lg md:hidden"
+                },
+                [
+                  _c(
+                    "h1",
+                    {
+                      staticClass:
+                        "text-grey-darkest font-normal text-2xl mb-10"
+                    },
+                    [_vm._v("Status")]
+                  ),
+                  _vm._v(" "),
+                  _c("ul", { staticClass: "list-reset" }, [
+                    _c(
+                      "li",
+                      {
+                        staticClass:
+                          "hover:bg-grey-lightest p-2 rounded flex items-center"
+                      },
+                      [
+                        _c(
+                          "label",
+                          { staticClass: "checkbox-container flex-1" },
+                          [
+                            _vm._v("\n              Active\n              "),
+                            _c("input", {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model",
+                                  value: _vm.activity,
+                                  expression: "activity"
+                                }
+                              ],
+                              attrs: {
+                                type: "checkbox",
+                                id: "active",
+                                name: "active",
+                                value: "1"
+                              },
+                              domProps: {
+                                checked: Array.isArray(_vm.activity)
+                                  ? _vm._i(_vm.activity, "1") > -1
+                                  : _vm.activity
+                              },
+                              on: {
+                                change: function($event) {
+                                  var $$a = _vm.activity,
+                                    $$el = $event.target,
+                                    $$c = $$el.checked ? true : false
+                                  if (Array.isArray($$a)) {
+                                    var $$v = "1",
+                                      $$i = _vm._i($$a, $$v)
+                                    if ($$el.checked) {
+                                      $$i < 0 &&
+                                        (_vm.activity = $$a.concat([$$v]))
+                                    } else {
+                                      $$i > -1 &&
+                                        (_vm.activity = $$a
+                                          .slice(0, $$i)
+                                          .concat($$a.slice($$i + 1)))
+                                    }
+                                  } else {
+                                    _vm.activity = $$c
+                                  }
+                                }
+                              }
+                            }),
+                            _vm._v(" "),
+                            _c("span", { staticClass: "checkbox-checkmark" })
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "span",
+                          {
+                            staticClass:
+                              "bg-grey-lighter rounded-full float-right px-2 py-1"
+                          },
+                          [_vm._v(_vm._s(_vm.getNumUsers(1)))]
+                        )
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "li",
+                      {
+                        staticClass:
+                          "hover:bg-grey-lightest p-2 rounded flex items-center"
+                      },
+                      [
+                        _c(
+                          "label",
+                          { staticClass: "checkbox-container flex-1" },
+                          [
+                            _vm._v("\n              Inactive\n              "),
+                            _c("input", {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model",
+                                  value: _vm.activity,
+                                  expression: "activity"
+                                }
+                              ],
+                              attrs: {
+                                type: "checkbox",
+                                id: "inactive",
+                                name: "inactive",
+                                value: "2"
+                              },
+                              domProps: {
+                                checked: Array.isArray(_vm.activity)
+                                  ? _vm._i(_vm.activity, "2") > -1
+                                  : _vm.activity
+                              },
+                              on: {
+                                change: function($event) {
+                                  var $$a = _vm.activity,
+                                    $$el = $event.target,
+                                    $$c = $$el.checked ? true : false
+                                  if (Array.isArray($$a)) {
+                                    var $$v = "2",
+                                      $$i = _vm._i($$a, $$v)
+                                    if ($$el.checked) {
+                                      $$i < 0 &&
+                                        (_vm.activity = $$a.concat([$$v]))
+                                    } else {
+                                      $$i > -1 &&
+                                        (_vm.activity = $$a
+                                          .slice(0, $$i)
+                                          .concat($$a.slice($$i + 1)))
+                                    }
+                                  } else {
+                                    _vm.activity = $$c
+                                  }
+                                }
+                              }
+                            }),
+                            _vm._v(" "),
+                            _c("span", { staticClass: "checkbox-checkmark" })
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "span",
+                          {
+                            staticClass:
+                              "bg-grey-lighter rounded-full float-right px-2 py-1"
+                          },
+                          [_vm._v(_vm._s(_vm.getNumUsers(2)))]
+                        )
+                      ]
+                    )
+                  ])
+                ]
+              )
+            : _vm._e()
+        ]),
+        _vm._v(" "),
+        !_vm.show
+          ? _c(
+              "div",
+              {
+                ref: "button",
+                staticClass:
+                  "cursor-pointer fixed pin-b pin-l w-12 h-12 bg-white shadow-lg rounded-full ml-8 mb-8 flex items-center justify-center md:hidden",
+                on: { click: _vm.toggleFilterMenu }
+              },
+              [
+                _c(
+                  "svg",
+                  {
+                    staticClass: "fill-current text-grey-darkest",
+                    attrs: {
+                      xmlns: "http://www.w3.org/2000/svg",
+                      width: "30",
+                      height: "30",
+                      viewBox: "0 0 24 24"
+                    }
+                  },
+                  [
+                    _c("path", {
+                      attrs: { d: "M7 11H17V13H7zM4 7H20V9H4zM10 15H14V17H10z" }
+                    })
+                  ]
+                )
+              ]
+            )
+          : _vm._e()
+      ],
+      1
+    )
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -11755,15 +11746,22 @@ var render = function() {
                               "div",
                               { staticClass: "flex w-full flex-wrap px-6" },
                               _vm._l(_vm.blocks, function(block) {
-                                return _c("block", {
+                                return _c("workout-card", {
                                   key: block.id,
                                   attrs: {
-                                    block: block,
-                                    name: "block",
-                                    params: {
-                                      user_id: _vm.$route.params.id,
-                                      block_id: block.id
-                                    }
+                                    name: block.name,
+                                    type: block.type.name,
+                                    date: _vm
+                                      .$moment(block.start_date)
+                                      .format("MMMM Do YYYY"),
+                                    linkparams: {
+                                      name: "block",
+                                      params: {
+                                        user_id: _vm.$route.params.id,
+                                        block_id: block.id
+                                      }
+                                    },
+                                    shadow: "true"
                                   }
                                 })
                               }),
@@ -12265,16 +12263,14 @@ var render = function() {
                                         "rounded-full p-1 bg-grey-lighter"
                                     },
                                     [
-                                      _c("avatar", {
+                                      _c("img", {
+                                        staticClass: "avatar block",
                                         attrs: {
-                                          first: _vm.user.first_name,
-                                          last: _vm.user.last_name,
-                                          supersize: true,
-                                          size: 150
+                                          src: "/images/bxs-user-circle.svg",
+                                          alt: "Profile"
                                         }
                                       })
-                                    ],
-                                    1
+                                    ]
                                   )
                                 ]
                               )
@@ -12492,7 +12488,18 @@ var render = function() {
                             _vm._l(_vm.weekAhead, function(workout) {
                               return _c("workout-card", {
                                 key: workout.id,
-                                attrs: { workout: workout }
+                                attrs: {
+                                  workout: workout,
+                                  name: workout.name,
+                                  type: workout.block.type.name,
+                                  date: _vm
+                                    .$moment(workout.date)
+                                    .format("dddd"),
+                                  linkparams: {
+                                    name: "user-workout",
+                                    params: { id: workout.id }
+                                  }
+                                }
                               })
                             }),
                             1
@@ -12747,9 +12754,8 @@ var render = function() {
                                 staticClass:
                                   "profile-icon text-grey-light fill-current",
                                 attrs: {
-                                  xmlns: "http://www.w3.org/2000/svg",
-                                  width: "24",
-                                  height: "24",
+                                  x: "0px",
+                                  y: "0px",
                                   viewBox: "0 0 24 24"
                                 }
                               },
@@ -12757,7 +12763,7 @@ var render = function() {
                                 _c("path", {
                                   attrs: {
                                     d:
-                                      "M2.344,15.271l2,3.46c0.276,0.478,0.888,0.642,1.366,0.365l1.396-0.806c0.58,0.457,1.221,0.832,1.895,1.112V21 c0,0.552,0.447,1,1,1h4c0.553,0,1-0.448,1-1v-1.598c0.674-0.28,1.314-0.655,1.895-1.112l1.396,0.806 c0.477,0.275,1.091,0.11,1.366-0.365l2-3.46c0.275-0.476,0.11-1.091-0.365-1.366l-1.372-0.793C19.973,12.743,20,12.371,20,12 s-0.027-0.743-0.081-1.112l1.372-0.793c0.476-0.275,0.641-0.89,0.365-1.366l-2-3.46c-0.276-0.478-0.888-0.642-1.366-0.365 l-1.396,0.806C16.314,5.253,15.674,4.877,15,4.598V3c0-0.552-0.447-1-1-1h-4C9.447,2,9,2.448,9,3v1.598 c-0.674,0.28-1.314,0.655-1.895,1.112L5.71,4.904C5.231,4.627,4.62,4.791,4.344,5.269l-2,3.46c-0.275,0.476-0.11,1.091,0.365,1.366 l1.372,0.793C4.027,11.257,4,11.629,4,12s0.027,0.743,0.081,1.112l-1.372,0.793C2.233,14.18,2.068,14.795,2.344,15.271z M12,8 c2.206,0,4,1.794,4,4s-1.794,4-4,4s-4-1.794-4-4S9.794,8,12,8z"
+                                      "M0.39,15.93l2.4,4.16c0.33,0.57,1.07,0.77,1.64,0.44l1.68-0.97c0.7,0.55,1.47,1,2.28,1.34v1.92c0,0.66,0.54,1.2,1.2,1.2\n\th4.81c0.66,0,1.2-0.54,1.2-1.2V20.9c0.81-0.34,1.58-0.79,2.28-1.34l1.68,0.97c0.57,0.33,1.31,0.13,1.64-0.44l2.4-4.16\n\tc0.33-0.57,0.13-1.31-0.44-1.64l-1.65-0.95c0.06-0.44,0.09-0.89,0.09-1.34c0-0.45-0.03-0.89-0.1-1.34l1.65-0.95\n\tc0.57-0.33,0.77-1.07,0.44-1.64l-2.4-4.16c-0.33-0.57-1.07-0.77-1.64-0.44l-1.68,0.97c-0.7-0.55-1.47-1-2.28-1.34V1.18\n\tc0-0.66-0.54-1.2-1.2-1.2H9.59c-0.66,0-1.2,0.54-1.2,1.2V3.1C7.58,3.44,6.81,3.89,6.11,4.44L4.44,3.47\n\tC3.86,3.13,3.13,3.33,2.79,3.91l-2.4,4.16C0.06,8.64,0.26,9.38,0.83,9.71l1.65,0.95c-0.06,0.44-0.1,0.89-0.1,1.34\n\tc0,0.45,0.03,0.89,0.1,1.34l-1.65,0.95C0.26,14.62,0.06,15.36,0.39,15.93z M12,7.19c2.65,0,4.81,2.16,4.81,4.81\n\ts-2.16,4.81-4.81,4.81S7.19,14.65,7.19,12S9.35,7.19,12,7.19z"
                                   }
                                 })
                               ]
@@ -13997,7 +14003,7 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
       var laravelToken = $cookies.get("laravel_token");
       var token = "Bearer ".concat(laravelToken);
       this.$http.defaults.headers.common["Authorization"] = token;
-      this.$http.get("".concat("http://gerbzilla.test/api", "/user")).then(function (res) {
+      this.$http.get("".concat("http://localhost:8000/api", "/user")).then(function (res) {
         localStorage.setItem("user", JSON.stringify(res.data.user));
         localStorage.setItem("role", JSON.stringify(res.data.role));
       })["catch"](function (err) {
@@ -17970,7 +17976,7 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vuex__WEBPACK_IMPORTED_MODULE_1__
       return new Promise(function (resolve, reject) {
         commit("auth_request");
         axios__WEBPACK_IMPORTED_MODULE_2___default()({
-          url: "".concat("http://gerbzilla.test/api", "/login"),
+          url: "".concat("http://localhost:8000/api", "/login"),
           data: user,
           method: "POST"
         }).then(function (res) {
@@ -17978,7 +17984,7 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vuex__WEBPACK_IMPORTED_MODULE_1__
           $cookies.set("laravel_token", token);
           axios__WEBPACK_IMPORTED_MODULE_2___default.a.defaults.headers.common["Authorization"] = "Bearer ".concat(token);
           axios__WEBPACK_IMPORTED_MODULE_2___default()({
-            url: "".concat("http://gerbzilla.test/api", "/user"),
+            url: "".concat("http://localhost:8000/api", "/user"),
             method: "GET"
           }).then(function (resp) {
             var user = resp.data.user;
@@ -18023,7 +18029,7 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vuex__WEBPACK_IMPORTED_MODULE_1__
       return new Promise(function (resolve, reject) {
         commit("update_request");
         axios__WEBPACK_IMPORTED_MODULE_2___default()({
-          url: "".concat("http://gerbzilla.test/api", "/user"),
+          url: "".concat("http://localhost:8000/api", "/user"),
           method: "GET"
         }).then(function (resp) {
           var user = resp.data.user;
@@ -18089,6 +18095,37 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vuex__WEBPACK_IMPORTED_MODULE_1__
 
 /***/ }),
 
+/***/ "./resources/js/utils.js":
+/*!*******************************!*\
+  !*** ./resources/js/utils.js ***!
+  \*******************************/
+/*! exports provided: gradients */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "gradients", function() { return gradients; });
+var gradients = {
+  strength: {
+    "default": "linear-gradient(to bottom right, #e52d27, #b31217)",
+    hover: "linear-gradient(to top, rgba(229, 45, 39, 1), rgba(179, 18, 23, 0.5))"
+  },
+  hypertrophy: {
+    "default": "linear-gradient(to bottom right, #4481eb, #04befe)",
+    hover: "linear-gradient(to top, rgba(68, 129, 235, 1), rgba(4, 190, 254, 0.5))"
+  },
+  fitness: {
+    "default": "linear-gradient(179.1deg,rgba(43, 170, 96, 1) 2.3%,rgba(129, 204, 104, 1) 98.3%)",
+    hover: "linear-gradient(to top,rgba(43, 170, 96, 1), rgba(129, 204, 104, 0.5))"
+  },
+  rest: {
+    "default": "linear-gradient(to top, rgba(134, 143, 150, 1), rgba(89, 97, 100, 1))",
+    hover: "linear-gradient(to top, rgba(134, 143, 150, 1), rgba(89, 97, 100, 0.5))"
+  }
+};
+
+/***/ }),
+
 /***/ "./resources/sass/app.scss":
 /*!*********************************!*\
   !*** ./resources/sass/app.scss ***!
@@ -18107,8 +18144,8 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vuex__WEBPACK_IMPORTED_MODULE_1__
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /Users/joe.mac/projects/gerbzilla/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /Users/joe.mac/projects/gerbzilla/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /Users/jsams/projects/gerbzilla/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /Users/jsams/projects/gerbzilla/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

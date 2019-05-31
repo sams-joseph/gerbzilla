@@ -1,6 +1,6 @@
 <template>
   <nav class="w-full py-4 bg-grey-lighter border-b border-t border-grey-light">
-    <div class="px-8">
+    <div class="px-8 container mx-auto">
       <ul class="list-reset">
         <li class="inline-block">
           <router-link

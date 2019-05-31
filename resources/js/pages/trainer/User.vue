@@ -29,13 +29,18 @@
                 >Add Block</span>
               </h1>
               <div class="flex w-full flex-wrap px-6">
-                <block
+                <workout-card
                   v-for="block in blocks"
                   v-bind:key="block.id"
-                  v-bind:block="block"
-                  v-bind:name="'block'"
-                  v-bind:params="{ user_id: $route.params.id, block_id: block.id }"
-                ></block>
+                  v-bind:name="block.name"
+                  v-bind:type="block.type.name"
+                  v-bind:date="$moment(block.start_date).format('MMMM Do YYYY')"
+                  v-bind:linkparams="{
+                      name: 'block',
+                      params: { user_id: $route.params.id, block_id: block.id }
+                    }"
+                  shadow="true"
+                ></workout-card>
               </div>
             </div>
           </tab>

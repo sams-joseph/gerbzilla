@@ -13,12 +13,7 @@
               <div class="mb-8 md:mb-0 md:mr-8">
                 <div class="rounded-full bg-grey p-2">
                   <div class="rounded-full p-1 bg-grey-lighter">
-                    <avatar
-                      :first="user.first_name"
-                      :last="user.last_name"
-                      :supersize="true"
-                      :size="150"
-                    ></avatar>
+                    <img class="avatar block" src="/images/bxs-user-circle.svg" alt="Profile">
                   </div>
                 </div>
               </div>
@@ -75,6 +70,13 @@
                     v-for="workout in weekAhead"
                     v-bind:key="workout.id"
                     v-bind:workout="workout"
+                    v-bind:name="workout.name"
+                    v-bind:type="workout.block.type.name"
+                    v-bind:date="$moment(workout.date).format('dddd')"
+                    v-bind:linkparams="{
+                      name: 'user-workout',
+                      params: { id: workout.id }
+                    }"
                   ></workout-card>
                 </carousel>
               </div>
@@ -256,4 +258,5 @@ export default {
 .avatar
   width: 150px
   height: 150px
+  border-radius: 100%
 </style>
