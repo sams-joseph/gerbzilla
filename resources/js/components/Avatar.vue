@@ -2,7 +2,7 @@
   <div
     class="avatar"
     :class="{ 'supersize': supersize }"
-    v-bind:style="{ background: backgroundColor, height: `${size}px`, width: `${size}px` }"
+    v-bind:style="{ background: backgroundColor, height: `${size}px`, width: `${size}px`, fontSize: `${size / 2.5}px` }"
     v-text="initials"
   ></div>
 </template>

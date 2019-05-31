@@ -44,7 +44,7 @@
           v-scroll-lock="showDrawer"
         >
           <svg
-            class="fill-current text-white"
+            class="fill-current text-grey"
             xmlns="http://www.w3.org/2000/svg"
             width="24"
             height="24"
@@ -55,13 +55,15 @@
             ></path>
           </svg>
         </div>
-        <div class="bg-blue-gradient pb-4 flex items-center flex-col px-4">
+        <div class="pb-4 flex items-center flex-col px-4 pt-24">
+          <div class="rounded-full bg-grey p-2">
+            <div class="rounded-full bg-white p-1">
+              <avatar v-bind:first="user.first_name" v-bind:last="user.last_name" size="75"></avatar>
+            </div>
+          </div>
           <h6
-            class="text-center text-xl font-hairline text-white mb-4 pt-24"
+            class="text-center text-xl font-hairline text-grey-darkest mb-4 pt-8"
           >{{ `${user.first_name} ${user.last_name}` }}</h6>
-          <span
-            class="w-32 text-center text-xs font-hairline rounded-full text-white py-1 px-4 uppercase description-pill"
-          >{{ role.name }}</span>
         </div>
         <ul class="list-reset">
           <li
@@ -174,7 +176,7 @@
       </div>
       <div v-if="authorized" @click="openDrawer" class="flex items-center cursor-pointer">
         <span
-          class="text-sm font-medium text-grey-darker mr-4 hidden md:block"
+          class="text-sm font-medium text-grey-darker mx-4 hidden md:block"
           v-text="user.first_name"
         ></span>
         <avatar v-bind:first="user.first_name" v-bind:last="user.last_name"></avatar>

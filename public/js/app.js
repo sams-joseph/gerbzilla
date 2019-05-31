@@ -663,6 +663,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -5615,7 +5617,8 @@ var render = function() {
     style: {
       background: _vm.backgroundColor,
       height: _vm.size + "px",
-      width: _vm.size + "px"
+      width: _vm.size + "px",
+      fontSize: _vm.size / 2.5 + "px"
     },
     domProps: { textContent: _vm._s(_vm.initials) }
   })
@@ -6262,7 +6265,7 @@ var render = function() {
                     _c(
                       "svg",
                       {
-                        staticClass: "fill-current text-white",
+                        staticClass: "fill-current text-grey",
                         attrs: {
                           xmlns: "http://www.w3.org/2000/svg",
                           width: "24",
@@ -6284,31 +6287,36 @@ var render = function() {
                 _vm._v(" "),
                 _c(
                   "div",
-                  {
-                    staticClass:
-                      "bg-blue-gradient pb-4 flex items-center flex-col px-4"
-                  },
+                  { staticClass: "pb-4 flex items-center flex-col px-4 pt-24" },
                   [
+                    _c("div", { staticClass: "rounded-full bg-grey p-2" }, [
+                      _c(
+                        "div",
+                        { staticClass: "rounded-full bg-white p-1" },
+                        [
+                          _c("avatar", {
+                            attrs: {
+                              first: _vm.user.first_name,
+                              last: _vm.user.last_name,
+                              size: "75"
+                            }
+                          })
+                        ],
+                        1
+                      )
+                    ]),
+                    _vm._v(" "),
                     _c(
                       "h6",
                       {
                         staticClass:
-                          "text-center text-xl font-hairline text-white mb-4 pt-24"
+                          "text-center text-xl font-hairline text-grey-darkest mb-4 pt-8"
                       },
                       [
                         _vm._v(
                           _vm._s(_vm.user.first_name + " " + _vm.user.last_name)
                         )
                       ]
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "span",
-                      {
-                        staticClass:
-                          "w-32 text-center text-xs font-hairline rounded-full text-white py-1 px-4 uppercase description-pill"
-                      },
-                      [_vm._v(_vm._s(_vm.role.name))]
                     )
                   ]
                 ),
@@ -6571,7 +6579,7 @@ var render = function() {
                 [
                   _c("span", {
                     staticClass:
-                      "text-sm font-medium text-grey-darker mr-4 hidden md:block",
+                      "text-sm font-medium text-grey-darker mx-4 hidden md:block",
                     domProps: { textContent: _vm._s(_vm.user.first_name) }
                   }),
                   _vm._v(" "),
