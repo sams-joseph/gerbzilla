@@ -4547,6 +4547,53 @@ __webpack_require__.r(__webpack_exports__);
   computed: {
     userId: function userId() {
       return this.$route.params.user_id;
+    },
+    weeks: function weeks() {
+      return [this.firstWeek, this.secondWeek, this.thirdWeek, this.fourthWeek];
+    },
+    firstWeek: function firstWeek() {
+      var _this2 = this;
+
+      var startDate = this.$moment(this.block.start_date).startOf("week");
+      var endDate = this.$moment(this.block.start_date).endOf("week");
+      return this.workouts.filter(function (workout) {
+        var workoutDate = _this2.$moment(workout.date);
+
+        return workoutDate.isBetween(startDate, endDate);
+      });
+    },
+    secondWeek: function secondWeek() {
+      var _this3 = this;
+
+      var startDate = this.$moment(this.block.start_date).add(1, "w").startOf("week");
+      var endDate = this.$moment(this.block.start_date).add(1, "w").endOf("week");
+      return this.workouts.filter(function (workout) {
+        var workoutDate = _this3.$moment(workout.date);
+
+        return workoutDate.isBetween(startDate, endDate);
+      });
+    },
+    thirdWeek: function thirdWeek() {
+      var _this4 = this;
+
+      var startDate = this.$moment(this.block.start_date).add(2, "w").startOf("week");
+      var endDate = this.$moment(this.block.start_date).add(2, "w").endOf("week");
+      return this.workouts.filter(function (workout) {
+        var workoutDate = _this4.$moment(workout.date);
+
+        return workoutDate.isBetween(startDate, endDate);
+      });
+    },
+    fourthWeek: function fourthWeek() {
+      var _this5 = this;
+
+      var startDate = this.$moment(this.block.start_date).add(3, "w").startOf("week");
+      var endDate = this.$moment(this.block.start_date).add(3, "w").endOf("week");
+      return this.workouts.filter(function (workout) {
+        var workoutDate = _this5.$moment(workout.date);
+
+        return workoutDate.isBetween(startDate, endDate);
+      });
     }
   }
 });
@@ -13098,124 +13145,132 @@ var render = function() {
                   }
                 }),
                 _vm._v(" "),
-                _c("div", { staticClass: "container mx-auto px-4 py-20" }, [
-                  _c(
-                    "h1",
-                    {
-                      staticClass:
-                        "text-grey-darkest font-normal text-2xl mb-10 px-4"
-                    },
-                    [_vm._v("Workouts")]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "ul",
-                    { staticClass: "list-reset flex flex-wrap px-4 md:px-0" },
-                    _vm._l(_vm.workouts, function(workout) {
-                      return _c(
-                        "li",
+                _vm._l(_vm.weeks, function(week, index) {
+                  return _c(
+                    "div",
+                    { key: index, staticClass: "container mx-auto px-4 pt-20" },
+                    [
+                      _c(
+                        "h1",
                         {
-                          key: workout.id,
-                          staticClass: "w-full md:w-1/2 lg:w-1/3 mb-4"
+                          staticClass:
+                            "text-grey-darkest font-normal text-2xl mb-10 px-4"
                         },
-                        [
-                          _c(
-                            "router-link",
+                        [_vm._v("Week " + _vm._s(index + 1))]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "ul",
+                        {
+                          staticClass: "list-reset flex flex-wrap px-4 md:px-0"
+                        },
+                        _vm._l(week, function(workout) {
+                          return _c(
+                            "li",
                             {
-                              attrs: {
-                                "active-class": "none",
-                                to: {
-                                  name: "user-workout",
-                                  params: { id: workout.id }
-                                }
-                              }
+                              key: workout.id,
+                              staticClass: "w-full md:w-1/2 lg:w-1/3 mb-4"
                             },
                             [
                               _c(
-                                "div",
+                                "router-link",
                                 {
-                                  staticClass:
-                                    "relative w-full bg-white shadow-lg md:shadow-none md:hover:bg-grey-lighter rounded-lg p-4 flex justify-between items-start"
+                                  attrs: {
+                                    "active-class": "none",
+                                    to: {
+                                      name: "user-workout",
+                                      params: { id: workout.id }
+                                    }
+                                  }
                                 },
                                 [
                                   _c(
                                     "div",
-                                    { staticClass: "flex items-center" },
+                                    {
+                                      staticClass:
+                                        "relative w-full bg-white shadow-lg md:shadow-none md:hover:bg-grey-lighter rounded-lg p-4 flex justify-between items-start"
+                                    },
                                     [
-                                      _c("div", [
-                                        _c(
-                                          "h2",
-                                          {
-                                            staticClass:
-                                              "text-lg text-grey-darkest font-bold mb-1"
-                                          },
-                                          [_vm._v(_vm._s(workout.name))]
-                                        ),
-                                        _vm._v(" "),
-                                        _c(
-                                          "h3",
-                                          {
-                                            staticClass:
-                                              "text-base text-blue font-medium"
-                                          },
-                                          [
-                                            _vm._v(
-                                              _vm._s(
-                                                _vm
-                                                  .$moment(workout.date)
-                                                  .format("dddd, MMM Do")
-                                              )
+                                      _c(
+                                        "div",
+                                        { staticClass: "flex items-center" },
+                                        [
+                                          _c("div", [
+                                            _c(
+                                              "h2",
+                                              {
+                                                staticClass:
+                                                  "text-lg text-grey-darkest font-bold mb-1"
+                                              },
+                                              [_vm._v(_vm._s(workout.name))]
+                                            ),
+                                            _vm._v(" "),
+                                            _c(
+                                              "h3",
+                                              {
+                                                staticClass:
+                                                  "text-base text-blue font-medium"
+                                              },
+                                              [
+                                                _vm._v(
+                                                  _vm._s(
+                                                    _vm
+                                                      .$moment(workout.date)
+                                                      .format("dddd, MMM Do")
+                                                  )
+                                                )
+                                              ]
                                             )
-                                          ]
-                                        )
+                                          ])
+                                        ]
+                                      ),
+                                      _vm._v(" "),
+                                      _c("div", [
+                                        _c("div", [
+                                          _c(
+                                            "svg",
+                                            {
+                                              staticClass: "fill-current",
+                                              class: {
+                                                "text-green": _vm.isPastDate(
+                                                  workout.date
+                                                ),
+                                                "text-grey-dark": !_vm.isPastDate(
+                                                  workout.date
+                                                )
+                                              },
+                                              attrs: {
+                                                width: "20",
+                                                height: "20",
+                                                viewBox: "0 0 34 34"
+                                              }
+                                            },
+                                            [
+                                              _c("path", {
+                                                attrs: {
+                                                  d:
+                                                    "M16.9999 31.1667C9.17588 31.1667 2.83325 24.824 2.83325 17C2.83325 9.17598 9.17588 2.83334 16.9999 2.83334C24.824 2.83334 31.1666 9.17598 31.1666 17C31.1666 24.824 24.824 31.1667 16.9999 31.1667ZM11.3333 14.1667L8.49992 17L15.5833 24.0833L25.4999 14.1667L22.6666 11.3333L15.5833 18.4167L11.3333 14.1667Z"
+                                                }
+                                              })
+                                            ]
+                                          )
+                                        ])
                                       ])
                                     ]
-                                  ),
-                                  _vm._v(" "),
-                                  _c("div", [
-                                    _c("div", [
-                                      _c(
-                                        "svg",
-                                        {
-                                          staticClass: "fill-current",
-                                          class: {
-                                            "text-green": _vm.isPastDate(
-                                              workout.date
-                                            ),
-                                            "text-grey-dark": !_vm.isPastDate(
-                                              workout.date
-                                            )
-                                          },
-                                          attrs: {
-                                            width: "20",
-                                            height: "20",
-                                            viewBox: "0 0 34 34"
-                                          }
-                                        },
-                                        [
-                                          _c("path", {
-                                            attrs: {
-                                              d:
-                                                "M16.9999 31.1667C9.17588 31.1667 2.83325 24.824 2.83325 17C2.83325 9.17598 9.17588 2.83334 16.9999 2.83334C24.824 2.83334 31.1666 9.17598 31.1666 17C31.1666 24.824 24.824 31.1667 16.9999 31.1667ZM11.3333 14.1667L8.49992 17L15.5833 24.0833L25.4999 14.1667L22.6666 11.3333L15.5833 18.4167L11.3333 14.1667Z"
-                                            }
-                                          })
-                                        ]
-                                      )
-                                    ])
-                                  ])
+                                  )
                                 ]
                               )
-                            ]
+                            ],
+                            1
                           )
-                        ],
-                        1
+                        }),
+                        0
                       )
-                    }),
-                    0
+                    ]
                   )
-                ])
+                })
               ],
-              1
+              2
             )
           : _vm._e()
       ])

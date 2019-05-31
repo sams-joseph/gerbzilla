@@ -11,10 +11,10 @@
           v-bind:type="type.name"
           v-bind:loading="loading"
         ></block-header>
-        <div class="container mx-auto px-4 py-20">
-          <h1 class="text-grey-darkest font-normal text-2xl mb-10 px-4">Workouts</h1>
+        <div v-for="(week, index) in weeks" :key="index" class="container mx-auto px-4 pt-20">
+          <h1 class="text-grey-darkest font-normal text-2xl mb-10 px-4">Week {{index + 1}}</h1>
           <ul class="list-reset flex flex-wrap px-4 md:px-0">
-            <li v-for="workout in workouts" :key="workout.id" class="w-full md:w-1/2 lg:w-1/3 mb-4">
+            <li v-for="workout in week" :key="workout.id" class="w-full md:w-1/2 lg:w-1/3 mb-4">
               <router-link
                 active-class="none"
                 :to="{ name: 'user-workout', params: { id: workout.id }}"
@@ -101,6 +101,62 @@ export default {
   computed: {
     userId() {
       return this.$route.params.user_id;
+    },
+
+    weeks() {
+      return [this.firstWeek, this.secondWeek, this.thirdWeek, this.fourthWeek];
+    },
+
+    firstWeek() {
+      const startDate = this.$moment(this.block.start_date).startOf("week");
+      const endDate = this.$moment(this.block.start_date).endOf("week");
+
+      return this.workouts.filter(workout => {
+        const workoutDate = this.$moment(workout.date);
+        return workoutDate.isBetween(startDate, endDate);
+      });
+    },
+
+    secondWeek() {
+      const startDate = this.$moment(this.block.start_date)
+        .add(1, "w")
+        .startOf("week");
+      const endDate = this.$moment(this.block.start_date)
+        .add(1, "w")
+        .endOf("week");
+
+      return this.workouts.filter(workout => {
+        const workoutDate = this.$moment(workout.date);
+        return workoutDate.isBetween(startDate, endDate);
+      });
+    },
+
+    thirdWeek() {
+      const startDate = this.$moment(this.block.start_date)
+        .add(2, "w")
+        .startOf("week");
+      const endDate = this.$moment(this.block.start_date)
+        .add(2, "w")
+        .endOf("week");
+
+      return this.workouts.filter(workout => {
+        const workoutDate = this.$moment(workout.date);
+        return workoutDate.isBetween(startDate, endDate);
+      });
+    },
+
+    fourthWeek() {
+      const startDate = this.$moment(this.block.start_date)
+        .add(3, "w")
+        .startOf("week");
+      const endDate = this.$moment(this.block.start_date)
+        .add(3, "w")
+        .endOf("week");
+
+      return this.workouts.filter(workout => {
+        const workoutDate = this.$moment(workout.date);
+        return workoutDate.isBetween(startDate, endDate);
+      });
     }
   }
 };
