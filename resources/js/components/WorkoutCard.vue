@@ -1,8 +1,7 @@
 <template>
-  <div class="w-full xl:w-1/4 lg:w-1/3 md:w-1/2 p-2">
+  <div class="w-full xl:w-1/4 lg:w-1/3 md:w-1/2 p-1">
     <div
-      class="card flex flex-col justify-end relative rounded overflow-hidden cursor-pointer"
-      :class="{ 'shadow-lg': shadow }"
+      class="card flex flex-col justify-end relative overflow-hidden cursor-pointer"
       @click.prevent="onClick"
       :style="{ background: gradient.default }"
     >
