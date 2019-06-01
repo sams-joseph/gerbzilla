@@ -12,8 +12,11 @@
           v-bind:loading="loading"
         ></block-header>
         <div v-for="(week, index) in weeks" :key="index" class="container mx-auto px-4 pt-20">
-          <h1 class="text-grey-darkest font-normal text-2xl mb-10 px-4">Week {{index + 1}}</h1>
-          <ul class="list-reset flex flex-wrap px-4 md:px-0">
+          <h1
+            v-if="week.length"
+            class="text-grey-darkest font-normal text-2xl mb-10 px-4"
+          >Week {{index + 1}}</h1>
+          <ul v-if="week.length" class="list-reset flex flex-wrap px-4 md:px-0">
             <li v-for="workout in week" :key="workout.id" class="w-full md:w-1/2 lg:w-1/3 mb-4">
               <router-link
                 active-class="none"

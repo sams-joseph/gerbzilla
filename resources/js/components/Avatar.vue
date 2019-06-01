@@ -15,7 +15,7 @@ export default {
     first: { type: String, default: "" },
     last: { type: String, default: "" },
     supersize: { type: Boolean, default: false },
-    size: { type: Number, default: 34 }
+    size: { type: [Number, String], default: 34 }
   },
 
   computed: {

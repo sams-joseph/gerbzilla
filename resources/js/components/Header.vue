@@ -67,6 +67,7 @@
         </div>
         <ul class="list-reset">
           <li
+            @click="openDrawer"
             class="block px-8 py-2 hover:bg-grey-lighter text-grey-darkest cursor-pointer text-center"
           >
             <router-link
@@ -89,43 +90,55 @@
         v-if="showMenu"
         class="absolute w-full pin-t pin-l h-screen bg-grey-gradient flex flex-col justify-center items-center z-50"
       >
-        <router-link
-          exact-active-class="popover-active-exact"
-          active-class="blank"
-          class="text-white font-bold text-3xl mb-4"
-          to="/u/overview"
-          exact
-        >Overview</router-link>
-        <router-link
-          exact-active-class="popover-active-exact"
-          active-class="blank"
-          class="text-white font-bold text-3xl mb-4"
-          to="/u/workouts"
-          exact
-        >Workouts</router-link>
-        <router-link
-          exact-active-class="popover-active-exact"
-          active-class="blank"
-          class="text-white font-bold text-3xl mb-4"
-          to="/u/goals"
-          exact
-        >Goals</router-link>
-        <router-link
-          v-if="isTrainer"
-          exact-active-class="popover-active-exact"
-          active-class="blank"
-          class="text-white font-bold text-3xl mb-4"
-          to="/t/"
-          exact
-        >Trainer</router-link>
-        <router-link
-          v-if="isAdmin"
-          exact-active-class="popover-active-exact"
-          active-class="blank"
-          class="text-white font-bold text-3xl mb-4"
-          to="/a/admin"
-          exact
-        >Admin</router-link>
+        <ul class="list-reset">
+          <li class="text-center mb-4" @click="openMenu">
+            <router-link
+              exact-active-class="popover-active-exact"
+              active-class="blank"
+              class="text-white font-bold text-3xl mb-4"
+              to="/u/overview"
+              exact
+            >Overview</router-link>
+          </li>
+          <li class="text-center mb-4" @click="openMenu">
+            <router-link
+              exact-active-class="popover-active-exact"
+              active-class="blank"
+              class="text-white font-bold text-3xl mb-4"
+              to="/u/workouts"
+              exact
+            >Workouts</router-link>
+          </li>
+          <li class="text-center mb-4" @click="openMenu">
+            <router-link
+              exact-active-class="popover-active-exact"
+              active-class="blank"
+              class="text-white font-bold text-3xl mb-4"
+              to="/u/goals"
+              exact
+            >Goals</router-link>
+          </li>
+          <li class="text-center mb-4" @click="openMenu">
+            <router-link
+              v-if="isTrainer"
+              exact-active-class="popover-active-exact"
+              active-class="blank"
+              class="text-white font-bold text-3xl mb-4"
+              to="/t/"
+              exact
+            >Trainer</router-link>
+          </li>
+          <li class="text-center mb-4" @click="openMenu">
+            <router-link
+              v-if="isAdmin"
+              exact-active-class="popover-active-exact"
+              active-class="blank"
+              class="text-white font-bold text-3xl mb-4"
+              to="/a/admin"
+              exact
+            >Admin</router-link>
+          </li>
+        </ul>
 
         <div @click="openMenu" class="absolute pin-r pin-t mr-4 mt-4 h-8 w-8 cursor-pointer">
           <svg

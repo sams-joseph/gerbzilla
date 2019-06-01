@@ -103,7 +103,7 @@ __webpack_require__.r(__webpack_exports__);
       "default": false
     },
     size: {
-      type: Number,
+      type: [Number, String],
       "default": 34
     }
   },
@@ -481,6 +481,19 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -4508,6 +4521,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -6431,7 +6447,8 @@ var render = function() {
                     "li",
                     {
                       staticClass:
-                        "block px-8 py-2 hover:bg-grey-lighter text-grey-darkest cursor-pointer text-center"
+                        "block px-8 py-2 hover:bg-grey-lighter text-grey-darkest cursor-pointer text-center",
+                      on: { click: _vm.openDrawer }
                     },
                     [
                       _c(
@@ -6482,79 +6499,131 @@ var render = function() {
                   "absolute w-full pin-t pin-l h-screen bg-grey-gradient flex flex-col justify-center items-center z-50"
               },
               [
-                _c(
-                  "router-link",
-                  {
-                    staticClass: "text-white font-bold text-3xl mb-4",
-                    attrs: {
-                      "exact-active-class": "popover-active-exact",
-                      "active-class": "blank",
-                      to: "/u/overview",
-                      exact: ""
-                    }
-                  },
-                  [_vm._v("Overview")]
-                ),
-                _vm._v(" "),
-                _c(
-                  "router-link",
-                  {
-                    staticClass: "text-white font-bold text-3xl mb-4",
-                    attrs: {
-                      "exact-active-class": "popover-active-exact",
-                      "active-class": "blank",
-                      to: "/u/workouts",
-                      exact: ""
-                    }
-                  },
-                  [_vm._v("Workouts")]
-                ),
-                _vm._v(" "),
-                _c(
-                  "router-link",
-                  {
-                    staticClass: "text-white font-bold text-3xl mb-4",
-                    attrs: {
-                      "exact-active-class": "popover-active-exact",
-                      "active-class": "blank",
-                      to: "/u/goals",
-                      exact: ""
-                    }
-                  },
-                  [_vm._v("Goals")]
-                ),
-                _vm._v(" "),
-                _vm.isTrainer
-                  ? _c(
-                      "router-link",
-                      {
-                        staticClass: "text-white font-bold text-3xl mb-4",
-                        attrs: {
-                          "exact-active-class": "popover-active-exact",
-                          "active-class": "blank",
-                          to: "/t/",
-                          exact: ""
-                        }
-                      },
-                      [_vm._v("Trainer")]
-                    )
-                  : _vm._e(),
-                _vm._v(" "),
-                _vm.isAdmin
-                  ? _c(
-                      "router-link",
-                      {
-                        staticClass: "text-white font-bold text-3xl mb-4",
-                        attrs: {
-                          "exact-active-class": "popover-active-exact",
-                          "active-class": "blank",
-                          to: "/a/admin",
-                          exact: ""
-                        }
-                      },
-                      [_vm._v("Admin")]
-                    )
-                  : _vm._e(),
+                _c("ul", { staticClass: "list-reset" }, [
+                  _c(
+                    "li",
+                    {
+                      staticClass: "text-center mb-4",
+                      on: { click: _vm.openMenu }
+                    },
+                    [
+                      _c(
+                        "router-link",
+                        {
+                          staticClass: "text-white font-bold text-3xl mb-4",
+                          attrs: {
+                            "exact-active-class": "popover-active-exact",
+                            "active-class": "blank",
+                            to: "/u/overview",
+                            exact: ""
+                          }
+                        },
+                        [_vm._v("Overview")]
+                      )
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "li",
+                    {
+                      staticClass: "text-center mb-4",
+                      on: { click: _vm.openMenu }
+                    },
+                    [
+                      _c(
+                        "router-link",
+                        {
+                          staticClass: "text-white font-bold text-3xl mb-4",
+                          attrs: {
+                            "exact-active-class": "popover-active-exact",
+                            "active-class": "blank",
+                            to: "/u/workouts",
+                            exact: ""
+                          }
+                        },
+                        [_vm._v("Workouts")]
+                      )
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "li",
+                    {
+                      staticClass: "text-center mb-4",
+                      on: { click: _vm.openMenu }
+                    },
+                    [
+                      _c(
+                        "router-link",
+                        {
+                          staticClass: "text-white font-bold text-3xl mb-4",
+                          attrs: {
+                            "exact-active-class": "popover-active-exact",
+                            "active-class": "blank",
+                            to: "/u/goals",
+                            exact: ""
+                          }
+                        },
+                        [_vm._v("Goals")]
+                      )
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "li",
+                    {
+                      staticClass: "text-center mb-4",
+                      on: { click: _vm.openMenu }
+                    },
+                    [
+                      _vm.isTrainer
+                        ? _c(
+                            "router-link",
+                            {
+                              staticClass: "text-white font-bold text-3xl mb-4",
+                              attrs: {
+                                "exact-active-class": "popover-active-exact",
+                                "active-class": "blank",
+                                to: "/t/",
+                                exact: ""
+                              }
+                            },
+                            [_vm._v("Trainer")]
+                          )
+                        : _vm._e()
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "li",
+                    {
+                      staticClass: "text-center mb-4",
+                      on: { click: _vm.openMenu }
+                    },
+                    [
+                      _vm.isAdmin
+                        ? _c(
+                            "router-link",
+                            {
+                              staticClass: "text-white font-bold text-3xl mb-4",
+                              attrs: {
+                                "exact-active-class": "popover-active-exact",
+                                "active-class": "blank",
+                                to: "/a/admin",
+                                exact: ""
+                              }
+                            },
+                            [_vm._v("Admin")]
+                          )
+                        : _vm._e()
+                    ],
+                    1
+                  )
+                ]),
                 _vm._v(" "),
                 _c(
                   "div",
@@ -6586,8 +6655,7 @@ var render = function() {
                     )
                   ]
                 )
-              ],
-              1
+              ]
             )
           : _vm._e()
       ]),
@@ -6793,7 +6861,7 @@ var render = function() {
   return _c(
     "div",
     {
-      staticClass: "w-full absolute pt-20 bg-white h-screen z-50",
+      staticClass: "w-full absolute pt-20 bg-white h-screen z-10",
       class: { "opacity-50": _vm.translucent }
     },
     [_vm._m(0)]
@@ -13150,122 +13218,131 @@ var render = function() {
                     "div",
                     { key: index, staticClass: "container mx-auto px-4 pt-20" },
                     [
-                      _c(
-                        "h1",
-                        {
-                          staticClass:
-                            "text-grey-darkest font-normal text-2xl mb-10 px-4"
-                        },
-                        [_vm._v("Week " + _vm._s(index + 1))]
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "ul",
-                        {
-                          staticClass: "list-reset flex flex-wrap px-4 md:px-0"
-                        },
-                        _vm._l(week, function(workout) {
-                          return _c(
-                            "li",
+                      week.length
+                        ? _c(
+                            "h1",
                             {
-                              key: workout.id,
-                              staticClass: "w-full md:w-1/2 lg:w-1/3 mb-4"
+                              staticClass:
+                                "text-grey-darkest font-normal text-2xl mb-10 px-4"
                             },
-                            [
-                              _c(
-                                "router-link",
+                            [_vm._v("Week " + _vm._s(index + 1))]
+                          )
+                        : _vm._e(),
+                      _vm._v(" "),
+                      week.length
+                        ? _c(
+                            "ul",
+                            {
+                              staticClass:
+                                "list-reset flex flex-wrap px-4 md:px-0"
+                            },
+                            _vm._l(week, function(workout) {
+                              return _c(
+                                "li",
                                 {
-                                  attrs: {
-                                    "active-class": "none",
-                                    to: {
-                                      name: "user-workout",
-                                      params: { id: workout.id }
-                                    }
-                                  }
+                                  key: workout.id,
+                                  staticClass: "w-full md:w-1/2 lg:w-1/3 mb-4"
                                 },
                                 [
                                   _c(
-                                    "div",
+                                    "router-link",
                                     {
-                                      staticClass:
-                                        "relative w-full bg-white shadow-lg md:shadow-none md:hover:bg-grey-lighter rounded-lg p-4 flex justify-between items-start"
+                                      attrs: {
+                                        "active-class": "none",
+                                        to: {
+                                          name: "user-workout",
+                                          params: { id: workout.id }
+                                        }
+                                      }
                                     },
                                     [
                                       _c(
                                         "div",
-                                        { staticClass: "flex items-center" },
+                                        {
+                                          staticClass:
+                                            "relative w-full bg-white shadow-lg md:shadow-none md:hover:bg-grey-lighter rounded-lg p-4 flex justify-between items-start"
+                                        },
                                         [
-                                          _c("div", [
-                                            _c(
-                                              "h2",
-                                              {
-                                                staticClass:
-                                                  "text-lg text-grey-darkest font-bold mb-1"
-                                              },
-                                              [_vm._v(_vm._s(workout.name))]
-                                            ),
-                                            _vm._v(" "),
-                                            _c(
-                                              "h3",
-                                              {
-                                                staticClass:
-                                                  "text-base text-blue font-medium"
-                                              },
-                                              [
-                                                _vm._v(
-                                                  _vm._s(
-                                                    _vm
-                                                      .$moment(workout.date)
-                                                      .format("dddd, MMM Do")
-                                                  )
-                                                )
-                                              ]
-                                            )
-                                          ])
-                                        ]
-                                      ),
-                                      _vm._v(" "),
-                                      _c("div", [
-                                        _c("div", [
                                           _c(
-                                            "svg",
+                                            "div",
                                             {
-                                              staticClass: "fill-current",
-                                              class: {
-                                                "text-green": _vm.isPastDate(
-                                                  workout.date
-                                                ),
-                                                "text-grey-dark": !_vm.isPastDate(
-                                                  workout.date
-                                                )
-                                              },
-                                              attrs: {
-                                                width: "20",
-                                                height: "20",
-                                                viewBox: "0 0 34 34"
-                                              }
+                                              staticClass: "flex items-center"
                                             },
                                             [
-                                              _c("path", {
-                                                attrs: {
-                                                  d:
-                                                    "M16.9999 31.1667C9.17588 31.1667 2.83325 24.824 2.83325 17C2.83325 9.17598 9.17588 2.83334 16.9999 2.83334C24.824 2.83334 31.1666 9.17598 31.1666 17C31.1666 24.824 24.824 31.1667 16.9999 31.1667ZM11.3333 14.1667L8.49992 17L15.5833 24.0833L25.4999 14.1667L22.6666 11.3333L15.5833 18.4167L11.3333 14.1667Z"
-                                                }
-                                              })
+                                              _c("div", [
+                                                _c(
+                                                  "h2",
+                                                  {
+                                                    staticClass:
+                                                      "text-lg text-grey-darkest font-bold mb-1"
+                                                  },
+                                                  [_vm._v(_vm._s(workout.name))]
+                                                ),
+                                                _vm._v(" "),
+                                                _c(
+                                                  "h3",
+                                                  {
+                                                    staticClass:
+                                                      "text-base text-blue font-medium"
+                                                  },
+                                                  [
+                                                    _vm._v(
+                                                      _vm._s(
+                                                        _vm
+                                                          .$moment(workout.date)
+                                                          .format(
+                                                            "dddd, MMM Do"
+                                                          )
+                                                      )
+                                                    )
+                                                  ]
+                                                )
+                                              ])
                                             ]
-                                          )
-                                        ])
-                                      ])
+                                          ),
+                                          _vm._v(" "),
+                                          _c("div", [
+                                            _c("div", [
+                                              _c(
+                                                "svg",
+                                                {
+                                                  staticClass: "fill-current",
+                                                  class: {
+                                                    "text-green": _vm.isPastDate(
+                                                      workout.date
+                                                    ),
+                                                    "text-grey-dark": !_vm.isPastDate(
+                                                      workout.date
+                                                    )
+                                                  },
+                                                  attrs: {
+                                                    width: "20",
+                                                    height: "20",
+                                                    viewBox: "0 0 34 34"
+                                                  }
+                                                },
+                                                [
+                                                  _c("path", {
+                                                    attrs: {
+                                                      d:
+                                                        "M16.9999 31.1667C9.17588 31.1667 2.83325 24.824 2.83325 17C2.83325 9.17598 9.17588 2.83334 16.9999 2.83334C24.824 2.83334 31.1666 9.17598 31.1666 17C31.1666 24.824 24.824 31.1667 16.9999 31.1667ZM11.3333 14.1667L8.49992 17L15.5833 24.0833L25.4999 14.1667L22.6666 11.3333L15.5833 18.4167L11.3333 14.1667Z"
+                                                    }
+                                                  })
+                                                ]
+                                              )
+                                            ])
+                                          ])
+                                        ]
+                                      )
                                     ]
                                   )
-                                ]
+                                ],
+                                1
                               )
-                            ],
-                            1
+                            }),
+                            0
                           )
-                        }),
-                        0
-                      )
+                        : _vm._e()
                     ]
                   )
                 })
