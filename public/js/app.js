@@ -4512,18 +4512,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -13241,7 +13229,7 @@ var render = function() {
                                 "li",
                                 {
                                   key: workout.id,
-                                  staticClass: "w-full md:w-1/2 lg:w-1/3 mb-4"
+                                  staticClass: "w-full md:w-1/2 lg:w-1/4 mb-4"
                                 },
                                 [
                                   _c(
@@ -13271,67 +13259,50 @@ var render = function() {
                                             [
                                               _c("div", [
                                                 _c(
-                                                  "h2",
+                                                  "h1",
                                                   {
                                                     staticClass:
-                                                      "text-lg text-grey-darkest font-bold mb-1"
-                                                  },
-                                                  [_vm._v(_vm._s(workout.name))]
-                                                ),
-                                                _vm._v(" "),
-                                                _c(
-                                                  "h3",
-                                                  {
-                                                    staticClass:
-                                                      "text-base text-blue font-medium"
+                                                      "text-xl font-bold text-grey-darkest mb-2"
                                                   },
                                                   [
                                                     _vm._v(
                                                       _vm._s(
                                                         _vm
                                                           .$moment(workout.date)
-                                                          .format(
-                                                            "dddd, MMM Do"
-                                                          )
+                                                          .format("dddd")
                                                       )
                                                     )
                                                   ]
+                                                ),
+                                                _vm._v(" "),
+                                                _c(
+                                                  "h3",
+                                                  {
+                                                    staticClass:
+                                                      "text-base text-blue font-medium mb-4"
+                                                  },
+                                                  [
+                                                    _vm._v(
+                                                      _vm._s(
+                                                        _vm
+                                                          .$moment(workout.date)
+                                                          .format("MMM Do")
+                                                      )
+                                                    )
+                                                  ]
+                                                ),
+                                                _vm._v(" "),
+                                                _c(
+                                                  "h2",
+                                                  {
+                                                    staticClass:
+                                                      "text-lg text-grey-dark font-medium"
+                                                  },
+                                                  [_vm._v(_vm._s(workout.name))]
                                                 )
                                               ])
                                             ]
-                                          ),
-                                          _vm._v(" "),
-                                          _c("div", [
-                                            _c("div", [
-                                              _c(
-                                                "svg",
-                                                {
-                                                  staticClass: "fill-current",
-                                                  class: {
-                                                    "text-green": _vm.isPastDate(
-                                                      workout.date
-                                                    ),
-                                                    "text-grey-dark": !_vm.isPastDate(
-                                                      workout.date
-                                                    )
-                                                  },
-                                                  attrs: {
-                                                    width: "20",
-                                                    height: "20",
-                                                    viewBox: "0 0 34 34"
-                                                  }
-                                                },
-                                                [
-                                                  _c("path", {
-                                                    attrs: {
-                                                      d:
-                                                        "M16.9999 31.1667C9.17588 31.1667 2.83325 24.824 2.83325 17C2.83325 9.17598 9.17588 2.83334 16.9999 2.83334C24.824 2.83334 31.1666 9.17598 31.1666 17C31.1666 24.824 24.824 31.1667 16.9999 31.1667ZM11.3333 14.1667L8.49992 17L15.5833 24.0833L25.4999 14.1667L22.6666 11.3333L15.5833 18.4167L11.3333 14.1667Z"
-                                                    }
-                                                  })
-                                                ]
-                                              )
-                                            ])
-                                          ])
+                                          )
                                         ]
                                       )
                                     ]
