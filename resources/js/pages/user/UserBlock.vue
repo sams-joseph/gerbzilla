@@ -17,7 +17,7 @@
             class="text-grey-darkest font-normal text-2xl mb-10 px-4"
           >Week {{index + 1}}</h1>
           <ul v-if="week.length" class="list-reset flex flex-wrap px-4 md:px-0">
-            <li v-for="workout in week" :key="workout.id" class="w-full md:w-1/2 lg:w-1/4 mb-4">
+            <li v-for="workout in week" :key="workout.id" class="workout-item mb-4">
               <router-link
                 active-class="none"
                 :to="{ name: 'user-workout', params: { id: workout.id }}"
@@ -27,12 +27,15 @@
                 >
                   <div class="flex items-center">
                     <div>
+                      <h3
+                        class="text-base text-blue text-3xl font-medium"
+                      >{{ $moment(workout.date).format('DD') }}</h3>
+                      <h4
+                        class="mb-4 font-normal text-blue"
+                      >{{ $moment(workout.date).format('MMM') }}</h4>
                       <h1
                         class="text-xl font-bold text-grey-darkest mb-2"
                       >{{ $moment(workout.date).format('dddd') }}</h1>
-                      <h3
-                        class="text-base text-blue font-medium mb-4"
-                      >{{ $moment(workout.date).format('MMM Do') }}</h3>
                       <h2 class="text-lg text-grey-dark font-medium">{{ workout.name }}</h2>
                     </div>
                   </div>
@@ -152,3 +155,12 @@ export default {
   }
 };
 </script>
+
+<style lang="sass" scoped>
+.workout-item
+  width: 100%
+  @media (min-width: 768px)
+    width: 25%
+  @media (min-width: 1024px)
+    width: 13%
+</style>
