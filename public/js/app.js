@@ -5005,7 +5005,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, ".workout-item[data-v-2f15f4c7] {\n  width: 100%;\n}\n@media (min-width: 768px) {\n.workout-item[data-v-2f15f4c7] {\n    width: 25%;\n}\n}\n@media (min-width: 1024px) {\n.workout-item[data-v-2f15f4c7] {\n    width: 13%;\n}\n}\n", ""]);
+exports.push([module.i, ".workout-item[data-v-2f15f4c7] {\n  width: 100%;\n}\n@media (min-width: 768px) {\n.workout-item[data-v-2f15f4c7] {\n    width: 25%;\n}\n}\n@media (min-width: 1024px) {\n.workout-item[data-v-2f15f4c7] {\n    width: 20%;\n}\n}\n", ""]);
 
 // exports
 

@@ -162,5 +162,5 @@ export default {
   @media (min-width: 768px)
     width: 25%
   @media (min-width: 1024px)
-    width: 13%
+    width: 20%
 </style>
