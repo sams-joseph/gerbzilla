@@ -427,6 +427,46 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/ExerciseItem.vue?vue&type=script&lang=js&":
+/*!***********************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/ExerciseItem.vue?vue&type=script&lang=js& ***!
+  \***********************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  props: {
+    set: Object,
+    linkparams: Object
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/GoalCard.vue?vue&type=script&lang=js&":
 /*!*******************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/GoalCard.vue?vue&type=script&lang=js& ***!
@@ -3861,6 +3901,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _components_ExerciseItem__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../components/ExerciseItem */ "./resources/js/components/ExerciseItem.vue");
 //
 //
 //
@@ -3935,26 +3976,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
+
 /* harmony default export */ __webpack_exports__["default"] = ({
+  components: {
+    "exercise-item": _components_ExerciseItem__WEBPACK_IMPORTED_MODULE_0__["default"]
+  },
   data: function data() {
     return {
       block: {},
@@ -6281,6 +6307,96 @@ var render = function() {
           ]
         )
       ])
+    ],
+    1
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/ExerciseItem.vue?vue&type=template&id=6c933b76&":
+/*!***************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/ExerciseItem.vue?vue&type=template&id=6c933b76& ***!
+  \***************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "li",
+    { staticClass: "w-full mb-4" },
+    [
+      _c(
+        "router-link",
+        {
+          staticClass: "cursor-pointer",
+          attrs: { "active-class": "none", to: _vm.linkparams }
+        },
+        [
+          _c(
+            "div",
+            {
+              staticClass:
+                "relative w-full bg-white shadow-lg md:shadow-none md:hover:bg-grey-lighter rounded-lg p-4 flex justify-between"
+            },
+            [
+              _c(
+                "div",
+                {
+                  staticClass:
+                    "w-full flex justify-between items-start relative"
+                },
+                [
+                  _c(
+                    "div",
+                    { staticClass: "flex-1" },
+                    [
+                      _vm._l(_vm.set.exercises, function(exercise) {
+                        return _c(
+                          "h2",
+                          {
+                            key: exercise.id,
+                            staticClass:
+                              "text-lg text-grey-darkest font-bold mb-1"
+                          },
+                          [_vm._v(_vm._s(exercise.name))]
+                        )
+                      }),
+                      _vm._v(" "),
+                      _c(
+                        "h3",
+                        { staticClass: "text-base text-blue font-medium" },
+                        [_vm._v("Sets: " + _vm._s(_vm.set.set.num_sets))]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "p",
+                        {
+                          staticClass:
+                            "text-base text-grey-dark font-base text-sm mt-4"
+                        },
+                        [_vm._v(_vm._s(_vm.set.set.notes))]
+                      )
+                    ],
+                    2
+                  )
+                ]
+              )
+            ]
+          )
+        ]
+      )
     ],
     1
   )
@@ -12409,105 +12525,23 @@ var render = function() {
                               "list-reset flex flex-wrap px-4 md:px-0"
                           },
                           _vm._l(_vm.sets, function(set) {
-                            return _c(
-                              "li",
-                              { key: set.id, staticClass: "w-full mb-4" },
-                              [
-                                _c(
-                                  "router-link",
-                                  {
-                                    staticClass: "cursor-pointer",
-                                    attrs: {
-                                      "active-class": "none",
-                                      to: {
-                                        name: "edit-set",
-                                        params: {
-                                          user_id: _vm.$route.params.user_id,
-                                          block_id: _vm.$route.params.block_id,
-                                          workout_id:
-                                            _vm.$route.params.workout_id,
-                                          set_id: set.set.id
-                                        }
-                                      }
-                                    }
-                                  },
-                                  [
-                                    _c(
-                                      "div",
-                                      {
-                                        staticClass:
-                                          "relative w-full bg-white shadow-lg md:shadow-none md:hover:bg-grey-lighter rounded-lg p-4 flex justify-between"
-                                      },
-                                      [
-                                        _c(
-                                          "div",
-                                          {
-                                            staticClass:
-                                              "w-full flex justify-between items-start relative"
-                                          },
-                                          [
-                                            _c(
-                                              "div",
-                                              { staticClass: "flex-1" },
-                                              [
-                                                _vm._l(set.exercises, function(
-                                                  exercise
-                                                ) {
-                                                  return _c(
-                                                    "h2",
-                                                    {
-                                                      key: exercise.id,
-                                                      staticClass:
-                                                        "text-lg text-grey-darkest font-bold mb-1"
-                                                    },
-                                                    [
-                                                      _vm._v(
-                                                        _vm._s(exercise.name)
-                                                      )
-                                                    ]
-                                                  )
-                                                }),
-                                                _vm._v(" "),
-                                                _c(
-                                                  "h3",
-                                                  {
-                                                    staticClass:
-                                                      "text-base text-blue font-medium"
-                                                  },
-                                                  [
-                                                    _vm._v(
-                                                      "Sets: " +
-                                                        _vm._s(set.set.num_sets)
-                                                    )
-                                                  ]
-                                                ),
-                                                _vm._v(" "),
-                                                _c(
-                                                  "p",
-                                                  {
-                                                    staticClass:
-                                                      "text-base text-grey-dark font-base text-sm mt-4"
-                                                  },
-                                                  [
-                                                    _vm._v(
-                                                      _vm._s(set.set.notes)
-                                                    )
-                                                  ]
-                                                )
-                                              ],
-                                              2
-                                            )
-                                          ]
-                                        )
-                                      ]
-                                    )
-                                  ]
-                                )
-                              ],
-                              1
-                            )
+                            return _c("exercise-item", {
+                              key: set.id,
+                              attrs: {
+                                linkparams: {
+                                  name: "edit-set",
+                                  params: {
+                                    user_id: _vm.$route.params.user_id,
+                                    block_id: _vm.$route.params.block_id,
+                                    workout_id: _vm.$route.params.workout_id,
+                                    set_id: set.set.id
+                                  }
+                                },
+                                set: set
+                              }
+                            })
                           }),
-                          0
+                          1
                         )
                       ]
                     )
@@ -15042,6 +15076,75 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_DeleteModal_vue_vue_type_template_id_cae0bcb2___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_DeleteModal_vue_vue_type_template_id_cae0bcb2___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/ExerciseItem.vue":
+/*!**************************************************!*\
+  !*** ./resources/js/components/ExerciseItem.vue ***!
+  \**************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _ExerciseItem_vue_vue_type_template_id_6c933b76___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ExerciseItem.vue?vue&type=template&id=6c933b76& */ "./resources/js/components/ExerciseItem.vue?vue&type=template&id=6c933b76&");
+/* harmony import */ var _ExerciseItem_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ExerciseItem.vue?vue&type=script&lang=js& */ "./resources/js/components/ExerciseItem.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _ExerciseItem_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _ExerciseItem_vue_vue_type_template_id_6c933b76___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _ExerciseItem_vue_vue_type_template_id_6c933b76___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/ExerciseItem.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/ExerciseItem.vue?vue&type=script&lang=js&":
+/*!***************************************************************************!*\
+  !*** ./resources/js/components/ExerciseItem.vue?vue&type=script&lang=js& ***!
+  \***************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ExerciseItem_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./ExerciseItem.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/ExerciseItem.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ExerciseItem_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/ExerciseItem.vue?vue&type=template&id=6c933b76&":
+/*!*********************************************************************************!*\
+  !*** ./resources/js/components/ExerciseItem.vue?vue&type=template&id=6c933b76& ***!
+  \*********************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ExerciseItem_vue_vue_type_template_id_6c933b76___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./ExerciseItem.vue?vue&type=template&id=6c933b76& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/ExerciseItem.vue?vue&type=template&id=6c933b76&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ExerciseItem_vue_vue_type_template_id_6c933b76___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ExerciseItem_vue_vue_type_template_id_6c933b76___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 
