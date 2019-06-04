@@ -1,7 +1,24 @@
 <template>
   <div>
     <navigation></navigation>
-    <sub-navigation></sub-navigation>
+    <sub-navigation>
+      <li class="inline-block">
+        <router-link
+          exact-active-class="router-link-active-alt"
+          to="/u/workouts/week"
+          class="text-grey-darker mr-4"
+          exact
+        >Week</router-link>
+      </li>
+      <li class="inline-block">
+        <router-link
+          exact-active-class="router-link-active-alt"
+          to="/u/workouts/blocks"
+          class="text-grey-darker mr-4"
+          exact
+        >Training Blocks</router-link>
+      </li>
+    </sub-navigation>
     <loader v-if="loading"></loader>
     <transition name="fade">
       <section v-if="!loading">

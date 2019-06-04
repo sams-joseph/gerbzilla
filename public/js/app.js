@@ -868,44 +868,6 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/SideNavigation.vue?vue&type=script&lang=js&":
-/*!*************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/SideNavigation.vue?vue&type=script&lang=js& ***!
-  \*************************************************************************************************************************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-/* harmony default export */ __webpack_exports__["default"] = ({});
-
-/***/ }),
-
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Snackbar.vue?vue&type=script&lang=js&":
 /*!*******************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Snackbar.vue?vue&type=script&lang=js& ***!
@@ -951,21 +913,6 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -3128,6 +3075,23 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -3199,6 +3163,23 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -3414,6 +3395,23 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -3519,6 +3517,23 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -3564,6 +3579,23 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -3649,6 +3681,23 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -3796,6 +3845,23 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -3843,6 +3909,23 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -4516,6 +4599,23 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -4659,6 +4759,23 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -4699,6 +4816,23 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -4828,6 +4962,23 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -7102,81 +7253,6 @@ render._withStripped = true
 
 /***/ }),
 
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/SideNavigation.vue?vue&type=template&id=2e4b5f14&":
-/*!*****************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/SideNavigation.vue?vue&type=template&id=2e4b5f14& ***!
-  \*****************************************************************************************************************************************************************************************************************/
-/*! exports provided: render, staticRenderFns */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c(
-    "nav",
-    {
-      staticClass:
-        "w-full py-4 bg-grey-lighter border-b border-t border-grey-light"
-    },
-    [
-      _c("div", { staticClass: "px-8 container mx-auto" }, [
-        _c("ul", { staticClass: "list-reset" }, [
-          _c(
-            "li",
-            { staticClass: "inline-block" },
-            [
-              _c(
-                "router-link",
-                {
-                  staticClass: "text-grey-darker mr-4",
-                  attrs: {
-                    "exact-active-class": "router-link-active-alt",
-                    to: "/t/users",
-                    exact: ""
-                  }
-                },
-                [_vm._v("Users")]
-              )
-            ],
-            1
-          ),
-          _vm._v(" "),
-          _c(
-            "li",
-            { staticClass: "inline-block" },
-            [
-              _c(
-                "router-link",
-                {
-                  staticClass: "text-grey-darker mr-4",
-                  attrs: {
-                    "exact-active-class": "router-link-active-alt",
-                    to: "/t/exercises",
-                    exact: ""
-                  }
-                },
-                [_vm._v("Exercises")]
-              )
-            ],
-            1
-          )
-        ])
-      ])
-    ]
-  )
-}
-var staticRenderFns = []
-render._withStripped = true
-
-
-
-/***/ }),
-
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Snackbar.vue?vue&type=template&id=727e1820&":
 /*!***********************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Snackbar.vue?vue&type=template&id=727e1820& ***!
@@ -7250,47 +7326,7 @@ var render = function() {
     { staticClass: "w-full py-4 bg-grey-lighter border-b border-grey-light" },
     [
       _c("div", { staticClass: "container mx-auto px-8" }, [
-        _c("ul", { staticClass: "list-reset" }, [
-          _c(
-            "li",
-            { staticClass: "inline-block" },
-            [
-              _c(
-                "router-link",
-                {
-                  staticClass: "text-grey-darker mr-4",
-                  attrs: {
-                    "exact-active-class": "router-link-active-alt",
-                    to: "/u/workouts/week",
-                    exact: ""
-                  }
-                },
-                [_vm._v("Week")]
-              )
-            ],
-            1
-          ),
-          _vm._v(" "),
-          _c(
-            "li",
-            { staticClass: "inline-block" },
-            [
-              _c(
-                "router-link",
-                {
-                  staticClass: "text-grey-darker mr-4",
-                  attrs: {
-                    "exact-active-class": "router-link-active-alt",
-                    to: "/u/workouts/blocks",
-                    exact: ""
-                  }
-                },
-                [_vm._v("Training Blocks")]
-              )
-            ],
-            1
-          )
-        ])
+        _c("ul", { staticClass: "list-reset" }, [_vm._t("default")], 2)
       ])
     ]
   )
@@ -11107,7 +11143,47 @@ var render = function() {
     [
       _c("navigation"),
       _vm._v(" "),
-      _c("side-navigation"),
+      _c("sub-navigation", [
+        _c(
+          "li",
+          { staticClass: "inline-block" },
+          [
+            _c(
+              "router-link",
+              {
+                staticClass: "text-grey-darker mr-4",
+                attrs: {
+                  "exact-active-class": "router-link-active-alt",
+                  to: "/t/users",
+                  exact: ""
+                }
+              },
+              [_vm._v("Users")]
+            )
+          ],
+          1
+        ),
+        _vm._v(" "),
+        _c(
+          "li",
+          { staticClass: "inline-block" },
+          [
+            _c(
+              "router-link",
+              {
+                staticClass: "text-grey-darker mr-4",
+                attrs: {
+                  "exact-active-class": "router-link-active-alt",
+                  to: "/t/exercises",
+                  exact: ""
+                }
+              },
+              [_vm._v("Exercises")]
+            )
+          ],
+          1
+        )
+      ]),
       _vm._v(" "),
       _vm.loading ? _c("loader") : _vm._e(),
       _vm._v(" "),
@@ -11277,7 +11353,47 @@ var render = function() {
     [
       _c("navigation"),
       _vm._v(" "),
-      _c("side-navigation"),
+      _c("sub-navigation", [
+        _c(
+          "li",
+          { staticClass: "inline-block" },
+          [
+            _c(
+              "router-link",
+              {
+                staticClass: "text-grey-darker mr-4",
+                attrs: {
+                  "exact-active-class": "router-link-active-alt",
+                  to: "/t/users",
+                  exact: ""
+                }
+              },
+              [_vm._v("Users")]
+            )
+          ],
+          1
+        ),
+        _vm._v(" "),
+        _c(
+          "li",
+          { staticClass: "inline-block" },
+          [
+            _c(
+              "router-link",
+              {
+                staticClass: "text-grey-darker mr-4",
+                attrs: {
+                  "exact-active-class": "router-link-active-alt",
+                  to: "/t/exercises",
+                  exact: ""
+                }
+              },
+              [_vm._v("Exercises")]
+            )
+          ],
+          1
+        )
+      ]),
       _vm._v(" "),
       _vm.loading ? _c("loader") : _vm._e(),
       _vm._v(" "),
@@ -11482,7 +11598,47 @@ var render = function() {
     [
       _c("navigation"),
       _vm._v(" "),
-      _c("side-navigation"),
+      _c("sub-navigation", [
+        _c(
+          "li",
+          { staticClass: "inline-block" },
+          [
+            _c(
+              "router-link",
+              {
+                staticClass: "text-grey-darker mr-4",
+                attrs: {
+                  "exact-active-class": "router-link-active-alt",
+                  to: "/t/users",
+                  exact: ""
+                }
+              },
+              [_vm._v("Users")]
+            )
+          ],
+          1
+        ),
+        _vm._v(" "),
+        _c(
+          "li",
+          { staticClass: "inline-block" },
+          [
+            _c(
+              "router-link",
+              {
+                staticClass: "text-grey-darker mr-4",
+                attrs: {
+                  "exact-active-class": "router-link-active-alt",
+                  to: "/t/exercises",
+                  exact: ""
+                }
+              },
+              [_vm._v("Exercises")]
+            )
+          ],
+          1
+        )
+      ]),
       _vm._v(" "),
       _vm.loading ? _c("loader") : _vm._e(),
       _vm._v(" "),
@@ -11687,7 +11843,47 @@ var render = function() {
     [
       _c("navigation"),
       _vm._v(" "),
-      _c("side-navigation"),
+      _c("sub-navigation", [
+        _c(
+          "li",
+          { staticClass: "inline-block" },
+          [
+            _c(
+              "router-link",
+              {
+                staticClass: "text-grey-darker mr-4",
+                attrs: {
+                  "exact-active-class": "router-link-active-alt",
+                  to: "/t/users",
+                  exact: ""
+                }
+              },
+              [_vm._v("Users")]
+            )
+          ],
+          1
+        ),
+        _vm._v(" "),
+        _c(
+          "li",
+          { staticClass: "inline-block" },
+          [
+            _c(
+              "router-link",
+              {
+                staticClass: "text-grey-darker mr-4",
+                attrs: {
+                  "exact-active-class": "router-link-active-alt",
+                  to: "/t/exercises",
+                  exact: ""
+                }
+              },
+              [_vm._v("Exercises")]
+            )
+          ],
+          1
+        )
+      ]),
       _vm._v(" "),
       _vm.loading ? _c("loader") : _vm._e(),
       _vm._v(" "),
@@ -11748,7 +11944,47 @@ var render = function() {
     [
       _c("navigation"),
       _vm._v(" "),
-      _c("side-navigation"),
+      _c("sub-navigation", [
+        _c(
+          "li",
+          { staticClass: "inline-block" },
+          [
+            _c(
+              "router-link",
+              {
+                staticClass: "text-grey-darker mr-4",
+                attrs: {
+                  "exact-active-class": "router-link-active-alt",
+                  to: "/t/users",
+                  exact: ""
+                }
+              },
+              [_vm._v("Users")]
+            )
+          ],
+          1
+        ),
+        _vm._v(" "),
+        _c(
+          "li",
+          { staticClass: "inline-block" },
+          [
+            _c(
+              "router-link",
+              {
+                staticClass: "text-grey-darker mr-4",
+                attrs: {
+                  "exact-active-class": "router-link-active-alt",
+                  to: "/t/exercises",
+                  exact: ""
+                }
+              },
+              [_vm._v("Exercises")]
+            )
+          ],
+          1
+        )
+      ]),
       _vm._v(" "),
       _vm.loading ? _c("loader") : _vm._e(),
       _vm._v(" "),
@@ -11845,7 +12081,47 @@ var render = function() {
     [
       _c("navigation"),
       _vm._v(" "),
-      _c("side-navigation"),
+      _c("sub-navigation", [
+        _c(
+          "li",
+          { staticClass: "inline-block" },
+          [
+            _c(
+              "router-link",
+              {
+                staticClass: "text-grey-darker mr-4",
+                attrs: {
+                  "exact-active-class": "router-link-active-alt",
+                  to: "/t/users",
+                  exact: ""
+                }
+              },
+              [_vm._v("Users")]
+            )
+          ],
+          1
+        ),
+        _vm._v(" "),
+        _c(
+          "li",
+          { staticClass: "inline-block" },
+          [
+            _c(
+              "router-link",
+              {
+                staticClass: "text-grey-darker mr-4",
+                attrs: {
+                  "exact-active-class": "router-link-active-alt",
+                  to: "/t/exercises",
+                  exact: ""
+                }
+              },
+              [_vm._v("Exercises")]
+            )
+          ],
+          1
+        )
+      ]),
       _vm._v(" "),
       _vm.loading ? _c("loader") : _vm._e(),
       _vm._v(" "),
@@ -12014,7 +12290,47 @@ var render = function() {
     [
       _c("navigation"),
       _vm._v(" "),
-      _c("side-navigation"),
+      _c("sub-navigation", [
+        _c(
+          "li",
+          { staticClass: "inline-block" },
+          [
+            _c(
+              "router-link",
+              {
+                staticClass: "text-grey-darker mr-4",
+                attrs: {
+                  "exact-active-class": "router-link-active-alt",
+                  to: "/t/users",
+                  exact: ""
+                }
+              },
+              [_vm._v("Users")]
+            )
+          ],
+          1
+        ),
+        _vm._v(" "),
+        _c(
+          "li",
+          { staticClass: "inline-block" },
+          [
+            _c(
+              "router-link",
+              {
+                staticClass: "text-grey-darker mr-4",
+                attrs: {
+                  "exact-active-class": "router-link-active-alt",
+                  to: "/t/exercises",
+                  exact: ""
+                }
+              },
+              [_vm._v("Exercises")]
+            )
+          ],
+          1
+        )
+      ]),
       _vm._v(" "),
       _vm.loading ? _c("loader") : _vm._e(),
       _vm._v(" "),
@@ -12121,7 +12437,47 @@ var render = function() {
     [
       _c("navigation"),
       _vm._v(" "),
-      _c("side-navigation"),
+      _c("sub-navigation", [
+        _c(
+          "li",
+          { staticClass: "inline-block" },
+          [
+            _c(
+              "router-link",
+              {
+                staticClass: "text-grey-darker mr-4",
+                attrs: {
+                  "exact-active-class": "router-link-active-alt",
+                  to: "/t/users",
+                  exact: ""
+                }
+              },
+              [_vm._v("Users")]
+            )
+          ],
+          1
+        ),
+        _vm._v(" "),
+        _c(
+          "li",
+          { staticClass: "inline-block" },
+          [
+            _c(
+              "router-link",
+              {
+                staticClass: "text-grey-darker mr-4",
+                attrs: {
+                  "exact-active-class": "router-link-active-alt",
+                  to: "/t/exercises",
+                  exact: ""
+                }
+              },
+              [_vm._v("Exercises")]
+            )
+          ],
+          1
+        )
+      ]),
       _vm._v(" "),
       _vm.loading ? _c("loader") : _vm._e(),
       _vm._v(" "),
@@ -13234,7 +13590,47 @@ var render = function() {
     [
       _c("navigation"),
       _vm._v(" "),
-      _c("sub-navigation"),
+      _c("sub-navigation", [
+        _c(
+          "li",
+          { staticClass: "inline-block" },
+          [
+            _c(
+              "router-link",
+              {
+                staticClass: "text-grey-darker mr-4",
+                attrs: {
+                  "exact-active-class": "router-link-active-alt",
+                  to: "/u/workouts/week",
+                  exact: ""
+                }
+              },
+              [_vm._v("Week")]
+            )
+          ],
+          1
+        ),
+        _vm._v(" "),
+        _c(
+          "li",
+          { staticClass: "inline-block" },
+          [
+            _c(
+              "router-link",
+              {
+                staticClass: "text-grey-darker mr-4",
+                attrs: {
+                  "exact-active-class": "router-link-active-alt",
+                  to: "/u/workouts/blocks",
+                  exact: ""
+                }
+              },
+              [_vm._v("Training Blocks")]
+            )
+          ],
+          1
+        )
+      ]),
       _vm._v(" "),
       _vm.loading ? _c("loader") : _vm._e(),
       _vm._v(" "),
@@ -13418,7 +13814,47 @@ var render = function() {
     [
       _c("navigation"),
       _vm._v(" "),
-      _c("sub-navigation"),
+      _c("sub-navigation", [
+        _c(
+          "li",
+          { staticClass: "inline-block" },
+          [
+            _c(
+              "router-link",
+              {
+                staticClass: "text-grey-darker mr-4",
+                attrs: {
+                  "exact-active-class": "router-link-active-alt",
+                  to: "/u/workouts/week",
+                  exact: ""
+                }
+              },
+              [_vm._v("Week")]
+            )
+          ],
+          1
+        ),
+        _vm._v(" "),
+        _c(
+          "li",
+          { staticClass: "inline-block" },
+          [
+            _c(
+              "router-link",
+              {
+                staticClass: "text-grey-darker mr-4",
+                attrs: {
+                  "exact-active-class": "router-link-active-alt",
+                  to: "/u/workouts/blocks",
+                  exact: ""
+                }
+              },
+              [_vm._v("Training Blocks")]
+            )
+          ],
+          1
+        )
+      ]),
       _vm._v(" "),
       _vm.loading ? _c("loader") : _vm._e(),
       _vm._v(" "),
@@ -13516,7 +13952,47 @@ var render = function() {
     [
       _c("navigation"),
       _vm._v(" "),
-      _c("sub-navigation"),
+      _c("sub-navigation", [
+        _c(
+          "li",
+          { staticClass: "inline-block" },
+          [
+            _c(
+              "router-link",
+              {
+                staticClass: "text-grey-darker mr-4",
+                attrs: {
+                  "exact-active-class": "router-link-active-alt",
+                  to: "/u/workouts/week",
+                  exact: ""
+                }
+              },
+              [_vm._v("Week")]
+            )
+          ],
+          1
+        ),
+        _vm._v(" "),
+        _c(
+          "li",
+          { staticClass: "inline-block" },
+          [
+            _c(
+              "router-link",
+              {
+                staticClass: "text-grey-darker mr-4",
+                attrs: {
+                  "exact-active-class": "router-link-active-alt",
+                  to: "/u/workouts/blocks",
+                  exact: ""
+                }
+              },
+              [_vm._v("Training Blocks")]
+            )
+          ],
+          1
+        )
+      ]),
       _vm._v(" "),
       _vm.loading ? _c("loader") : _vm._e(),
       _vm._v(" "),
@@ -13713,7 +14189,47 @@ var render = function() {
     [
       _c("navigation"),
       _vm._v(" "),
-      _c("sub-navigation"),
+      _c("sub-navigation", [
+        _c(
+          "li",
+          { staticClass: "inline-block" },
+          [
+            _c(
+              "router-link",
+              {
+                staticClass: "text-grey-darker mr-4",
+                attrs: {
+                  "exact-active-class": "router-link-active-alt",
+                  to: "/u/workouts/week",
+                  exact: ""
+                }
+              },
+              [_vm._v("Week")]
+            )
+          ],
+          1
+        ),
+        _vm._v(" "),
+        _c(
+          "li",
+          { staticClass: "inline-block" },
+          [
+            _c(
+              "router-link",
+              {
+                staticClass: "text-grey-darker mr-4",
+                attrs: {
+                  "exact-active-class": "router-link-active-alt",
+                  to: "/u/workouts/blocks",
+                  exact: ""
+                }
+              },
+              [_vm._v("Training Blocks")]
+            )
+          ],
+          1
+        )
+      ]),
       _vm._v(" "),
       _vm.loading ? _c("loader") : _vm._e(),
       _vm._v(" "),
@@ -13888,21 +14404,19 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_Tab__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./components/Tab */ "./resources/js/components/Tab.vue");
 /* harmony import */ var _components_lists_UserList__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./components/lists/UserList */ "./resources/js/components/lists/UserList.vue");
 /* harmony import */ var _components_lists_ExerciseList__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ./components/lists/ExerciseList */ "./resources/js/components/lists/ExerciseList.vue");
-/* harmony import */ var _components_SideNavigation__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ./components/SideNavigation */ "./resources/js/components/SideNavigation.vue");
-/* harmony import */ var _components_PageFooter__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! ./components/PageFooter */ "./resources/js/components/PageFooter.vue");
-/* harmony import */ var _components_Block__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! ./components/Block */ "./resources/js/components/Block.vue");
-/* harmony import */ var _components_BlockHeader__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(/*! ./components/BlockHeader */ "./resources/js/components/BlockHeader.vue");
-/* harmony import */ var _components_WorkoutItem__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__(/*! ./components/WorkoutItem */ "./resources/js/components/WorkoutItem.vue");
-/* harmony import */ var _components_WorkoutCard__WEBPACK_IMPORTED_MODULE_28__ = __webpack_require__(/*! ./components/WorkoutCard */ "./resources/js/components/WorkoutCard.vue");
-/* harmony import */ var _components_Snackbar__WEBPACK_IMPORTED_MODULE_29__ = __webpack_require__(/*! ./components/Snackbar */ "./resources/js/components/Snackbar.vue");
-/* harmony import */ var _components_Instagram__WEBPACK_IMPORTED_MODULE_30__ = __webpack_require__(/*! ./components/Instagram */ "./resources/js/components/Instagram.vue");
-/* harmony import */ var _components_Announcement__WEBPACK_IMPORTED_MODULE_31__ = __webpack_require__(/*! ./components/Announcement */ "./resources/js/components/Announcement.vue");
-/* harmony import */ var _components_DeleteModal__WEBPACK_IMPORTED_MODULE_32__ = __webpack_require__(/*! ./components/DeleteModal */ "./resources/js/components/DeleteModal.vue");
-/* harmony import */ var _components_ContextMenu__WEBPACK_IMPORTED_MODULE_33__ = __webpack_require__(/*! ./components/ContextMenu */ "./resources/js/components/ContextMenu.vue");
-/* harmony import */ var _components_UserSkeletonLoader__WEBPACK_IMPORTED_MODULE_34__ = __webpack_require__(/*! ./components/UserSkeletonLoader */ "./resources/js/components/UserSkeletonLoader.vue");
-/* harmony import */ var _components_Loader__WEBPACK_IMPORTED_MODULE_35__ = __webpack_require__(/*! ./components/Loader */ "./resources/js/components/Loader.vue");
-/* harmony import */ var _components_Construction__WEBPACK_IMPORTED_MODULE_36__ = __webpack_require__(/*! ./components/Construction */ "./resources/js/components/Construction.vue");
-
+/* harmony import */ var _components_PageFooter__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ./components/PageFooter */ "./resources/js/components/PageFooter.vue");
+/* harmony import */ var _components_Block__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! ./components/Block */ "./resources/js/components/Block.vue");
+/* harmony import */ var _components_BlockHeader__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! ./components/BlockHeader */ "./resources/js/components/BlockHeader.vue");
+/* harmony import */ var _components_WorkoutItem__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(/*! ./components/WorkoutItem */ "./resources/js/components/WorkoutItem.vue");
+/* harmony import */ var _components_WorkoutCard__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__(/*! ./components/WorkoutCard */ "./resources/js/components/WorkoutCard.vue");
+/* harmony import */ var _components_Snackbar__WEBPACK_IMPORTED_MODULE_28__ = __webpack_require__(/*! ./components/Snackbar */ "./resources/js/components/Snackbar.vue");
+/* harmony import */ var _components_Instagram__WEBPACK_IMPORTED_MODULE_29__ = __webpack_require__(/*! ./components/Instagram */ "./resources/js/components/Instagram.vue");
+/* harmony import */ var _components_Announcement__WEBPACK_IMPORTED_MODULE_30__ = __webpack_require__(/*! ./components/Announcement */ "./resources/js/components/Announcement.vue");
+/* harmony import */ var _components_DeleteModal__WEBPACK_IMPORTED_MODULE_31__ = __webpack_require__(/*! ./components/DeleteModal */ "./resources/js/components/DeleteModal.vue");
+/* harmony import */ var _components_ContextMenu__WEBPACK_IMPORTED_MODULE_32__ = __webpack_require__(/*! ./components/ContextMenu */ "./resources/js/components/ContextMenu.vue");
+/* harmony import */ var _components_UserSkeletonLoader__WEBPACK_IMPORTED_MODULE_33__ = __webpack_require__(/*! ./components/UserSkeletonLoader */ "./resources/js/components/UserSkeletonLoader.vue");
+/* harmony import */ var _components_Loader__WEBPACK_IMPORTED_MODULE_34__ = __webpack_require__(/*! ./components/Loader */ "./resources/js/components/Loader.vue");
+/* harmony import */ var _components_Construction__WEBPACK_IMPORTED_MODULE_35__ = __webpack_require__(/*! ./components/Construction */ "./resources/js/components/Construction.vue");
 
 
 
@@ -13961,20 +14475,19 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.component("tabs", _components_Tabs__W
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.component("tab", _components_Tab__WEBPACK_IMPORTED_MODULE_20__["default"]);
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.component("user-list", _components_lists_UserList__WEBPACK_IMPORTED_MODULE_21__["default"]);
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.component("exercise-list", _components_lists_ExerciseList__WEBPACK_IMPORTED_MODULE_22__["default"]);
-vue__WEBPACK_IMPORTED_MODULE_0___default.a.component("side-navigation", _components_SideNavigation__WEBPACK_IMPORTED_MODULE_23__["default"]);
-vue__WEBPACK_IMPORTED_MODULE_0___default.a.component("page-footer", _components_PageFooter__WEBPACK_IMPORTED_MODULE_24__["default"]);
-vue__WEBPACK_IMPORTED_MODULE_0___default.a.component("block", _components_Block__WEBPACK_IMPORTED_MODULE_25__["default"]);
-vue__WEBPACK_IMPORTED_MODULE_0___default.a.component("block-header", _components_BlockHeader__WEBPACK_IMPORTED_MODULE_26__["default"]);
-vue__WEBPACK_IMPORTED_MODULE_0___default.a.component("workout-item", _components_WorkoutItem__WEBPACK_IMPORTED_MODULE_27__["default"]);
-vue__WEBPACK_IMPORTED_MODULE_0___default.a.component("workout-card", _components_WorkoutCard__WEBPACK_IMPORTED_MODULE_28__["default"]);
-vue__WEBPACK_IMPORTED_MODULE_0___default.a.component("snackbar", _components_Snackbar__WEBPACK_IMPORTED_MODULE_29__["default"]);
-vue__WEBPACK_IMPORTED_MODULE_0___default.a.component("instagram", _components_Instagram__WEBPACK_IMPORTED_MODULE_30__["default"]);
-vue__WEBPACK_IMPORTED_MODULE_0___default.a.component("announcement", _components_Announcement__WEBPACK_IMPORTED_MODULE_31__["default"]);
-vue__WEBPACK_IMPORTED_MODULE_0___default.a.component("delete-modal", _components_DeleteModal__WEBPACK_IMPORTED_MODULE_32__["default"]);
-vue__WEBPACK_IMPORTED_MODULE_0___default.a.component("context-menu", _components_ContextMenu__WEBPACK_IMPORTED_MODULE_33__["default"]);
-vue__WEBPACK_IMPORTED_MODULE_0___default.a.component("user-skeleton-loader", _components_UserSkeletonLoader__WEBPACK_IMPORTED_MODULE_34__["default"]);
-vue__WEBPACK_IMPORTED_MODULE_0___default.a.component("loader", _components_Loader__WEBPACK_IMPORTED_MODULE_35__["default"]);
-vue__WEBPACK_IMPORTED_MODULE_0___default.a.component("construction", _components_Construction__WEBPACK_IMPORTED_MODULE_36__["default"]);
+vue__WEBPACK_IMPORTED_MODULE_0___default.a.component("page-footer", _components_PageFooter__WEBPACK_IMPORTED_MODULE_23__["default"]);
+vue__WEBPACK_IMPORTED_MODULE_0___default.a.component("block", _components_Block__WEBPACK_IMPORTED_MODULE_24__["default"]);
+vue__WEBPACK_IMPORTED_MODULE_0___default.a.component("block-header", _components_BlockHeader__WEBPACK_IMPORTED_MODULE_25__["default"]);
+vue__WEBPACK_IMPORTED_MODULE_0___default.a.component("workout-item", _components_WorkoutItem__WEBPACK_IMPORTED_MODULE_26__["default"]);
+vue__WEBPACK_IMPORTED_MODULE_0___default.a.component("workout-card", _components_WorkoutCard__WEBPACK_IMPORTED_MODULE_27__["default"]);
+vue__WEBPACK_IMPORTED_MODULE_0___default.a.component("snackbar", _components_Snackbar__WEBPACK_IMPORTED_MODULE_28__["default"]);
+vue__WEBPACK_IMPORTED_MODULE_0___default.a.component("instagram", _components_Instagram__WEBPACK_IMPORTED_MODULE_29__["default"]);
+vue__WEBPACK_IMPORTED_MODULE_0___default.a.component("announcement", _components_Announcement__WEBPACK_IMPORTED_MODULE_30__["default"]);
+vue__WEBPACK_IMPORTED_MODULE_0___default.a.component("delete-modal", _components_DeleteModal__WEBPACK_IMPORTED_MODULE_31__["default"]);
+vue__WEBPACK_IMPORTED_MODULE_0___default.a.component("context-menu", _components_ContextMenu__WEBPACK_IMPORTED_MODULE_32__["default"]);
+vue__WEBPACK_IMPORTED_MODULE_0___default.a.component("user-skeleton-loader", _components_UserSkeletonLoader__WEBPACK_IMPORTED_MODULE_33__["default"]);
+vue__WEBPACK_IMPORTED_MODULE_0___default.a.component("loader", _components_Loader__WEBPACK_IMPORTED_MODULE_34__["default"]);
+vue__WEBPACK_IMPORTED_MODULE_0___default.a.component("construction", _components_Construction__WEBPACK_IMPORTED_MODULE_35__["default"]);
 var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"](_routes__WEBPACK_IMPORTED_MODULE_7__["default"]);
 router.beforeEach(function (to, from, next) {
   if (to.matched.some(function (record) {
@@ -15304,75 +15817,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_PageFooter_vue_vue_type_template_id_5e81b4b5___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_PageFooter_vue_vue_type_template_id_5e81b4b5___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
-
-
-
-/***/ }),
-
-/***/ "./resources/js/components/SideNavigation.vue":
-/*!****************************************************!*\
-  !*** ./resources/js/components/SideNavigation.vue ***!
-  \****************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _SideNavigation_vue_vue_type_template_id_2e4b5f14___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./SideNavigation.vue?vue&type=template&id=2e4b5f14& */ "./resources/js/components/SideNavigation.vue?vue&type=template&id=2e4b5f14&");
-/* harmony import */ var _SideNavigation_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./SideNavigation.vue?vue&type=script&lang=js& */ "./resources/js/components/SideNavigation.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
-
-
-
-
-
-/* normalize component */
-
-var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
-  _SideNavigation_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
-  _SideNavigation_vue_vue_type_template_id_2e4b5f14___WEBPACK_IMPORTED_MODULE_0__["render"],
-  _SideNavigation_vue_vue_type_template_id_2e4b5f14___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
-  false,
-  null,
-  null,
-  null
-  
-)
-
-/* hot reload */
-if (false) { var api; }
-component.options.__file = "resources/js/components/SideNavigation.vue"
-/* harmony default export */ __webpack_exports__["default"] = (component.exports);
-
-/***/ }),
-
-/***/ "./resources/js/components/SideNavigation.vue?vue&type=script&lang=js&":
-/*!*****************************************************************************!*\
-  !*** ./resources/js/components/SideNavigation.vue?vue&type=script&lang=js& ***!
-  \*****************************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_SideNavigation_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./SideNavigation.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/SideNavigation.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_SideNavigation_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
-
-/***/ }),
-
-/***/ "./resources/js/components/SideNavigation.vue?vue&type=template&id=2e4b5f14&":
-/*!***********************************************************************************!*\
-  !*** ./resources/js/components/SideNavigation.vue?vue&type=template&id=2e4b5f14& ***!
-  \***********************************************************************************/
-/*! exports provided: render, staticRenderFns */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_SideNavigation_vue_vue_type_template_id_2e4b5f14___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./SideNavigation.vue?vue&type=template&id=2e4b5f14& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/SideNavigation.vue?vue&type=template&id=2e4b5f14&");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_SideNavigation_vue_vue_type_template_id_2e4b5f14___WEBPACK_IMPORTED_MODULE_0__["render"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_SideNavigation_vue_vue_type_template_id_2e4b5f14___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 

@@ -1,7 +1,24 @@
 <template>
   <div>
     <navigation></navigation>
-    <side-navigation></side-navigation>
+    <sub-navigation>
+      <li class="inline-block">
+        <router-link
+          exact-active-class="router-link-active-alt"
+          to="/t/users"
+          class="text-grey-darker mr-4"
+          exact
+        >Users</router-link>
+      </li>
+      <li class="inline-block">
+        <router-link
+          exact-active-class="router-link-active-alt"
+          to="/t/exercises"
+          class="text-grey-darker mr-4"
+          exact
+        >Exercises</router-link>
+      </li>
+    </sub-navigation>
     <loader v-if="loading"></loader>
     <div class="relative mb-20">
       <create-user-form
