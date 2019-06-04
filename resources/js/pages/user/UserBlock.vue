@@ -28,31 +28,30 @@
           v-bind:type="type.name"
           v-bind:loading="loading"
         ></block-header>
-        <div v-for="(week, index) in weeks" :key="index" class="container mx-auto px-4 pt-20">
-          <h1
-            v-if="week.length"
-            class="text-grey-darkest font-normal text-2xl mb-10 px-4"
-          >Week {{index + 1}}</h1>
-          <ul v-if="week.length" class="list-reset flex flex-wrap px-4 md:px-0">
-            <workout-item
-              v-for="workout in week"
-              v-bind:key="workout.id"
-              v-bind:heading="workout.name"
-              v-bind:subheading="$moment(workout.date).format('dddd')"
-              v-bind:linkparams="{ name: 'user-workout', params: { id: workout.id }}"
-            >
-              <div class="items-center flex cursor-pointer">
-                <div>
-                  <h3
-                    class="text-base text-blue text-2xl font-medium text-right"
-                  >{{ $moment(workout.date).format('DD') }}</h3>
-                  <h4
-                    class="font-medium text-blue uppercase text-right text-sm"
-                  >{{ $moment(workout.date).format('MMM') }}</h4>
+        <div v-for="(week, index) in weeks" :key="index">
+          <section v-if="week.length" class="container mx-auto px-4 p-20">
+            <h1 class="text-grey-darkest font-normal text-2xl mb-10 px-4">Week {{index + 1}}</h1>
+            <ul v-if="week.length" class="list-reset flex flex-wrap px-4 md:px-0">
+              <workout-item
+                v-for="workout in week"
+                v-bind:key="workout.id"
+                v-bind:heading="workout.name"
+                v-bind:subheading="$moment(workout.date).format('dddd')"
+                v-bind:linkparams="{ name: 'user-workout', params: { id: workout.id }}"
+              >
+                <div class="items-center flex cursor-pointer">
+                  <div>
+                    <h3
+                      class="text-base text-blue text-2xl font-medium text-right"
+                    >{{ $moment(workout.date).format('DD') }}</h3>
+                    <h4
+                      class="font-medium text-blue uppercase text-right text-sm"
+                    >{{ $moment(workout.date).format('MMM') }}</h4>
+                  </div>
                 </div>
-              </div>
-            </workout-item>
-          </ul>
+              </workout-item>
+            </ul>
+          </section>
         </div>
       </section>
     </transition>

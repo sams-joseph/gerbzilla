@@ -30,7 +30,7 @@
 
       <div class="container mx-auto px-4 py-20 relative">
         <ul class="list-reset flex flex-wrap px-4 md:px-0">
-          <li v-for="(set, index) in sets" :key="set.id" class="w-full md:w-1/2 lg:w-1/3 mb-4">
+          <li v-for="(set, index) in sets" :key="set.id" class="w-full mb-4">
             <div
               class="relative w-full bg-white shadow-lg md:shadow-none md:hover:bg-grey-lighter rounded-lg p-4 flex justify-between"
             >

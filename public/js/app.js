@@ -4556,7 +4556,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
@@ -13462,97 +13461,99 @@ var render = function() {
                 }),
                 _vm._v(" "),
                 _vm._l(_vm.weeks, function(week, index) {
-                  return _c(
-                    "div",
-                    { key: index, staticClass: "container mx-auto px-4 pt-20" },
-                    [
-                      week.length
-                        ? _c(
-                            "h1",
-                            {
-                              staticClass:
-                                "text-grey-darkest font-normal text-2xl mb-10 px-4"
-                            },
-                            [_vm._v("Week " + _vm._s(index + 1))]
-                          )
-                        : _vm._e(),
-                      _vm._v(" "),
-                      week.length
-                        ? _c(
-                            "ul",
-                            {
-                              staticClass:
-                                "list-reset flex flex-wrap px-4 md:px-0"
-                            },
-                            _vm._l(week, function(workout) {
-                              return _c(
-                                "workout-item",
-                                {
-                                  key: workout.id,
-                                  attrs: {
-                                    heading: workout.name,
-                                    subheading: _vm
-                                      .$moment(workout.date)
-                                      .format("dddd"),
-                                    linkparams: {
-                                      name: "user-workout",
-                                      params: { id: workout.id }
-                                    }
-                                  }
-                                },
-                                [
-                                  _c(
-                                    "div",
-                                    {
-                                      staticClass:
-                                        "items-center flex cursor-pointer"
-                                    },
-                                    [
-                                      _c("div", [
+                  return _c("div", { key: index }, [
+                    week.length
+                      ? _c(
+                          "section",
+                          { staticClass: "container mx-auto px-4 p-20" },
+                          [
+                            _c(
+                              "h1",
+                              {
+                                staticClass:
+                                  "text-grey-darkest font-normal text-2xl mb-10 px-4"
+                              },
+                              [_vm._v("Week " + _vm._s(index + 1))]
+                            ),
+                            _vm._v(" "),
+                            week.length
+                              ? _c(
+                                  "ul",
+                                  {
+                                    staticClass:
+                                      "list-reset flex flex-wrap px-4 md:px-0"
+                                  },
+                                  _vm._l(week, function(workout) {
+                                    return _c(
+                                      "workout-item",
+                                      {
+                                        key: workout.id,
+                                        attrs: {
+                                          heading: workout.name,
+                                          subheading: _vm
+                                            .$moment(workout.date)
+                                            .format("dddd"),
+                                          linkparams: {
+                                            name: "user-workout",
+                                            params: { id: workout.id }
+                                          }
+                                        }
+                                      },
+                                      [
                                         _c(
-                                          "h3",
+                                          "div",
                                           {
                                             staticClass:
-                                              "text-base text-blue text-2xl font-medium text-right"
+                                              "items-center flex cursor-pointer"
                                           },
                                           [
-                                            _vm._v(
-                                              _vm._s(
-                                                _vm
-                                                  .$moment(workout.date)
-                                                  .format("DD")
+                                            _c("div", [
+                                              _c(
+                                                "h3",
+                                                {
+                                                  staticClass:
+                                                    "text-base text-blue text-2xl font-medium text-right"
+                                                },
+                                                [
+                                                  _vm._v(
+                                                    _vm._s(
+                                                      _vm
+                                                        .$moment(workout.date)
+                                                        .format("DD")
+                                                    )
+                                                  )
+                                                ]
+                                              ),
+                                              _vm._v(" "),
+                                              _c(
+                                                "h4",
+                                                {
+                                                  staticClass:
+                                                    "font-medium text-blue uppercase text-right text-sm"
+                                                },
+                                                [
+                                                  _vm._v(
+                                                    _vm._s(
+                                                      _vm
+                                                        .$moment(workout.date)
+                                                        .format("MMM")
+                                                    )
+                                                  )
+                                                ]
                                               )
-                                            )
-                                          ]
-                                        ),
-                                        _vm._v(" "),
-                                        _c(
-                                          "h4",
-                                          {
-                                            staticClass:
-                                              "font-medium text-blue uppercase text-right text-sm"
-                                          },
-                                          [
-                                            _vm._v(
-                                              _vm._s(
-                                                _vm
-                                                  .$moment(workout.date)
-                                                  .format("MMM")
-                                              )
-                                            )
+                                            ])
                                           ]
                                         )
-                                      ])
-                                    ]
-                                  )
-                                ]
-                              )
-                            }),
-                            1
-                          )
-                        : _vm._e()
-                    ]
-                  )
+                                      ]
+                                    )
+                                  }),
+                                  1
+                                )
+                              : _vm._e()
+                          ]
+                        )
+                      : _vm._e()
+                  ])
                 })
               ],
               2
@@ -13813,7 +13814,7 @@ var render = function() {
                   }
                 }),
                 _vm._v(" "),
-                _c("div", { staticClass: "container mx-auto px-4 pb-20" }, [
+                _c("section", { staticClass: "container mx-auto px-4 pb-20" }, [
                   _c(
                     "h1",
                     {
@@ -13991,10 +13992,7 @@ var render = function() {
                     _vm._l(_vm.sets, function(set, index) {
                       return _c(
                         "li",
-                        {
-                          key: set.id,
-                          staticClass: "w-full md:w-1/2 lg:w-1/3 mb-4"
-                        },
+                        { key: set.id, staticClass: "w-full mb-4" },
                         [
                           _c(
                             "div",

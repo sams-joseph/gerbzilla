@@ -37,7 +37,7 @@
           v-bind:type="typeName"
           v-bind:loading="loading"
         ></block-header>
-        <div class="container mx-auto px-4 pb-20">
+        <section class="container mx-auto px-4 pb-20">
           <h1 class="text-grey-darkest font-normal text-2xl mb-12 px-4 pt-20">This Week</h1>
           <ul class="list-reset flex flex-wrap px-4 md:px-0">
             <workout-item
@@ -59,7 +59,7 @@
               </div>
             </workout-item>
           </ul>
-        </div>
+        </section>
       </div>
     </transition>
   </div>
