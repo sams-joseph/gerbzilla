@@ -12411,10 +12411,7 @@ var render = function() {
                           _vm._l(_vm.sets, function(set) {
                             return _c(
                               "li",
-                              {
-                                key: set.id,
-                                staticClass: "w-full md:w-1/2 lg:w-1/3 mb-4"
-                              },
+                              { key: set.id, staticClass: "w-full mb-4" },
                               [
                                 _c(
                                   "router-link",
