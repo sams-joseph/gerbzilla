@@ -71,8 +71,9 @@ class BlockController extends Controller
         $new_block = $block->replicate();
         $original_date = new Carbon($block->start_date);
         $new_date = new Carbon($request->start_date);
-
-        $user->update(['block_expiration' => $new_date->addWeeks(4)]);
+        $expiration_date = new Carbon($request->start_date);
+        $expiration_date->addWeeks(4);
+        $user->update(['block_expiration' => $expiration_date]);
 
         $day_gap = $original_date->diffInDays($new_date);
         $new_block->name = $request->name;
@@ -97,6 +98,6 @@ class BlockController extends Controller
             }
         }
 
-        return response()->json($new_block);
+        return response()->json(['gap' => $day_gap, 'start' => $original_date, 'end' => $new_date]);
     }
 }
