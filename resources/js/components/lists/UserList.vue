@@ -101,19 +101,6 @@
                     class="text-blue text-sm mr-6"
                   >{{ user.block_expiration ? $moment(user.block_expiration).format('MMMM Do YYYY') : 'Past expiration' }}</span>
                 </div>
-                <div>
-                  <svg
-                    class="fill-current"
-                    :class="{'text-green': user.is_active === 1, 'text-grey-dark': user.is_active === 2}"
-                    width="20"
-                    height="20"
-                    viewBox="0 0 34 34"
-                  >
-                    <path
-                      d="M16.9999 31.1667C9.17588 31.1667 2.83325 24.824 2.83325 17C2.83325 9.17598 9.17588 2.83334 16.9999 2.83334C24.824 2.83334 31.1666 9.17598 31.1666 17C31.1666 24.824 24.824 31.1667 16.9999 31.1667ZM11.3333 14.1667L8.49992 17L15.5833 24.0833L25.4999 14.1667L22.6666 11.3333L15.5833 18.4167L11.3333 14.1667Z"
-                    ></path>
-                  </svg>
-                </div>
               </router-link>
             </li>
           </ul>
@@ -138,19 +125,6 @@
                   <span
                     class="text-blue text-sm mr-6"
                   >{{ user.block_expiration ? $moment(user.block_expiration).format('MMMM Do YYYY') : 'Past expiration' }}</span>
-                </div>
-                <div>
-                  <svg
-                    class="fill-current"
-                    :class="{'text-green': user.is_active === 1, 'text-grey-dark': user.is_active === 2}"
-                    width="20"
-                    height="20"
-                    viewBox="0 0 34 34"
-                  >
-                    <path
-                      d="M16.9999 31.1667C9.17588 31.1667 2.83325 24.824 2.83325 17C2.83325 9.17598 9.17588 2.83334 16.9999 2.83334C24.824 2.83334 31.1666 9.17598 31.1666 17C31.1666 24.824 24.824 31.1667 16.9999 31.1667ZM11.3333 14.1667L8.49992 17L15.5833 24.0833L25.4999 14.1667L22.6666 11.3333L15.5833 18.4167L11.3333 14.1667Z"
-                    ></path>
-                  </svg>
                 </div>
               </router-link>
             </li>

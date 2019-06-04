@@ -40,36 +40,28 @@
         <div class="container mx-auto px-4 pb-20">
           <h1 class="text-grey-darkest font-normal text-2xl mb-12 px-4 pt-20">This Week</h1>
           <ul class="list-reset flex flex-wrap px-4 md:px-0">
-            <li v-for="workout in workouts" :key="workout.id" class="w-full md:w-1/2 lg:w-1/3 mb-4">
+            <li v-for="workout in workouts" :key="workout.id" class="workout-item mb-4">
               <router-link
+                class="block"
                 active-class="none"
                 :to="{ name: 'user-workout', params: { id: workout.id }}"
               >
                 <div
-                  class="relative w-full bg-white shadow-lg md:shadow-none md:hover:bg-grey-lighter rounded-lg p-4 flex justify-between items-start"
+                  class="w-full bg-white shadow-lg md:shadow-none md:hover:bg-grey-lighter rounded-lg p-4 flex justify-between items-start"
                 >
-                  <div class="flex items-center">
-                    <div>
-                      <h2 class="text-lg text-grey-darkest font-bold mb-1">{{ workout.name }}</h2>
-                      <h3
-                        class="text-base text-blue font-medium"
-                      >{{ $moment(workout.date).format('dddd, MMM Do') }}</h3>
-                    </div>
+                  <div class="pr-2">
+                    <h1
+                      class="text-xl font-bold text-grey-darkest mb-2"
+                    >{{ $moment(workout.date).format('dddd') }}</h1>
+                    <h2 class="text-lg text-grey-dark font-normal">{{ workout.name }}</h2>
                   </div>
                   <div>
-                    <div>
-                      <svg
-                        class="fill-current"
-                        :class="{'text-green': isPastDate(workout.date), 'text-grey-dark': !isPastDate(workout.date)}"
-                        width="20"
-                        height="20"
-                        viewBox="0 0 34 34"
-                      >
-                        <path
-                          d="M16.9999 31.1667C9.17588 31.1667 2.83325 24.824 2.83325 17C2.83325 9.17598 9.17588 2.83334 16.9999 2.83334C24.824 2.83334 31.1666 9.17598 31.1666 17C31.1666 24.824 24.824 31.1667 16.9999 31.1667ZM11.3333 14.1667L8.49992 17L15.5833 24.0833L25.4999 14.1667L22.6666 11.3333L15.5833 18.4167L11.3333 14.1667Z"
-                        ></path>
-                      </svg>
-                    </div>
+                    <h3
+                      class="text-base text-blue text-2xl font-medium text-right"
+                    >{{ $moment(workout.date).format('DD') }}</h3>
+                    <h4
+                      class="font-medium text-blue uppercase text-right text-sm"
+                    >{{ $moment(workout.date).format('MMM') }}</h4>
                   </div>
                 </div>
               </router-link>
@@ -150,3 +142,12 @@ export default {
   }
 };
 </script>
+
+<style lang="sass" scoped>
+.workout-item
+  width: 100%
+  @media (min-width: 768px)
+    width: 50%
+  @media (min-width: 1024px)
+    width: 33%
+</style>

@@ -51,10 +51,10 @@
                   </div>
                   <div>
                     <h3
-                      class="text-base text-blue text-3xl font-medium text-right"
+                      class="text-base text-blue text-2xl font-medium text-right"
                     >{{ $moment(workout.date).format('DD') }}</h3>
                     <h4
-                      class="font-medium text-blue uppercase text-right"
+                      class="font-medium text-blue uppercase text-right text-sm"
                     >{{ $moment(workout.date).format('MMM') }}</h4>
                   </div>
                 </div>
