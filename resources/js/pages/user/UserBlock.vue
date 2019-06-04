@@ -30,14 +30,14 @@
                     <h1
                       class="text-xl font-bold text-grey-darkest mb-2"
                     >{{ $moment(workout.date).format('dddd') }}</h1>
-                    <h2 class="text-lg text-grey-dark font-medium">{{ workout.name }}</h2>
+                    <h2 class="text-lg text-grey-dark font-normal">{{ workout.name }}</h2>
                   </div>
                   <div>
                     <h3
                       class="text-base text-blue text-3xl font-medium text-right"
                     >{{ $moment(workout.date).format('DD') }}</h3>
                     <h4
-                      class="font-normal text-blue uppercase text-right"
+                      class="font-medium text-blue uppercase text-right"
                     >{{ $moment(workout.date).format('MMM') }}</h4>
                   </div>
                 </div>
@@ -161,7 +161,7 @@ export default {
 .workout-item
   width: 100%
   @media (min-width: 768px)
-    width: 25%
+    width: 50%
   @media (min-width: 1024px)
-    width: 25%
+    width: 33%
 </style>
