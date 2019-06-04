@@ -13448,6 +13448,7 @@ var render = function() {
         !_vm.loading
           ? _c(
               "section",
+              { staticClass: "pb-20" },
               [
                 _c("block-header", {
                   attrs: {
@@ -13465,7 +13466,7 @@ var render = function() {
                     week.length
                       ? _c(
                           "section",
-                          { staticClass: "container mx-auto px-4 p-20" },
+                          { staticClass: "container mx-auto px-4 pt-20" },
                           [
                             _c(
                               "h1",

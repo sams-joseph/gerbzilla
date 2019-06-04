@@ -21,7 +21,7 @@
     </sub-navigation>
     <loader v-if="loading"></loader>
     <transition name="fade">
-      <section v-if="!loading">
+      <section v-if="!loading" class="pb-20">
         <block-header
           v-bind:heading="block.name"
           v-bind:subheading="$moment(block.start_date).format('MMMM Do YYYY')"
@@ -29,7 +29,7 @@
           v-bind:loading="loading"
         ></block-header>
         <div v-for="(week, index) in weeks" :key="index">
-          <section v-if="week.length" class="container mx-auto px-4 p-20">
+          <section v-if="week.length" class="container mx-auto px-4 pt-20">
             <h1 class="text-grey-darkest font-normal text-2xl mb-10 px-4">Week {{index + 1}}</h1>
             <ul v-if="week.length" class="list-reset flex flex-wrap px-4 md:px-0">
               <workout-item
