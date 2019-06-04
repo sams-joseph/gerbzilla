@@ -34,32 +34,24 @@
             class="text-grey-darkest font-normal text-2xl mb-10 px-4"
           >Week {{index + 1}}</h1>
           <ul v-if="week.length" class="list-reset flex flex-wrap px-4 md:px-0">
-            <li v-for="workout in week" :key="workout.id" class="workout-item mb-4">
-              <router-link
-                class="block"
-                active-class="none"
-                :to="{ name: 'user-workout', params: { id: workout.id }}"
-              >
-                <div
-                  class="w-full bg-white shadow-lg md:shadow-none md:hover:bg-grey-lighter rounded-lg p-4 flex justify-between items-start"
-                >
-                  <div class="pr-2">
-                    <h1
-                      class="text-xl font-bold text-grey-darkest mb-2"
-                    >{{ $moment(workout.date).format('dddd') }}</h1>
-                    <h2 class="text-lg text-grey-dark font-normal">{{ workout.name }}</h2>
-                  </div>
-                  <div>
-                    <h3
-                      class="text-base text-blue text-2xl font-medium text-right"
-                    >{{ $moment(workout.date).format('DD') }}</h3>
-                    <h4
-                      class="font-medium text-blue uppercase text-right text-sm"
-                    >{{ $moment(workout.date).format('MMM') }}</h4>
-                  </div>
+            <workout-item
+              v-for="workout in week"
+              v-bind:key="workout.id"
+              v-bind:heading="workout.name"
+              v-bind:subheading="$moment(workout.date).format('dddd')"
+              v-bind:linkparams="{ name: 'user-workout', params: { id: workout.id }}"
+            >
+              <div class="items-center flex cursor-pointer">
+                <div>
+                  <h3
+                    class="text-base text-blue text-2xl font-medium text-right"
+                  >{{ $moment(workout.date).format('DD') }}</h3>
+                  <h4
+                    class="font-medium text-blue uppercase text-right text-sm"
+                  >{{ $moment(workout.date).format('MMM') }}</h4>
                 </div>
-              </router-link>
-            </li>
+              </div>
+            </workout-item>
           </ul>
         </div>
       </section>
@@ -68,7 +60,13 @@
 </template>
 
 <script>
+import WorkoutItem from "../../components/WorkoutItem";
+
 export default {
+  components: {
+    "workout-item": WorkoutItem
+  },
+
   data() {
     return {
       block: {},
@@ -173,12 +171,3 @@ export default {
   }
 };
 </script>
-
-<style lang="sass" scoped>
-.workout-item
-  width: 100%
-  @media (min-width: 768px)
-    width: 50%
-  @media (min-width: 1024px)
-    width: 33%
-</style>

@@ -58,11 +58,37 @@
           <ul class="list-reset flex flex-wrap px-4 md:px-0">
             <workout-item
               v-for="workout in workouts"
-              v-bind:workout="workout"
               v-bind:key="workout.id"
-              v-bind:userId="userId"
-              v-bind:blockId="block.id"
-            ></workout-item>
+              v-bind:heading="workout.name"
+              v-bind:subheading="$moment(workout.date).format('dddd, MMM Do')"
+              v-bind:linkparams="{ name: 'workout', params: { user_id: userId, block_id: block.id, workout_id: workout.id }}"
+            >
+              <div class="items-center flex cursor-pointer">
+                <context-menu>
+                  <template v-slot:trigger>
+                    <svg
+                      class="fill-current text-grey-darkest"
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        d="M12 10c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2S13.1 10 12 10zM12 4c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2S13.1 4 12 4zM12 16c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2S13.1 16 12 16z"
+                      ></path>
+                    </svg>
+                  </template>
+                  <li
+                    class="inline-block p-2 text-blue hover:text-blue-dark hover:bg-grey-lighter rounded"
+                  >
+                    <router-link
+                      :to="{ name: 'duplicate-workout', params: { user_id: userId, workout_id: workout.id }}"
+                      active-class="none"
+                      class="text-blue"
+                    >Duplicate</router-link>
+                  </li>
+                </context-menu>
+              </div>
+            </workout-item>
           </ul>
         </div>
       </section>
@@ -71,7 +97,13 @@
 </template>
 
 <script>
+import WorkoutItem from "../../components/WorkoutItem";
+
 export default {
+  components: {
+    "workout-item": WorkoutItem
+  },
+
   data() {
     return {
       block: {},
