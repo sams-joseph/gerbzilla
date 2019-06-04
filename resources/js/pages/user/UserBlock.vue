@@ -19,25 +19,26 @@
           <ul v-if="week.length" class="list-reset flex flex-wrap px-4 md:px-0">
             <li v-for="workout in week" :key="workout.id" class="workout-item mb-4">
               <router-link
+                class="block"
                 active-class="none"
                 :to="{ name: 'user-workout', params: { id: workout.id }}"
               >
                 <div
-                  class="relative w-full bg-white shadow-lg md:shadow-none md:hover:bg-grey-lighter rounded-lg p-4 flex justify-between items-start"
+                  class="w-full bg-white shadow-lg md:shadow-none md:hover:bg-grey-lighter rounded-lg p-4 flex justify-between items-start"
                 >
-                  <div class="flex items-center">
-                    <div>
-                      <h3
-                        class="text-base text-blue text-3xl font-medium"
-                      >{{ $moment(workout.date).format('DD') }}</h3>
-                      <h4
-                        class="mb-4 font-normal text-blue"
-                      >{{ $moment(workout.date).format('MMM') }}</h4>
-                      <h1
-                        class="text-xl font-bold text-grey-darkest mb-2"
-                      >{{ $moment(workout.date).format('dddd') }}</h1>
-                      <h2 class="text-lg text-grey-dark font-medium">{{ workout.name }}</h2>
-                    </div>
+                  <div class="pr-2">
+                    <h1
+                      class="text-xl font-bold text-grey-darkest mb-2"
+                    >{{ $moment(workout.date).format('dddd') }}</h1>
+                    <h2 class="text-lg text-grey-dark font-medium">{{ workout.name }}</h2>
+                  </div>
+                  <div>
+                    <h3
+                      class="text-base text-blue text-3xl font-medium text-right"
+                    >{{ $moment(workout.date).format('DD') }}</h3>
+                    <h4
+                      class="font-normal text-blue uppercase text-right"
+                    >{{ $moment(workout.date).format('MMM') }}</h4>
                   </div>
                 </div>
               </router-link>
@@ -162,5 +163,5 @@ export default {
   @media (min-width: 768px)
     width: 25%
   @media (min-width: 1024px)
-    width: 20%
+    width: 25%
 </style>

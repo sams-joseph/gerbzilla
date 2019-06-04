@@ -4515,6 +4515,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -5005,7 +5006,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, ".workout-item[data-v-2f15f4c7] {\n  width: 100%;\n}\n@media (min-width: 768px) {\n.workout-item[data-v-2f15f4c7] {\n    width: 25%;\n}\n}\n@media (min-width: 1024px) {\n.workout-item[data-v-2f15f4c7] {\n    width: 20%;\n}\n}\n", ""]);
+exports.push([module.i, ".workout-item[data-v-2f15f4c7] {\n  width: 100%;\n}\n@media (min-width: 768px) {\n.workout-item[data-v-2f15f4c7] {\n    width: 25%;\n}\n}\n@media (min-width: 1024px) {\n.workout-item[data-v-2f15f4c7] {\n    width: 25%;\n}\n}\n", ""]);
 
 // exports
 
@@ -13287,6 +13288,7 @@ var render = function() {
                                   _c(
                                     "router-link",
                                     {
+                                      staticClass: "block",
                                       attrs: {
                                         "active-class": "none",
                                         to: {
@@ -13300,78 +13302,72 @@ var render = function() {
                                         "div",
                                         {
                                           staticClass:
-                                            "relative w-full bg-white shadow-lg md:shadow-none md:hover:bg-grey-lighter rounded-lg p-4 flex justify-between items-start"
+                                            "w-full bg-white shadow-lg md:shadow-none md:hover:bg-grey-lighter rounded-lg p-4 flex justify-between items-start"
                                         },
                                         [
-                                          _c(
-                                            "div",
-                                            {
-                                              staticClass: "flex items-center"
-                                            },
-                                            [
-                                              _c("div", [
-                                                _c(
-                                                  "h3",
-                                                  {
-                                                    staticClass:
-                                                      "text-base text-blue text-3xl font-medium"
-                                                  },
-                                                  [
-                                                    _vm._v(
-                                                      _vm._s(
-                                                        _vm
-                                                          .$moment(workout.date)
-                                                          .format("DD")
-                                                      )
-                                                    )
-                                                  ]
-                                                ),
-                                                _vm._v(" "),
-                                                _c(
-                                                  "h4",
-                                                  {
-                                                    staticClass:
-                                                      "mb-4 font-normal text-blue"
-                                                  },
-                                                  [
-                                                    _vm._v(
-                                                      _vm._s(
-                                                        _vm
-                                                          .$moment(workout.date)
-                                                          .format("MMM")
-                                                      )
-                                                    )
-                                                  ]
-                                                ),
-                                                _vm._v(" "),
-                                                _c(
-                                                  "h1",
-                                                  {
-                                                    staticClass:
-                                                      "text-xl font-bold text-grey-darkest mb-2"
-                                                  },
-                                                  [
-                                                    _vm._v(
-                                                      _vm._s(
-                                                        _vm
-                                                          .$moment(workout.date)
-                                                          .format("dddd")
-                                                      )
-                                                    )
-                                                  ]
-                                                ),
-                                                _vm._v(" "),
-                                                _c(
-                                                  "h2",
-                                                  {
-                                                    staticClass:
-                                                      "text-lg text-grey-dark font-medium"
-                                                  },
-                                                  [_vm._v(_vm._s(workout.name))]
+                                          _c("div", { staticClass: "pr-2" }, [
+                                            _c(
+                                              "h1",
+                                              {
+                                                staticClass:
+                                                  "text-xl font-bold text-grey-darkest mb-2"
+                                              },
+                                              [
+                                                _vm._v(
+                                                  _vm._s(
+                                                    _vm
+                                                      .$moment(workout.date)
+                                                      .format("dddd")
+                                                  )
                                                 )
-                                              ])
-                                            ]
-                                          )
+                                              ]
+                                            ),
+                                            _vm._v(" "),
+                                            _c(
+                                              "h2",
+                                              {
+                                                staticClass:
+                                                  "text-lg text-grey-dark font-medium"
+                                              },
+                                              [_vm._v(_vm._s(workout.name))]
+                                            )
+                                          ]),
+                                          _vm._v(" "),
+                                          _c("div", [
+                                            _c(
+                                              "h3",
+                                              {
+                                                staticClass:
+                                                  "text-base text-blue text-3xl font-medium text-right"
+                                              },
+                                              [
+                                                _vm._v(
+                                                  _vm._s(
+                                                    _vm
+                                                      .$moment(workout.date)
+                                                      .format("DD")
+                                                  )
+                                                )
+                                              ]
+                                            ),
+                                            _vm._v(" "),
+                                            _c(
+                                              "h4",
+                                              {
+                                                staticClass:
+                                                  "font-normal text-blue uppercase text-right"
+                                              },
+                                              [
+                                                _vm._v(
+                                                  _vm._s(
+                                                    _vm
+                                                      .$moment(workout.date)
+                                                      .format("MMM")
+                                                  )
+                                                )
+                                              ]
+                                            )
+                                          ])
                                         ]
                                       )
                                     ]
